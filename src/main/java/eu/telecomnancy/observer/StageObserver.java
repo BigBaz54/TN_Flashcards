@@ -8,6 +8,7 @@ public abstract class StageObserver implements Observer {
     protected StageModel stage;
 
     public StageObserver(StageModel stage) {
+        this.stage = stage;
         stage.addObserver(this);
     }
 

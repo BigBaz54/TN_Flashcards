@@ -1,4 +1,4 @@
-package eu.telecomnancy;
+package eu.telecomnancy.drawCardStrategy;
 
 import eu.telecomnancy.model.DeckModel;
 

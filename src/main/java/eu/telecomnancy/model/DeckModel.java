@@ -3,8 +3,8 @@ package eu.telecomnancy.model;
 import java.util.ArrayList;
 
 import eu.telecomnancy.DeckTag;
-import eu.telecomnancy.DrawCardStrategy;
-import eu.telecomnancy.DrawCardStrategyWeighted;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 
 public class DeckModel extends Observed {
     private ArrayList<CardModel> cards;

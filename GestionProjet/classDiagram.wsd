@@ -1,6 +1,6 @@
 @startuml
 interface Observer {
-    + update(): void
+    + react(): void
 }
 
 abstract class CardObserver implements Observer {

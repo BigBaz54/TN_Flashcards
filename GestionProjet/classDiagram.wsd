@@ -152,6 +152,9 @@ DeckModel -- BuildCardStrategy
 GlobalView -- StageController
 DeckView -- StageController
 
+StageView -- DeckView
+StageView -- GlobalView
+
 CardModel -- CardTag
 DeckModel -- DeckTag
 

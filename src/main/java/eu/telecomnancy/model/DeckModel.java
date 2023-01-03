@@ -78,12 +78,12 @@ public class DeckModel extends Observed {
         notifyObservers();
     }
 
-    public setDrawCardStrategy(DrawCardStrategy strategy) {
+    public void setDrawCardStrategy(DrawCardStrategy strategy) {
         this.drawCardStrategy = strategy;
         notifyObservers();
     }
 
-    public setBuildCardStrategy(BuildCardStrategy strategy) {
+    public void setBuildCardStrategy(BuildCardStrategy strategy) {
         this.buildCardStrategy = strategy;
         notifyObservers();
     }

@@ -1,6 +1,15 @@
 package eu.telecomnancy.controller;
 
+import eu.telecomnancy.model.DeckListModel;
+
 public class DeckListController {
+    
+    private DeckListModel deckListModel;
+
+    public DeckListController(DeckListModel deckListModel) {
+        this.deckListModel = deckListModel;
+    }
+
     public void createDeck(String name) {
         // TODO:
     }

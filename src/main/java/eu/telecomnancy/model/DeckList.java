@@ -7,7 +7,7 @@ public class DeckList extends Observed{
     private static final DeckList INSTANCE = new DeckList();
     private final ArrayList<Deck> decks;
 
-    private DeckList() {
+    public DeckList() {
         decks = new ArrayList<>();
     }
 

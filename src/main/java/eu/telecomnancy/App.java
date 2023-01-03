@@ -21,7 +21,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("helloworld.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);
@@ -32,4 +32,6 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+
+
 }

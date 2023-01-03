@@ -1,0 +1,11 @@
+#deckListView {
+    -fx-background-color: transparent;
+}
+
+#deckListView .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+

@@ -9,6 +9,7 @@ public abstract class DeckListObserver implements Observer{
     public abstract void react();
 
     public DeckListObserver(DeckList deckList) {
+        this.deckList = deckList;
         deckList.addObserver(this);
     }
     

@@ -7,13 +7,15 @@ import eu.telecomnancy.CardTag;
 public class CardModel extends Observed {
     private String question;
     private String answer;
-    private float probability;
+    private Float probability;
+    private StatCard statCard;
     private ArrayList<CardTag> tags;
 
     public CardModel(String question, String answer) {
         this.question = question;
         this.answer = answer;
-        this.probability = 1;
+        this.probability = 1F;
+        this.statCard = new StatCard();
     }
 
     public String getQuestion() {

@@ -26,7 +26,7 @@ public class DeckView extends DeckObserver{
         this.stageController = stageController;
     }
 
-    @Override
+
     public void react() {
         
     }

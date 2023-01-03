@@ -16,6 +16,7 @@ public class DeckModel extends Observed {
     private int activeCard;
     private DrawCardStrategy drawCardStrategy;
     private BuildCardStrategy buildCardStrategy;
+    private StatDeck statDeck;
 
     public DeckModel(String name, String description) {
         cards = new ArrayList<>();
@@ -25,6 +26,7 @@ public class DeckModel extends Observed {
         this.name = name;
         this.description = description;
         this.activeCard = 0;
+        this.statDeck = new StatDeck();
     }
 
     public void setActiveCard(int i) {

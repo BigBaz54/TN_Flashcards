@@ -7,28 +7,28 @@ import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.observer.StageObserver;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class StageView extends StageObserver{
-
-    private GlobalView globalView;
-    private DeckView deckView;
+    private Stage primaryStage;
+    private Scene globalView;
+    private Scene deckView;
     private StageController stageController;
 
-    public StageView(StageModel stage, StageController stageController, GlobalView globalView, DeckView deckView) {
-        super(stage);
+    public StageView(StageModel stageModel, StageController stageController, Scene globalView, Scene deckView) {
+        super(stageModel);
         this.stageController = stageController;
         this.globalView = globalView;
         this.deckView = deckView;
     }
-
-    @Override
+    
     public void react() {
-        switch(stage.getActiveScene()) {
+        switch(stageModel.getActiveScene()) {
             case 0:
-                
+                primaryStage.setScene(globalView);
                 break;
             case 1:
-                
+                primaryStage.setScene(deckView);
                 break;
         }
     }

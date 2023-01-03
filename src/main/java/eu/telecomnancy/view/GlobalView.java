@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.DeckListModel;
@@ -23,13 +24,15 @@ public class GlobalView extends DeckListObserver implements Initializable{
     private ListView<DeckModel> deckListView;
 
     private StageController stageController;
+    private DeckListController deckListController;
 
     @FXML
     private VBox sidebar;
 
 
-    public GlobalView(DeckListModel deckList,StageController stageController) {
-        super(deckList);
+    public GlobalView(DeckListModel deckListView, DeckListController deckListController, StageController stageController) {
+        super(deckListView);
+        this.deckListController = deckListController;
         this.stageController = stageController;
     }
 
@@ -37,7 +40,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         deckListView.setCellFactory(param -> new DeckCell());
-        deckListView.getItems().addAll(deckList.getDecks());
+        deckListView.getItems().addAll(deckListView.getDecks());
         
     }
 
@@ -47,7 +50,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void createDeck() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
-        loader.setControllerFactory(ic -> new PopUpView(deckList));
+        loader.setControllerFactory(ic -> new PopUpView(deckListView));
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
@@ -58,17 +61,21 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void removeDeck(){}
+
     @FXML
     public void exportDeck(){}
+
     @FXML
     public void importDeck(){}
     
-    public void toDeckView(){}
+    public void toDeckView(){
+        stageController.setDeckView();
+    }
     
     @Override
     public void react() {
         deckListView.getItems().clear();
-        deckListView.getItems().addAll(deckList.getDecks());
+        deckListView.getItems().addAll(deckListView.getDecks());
         
     }
 

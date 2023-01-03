@@ -2,24 +2,39 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
-import eu.telecomnancy.Tag;
+import eu.telecomnancy.DeckTag;
 
 public class DeckModel extends Observed {
     private ArrayList<CardModel> cards;
-    private ArrayList<Tag> tags;
+    private ArrayList<DeckTag> tags;
     private String name;
     private String description;
     private int activeCard;
+    private DrawCardStrategy drawCardStrategy;
+    private BuildCardStrategy buildCardStrategy;
 
     public DeckModel(String name, String description) {
-        cards = new ArrayList<CardModel>();
-        tags = new ArrayList<Tag>();
+        cards = new ArrayList<>();
+        tags = new ArrayList<>();
+        drawCardStrategy = new DrawCardStrategyWeighted();
+        buildCardStrategy = new BuildCardStrategyTheme1();
         this.name = name;
         this.description = description;
+        this.activeCard = 0;
     }
 
-    public void addCard(CardModel cardModel) {
-        cards.add(cardModel);
+    public void setActiveCard(int i) {
+        this.activeCard = i;
+        notifyObservers();
+    }
+
+    public int getActiveCard() {
+        return activeCard;
+    }
+
+
+    public void addCard(String question, String answer) {
+        cards.add(new CardModel(question, answer));
         notifyObservers();
     }
 
@@ -59,4 +74,13 @@ public class DeckModel extends Observed {
         notifyObservers();
     }
 
+    public setDrawCardStrategy(DrawCardStrategy strategy) {
+        this.drawCardStrategy = strategy;
+        notifyObservers();
+    }
+
+    public setBuildCardStrategy(BuildCardStrategy strategy) {
+        this.buildCardStrategy = strategy;
+        notifyObservers();
+    }
 }

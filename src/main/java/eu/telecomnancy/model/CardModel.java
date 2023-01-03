@@ -2,13 +2,13 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
-import eu.telecomnancy.Tag;
+import eu.telecomnancy.CardTag;
 
-public class CardModel {
+public class CardModel extends Observed {
     private String question;
     private String answer;
     private float probability;
-    private ArrayList<Tag> tags;
+    private ArrayList<CardTag> tags;
 
     public CardModel(String question, String answer) {
         this.question = question;
@@ -30,5 +30,13 @@ public class CardModel {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public float getProbability() {
+        return probability;
+    }
+
+    public void setProbability(float probability) {
+        this.probability = probability;
     }
 }

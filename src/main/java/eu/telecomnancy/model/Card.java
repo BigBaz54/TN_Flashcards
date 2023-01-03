@@ -7,10 +7,14 @@ public class Card {
     private String answer;
     private float probability;
     private ArrayList<Tag> tags;
+    private int idNumber;
+    private static int id;
 
     public Card(String question, String answer) {
         this.question = question;
         this.answer = answer;
+        this.idNumber = id ;
+        id ++;
     }
 
     public String getQuestion() {

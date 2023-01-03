@@ -3,7 +3,9 @@ package eu.telecomnancy.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Deck {
+import eu.telecomnancy.observer.Observed;
+
+public class Deck extends Observed {
     private HashMap<String, Card> cards;
     private ArrayList<Tag> tags;
 

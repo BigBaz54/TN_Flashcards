@@ -1,8 +1,9 @@
 package eu.telecomnancy.model;
 
 import java.util.ArrayList;
+import eu.telecomnancy.observer.*;
 
-public class DeckList {
+public class DeckList extends Observed{
     private static final DeckList INSTANCE = new DeckList();
     private final ArrayList<Deck> decks;
 

@@ -1,4 +1,4 @@
-package eu.telecomnancy.model;
+package eu.telecomnancy;
 
 import java.util.ArrayList;
 import java.util.List;

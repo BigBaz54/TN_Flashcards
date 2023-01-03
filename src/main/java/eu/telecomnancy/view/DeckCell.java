@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import eu.telecomnancy.model.Deck;
-import eu.telecomnancy.model.DeckList;
+import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class DeckCell extends ListCell<Deck> implements Initializable{
+public class DeckCell extends ListCell<DeckModel> implements Initializable{
 
     @FXML
     private BorderPane deckCell;
@@ -45,11 +45,11 @@ public class DeckCell extends ListCell<Deck> implements Initializable{
     }
 
     @Override
-    protected void updateItem(Deck item, boolean empty) {
+    protected void updateItem(DeckModel item, boolean empty) {
         super.updateItem(item, empty);
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
-            Deck deck = getItem();
+            DeckModel deck = getItem();
             deckName.setText(deck.getName());
             deckDescription.setText(deck.getDescription());
             setText(null);

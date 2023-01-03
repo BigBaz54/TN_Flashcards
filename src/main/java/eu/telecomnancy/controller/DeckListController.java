@@ -1,6 +1,6 @@
 package eu.telecomnancy.controller;
 
-public class DeckListController implements Controller {
+public class DeckListController {
     public void createDeck(String name) {
         // TODO:
     }

@@ -2,7 +2,9 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
-public class Card {
+import eu.telecomnancy.Tag;
+
+public class CardModel {
     private String question;
     private String answer;
     private float probability;
@@ -10,7 +12,7 @@ public class Card {
     private int idNumber;
     private static int id;
 
-    public Card(String question, String answer) {
+    public CardModel(String question, String answer) {
         this.question = question;
         this.answer = answer;
         this.idNumber = id ;

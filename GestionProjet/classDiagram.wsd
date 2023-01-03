@@ -115,7 +115,7 @@ interface BuildCardStrategy {
     + buildCard()
 }
 
-class BuildCardStrategyTheme1 implements BuildCardStrategy {
+class BuildCardStrategyClassic implements BuildCardStrategy {
 }
 
 class BuildCardStrategyTheme2 implements BuildCardStrategy {

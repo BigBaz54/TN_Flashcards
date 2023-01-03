@@ -13,13 +13,13 @@ public class DeckListModel extends Observed {
         this.decks = decks;
     }
 
-    public void addDeck(DeckModel deck) {
-        decks.add(deck);
+    public void addDeck(String name, String description) {
+        decks.add(new DeckModel(name, description));
         notifyObservers();
     }
 
-    public void removeDeck(DeckModel deck) {
-        decks.remove(deck);
+    public void removeDeck(int i) {
+        decks.remove(i);
         notifyObservers();
     }
 

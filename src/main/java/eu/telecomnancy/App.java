@@ -2,7 +2,9 @@ package eu.telecomnancy;
 
 import java.io.IOException;
 
+import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckList;
+import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.model.Tag;
 import eu.telecomnancy.view.GlobalView;
 import javafx.application.Application;
@@ -23,9 +25,13 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        StageModel stageModel = new StageModel(primaryStage);
+        StageController stageController = new StageController(stageModel);
+
+        // GlobalView
         DeckList deckList = new DeckList();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));
-        loader.setControllerFactory(ic -> new GlobalView(deckList));
+        loader.setControllerFactory(ic -> new GlobalView(deckList,stageController));
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root);

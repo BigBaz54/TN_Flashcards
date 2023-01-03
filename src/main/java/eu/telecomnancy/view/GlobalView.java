@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.Deck;
 import eu.telecomnancy.model.DeckList;
 import eu.telecomnancy.observer.DeckListObserver;
@@ -23,9 +24,12 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @FXML
     private VBox sidebar;
 
+    private StageController stageController;
 
-    public GlobalView(DeckList deckList) {
+
+    public GlobalView(DeckList deckList,StageController stageController) {
         super(deckList);
+        this.stageController = stageController;
     }
 
     @Override
@@ -37,7 +41,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
 
     @FXML
-    public void addDeck() {
+    public void createDeck() {
         Stage stage = new Stage();
         System.out.println(getClass().getResource("PopUp.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
@@ -52,6 +56,13 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void removeDeck(){}
+    @FXML
+    public void exportDeck(){}
+    @FXML
+    public void importDeck(){}
+    
+    public void toDeckView(){}
+
     @FXML
     public void seeMenu() {
         sidebar.setVisible(!sidebar.isVisible());

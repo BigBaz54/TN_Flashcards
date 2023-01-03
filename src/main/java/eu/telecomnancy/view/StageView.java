@@ -25,10 +25,7 @@ public class StageView extends StageObserver{
     public void react() {
         switch(stage.getActiveScene()) {
             case 0:
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../GlobalView.fxml"));
-                loader.setController(globalView);
-                Scene scene = new Scene(loader.load());
-                stage.getPrimaryStage().setScene(scene);
+                
                 break;
             case 1:
                 

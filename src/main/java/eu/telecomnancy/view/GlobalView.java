@@ -21,10 +21,11 @@ public class GlobalView extends DeckListObserver implements Initializable{
 
     @FXML
     private ListView<DeckModel> deckListView;
-    @FXML
-    private VBox sidebar;
 
     private StageController stageController;
+
+    @FXML
+    private VBox sidebar;
 
 
     public GlobalView(DeckListModel deckList,StageController stageController) {
@@ -39,6 +40,8 @@ public class GlobalView extends DeckListObserver implements Initializable{
         deckListView.getItems().addAll(deckList.getDecks());
         
     }
+
+    // Top Menu
 
     @FXML
     public void createDeck() {
@@ -61,16 +64,29 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void importDeck(){}
     
     public void toDeckView(){}
-
-    @FXML
-    public void seeMenu() {
-        sidebar.setVisible(!sidebar.isVisible());
-    }
     
     @Override
     public void react() {
         deckListView.getItems().clear();
         deckListView.getItems().addAll(deckList.getDecks());
+        
+    }
+
+    // Sidebar Menu
+    @FXML
+    public void seeMenu() {
+        sidebar.setVisible(!sidebar.isVisible());
+    }
+    @FXML
+    public void toGlobalView(){
+        
+    }
+    @FXML
+    public void toStatsView(){
+        
+    }
+    @FXML
+    public void toSettingsView(){
         
     }
 

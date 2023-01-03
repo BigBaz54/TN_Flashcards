@@ -13,12 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class DeckCell extends ListCell<DeckModel> implements Initializable{
 
@@ -69,9 +72,11 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Cache la description du deck
         setNodeVisibility(false, descriptionBox);
         descriptionBox.setMaxHeight(0);
         deckCell.setPrefHeight(70);
+        // La rend visible lorsqu'on passe sur la cellule
         nameBox.hoverProperty().addListener((observable, oldValue, newValue) -> {
             setNodeVisibility(newValue, descriptionBox);
             descriptionBox.setMaxHeight(newValue ? Double.MAX_VALUE : 0);
@@ -79,6 +84,23 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
             nameBox.getStyleClass().remove(newValue ? "cell" : "cell-top");
             nameBox.getStyleClass().add(newValue ? "cell-top" : "cell");
 
+        });
+        // Changement de vue lorsqu'on double clique sur la cellule
+        deckCell.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                DeckModel deck = getItem();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckView.fxml"));
+                loader.setControllerFactory(ic->new DeckView(deck));
+                try {
+                    Parent root = loader.load();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
         
     }

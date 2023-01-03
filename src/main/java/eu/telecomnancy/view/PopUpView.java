@@ -23,6 +23,7 @@ public class PopUpView extends DeckListObserver{
 
     public PopUpView(DeckListModel deckListModel,DeckListController deckListController) {
         super(deckListModel);
+        this.deckListController = deckListController;
     }
 
 

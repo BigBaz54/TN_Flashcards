@@ -7,6 +7,7 @@ import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.view.GlobalView;
+import eu.telecomnancy.view.StageView;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,7 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        StageModel stageModel = new StageModel(primaryStage);
+        StageModel stageModel = new StageModel();
         StageController stageController = new StageController(stageModel);
 
         // GlobalView
@@ -36,8 +37,9 @@ public class App extends Application {
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root,1200,900);
-            primaryStage.setScene(scene);
-            primaryStage.show();
+            StageView stageView = new StageView(primaryStage,stageModel,stageController,scene);
+            stageController.setGlobalView();
+            
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

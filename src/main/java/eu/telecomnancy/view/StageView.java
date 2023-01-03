@@ -6,20 +6,22 @@ import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.observer.StageObserver;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class StageView extends StageObserver{
     private Stage primaryStage;
+    private StageController stageController;
     private Scene globalView;
     private Scene deckView;
-    private StageController stageController;
 
-    public StageView(StageModel stageModel, StageController stageController, Scene globalView, Scene deckView) {
+    public StageView(Stage primaryStage, StageModel stageModel, StageController stageController, Scene globalView) {
         super(stageModel);
+        this.primaryStage = primaryStage;
         this.stageController = stageController;
         this.globalView = globalView;
-        this.deckView = deckView;
+        this.stageController.setStageView(this);
     }
     
     public void react() {
@@ -31,6 +33,11 @@ public class StageView extends StageObserver{
                 primaryStage.setScene(deckView);
                 break;
         }
+        primaryStage.show();
+    }
+
+    public void setDeckView(Scene deckView) {
+        this.deckView = deckView;
     }
     
 }

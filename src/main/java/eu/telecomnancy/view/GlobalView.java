@@ -68,10 +68,6 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @FXML
     public void importDeck(){}
     
-    public void toDeckView(){
-        stageController.setDeckView();
-    }
-    
     @Override
     public void react() {
         deckListView.getItems().clear();

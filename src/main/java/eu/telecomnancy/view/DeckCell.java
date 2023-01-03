@@ -93,18 +93,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
         // Changement de vue lorsqu'on double clique sur la cellule
         deckCell.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 DeckModel deck = getItem();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckView.fxml"));
-                loader.setControllerFactory(ic->new DeckView(deck,new DeckController(deck),stageController));
-                try {
-                    Parent root = loader.load();
-                    Scene scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                stageController.setDeckView(deck);
             }
         });
         

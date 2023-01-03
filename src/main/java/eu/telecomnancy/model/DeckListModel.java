@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
+    private StatDeck statDeck;
 
     public DeckListModel() {
         decks = new ArrayList<>();
+        statDeck = new StatDeck();
     }
 
     public DeckListModel(ArrayList<DeckModel> decks) {

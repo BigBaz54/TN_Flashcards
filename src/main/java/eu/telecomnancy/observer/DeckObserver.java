@@ -4,15 +4,10 @@ import eu.telecomnancy.model.DeckModel;
 
 public abstract class DeckObserver implements Observer{
 
-    protected DeckModel deck;
+    protected DeckModel deckModel;
 
-    public DeckObserver(DeckModel deck) {
-        this.deck = deck;
-        deck.addObserver(this);
+    protected DeckObserver(DeckModel deckModel) {
+        this.deckModel = deckModel;
+        deckModel.addObserver(this);
     }
-
-
-    @Override
-    public abstract void react();
-    
 }

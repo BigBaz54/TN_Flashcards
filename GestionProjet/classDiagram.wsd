@@ -135,10 +135,11 @@ DeckObserver -- DeckModel
 DeckListObserver -- DeckListModel
 StageObserver -- StageModel
 
-CardObserver -- CardController
-DeckObserver -- DeckController
-DeckListObserver -- DeckListController
-StageObserver -- StageController
+GlobalView -- DeckListController
+DeckView -- DeckController
+StageView -- StageController
+GlobalView -- StageController
+DeckView -- StageController
 
 CardController -- CardModel
 DeckController -- DeckModel
@@ -150,8 +151,6 @@ DeckModel -- BuildCardStrategy
 DeckModel -- CardModel
 DeckListModel -- DeckModel
 
-GlobalView -- StageController
-DeckView -- StageController
 
 StageView -- DeckView
 StageView -- GlobalView

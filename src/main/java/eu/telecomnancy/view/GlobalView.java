@@ -43,7 +43,6 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @FXML
     public void createDeck() {
         Stage stage = new Stage();
-        System.out.println(getClass().getResource("PopUp.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
         loader.setControllerFactory(ic -> new PopUpView(deckList));
         try {

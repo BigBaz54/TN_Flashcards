@@ -5,11 +5,9 @@ import eu.telecomnancy.view.DeckView;
 
 public class DeckController {
     private DeckModel deckModel;
-    private DeckView deckView;
 
-    public DeckController(DeckModel deckModel, DeckView deckView) {
+    public DeckController(DeckModel deckModel) {
         this.deckModel = deckModel;
-        this.deckView = deckView;
     }
 
     public void setName(String name) {

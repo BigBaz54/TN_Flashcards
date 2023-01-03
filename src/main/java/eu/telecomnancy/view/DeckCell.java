@@ -96,7 +96,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 DeckModel deck = getItem();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckView.fxml"));
-                loader.setControllerFactory(ic->new DeckView(deck,new DeckController(),stageController));
+                loader.setControllerFactory(ic->new DeckView(deck,new DeckController(deck),stageController));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);

@@ -3,6 +3,8 @@ module eu.telecomnancy {
     requires javafx.fxml;
 
     opens eu.telecomnancy to javafx.controls, javafx.fxml;
+    opens eu.telecomnancy.view to javafx.fxml;
 
     exports eu.telecomnancy;
+    exports eu.telecomnancy.view;
 }

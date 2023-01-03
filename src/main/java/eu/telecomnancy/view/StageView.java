@@ -12,11 +12,11 @@ public class StageView extends StageObserver{
 
     private GlobalView globalView;
     private DeckView deckView;
-    private StageController controller;
+    private StageController stageController;
 
-    public StageView(StageModel stage, StageController controller, GlobalView globalView, DeckView deckView) {
+    public StageView(StageModel stage, StageController stageController, GlobalView globalView, DeckView deckView) {
         super(stage);
-        this.controller = controller;
+        this.stageController = stageController;
         this.globalView = globalView;
         this.deckView = deckView;
     }

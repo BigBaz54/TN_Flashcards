@@ -40,7 +40,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         deckListView.setCellFactory(param -> new DeckCell());
-        deckListView.getItems().addAll(deckListView.getDecks());
+        deckListView.getItems().addAll(deckListModel.getDecks());
         
     }
 
@@ -50,7 +50,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void createDeck() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
-        loader.setControllerFactory(ic -> new PopUpView(deckListView));
+        loader.setControllerFactory(ic -> new PopUpView(deckListModel));
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
@@ -75,7 +75,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @Override
     public void react() {
         deckListView.getItems().clear();
-        deckListView.getItems().addAll(deckListView.getDecks());
+        deckListView.getItems().addAll(deckListModel.getDecks());
         
     }
 

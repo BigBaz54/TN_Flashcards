@@ -17,8 +17,8 @@ public class PopUpView extends DeckListObserver{
     private TextArea deckDescription;
 
 
-    public PopUpView(DeckListModel deckList) {
-        super(deckList);
+    public PopUpView(DeckListModel deckListModel) {
+        super(deckListModel);
     }
 
 
@@ -27,7 +27,7 @@ public class PopUpView extends DeckListObserver{
         String name = deckName.getText();
         String description = deckDescription.getText();
         DeckModel newDeck = new DeckModel(name, description);
-        deckList.addDeck(newDeck);
+        deckListModel.addDeck(newDeck);
         Stage stage = (Stage) deckName.getScene().getWindow();
         stage.close();
     }

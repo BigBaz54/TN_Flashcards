@@ -7,6 +7,7 @@ public abstract class DeckObserver implements Observer{
     protected Deck deck;
 
     public DeckObserver(Deck deck) {
+        this.deck = deck;
         deck.addObserver(this);
     }
 

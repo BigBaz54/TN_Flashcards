@@ -50,7 +50,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void createDeck() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
-        loader.setControllerFactory(ic -> new PopUpView(deckListModel));
+        loader.setControllerFactory(ic -> new PopUpView(deckListModel,deckListController));
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));

@@ -9,14 +9,11 @@ public class CardModel {
     private String answer;
     private float probability;
     private ArrayList<Tag> tags;
-    private int idNumber;
-    private static int id;
 
     public CardModel(String question, String answer) {
         this.question = question;
         this.answer = answer;
-        this.idNumber = id ;
-        id ++;
+        this.probability = 1;
     }
 
     public String getQuestion() {

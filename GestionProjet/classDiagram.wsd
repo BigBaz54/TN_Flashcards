@@ -148,6 +148,7 @@ StageController -- StageModel
 
 DeckModel -- DrawCardStrategy
 DeckModel -- BuildCardStrategy
+DeckModel -- CardModel
 
 GlobalView -- StageController
 DeckView -- StageController

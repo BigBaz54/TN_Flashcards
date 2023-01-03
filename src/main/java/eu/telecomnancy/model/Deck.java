@@ -45,4 +45,19 @@ public class Deck extends Observed {
         return cards.containsKey(question);
     }
 
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+        notifyObservers();
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+        notifyObservers();
+    }
+
 }

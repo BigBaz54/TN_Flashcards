@@ -22,4 +22,8 @@ public class DeckListModel extends Observed {
         decks.remove(deck);
         notifyObservers();
     }
+
+    public ArrayList<DeckModel> getDecks() {
+        return decks;
+    }
 }

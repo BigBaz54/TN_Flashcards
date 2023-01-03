@@ -23,7 +23,7 @@ public class StageView extends StageObserver{
 
     @Override
     public void react() {
-        switch(stage.getActiveScene()) {
+        switch(stageModel.getActiveScene()) {
             case 0:
                 
                 break;

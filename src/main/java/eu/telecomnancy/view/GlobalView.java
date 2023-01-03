@@ -26,6 +26,10 @@ public class GlobalView extends DeckListObserver implements Initializable{
         
     }
 
+    @FXML
+    public void addDeck() {}
+    @FXML
+    public void removeDeck(){}
 
 
     @Override

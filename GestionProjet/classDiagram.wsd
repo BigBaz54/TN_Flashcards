@@ -107,7 +107,7 @@ class DeckTag extends Tag {
 }
 
 interface DrawCardStrategy {
-    + handleAnswer(answer: boolean): void
+    + handleAnswer(answer: boolean, DeckModel deckModel): void
     + nextCard(): int
 }
 

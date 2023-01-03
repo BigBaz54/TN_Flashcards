@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="deckCell" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="403.0" stylesheets="@../styles/card.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="TOP_LEFT" prefHeight="250.0" prefWidth="380.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <VBox fx:id="nameBox" alignment="CENTER_LEFT" prefHeight="77.0" prefWidth="383.0" styleClass="cell">
+               <children>
+                  <Label text="Nom">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="deckName">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="descriptionBox" alignment="CENTER_LEFT" maxHeight="115.0" minHeight="115.0" prefWidth="380.0" styleClass="cell-bottom">
+               <children>
+                  <Label text="Description">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Text fx:id="deckDescription" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

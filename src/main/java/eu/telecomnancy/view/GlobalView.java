@@ -3,6 +3,7 @@ package eu.telecomnancy.view;
 import eu.telecomnancy.model.Deck;
 import eu.telecomnancy.model.DeckList;
 import eu.telecomnancy.observer.DeckListObserver;
+import eu.telecomnancy.view.DeckCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,8 +31,8 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        deckListView.setCellFactory(param -> new DeckCell());
         deckListView.getItems().addAll(deckList.getDecks());
-        setNodeVisibility(false,sidebar);
         
     }
 
@@ -53,8 +54,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void removeDeck(){}
     @FXML
     public void seeMenu() {
-        boolean isVisible = sidebar.isVisible();
-        setNodeVisibility(!isVisible, sidebar);
+        sidebar.setVisible(!sidebar.isVisible());
     }
     
     @Override

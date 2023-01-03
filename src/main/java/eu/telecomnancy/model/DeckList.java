@@ -17,10 +17,12 @@ public class DeckList extends Observed{
 
     public void addDeck(Deck deck) {
         decks.add(deck);
+        notifyObservers();
     }
 
     public void removeDeck(Deck deck) {
         decks.remove(deck);
+        notifyObservers();
     }
 
     public Deck[] getDecks() {

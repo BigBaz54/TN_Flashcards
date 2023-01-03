@@ -1,12 +1,12 @@
 package eu.telecomnancy.observer;
 
-import eu.telecomnancy.model.Deck;
+import eu.telecomnancy.model.DeckModel;
 
 public abstract class DeckObserver implements Observer{
 
-    protected Deck deck;
+    protected DeckModel deck;
 
-    public DeckObserver(Deck deck) {
+    public DeckObserver(DeckModel deck) {
         this.deck = deck;
         deck.addObserver(this);
     }

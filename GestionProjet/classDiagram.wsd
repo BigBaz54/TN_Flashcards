@@ -42,7 +42,6 @@ class StageView extends StageObserver {
 class DeckListModel extends Observed {
     + addDeck(name: String, description: String): void
     + removeDeck(i: int): void
-    + notify(): void
 }
 
 class DeckModel extends Observed {
@@ -148,6 +147,8 @@ StageController -- StageModel
 
 DeckModel -- DrawCardStrategy
 DeckModel -- BuildCardStrategy
+DeckModel -- CardModel
+DeckListModel -- DeckModel
 
 GlobalView -- StageController
 DeckView -- StageController

@@ -1,8 +1,8 @@
 package eu.telecomnancy.view;
 
 import eu.telecomnancy.controller.StageController;
-import eu.telecomnancy.model.Deck;
-import eu.telecomnancy.model.DeckList;
+import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
 import eu.telecomnancy.view.DeckCell;
 import javafx.fxml.FXML;
@@ -20,14 +20,14 @@ import javafx.stage.Stage;
 public class GlobalView extends DeckListObserver implements Initializable{
 
     @FXML
-    private ListView<Deck> deckListView;
+    private ListView<DeckModel> deckListView;
     @FXML
     private VBox sidebar;
 
     private StageController stageController;
 
 
-    public GlobalView(DeckList deckList,StageController stageController) {
+    public GlobalView(DeckListModel deckList,StageController stageController) {
         super(deckList);
         this.stageController = stageController;
     }

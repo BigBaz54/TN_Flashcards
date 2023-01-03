@@ -1,7 +1,9 @@
-package eu.telecomnancy.observer;
+package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import eu.telecomnancy.observer.Observer;
 
 public abstract class Observed {
 

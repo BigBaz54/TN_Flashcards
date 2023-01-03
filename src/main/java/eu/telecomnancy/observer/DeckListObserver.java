@@ -1,14 +1,14 @@
 package eu.telecomnancy.observer;
 
-import eu.telecomnancy.model.DeckList;
+import eu.telecomnancy.model.DeckListModel;
 
 public abstract class DeckListObserver implements Observer{
 
-    protected DeckList deckList;
+    protected DeckListModel deckList;
 
     public abstract void react();
 
-    public DeckListObserver(DeckList deckList) {
+    public DeckListObserver(DeckListModel deckList) {
         this.deckList = deckList;
         deckList.addObserver(this);
     }

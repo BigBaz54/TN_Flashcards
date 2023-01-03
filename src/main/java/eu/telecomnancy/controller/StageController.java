@@ -7,22 +7,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class StageController implements Controller {
+public class StageController {
 
-    private StageModel stage;
+    private StageModel stageModel;
 
-    public StageController(StageModel stage) {
-        this.stage = stage;
+    public StageController(StageModel stageModel) {
+        this.stageModel = stageModel;
     }
     public void setActiveScene(int scene) {
-        stage.setActiveScene(scene);
+        stageModel.setActiveScene(scene);
     }
     public void setGlobalView() {
-        stage.setActiveScene(0);
+        stageModel.setActiveScene(0);
 
     }
     public void setDeckView() {
-        stage.setActiveScene(1);
+        stageModel.setActiveScene(1);
     }
 
 }

@@ -1,5 +1,5 @@
 package eu.telecomnancy.controller;
 
-public class CardController implements Controller {
+public class CardController {
 
 }

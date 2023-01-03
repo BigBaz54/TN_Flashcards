@@ -6,7 +6,7 @@ public class Card {
     private String question;
     private String answer;
     private float probability;
-    private ArrayList<CardTag> tags;
+    private ArrayList<Tag> tags;
 
     public Card(String question, String answer) {
         this.question = question;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="600.0" prefWidth="300.0" visible="false" BorderPane.alignment="CENTER">
+      <VBox prefHeight="600.0" prefWidth="200.0" styleClass="sidebar" visible="false" BorderPane.alignment="CENTER">
          <children>
-            <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0">
+            <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0" styleClass="toolBar">
               <items>
                   <Button mnemonicParsing="false" text="Mes paquets">
                      <padding>
@@ -48,31 +49,36 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView prefHeight="200.0" prefWidth="200.0" />
+                  <ListView fx:id="deckListView" prefHeight="200.0" prefWidth="200.0" />
                </children>
             </VBox>
          </children>
       </HBox>
    </center>
    <top>
-      <HBox prefHeight="40.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox prefHeight="40.0" prefWidth="600.0" styleClass="menu" BorderPane.alignment="CENTER">
          <children>
-            <ToolBar prefHeight="40.0" prefWidth="400.0">
+            <ToolBar prefHeight="40.0" prefWidth="600.0" styleClass="toolBar">
               <items>
                 <Button mnemonicParsing="false" text="Menu">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </Button>
-                  <Label text="Mes paquets">
+                  <Label styleClass="text" text="Mes paquets">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </Label>
               </items>
             </ToolBar>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="500.0">
+            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="600.0" styleClass="toolBar">
               <items>
+                  <Button mnemonicParsing="false" text="Supprimer">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Button>
                 <Button mnemonicParsing="false" text="Ajouter ">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -83,4 +89,8 @@
          </children>
       </HBox>
    </top>
+   <stylesheets>
+      <URL value="@styles/menu.css" />
+      <URL value="@styles/global.css" />
+   </stylesheets>
 </BorderPane>

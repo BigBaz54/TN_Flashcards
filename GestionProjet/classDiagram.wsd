@@ -1,6 +1,6 @@
 @startuml
 interface Observer {
-    + update(): void
+    + react(): void
 }
 
 abstract class CardObserver implements Observer {
@@ -42,7 +42,6 @@ class StageView extends StageObserver {
 class DeckListModel extends Observed {
     + addDeck(name: String, description: String): void
     + removeDeck(i: int): void
-    + notify(): void
 }
 
 class DeckModel extends Observed {
@@ -136,10 +135,11 @@ DeckObserver -- DeckModel
 DeckListObserver -- DeckListModel
 StageObserver -- StageModel
 
-CardObserver -- CardController
-DeckObserver -- DeckController
-DeckListObserver -- DeckListController
-StageObserver -- StageController
+GlobalView -- DeckListController
+DeckView -- DeckController
+StageView -- StageController
+GlobalView -- StageController
+DeckView -- StageController
 
 CardController -- CardModel
 DeckController -- DeckModel
@@ -148,9 +148,9 @@ StageController -- StageModel
 
 DeckModel -- DrawCardStrategy
 DeckModel -- BuildCardStrategy
+DeckModel -- CardModel
+DeckListModel -- DeckModel
 
-GlobalView -- StageController
-DeckView -- StageController
 
 StageView -- DeckView
 StageView -- GlobalView

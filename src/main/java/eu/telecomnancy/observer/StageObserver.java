@@ -1,19 +1,12 @@
 package eu.telecomnancy.observer;
 
 import eu.telecomnancy.model.StageModel;
-import javafx.stage.Stage;
 
 public abstract class StageObserver implements Observer {
+    protected StageModel stageModel;
 
-    protected StageModel stage;
-
-    public StageObserver(StageModel stage) {
-        this.stage = stage;
-        stage.addObserver(this);
+    protected StageObserver(StageModel stageModel) {
+        this.stageModel = stageModel;
+        stageModel.addObserver(this);
     }
-
-
-    @Override
-    public abstract void react(); 
-    
 }

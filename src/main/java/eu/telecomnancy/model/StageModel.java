@@ -1,6 +1,5 @@
 package eu.telecomnancy.model;
 
-import eu.telecomnancy.observer.*;
 import javafx.stage.Stage;
 
 public class StageModel extends Observed {

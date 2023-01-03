@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.DeckListModel;
@@ -23,13 +24,15 @@ public class GlobalView extends DeckListObserver implements Initializable{
     private ListView<DeckModel> deckListView;
 
     private StageController stageController;
+    private DeckListController deckListController;
 
     @FXML
     private VBox sidebar;
 
 
-    public GlobalView(DeckListModel deckListModel,StageController stageController) {
-        super(deckListModel);
+    public GlobalView(DeckListModel deckListView, DeckListController deckListController, StageController stageController) {
+        super(deckListView);
+        this.deckListController = deckListController;
         this.stageController = stageController;
     }
 
@@ -58,12 +61,16 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void removeDeck(){}
+
     @FXML
     public void exportDeck(){}
+
     @FXML
     public void importDeck(){}
     
-    public void toDeckView(){}
+    public void toDeckView(){
+        stageController.setDeckView();
+    }
     
     @Override
     public void react() {

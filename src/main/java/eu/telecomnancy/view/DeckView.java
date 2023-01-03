@@ -1,5 +1,7 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.DeckController;
+import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.observer.DeckObserver;
@@ -13,11 +15,15 @@ public class DeckView extends DeckObserver{
     @FXML
     private VBox sidebar;
     @FXML
+    private DeckController deckController;
+    private StageController stageController;
     private ListView<CardModel> cardListView;
 
 
-    public DeckView(DeckModel deck) {
-        super(deck);
+    public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController) {
+        super(deckModel);
+        this.deckController = deckController;
+        this.stageController = stageController;
     }
 
     @Override
@@ -29,10 +35,13 @@ public class DeckView extends DeckObserver{
 
     @FXML
     public void addCard(){}
+
     @FXML
     public void removeCard(){}
+
     @FXML
     public void editName(){}
+
     @FXML
     public void editDescription(){}
 
@@ -42,20 +51,15 @@ public class DeckView extends DeckObserver{
     public void seeMenu() {
         sidebar.setVisible(!sidebar.isVisible());
     }
+    
     @FXML
     public void toGlobalView(){
-        
+        stageController.setGlobalView();
     }
+
     @FXML
-    public void toStatsView(){
-        
-    }
+    public void toStatsView(){}
+
     @FXML
-    public void toSettingsView(){
-        
-    }
-
-
-
-    
+    public void toSettingsView(){}  
 }

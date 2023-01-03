@@ -10,12 +10,12 @@ public class DeckListController {
         this.deckListModel = deckListModel;
     }
 
-    public void createDeck(String name) {
-        // TODO:
+    public void createDeck(String name, String description) {
+        deckListModel.addDeck(name, description);
     }
 
-    public void deleteDeck(int i) {
-        // TODO:
+    public void removeDeck(int i) {
+        deckListModel.removeDeck(i);
     }
 
     public void exportDeck(int i) {

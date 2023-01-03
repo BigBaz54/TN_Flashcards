@@ -1,0 +1,158 @@
+@startuml
+interface Observer {
+    + update(): void
+}
+
+abstract class CardObserver implements Observer {
+}
+
+abstract class DeckObserver implements Observer {
+}
+
+abstract class DeckListObserver implements Observer {
+}
+
+abstract class StageObserver implements Observer {
+}
+
+abstract class Observed {
+    + addObs(observer: Observer): void
+    + notifyObs(): void
+}
+
+class GlobalView extends DeckListObserver {
+    + removeDeck(i: int)
+    + exportDeck(i: int)
+    + importDeck()
+    + createDeck(name: String, description: String)
+    + toDeckView(): void
+}
+
+class DeckView extends DeckObserver {
+    + editName(name: String)
+    + editDescription(description: String)
+    + addCard(question: String, answer: String)
+    + removeCard(question: String)
+    + toGlobalView(): void
+}
+
+class StageView extends StageObserver {
+}
+
+class DeckListModel extends Observed {
+    + addDeck(name: String, description: String): void
+    + removeDeck(i: int): void
+    + notify(): void
+}
+
+class DeckModel extends Observed {
+    - name: String
+    - description: String
+    - activeCard: int
+    + setName(name: String): void
+    + setDescription(description: String): void
+    + setActiveCard(id: int): void
+    + setDrawCardStrategy(strategy: DrawCardStrategy): void
+    + setBuildCardStrategy(strategy: BuildCardStrategy): void
+    + addCard(question: String, answer: String): void
+    + removeCard(id: int): void
+}
+
+class CardModel extends Observed {
+    - question: String
+    - answer: String
+    - probability: float
+    + setQuestion(question: String): void
+    + setAnswer(answer: String): void
+}
+
+class StageModel extends Observed {
+    - activeScene: int
+    + setActiveScene(scene: int): void
+}
+
+class DeckListController {
+    + createDeck(name: String, description: String): void
+    + deleteDeck(i: int): void
+    + exportDeck(i: int): void
+    + importDeck(): void
+}
+
+class DeckController {
+    + setName(name: String): void
+    + setDescription(description: String): void
+    + addCard(question: String, answer: String): void
+    + removeCard(id: int): void
+}
+
+class CardController {
+    + setQuestion(question: String): void
+    + setAnswer(answer: String): void
+}
+
+class StageController {
+    + setActiveScene(scene: int): void
+    + setGlobalView(): void
+    + setDeckView(): void
+}
+
+class Tag {
+    - name: String
+    - listUsed: String[]
+}
+
+class CardTag extends Tag {
+}
+
+class DeckTag extends Tag {
+}
+
+interface DrawCardStrategy {
+    + handleAnswer(answer: boolean)
+    + nextCard()
+}
+
+interface BuildCardStrategy {
+    + buildCard()
+}
+
+class BuildCardStrategyTheme1 implements BuildCardStrategy {
+}
+
+class BuildCardStrategyTheme2 implements BuildCardStrategy {
+}
+
+class DrawCardStrategyRandom implements DrawCardStrategy {
+}
+
+class DrawCardStrategyWeighted implements DrawCardStrategy {
+}
+
+class DrawCardStrategyTime implements DrawCardStrategy {
+}
+
+CardObserver -- CardModel
+DeckObserver -- DeckModel
+DeckListObserver -- DeckListModel
+StageObserver -- StageModel
+
+CardObserver -- CardController
+DeckObserver -- DeckController
+DeckListObserver -- DeckListController
+StageObserver -- StageController
+
+CardController -- CardModel
+DeckController -- DeckModel
+DeckListController -- DeckListModel
+StageController -- StageModel
+
+DeckModel -- DrawCardStrategy
+DeckModel -- BuildCardStrategy
+
+GlobalView -- StageController
+DeckView -- StageController
+
+CardModel -- CardTag
+DeckModel -- DeckTag
+
+@enduml

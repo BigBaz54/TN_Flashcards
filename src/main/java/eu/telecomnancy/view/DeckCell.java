@@ -80,12 +80,12 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
         // Cache la description du deck
         setNodeVisibility(false, descriptionBox);
         descriptionBox.setMaxHeight(0);
-        deckCell.setPrefHeight(70);
+        deckCell.setPrefHeight(100);
         // La rend visible lorsqu'on passe sur la cellule
         nameBox.hoverProperty().addListener((observable, oldValue, newValue) -> {
             setNodeVisibility(newValue, descriptionBox);
             descriptionBox.setMaxHeight(newValue ? Double.MAX_VALUE : 0);
-            deckCell.setPrefHeight(newValue ? 200 : 70);
+            deckCell.setPrefHeight(newValue ? 200 : 100);
             nameBox.getStyleClass().remove(newValue ? "cell" : "cell-top");
             nameBox.getStyleClass().add(newValue ? "cell-top" : "cell");
 

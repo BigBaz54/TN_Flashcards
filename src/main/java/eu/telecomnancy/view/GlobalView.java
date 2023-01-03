@@ -9,9 +9,12 @@ import eu.telecomnancy.view.DeckCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Control;
+import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.VBox;
@@ -41,6 +44,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         deckListView.setCellFactory(param -> new DeckCell(stageController));
         deckListView.getItems().addAll(deckListModel.getDecks());
+        
         
     }
 

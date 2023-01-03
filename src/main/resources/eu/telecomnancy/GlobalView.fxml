@@ -30,7 +30,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="761.0" prefWidth="805.0">
                      <children>
-                        <ListView fx:id="deckListView" prefHeight="761.0" prefWidth="413.0" />
+                        <ListView fx:id="deckListView" prefHeight="758.0" prefWidth="557.0" />
                      </children>
                   </HBox>
                </children>

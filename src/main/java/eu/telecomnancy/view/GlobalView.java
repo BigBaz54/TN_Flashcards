@@ -39,7 +39,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell());
+        deckListView.setCellFactory(param -> new DeckCell(stageController));
         deckListView.getItems().addAll(deckListModel.getDecks());
         
     }

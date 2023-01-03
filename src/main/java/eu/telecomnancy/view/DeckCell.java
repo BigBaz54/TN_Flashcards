@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.controller.DeckController;
+import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
 import javafx.fxml.FXML;
@@ -36,8 +38,11 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
     @FXML
     private Text deckDescription;
 
+    private StageController stageController;
 
-    public DeckCell() {
+
+    public DeckCell(StageController stageController) {
+        this.stageController = stageController;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckCell.fxml"));
         loader.setController(this);
         try {
@@ -91,7 +96,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 DeckModel deck = getItem();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckView.fxml"));
-                loader.setControllerFactory(ic->new DeckView(deck));
+                loader.setControllerFactory(ic->new DeckView(deck,new DeckController(),stageController));
                 try {
                     Parent root = loader.load();
                     Scene scene = new Scene(root);

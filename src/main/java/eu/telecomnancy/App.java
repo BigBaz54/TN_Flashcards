@@ -35,7 +35,7 @@ public class App extends Application {
         loader.setControllerFactory(ic -> new GlobalView(deckList,deckListController,stageController));
         try {
             Parent root = loader.load();
-            Scene scene = new Scene(root);
+            Scene scene = new Scene(root,1200,900);
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

@@ -28,9 +28,9 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="761.0" prefWidth="805.0">
+                  <HBox alignment="CENTER" prefHeight="633.0" prefWidth="848.0">
                      <children>
-                        <ListView fx:id="deckListView" prefHeight="761.0" prefWidth="413.0" />
+                        <ListView fx:id="deckListView" prefHeight="702.0" prefWidth="557.0" />
                      </children>
                   </HBox>
                </children>

@@ -11,7 +11,7 @@ public abstract class Learning {
 
     public void nextCard(boolean goodAnswer) {
         long timeSpent = System.currentTimeMillis() - beginLastCard;
-        deckController.updateStat(goodAnswer, timeSpent);
+        deckController.updateStatCard(goodAnswer, timeSpent);
         deckController.handleAnswer(goodAnswer, drawCardStrategy);
         deckController.nextCard(drawCardStrategy);
         beginLastCard = System.currentTimeMillis();

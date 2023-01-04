@@ -1,5 +1,7 @@
 package eu.telecomnancy.controller;
 
+import java.util.Date;
+
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
@@ -45,7 +47,7 @@ public class DeckController {
         deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel));
     }
 
-    public void updateStat(boolean goodAnswer, long timeSpent) {
+    public void updateStatCard(boolean goodAnswer, long timeSpent) {
         CardModel currentCard = deckModel.getCard(deckModel.getActiveCard());
         currentCard.getStatCard().setNbTimesSeen(currentCard.getStatCard().getNbTimesSeen() + 1);
         if (goodAnswer) {
@@ -54,5 +56,10 @@ public class DeckController {
             answeredWrong();
         }
         currentCard.getStatCard().getTimesSpent().add(timeSpent);
+    }
+
+    public void updateStatDeck() {
+        deckModel.getStatDeck().setNbTimesOpened(deckModel.getStatDeck().getNbTimesOpened() + 1);
+        deckModel.getStatDeck().setLastOpened(new Date());
     }
 }

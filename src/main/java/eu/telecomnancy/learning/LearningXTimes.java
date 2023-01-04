@@ -13,6 +13,8 @@ public class LearningXTimes extends Learning {
         this.nbTimesMax = nbTimesMax;
         this.nbTimesPlayed = 0;
         this.beginLastCard = System.currentTimeMillis();
+
+        this.deckController.updateStatDeck();
     }
 
     public boolean isFinished() {

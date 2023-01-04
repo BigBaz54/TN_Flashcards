@@ -1,6 +1,7 @@
 package eu.telecomnancy.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Timer;
 
 public class StatDeck {
@@ -11,6 +12,8 @@ public class StatDeck {
     private int nbCardsSeen;
     private Long timesSpent;
     private ArrayList<StatCard> cards;
+    private Date lastOpened;
+    private Date creationDate;
 
     public StatDeck() {
         this.nbCards = 0;
@@ -20,6 +23,7 @@ public class StatDeck {
         this.nbCardsSeen = 0;
         this.timesSpent = 0L;
         this.cards = new ArrayList<>();
+        this.creationDate = new Date();
     }
 
     public void addCard(StatCard card) {
@@ -94,5 +98,15 @@ public class StatDeck {
 
     public void setCards(ArrayList<StatCard> cards) {
         this.cards = cards;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+    public void setLastOpened(Date lastOpened) {
+        this.lastOpened = lastOpened;
+    }
+    public Date getLastOpened() {
+        return lastOpened;
     }
 }

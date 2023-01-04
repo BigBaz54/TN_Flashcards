@@ -57,6 +57,11 @@
         <artifactId>mbrola-jvm-voices</artifactId>
         <version>0.1.2</version>
     </dependency>-->
+      <dependency>
+          <groupId>eu.hansolo.fx</groupId>
+          <artifactId>charts</artifactId>
+          <version>17.1.27</version>
+      </dependency>
 
   </dependencies>
 

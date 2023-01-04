@@ -5,7 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.Mode;
 import eu.telecomnancy.controller.DeckController;
+import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
@@ -17,6 +19,7 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -25,7 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class DeckCell extends ListCell<DeckModel> implements Initializable{
+public class DeckCell extends ListCell<DeckModel> implements Initializable {
 
     @FXML
     private BorderPane deckCell;
@@ -37,12 +40,15 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
     private Label deckName;
     @FXML
     private Text deckDescription;
+    @FXML
+    private Button deleteButton;
 
+    private DeckListController controller;
     private StageController stageController;
 
-
-    public DeckCell(StageController stageController) {
+    public DeckCell(DeckListController controller, StageController stageController) {
         this.stageController = stageController;
+        this.controller = controller;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckCell.fxml"));
         loader.setController(this);
         try {
@@ -57,18 +63,26 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
         super.updateItem(item, empty);
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
+            // Visibilité du bouton delete
+            Mode mode = getItem().getMode();
+            if (mode == Mode.VIEW)
+                deleteButton.setVisible(false);
+            else
+                deleteButton.setVisible(true);
+
+            // Updates des infos
             DeckModel deck = getItem();
             deckName.setText(deck.getName());
             deckDescription.setText(deck.getDescription());
             setText(null);
             setGraphic(deckCell);
-        }else {
+        } else {
             setText(null);
             setGraphic(null);
         }
     }
 
-    public void setNodeVisibility(boolean visible, Node... node){
+    public void setNodeVisibility(boolean visible, Node... node) {
         for (Node n : node) {
             n.setVisible(visible);
             n.setManaged(visible);
@@ -97,8 +111,12 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable{
                 stageController.setDeckView(deck);
             }
         });
-        
+
     }
 
-    
+    @FXML
+    public void removeDeck(){
+        controller.removeDeck(getIndex());
+    }
+
 }

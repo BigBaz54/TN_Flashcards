@@ -17,6 +17,7 @@ public class DeckModel extends Observed {
     private DrawCardStrategy drawCardStrategy;
     private BuildCardStrategy buildCardStrategy;
     private StatDeck statDeck;
+    private Mode mode;
 
     public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description) {
         this.cards = cards;
@@ -27,9 +28,10 @@ public class DeckModel extends Observed {
         this.description = description;
         this.activeCard = 0;
         this.statDeck = new StatDeck();
+        this.mode = Mode.VIEW;
     }
 
-    public DeckModel(String name, String description) {
+    public DeckModel(String name, String description, Mode mode) {
         cards = new ArrayList<>();
         tags = new ArrayList<>();
         drawCardStrategy = new DrawCardStrategyWeighted();
@@ -38,6 +40,7 @@ public class DeckModel extends Observed {
         this.description = description;
         this.activeCard = 0;
         this.statDeck = new StatDeck();
+        this.mode = mode;
     }
 
     public void setActiveCard(int i) {
@@ -102,5 +105,13 @@ public class DeckModel extends Observed {
 
     public ArrayList<DeckTag> getTags() {
         return this.tags;
+    }
+
+    public void setMode(Mode mode){
+        this.mode = mode;
+    }
+
+    public Mode getMode(){
+        return this.mode;
     }
 }

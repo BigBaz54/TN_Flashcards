@@ -1,6 +1,7 @@
 package eu.telecomnancy.controller;
 
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.Mode;
 import eu.telecomnancy.view.DeckView;
 
 public class DeckController {
@@ -24,5 +25,9 @@ public class DeckController {
 
     public void removeCard(int i) {
         deckModel.removeCard(i);
+    }
+
+    public void setMode(Mode mode) {
+        deckModel.setMode(mode);
     }
 }

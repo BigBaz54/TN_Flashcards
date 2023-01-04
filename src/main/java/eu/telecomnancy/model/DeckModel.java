@@ -28,7 +28,7 @@ public class DeckModel extends Observed {
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck();
+        this.statDeck = new StatDeck(name);
     }
 
     public void addCard(CardModel card) {

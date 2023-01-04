@@ -28,6 +28,17 @@ public class StatDeck {
         this.creationDate = new Date();
         this.name = name;
     }
+    public StatDeck() {
+        this.nbCards = 0;
+        this.nbTimesOpened = 0;
+        this.nbTimesCorrect = 0;
+        this.nbTimesWrong = 0;
+        this.nbCardsSeen = 0;
+        this.timesSpent = 0L;
+        this.cards = new ArrayList<>();
+        this.lastOpened = new Date();
+        this.creationDate = new Date();
+    }
 
     public void addCard(StatCard card) {
         this.cards.add(card);

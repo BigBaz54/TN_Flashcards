@@ -39,8 +39,6 @@ public class StageController {
         stageModel.setActiveScene(2);
     }
 
-
-
     public void setStageView(StageView stageView) {
         this.stageView = stageView;
     }

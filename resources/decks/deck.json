@@ -13,6 +13,16 @@
         "tags": []
       }
     ],
+    "statDeck": {
+        "nbTimesOpened": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "nbCardsSeen": 0,
+        "timesSpent": 0,
+        "statCards": [],
+        "lastOpened": "Wed Jan 04 19:34:33 CET 2023",
+        "creationDate": "Wed Jan 04 19:34:33 CET 2023"
+      },
     "tags": [],
     "name": "deck",
     "description": "Le deck tah les fou"

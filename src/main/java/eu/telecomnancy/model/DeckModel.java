@@ -15,14 +15,15 @@ public class DeckModel extends Observed {
     private DrawCardStrategy drawCardStrategy;
     private StatDeck statDeck;
 
-    public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description) {
+    public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description,
+            StatDeck statDeck) {
         this.cards = cards;
         this.tags = tags;
         drawCardStrategy = new DrawCardStrategyWeighted();
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck();
+        this.statDeck = statDeck;
     }
 
     public DeckModel(String name, String description) {

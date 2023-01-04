@@ -18,6 +18,16 @@
     "test",
     "test2"
   ],
+  "statDeck": {
+    "nbTimesOpened": 0,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "statCards": [],
+    "lastOpened": 1672858275798,
+    "creationDate": 1672858275798
+  },
   "name": "test write 5",
   "description": "This is a test"
 }

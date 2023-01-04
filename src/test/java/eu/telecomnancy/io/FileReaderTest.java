@@ -6,6 +6,7 @@ import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class FileReaderTest {
     @Test
@@ -73,6 +74,28 @@ public class FileReaderTest {
             assertEquals("test2", deckModel.getTags().get(1).getName());
             assertEquals("test", deckModel.getCard(0).getTags().get(0).getName());
             assertEquals("test2", deckModel.getCard(0).getTags().get(1).getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    @Deprecated
+    public void testRead5() {
+        String name = "test/test_read_5.json";
+        FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
+        try {
+            DeckModel deckModel = fileReader.read(name);
+            assertEquals("test read 5", deckModel.getName());
+            assertEquals("This is a test 5", deckModel.getDescription());
+            assertEquals(1, deckModel.getCards().size());
+            assertEquals("Bonjour", deckModel.getCard(0).getAnswer());
+            assertEquals("test", deckModel.getTags().get(0).getName());
+            assertEquals("test2", deckModel.getTags().get(1).getName());
+            assertEquals("test", deckModel.getCard(0).getTags().get(0).getName());
+            assertEquals("test2", deckModel.getCard(0).getTags().get(1).getName());
+            assertEquals(0, deckModel.getStatDeck().getNbTimesCorrect());
+            assertEquals(0, deckModel.getStatDeck().getNbTimesWrong());
         } catch (IOException e) {
             e.printStackTrace();
         }

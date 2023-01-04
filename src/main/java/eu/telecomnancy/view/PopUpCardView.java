@@ -32,7 +32,7 @@ public class PopUpCardView extends DeckObserver {
     public void createCard(ActionEvent event){
         String question = questionEdit.getText();
         String answer = answerEdit.getText();
-        deckController.addCard(answer, question);
+        deckController.addCard(question, answer);
         Stage stage = (Stage) questionEdit.getScene().getWindow();
         stage.close();
     }

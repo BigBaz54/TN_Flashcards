@@ -23,7 +23,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="answerEdit" promptText="Ajouter une question">
+                  <TextField fx:id="questionEdit" promptText="Ajouter une question">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
@@ -36,7 +36,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField fx:id="questionEdit" promptText="Ajouter une réponse" />
+                  <TextField fx:id="answerEdit" promptText="Ajouter une réponse" />
                   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="570.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createCard" text="Validate">

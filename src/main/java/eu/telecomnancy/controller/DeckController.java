@@ -25,8 +25,8 @@ public class DeckController {
         deckModel.addCard(question, answer);
     }
 
-    public void removeCard(int i) {
-        deckModel.removeCard(i);
+    public void removeCard(int card) {
+        deckModel.removeCard(card);
     }
 
     public void answeredRight() {

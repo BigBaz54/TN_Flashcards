@@ -103,4 +103,5 @@ public class DeckModel extends Observed {
     public ArrayList<DeckTag> getTags() {
         return this.tags;
     }
+
 }

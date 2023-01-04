@@ -4,11 +4,15 @@ import java.util.ArrayList;
 
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
-    private StatDeck statDeck;
+    private StatDeckList statDeck;
+
+    public StatDeckList getStatDeck() {
+        return statDeck;
+    }
 
     public DeckListModel() {
         decks = new ArrayList<>();
-        statDeck = new StatDeck();
+        statDeck = new StatDeckList();
     }
 
     public DeckListModel(ArrayList<DeckModel> decks) {

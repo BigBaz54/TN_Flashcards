@@ -75,7 +75,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void removeDeck(){
-        deckListController.switchMode();
+        
     }
 
     @FXML

@@ -45,6 +45,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
 
     private DeckListController controller;
     private StageController stageController;
+    private Mode mode=Mode.VIEW;
 
     public DeckCell(DeckListController controller, StageController stageController) {
         this.stageController = stageController;
@@ -64,7 +65,6 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
             // Visibilité du bouton delete
-            Mode mode = getItem().getMode();
             if (mode == Mode.VIEW)
                 deleteButton.setVisible(false);
             else

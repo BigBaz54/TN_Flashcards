@@ -27,7 +27,4 @@ public class DeckController {
         deckModel.removeCard(i);
     }
 
-    public void setMode(Mode mode) {
-        deckModel.setMode(mode);
-    }
 }

@@ -1,8 +1,10 @@
 package eu.telecomnancy.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
+import java.time.LocalDate;
 
 public class StatDeck {
     private int nbCards;

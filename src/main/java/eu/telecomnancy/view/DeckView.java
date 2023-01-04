@@ -11,6 +11,7 @@ import eu.telecomnancy.observer.DeckObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -34,6 +35,7 @@ public class DeckView extends DeckObserver implements Initializable{
 
     private DeckController deckController;
     private StageController stageController;
+    private Mode mode;
 
     @FXML
     private GridPane gridpane;
@@ -41,18 +43,25 @@ public class DeckView extends DeckObserver implements Initializable{
     private ScrollPane scrollpane;
 
 
+
+
     public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController) {
         super(deckModel);
         this.deckController = deckController;
         this.stageController = stageController;
+        this.mode = Mode.VIEW;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        setNodeVisibility(false,sidebar);
+        gridpane.toBack();
+        
         gridpane.setMinHeight(700);
-        gridpane.setMinWidth(1200);
-        scrollpane.setMinHeight(700);
-        scrollpane.setMinWidth(1200);
+        gridpane.setMinWidth(1300);
+        // fit to width
+        scrollpane.setFitToWidth(true);
+        scrollpane.setFitToHeight(true);
         scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
         react();
         
@@ -60,7 +69,6 @@ public class DeckView extends DeckObserver implements Initializable{
 
 
     public void react() {
-        System.out.println("DeckView: react");
         gridpane.getChildren().clear();
         int n = deckModel.getCards().size();
         int row = (int) Math.ceil (n/3)+1;
@@ -76,10 +84,8 @@ public class DeckView extends DeckObserver implements Initializable{
         for (int i = 0; i < n; i++) {
             CardModel card = deckModel.getCards().get(i);
             System.out.println(card.getQuestion());
-            CardView cardView = new CardView(card, deckController, stageController);
-            //BorderPane cardView = new BorderPane();
+            CardView cardView = new CardView(card,deckModel, deckController,mode);
             cardView.root.setPrefSize(400, 170);
-            //cardView.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1px;");
             gridpane.add(cardView.root, i%3, i/3);
         }
         
@@ -115,14 +121,11 @@ public class DeckView extends DeckObserver implements Initializable{
     // Méthodes du sidebar Menu
     @FXML
     public void seeMenu() {
-        sidebar.setVisible(!sidebar.isVisible());
-        sidebar.setManaged(sidebar.isVisible());
-        sidebar2.setManaged(sidebar2.isVisible());
+        setNodeVisibility(!sidebar.isVisible(), sidebar);
     }
     
     @FXML
     public void toGlobalView(){
-        System.out.println("toGlobalView");
         stageController.setGlobalView();
     }
 
@@ -131,6 +134,23 @@ public class DeckView extends DeckObserver implements Initializable{
 
     @FXML
     public void toSettingsView(){}
+
+    @FXML
+    public void switchMode(){
+        if (mode == Mode.VIEW){
+            mode = Mode.EDIT;
+        } else {
+            mode = Mode.VIEW;
+        }
+        react();
+    }
+
+    public void setNodeVisibility(boolean visible, Node... nodes){
+        for (Node node : nodes){
+            node.setVisible(visible);
+            node.setManaged(visible);
+        }
+    }
 
 
      

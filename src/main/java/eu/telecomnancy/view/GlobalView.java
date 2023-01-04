@@ -57,7 +57,6 @@ public class GlobalView extends DeckListObserver implements Initializable{
         deckListView.getItems().addAll(deckListModel.getDecks());
         //vbox.setAlignment(Pos.CENTER);
         deckListView.setMinWidth(1200);
-
         
         
     }

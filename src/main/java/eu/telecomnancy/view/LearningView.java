@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 
 public class LearningView extends DeckObserver implements Initializable {
 
@@ -27,7 +28,6 @@ public class LearningView extends DeckObserver implements Initializable {
         super(deckModel);
         this.deckController = deckController;
         this.stageController = stageController;
-        //StackPane = new LearningCardView(deck.getActiveCard(), deckController);
     }
 
 
@@ -41,6 +41,8 @@ public class LearningView extends DeckObserver implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
+        LearningCardView activeCard = new LearningCardView(deckModel.getActiveCard(),deckModel, deckController);
+        cardContainer.getChildren().add(activeCard.root);
         
     }
 

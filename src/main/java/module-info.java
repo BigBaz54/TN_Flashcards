@@ -10,10 +10,12 @@ module eu.telecomnancy {
     opens eu.telecomnancy to javafx.controls, javafx.fxml, com.google.gson;
     opens eu.telecomnancy.view to javafx.fxml;
     opens eu.telecomnancy.io to com.google.gson;
+    opens eu.telecomnancy.buildCardStrategy to javafx.fxml;
 
     exports eu.telecomnancy;
     exports eu.telecomnancy.view;
     exports eu.telecomnancy.io;
     exports eu.telecomnancy.model;
     exports eu.telecomnancy.controller;
+    exports eu.telecomnancy.buildCardStrategy;
 }

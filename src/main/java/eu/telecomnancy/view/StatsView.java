@@ -23,7 +23,7 @@ public class StatsView extends DeckListObserver implements Initializable {
     private StageController stageController;
     private ArrayList<StatDeck> statDecks;
     @FXML
-    private LineChart<Date,Number> nbDecksOverTime;
+    private LineChart<String,Number> nbDecksOverTime;
 
 
     public StatsView(DeckListModel deckListModel, StageController stageController) {
@@ -34,10 +34,10 @@ public class StatsView extends DeckListObserver implements Initializable {
     }
 
     public void createLineChart1(){
-        XYChart.Series<Date, Number> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Series 1");
 
-        HashMap map = new HashMap<Date, Integer>();
+        HashMap map = new HashMap<String, Integer>();
         //loop on decksStts
         for(StatDeck deck : statDecks  ){
            if( map.containsKey(deck.getCreationDate())){
@@ -50,14 +50,18 @@ public class StatsView extends DeckListObserver implements Initializable {
         }
         //loop on map
         for (Object key : map.keySet()) {
-            series1.getData().add(new XYChart.Data<>((Date) key,(Integer) map.get(key)));
+            series1.getData().add(new XYChart.Data<>((String) key,(Integer) map.get(key)));
         }
         nbDecksOverTime.getData().add(series1);
     }
 
     @Override
     public void react() {
-        createLineChart1();
+        try {
+            createLineChart1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void seeMenu(ActionEvent actionEvent) {

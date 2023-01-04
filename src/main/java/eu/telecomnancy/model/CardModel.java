@@ -50,6 +50,10 @@ public class CardModel extends Observed {
         this.probability = probability;
     }
 
+    public ArrayList<CardTag> getTags() {
+        return this.tags;
+    }
+
     public void addTag(String tag) {
         this.tags.add(new CardTag(tag));
     }

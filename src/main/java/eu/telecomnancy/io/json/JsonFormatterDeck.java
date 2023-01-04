@@ -1,42 +1,40 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.json;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import eu.telecomnancy.io.adapter.CDeckModelAdapter;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.compact.CDeckModel;
 
-public class JsonFormatter {
-    private DeckModel deckModel;
-    private CDeckModel compactDeckModel;
-
-    public JsonFormatter(DeckModel deckModel) {
-        this.deckModel = deckModel;
-        compactDeckModel = null;
+public class JsonFormatterDeck extends JsonFormatter<DeckModel> {
+    public JsonFormatterDeck(DeckModel deckModel) {
+        super(deckModel);
     }
 
-    public void setDeckModel(DeckModel deckModel) {
-        this.deckModel = deckModel;
-        compactDeckModel = null;
+    @Override
+    protected void compactModel() {
+        this.compact = new CDeckModel().from(model);
     }
 
-    private void compactDeckModel() {
-        this.compactDeckModel = new CDeckModel().from(deckModel);
-    }
-
+    @Override
     public String toJson() {
-        if (compactDeckModel == null) {
-            compactDeckModel();
+        if (compact == null) {
+            compactModel();
         }
 
         GsonBuilder builder = new GsonBuilder();
+        if (pretty) {
+            builder = builder.setPrettyPrinting();
+        }
         builder = builder.registerTypeAdapter(CDeckModel.class, new CDeckModelAdapter());
         Gson gson = builder.create();
 
-        return gson.toJson(compactDeckModel);
+        return gson.toJson(compact);
     }
 
-    public DeckModel deckFromJson(String json) {
+    @Override
+    public DeckModel fromJson(String json) {
         GsonBuilder builder = new GsonBuilder();
         builder = builder.registerTypeAdapter(CDeckModel.class, new CDeckModelAdapter());
         Gson gson = builder.create();

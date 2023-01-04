@@ -1,4 +1,4 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.adapter;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,0 +1,11 @@
+{
+    "cards": [
+        {
+            "question": "Hello",
+            "answer": "Bonjour",
+            "probability": 1.0
+        }
+    ],
+    "name": "test",
+    "description": "This is a test"
+}

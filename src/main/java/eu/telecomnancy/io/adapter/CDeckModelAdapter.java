@@ -1,5 +1,6 @@
 package eu.telecomnancy.io.adapter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -8,26 +9,26 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 
+import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.compact.CDeckModel;
 
 public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
+    private CardAdapter cardAdapter = new CardAdapter();
 
     @Override
     public void write(JsonWriter out, CDeckModel value) throws IOException {
-        // TODO: add tags on cards and deck
         out.beginObject();
         out.name("cards");
         out.beginArray();
         for (CardModel card : value.getCards()) {
-            out.beginObject();
-            out.name("question");
-            out.value(card.getQuestion());
-            out.name("answer");
-            out.value(card.getAnswer());
-            out.name("probability");
-            out.value(card.getProbability());
-            out.endObject();
+            cardAdapter.write(out, card);
+        }
+        out.endArray();
+        out.name("tags");
+        out.beginArray();
+        for (DeckTag tag : value.getTags()) {
+            out.value(tag.getName());
         }
         out.endArray();
         out.name("name");
@@ -39,7 +40,6 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
 
     @Override
     public CDeckModel read(JsonReader in) throws IOException {
-        // TODO: add tags on cards and deck
         CDeckModel deck = new CDeckModel();
         in.beginObject();
         String fieldName = null;
@@ -55,16 +55,23 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
                 ArrayList<CardModel> cards = new ArrayList<>();
                 in.beginArray();
                 while (in.hasNext()) {
-                    cards.add(readCard(in));
+                    cards.add(cardAdapter.read(in));
                 }
                 in.endArray();
                 deck.setCards(cards);
             }
-
+            if ("tags".equals(fieldName)) {
+                ArrayList<DeckTag> tags = new ArrayList<>();
+                in.beginArray();
+                while (in.hasNext()) {
+                    tags.add(new DeckTag(in.nextString()));
+                }
+                in.endArray();
+                deck.setTags(tags);
+            }
             if ("name".equals(fieldName)) {
                 deck.setName(in.nextString());
             }
-
             if ("description".equals(fieldName)) {
                 deck.setDescription(in.nextString());
             }
@@ -72,34 +79,5 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
         in.endObject();
 
         return deck;
-    }
-
-    private CardModel readCard(JsonReader in) throws IOException {
-        CardModel card = new CardModel();
-        in.beginObject();
-        String fieldName = null;
-
-        while (in.hasNext()) {
-            JsonToken token = in.peek();
-
-            if (token.equals(JsonToken.NAME)) {
-                fieldName = in.nextName();
-            }
-
-            if ("question".equals(fieldName)) {
-                card.setQuestion(in.nextString());
-            }
-
-            if ("answer".equals(fieldName)) {
-                card.setAnswer(in.nextString());
-            }
-
-            if ("probability".equals(fieldName)) {
-                card.setProbability(Float.parseFloat(in.nextString()));
-            }
-        }
-        in.endObject();
-
-        return card;
     }
 }

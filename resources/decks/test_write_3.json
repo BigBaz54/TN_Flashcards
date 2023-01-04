@@ -3,10 +3,14 @@
     {
       "question": "Hello",
       "answer": "Bonjour",
-      "probability": 1.0
+      "probability": 1.0,
+      "media": {
+        "file": "test",
+        "type": "IMG"
+      }
     }
   ],
   "tags": [],
-  "name": "test write 2",
+  "name": "test write 3",
   "description": "This is a test"
 }

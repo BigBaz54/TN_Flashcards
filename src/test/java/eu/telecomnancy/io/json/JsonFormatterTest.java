@@ -11,7 +11,7 @@ public class JsonFormatterTest {
     }
 
     @Test
-    public void test_format_1() {
+    public void testFormat1() {
         DeckModel deckModel = new DeckModel("temp", "null");
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
         String json = jsonFormatter.toJson();
@@ -20,7 +20,7 @@ public class JsonFormatterTest {
     }
 
     @Test
-    public void test_format_2() {
+    public void testFormat2() {
         DeckModel deckModel = new DeckModel("test 2", "This is a test");
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
         String json = jsonFormatter.toJson();
@@ -29,7 +29,7 @@ public class JsonFormatterTest {
     }
 
     @Test
-    public void test_format_3() {
+    public void testFormat3() {
         DeckModel deckModel = new DeckModel("test 3", "This is a test");
         deckModel.addCard("Hello", "Bonjour");
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
@@ -39,7 +39,7 @@ public class JsonFormatterTest {
     }
 
     @Test
-    public void test_read_1() {
+    public void testRead1() {
         String json = "{\"cards\":[],\"name\":\"test 2\",\"description\":\"This is a test\"}";
         DeckModel deckModel = new JsonFormatterDeck(null).fromJson(json);
 
@@ -49,7 +49,7 @@ public class JsonFormatterTest {
     }
 
     @Test
-    public void test_read_2() {
+    public void testRead2() {
         String json = "{\"cards\":[{\"question\":\"Hello\",\"answer\":\"Bonjour\",\"probability\":1.0}],\"name\":\"test 2\",\"description\":\"This is a test\"}";
         DeckModel deckModel = new JsonFormatterDeck(null).fromJson(json);
 

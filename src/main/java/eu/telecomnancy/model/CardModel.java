@@ -10,6 +10,7 @@ public class CardModel extends Observed {
     private Float probability;
     private StatCard statCard;
     private ArrayList<CardTag> tags;
+    private Media media = null;
 
     public CardModel() {
         this.question = "";
@@ -70,5 +71,13 @@ public class CardModel extends Observed {
 
     public StatCard getStatCard() {
         return this.statCard;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
-    private StatDeck statDeck;
+    private StatDeckList statDeck;
     private Mode mode;
 
     public StatDeckList getStatDeck() {
@@ -13,7 +13,7 @@ public class DeckListModel extends Observed {
 
     public DeckListModel() {
         decks = new ArrayList<>();
-        statDeck = new StatDeck();
+        statDeck = new StatDeckList();
         mode = Mode.VIEW;
     }
 

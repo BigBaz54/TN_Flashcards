@@ -16,6 +16,7 @@ public class StageView extends StageObserver{
     private Scene globalView;
     private Scene deckView;
     private Scene statView;
+    private Scene learningView;
 
     public StageView(Stage primaryStage, StageModel stageModel, StageController stageController, Scene globalView, Scene stsView) {
         super(stageModel);
@@ -37,6 +38,9 @@ public class StageView extends StageObserver{
             case 2:
                 primaryStage.setScene(statView);
                 break;
+            case 3:
+                primaryStage.setScene(learningView);
+                break;
 
         }
         primaryStage.show();
@@ -44,6 +48,10 @@ public class StageView extends StageObserver{
 
     public void setDeckView(Scene deckView) {
         this.deckView = deckView;
+    }
+
+    public void setLearningView(Scene learningView) {
+        this.learningView = learningView;
     }
     
 }

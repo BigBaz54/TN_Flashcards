@@ -12,7 +12,6 @@ public class StageModel extends Observed {
 
     public void setActiveScene(int activeScene) {
         this.activeScene = activeScene;
-        System.out.println("setActiveScene");
         notifyObservers();
     }
     public int getActiveScene() {

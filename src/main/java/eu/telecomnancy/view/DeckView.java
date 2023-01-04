@@ -108,14 +108,9 @@ public class DeckView extends DeckObserver implements Initializable{
     }
 
     @FXML
-    public void removeCard(){
+    public void toLearningView(){
+        stageController.setLearningView(deckModel);
     }
-
-    @FXML
-    public void editName(){}
-
-    @FXML
-    public void editDescription(){}
 
 
     // Méthodes du sidebar Menu

@@ -4,6 +4,7 @@ import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.view.DeckView;
 import eu.telecomnancy.view.StageView;
+import eu.telecomnancy.view.LearningView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
@@ -41,6 +42,19 @@ public class StageController {
 
     public void setStageView(StageView stageView) {
         this.stageView = stageView;
+    }
+
+    public void setLearningView(DeckModel deckModel) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LearningView.fxml"));
+        loader.setControllerFactory(ic -> new LearningView(deckModel, new DeckController(deckModel),this));
+        try {
+            Scene scene = new Scene(loader.load());
+            stageView.setLearningView(scene);
+            stageModel.setActiveScene(3);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }

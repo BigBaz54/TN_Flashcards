@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StatDeck;
@@ -19,15 +20,17 @@ import java.util.ResourceBundle;
 
 public class StatsView extends DeckListObserver implements Initializable {
     private StatDeckList statDeckList;
+    private StageController stageController;
     private ArrayList<StatDeck> statDecks;
     @FXML
     private LineChart<Date,Number> nbDecksOverTime;
 
 
-    public StatsView(DeckListModel deckListModel) {
+    public StatsView(DeckListModel deckListModel, StageController stageController) {
         super(deckListModel);
         this.statDeckList=deckListModel.getStatDeck();
         this.statDecks=statDeckList.getDecks();
+        this.stageController=stageController;
     }
 
     public void createLineChart1(){
@@ -66,5 +69,12 @@ public class StatsView extends DeckListObserver implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         react();
+    }
+
+
+    @FXML
+    public void toGlobalView(){
+        System.out.println("toGlobalView");
+        stageController.setGlobalView();
     }
 }

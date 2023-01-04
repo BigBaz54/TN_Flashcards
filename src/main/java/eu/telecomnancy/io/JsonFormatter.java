@@ -21,8 +21,7 @@ public class JsonFormatter {
     }
 
     private void compactDeckModel() {
-        this.compactDeckModel = new CDeckModel(deckModel.getCards(), deckModel.getTags(), deckModel.getName(),
-                deckModel.getDescription());
+        this.compactDeckModel = new CDeckModel().from(deckModel);
     }
 
     public String toJson() {
@@ -44,6 +43,6 @@ public class JsonFormatter {
 
         CDeckModel cDeckModel = gson.fromJson(json, CDeckModel.class);
 
-        return cDeckModel.transform();
+        return cDeckModel.to();
     }
 }

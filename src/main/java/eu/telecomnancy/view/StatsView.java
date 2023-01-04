@@ -48,9 +48,10 @@ public class StatsView extends DeckListObserver implements Initializable {
                map.put(deck.getCreationDate(),1);
            }
         }
-        //loop on map
-        for (Object key : map.keySet()) {
-            series1.getData().add(new XYChart.Data<>((String) key,(Integer) map.get(key)));
+        ArrayList<String> dates = new ArrayList<String>(map.keySet());
+        dates.sort(String::compareTo);
+        for(String date : dates){
+            series1.getData().add(new XYChart.Data<>(date,(Integer) map.get(date)));
         }
         nbDecksOverTime.getData().add(series1);
     }

@@ -103,4 +103,17 @@ public class DeckModel extends Observed {
     public ArrayList<DeckTag> getTags() {
         return this.tags;
     }
+
+    public void addTag(String tag) {
+        this.tags.add(new DeckTag(tag));
+    }
+
+    public void removeTag(String tag) {
+        for (DeckTag t : tags) {
+            if (t.getName().equals(tag)) {
+                tags.remove(t);
+                break;
+            }
+        }
+    }
 }

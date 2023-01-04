@@ -49,4 +49,17 @@ public class CardModel extends Observed {
     public void setProbability(float probability) {
         this.probability = probability;
     }
+
+    public void addTag(String tag) {
+        this.tags.add(new CardTag(tag));
+    }
+
+    public void removeTag(String tag) {
+        for (CardTag t : tags) {
+            if (t.getName().equals(tag)) {
+                tags.remove(t);
+                break;
+            }
+        }
+    }
 }

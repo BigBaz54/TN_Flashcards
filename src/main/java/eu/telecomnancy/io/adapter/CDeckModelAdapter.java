@@ -1,4 +1,4 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.adapter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,29 +55,7 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
                 ArrayList<CardModel> cards = new ArrayList<>();
                 in.beginArray();
                 while (in.hasNext()) {
-                    in.beginObject();
-                    String question = null;
-                    String answer = null;
-                    Float probability = null;
-                    while (in.hasNext()) {
-                        JsonToken cardToken = in.peek();
-                        if (cardToken.equals(JsonToken.NAME)) {
-                            fieldName = in.nextName();
-                        }
-                        if ("question".equals(fieldName)) {
-                            question = in.nextString();
-                        }
-                        if ("answer".equals(fieldName)) {
-                            answer = in.nextString();
-                        }
-                        if ("probability".equals(fieldName)) {
-                            probability = Float.parseFloat(in.nextString());
-                        }
-                    }
-                    in.endObject();
-                    CardModel model = new CardModel(question, answer);
-                    model.setProbability(probability);
-                    cards.add(model);
+                    cards.add(readCard(in));
                 }
                 in.endArray();
                 deck.setCards(cards);
@@ -96,4 +74,32 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
         return deck;
     }
 
+    private CardModel readCard(JsonReader in) throws IOException {
+        CardModel card = new CardModel();
+        in.beginObject();
+        String fieldName = null;
+
+        while (in.hasNext()) {
+            JsonToken token = in.peek();
+
+            if (token.equals(JsonToken.NAME)) {
+                fieldName = in.nextName();
+            }
+
+            if ("question".equals(fieldName)) {
+                card.setQuestion(in.nextString());
+            }
+
+            if ("answer".equals(fieldName)) {
+                card.setAnswer(in.nextString());
+            }
+
+            if ("probability".equals(fieldName)) {
+                card.setProbability(Float.parseFloat(in.nextString()));
+            }
+        }
+        in.endObject();
+
+        return card;
+    }
 }

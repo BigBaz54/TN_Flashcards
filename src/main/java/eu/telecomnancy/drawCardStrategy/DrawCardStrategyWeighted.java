@@ -11,7 +11,7 @@ public class DrawCardStrategyWeighted implements DrawCardStrategy {
             activeCard.setProbability(activeCard.getProbability()/2);
         } else {
             // exemple
-            activeCard.setProbability(activeCard.getProbability()+(1-activeCard.getProbability()/2));
+            activeCard.setProbability(activeCard.getProbability()+((1-activeCard.getProbability())/2));
         }
     }
 

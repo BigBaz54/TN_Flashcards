@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckModel;
@@ -16,7 +17,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -31,6 +34,10 @@ public class GlobalView extends DeckListObserver implements Initializable{
 
     @FXML
     private VBox sidebar;
+    @FXML
+    private HBox hbox;
+    @FXML
+    private VBox vbox;
 
 
     public GlobalView(DeckListModel deckListView, DeckListController deckListController, StageController stageController) {
@@ -42,8 +49,11 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell(stageController));
+        deckListView.setCellFactory(param -> new DeckCell(deckListController,stageController));
         deckListView.getItems().addAll(deckListModel.getDecks());
+        //vbox.setAlignment(Pos.CENTER);
+        deckListView.setMinWidth(1200);
+
         
         
     }
@@ -64,7 +74,9 @@ public class GlobalView extends DeckListObserver implements Initializable{
         }
     }
     @FXML
-    public void removeDeck(){}
+    public void removeDeck(){
+        deckListController.switchMode();
+    }
 
     @FXML
     public void exportDeck(){}
@@ -90,7 +102,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void toStatsView(){
-        
+        stageController.setStatsView();
     }
     @FXML
     public void toSettingsView(){

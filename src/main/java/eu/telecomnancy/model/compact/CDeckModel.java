@@ -26,6 +26,16 @@ public class CDeckModel implements Compact<DeckModel> {
         this.description = description;
     }
 
+    @Override
+    public CDeckModel from(DeckModel t) {
+        return new CDeckModel(t.getCards(), t.getTags(), t.getName(), t.getDescription());
+    }
+
+    @Override
+    public DeckModel to() {
+        return new DeckModel(cards, tags, name, description);
+    }
+
     public ArrayList<CardModel> getCards() {
         return cards;
     }
@@ -56,10 +66,5 @@ public class CDeckModel implements Compact<DeckModel> {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Override
-    public DeckModel transform() {
-        return new DeckModel(cards, tags, name, description);
     }
 }

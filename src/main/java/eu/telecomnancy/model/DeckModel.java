@@ -3,8 +3,6 @@ package eu.telecomnancy.model;
 import java.util.ArrayList;
 
 import eu.telecomnancy.DeckTag;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 
@@ -15,14 +13,12 @@ public class DeckModel extends Observed {
     private String description;
     private int activeCard;
     private DrawCardStrategy drawCardStrategy;
-    private BuildCardStrategy buildCardStrategy;
     private StatDeck statDeck;
 
     public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description) {
         this.cards = cards;
         this.tags = tags;
         drawCardStrategy = new DrawCardStrategyWeighted();
-        buildCardStrategy = new BuildCardStrategyClassic();
         this.name = name;
         this.description = description;
         this.activeCard = 0;
@@ -33,7 +29,6 @@ public class DeckModel extends Observed {
         cards = new ArrayList<>();
         tags = new ArrayList<>();
         drawCardStrategy = new DrawCardStrategyWeighted();
-        buildCardStrategy = new BuildCardStrategyClassic();
         this.name = name;
         this.description = description;
         this.activeCard = 0;
@@ -92,11 +87,6 @@ public class DeckModel extends Observed {
 
     public void setDrawCardStrategy(DrawCardStrategy strategy) {
         this.drawCardStrategy = strategy;
-        notifyObservers();
-    }
-
-    public void setBuildCardStrategy(BuildCardStrategy strategy) {
-        this.buildCardStrategy = strategy;
         notifyObservers();
     }
 

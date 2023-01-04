@@ -1,9 +1,9 @@
 package eu.telecomnancy.buildCardStrategy;
 
-import eu.telecomnancy.view.DeckCell;
+import javafx.scene.layout.Pane;
 
 public class BuildCardStrategyTheme2 implements BuildCardStrategy {
-    public DeckCell buildCard() {
+    public Pane buildCard() {
         // TODO
         return null;
     }

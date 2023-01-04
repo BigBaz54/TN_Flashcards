@@ -6,8 +6,10 @@ import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.StageModel;
+import eu.telecomnancy.model.StatDeckList;
 import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;
+import eu.telecomnancy.view.StatsView;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,7 +39,14 @@ public class App extends Application {
         try {
             Parent root = loader.load();
             Scene scene = new Scene(root,1200,900);
-            StageView stageView = new StageView(primaryStage,stageModel,stageController,scene);
+
+            // StatDeck
+            StatDeckList statDeckList = deckList.getStatDeck();
+            FXMLLoader loader2 = new FXMLLoader(getClass().getResource("StatsView.fxml"));
+            loader2.setControllerFactory(ic -> new StatsView(deckList));
+            Parent root2 = loader2.load();
+            Scene scene2 = new Scene(root2,1200,900);
+            StageView stageView = new StageView(primaryStage,stageModel,stageController,scene,scene2);
             stageController.setGlobalView();
             
         } catch (IOException e) {

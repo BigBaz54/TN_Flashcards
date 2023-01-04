@@ -15,13 +15,15 @@ public class StageView extends StageObserver{
     private StageController stageController;
     private Scene globalView;
     private Scene deckView;
+    private Scene statView;
 
-    public StageView(Stage primaryStage, StageModel stageModel, StageController stageController, Scene globalView) {
+    public StageView(Stage primaryStage, StageModel stageModel, StageController stageController, Scene globalView, Scene stsView) {
         super(stageModel);
         this.primaryStage = primaryStage;
         this.stageController = stageController;
         this.globalView = globalView;
         this.stageController.setStageView(this);
+        this.statView = stsView;
     }
     
     public void react() {
@@ -32,6 +34,10 @@ public class StageView extends StageObserver{
             case 1:
                 primaryStage.setScene(deckView);
                 break;
+            case 2:
+                primaryStage.setScene(statView);
+                break;
+
         }
         primaryStage.show();
     }

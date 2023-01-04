@@ -27,6 +27,7 @@ public class LearningView extends DeckObserver implements Initializable {
         super(deckModel);
         this.deckController = deckController;
         this.stageController = stageController;
+        //StackPane = new LearningCardView(deck.getActiveCard(), deckController);
     }
 
 

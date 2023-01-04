@@ -15,11 +15,11 @@ public class FileReaderTest {
 
     @Test
     public void testRead1() {
-        String name = "test_read_1";
+        String name = "test/test_read_1.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
             DeckModel deckModel = fileReader.read(name);
-            assertEquals("test read", deckModel.getName());
+            assertEquals("test read 1", deckModel.getName());
             assertEquals("This is a test", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());
         } catch (IOException e) {
@@ -29,7 +29,7 @@ public class FileReaderTest {
 
     @Test
     public void testRead2() {
-        String name = "test_read_2";
+        String name = "test/test_read_2.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
             DeckModel deckModel = fileReader.read(name);
@@ -44,7 +44,7 @@ public class FileReaderTest {
 
     @Test
     public void testRead3() {
-        String name = "test_read_3";
+        String name = "test/test_read_3.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
             DeckModel deckModel = fileReader.read(name);
@@ -61,7 +61,7 @@ public class FileReaderTest {
 
     @Test
     public void testRead4() {
-        String name = "test_read_4";
+        String name = "test/test_read_4.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
             DeckModel deckModel = fileReader.read(name);

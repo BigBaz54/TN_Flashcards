@@ -19,11 +19,11 @@ public class FileWriterTest {
     @Test
     public void testWrite1() {
         String json = "{\"cards\":[],\"name\":\"test 2\",\"description\":\"This is a test\"}";
-        String name = "test_write_1";
+        String name = "test/test_write_1.json";
         FileWriter writer = new FileWriter();
         try {
             writer.writeJson(json, name);
-            File file = new File("resources/decks/" + name + ".json");
+            File file = new File("resources/decks/" + name);
             assertEquals(true, file.exists());
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,11 +38,11 @@ public class FileWriterTest {
         jsonFormatter.setPretty(true);
         String json = jsonFormatter.toJson();
 
-        String name = "test_write_2";
+        String name = "test/test_write_2.json";
         FileWriter writer = new FileWriter();
         try {
             writer.writeJson(json, name);
-            File file = new File("resources/decks/" + name + ".json");
+            File file = new File("resources/decks/" + name);
             assertEquals(true, file.exists());
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,11 +58,11 @@ public class FileWriterTest {
         jsonFormatter.setPretty(true);
         String json = jsonFormatter.toJson();
 
-        String name = "test_write_3";
+        String name = "test/test_write_3.json";
         FileWriter writer = new FileWriter();
         try {
             writer.writeJson(json, name);
-            File file = new File("resources/decks/" + name + ".json");
+            File file = new File("resources/decks/" + name);
             assertEquals(true, file.exists());
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,11 +80,11 @@ public class FileWriterTest {
         jsonFormatter.setPretty(true);
         String json = jsonFormatter.toJson();
 
-        String name = "test_write_4";
+        String name = "test/test_write_4.json";
         FileWriter writer = new FileWriter();
         try {
             writer.writeJson(json, name);
-            File file = new File("resources/decks/" + name + ".json");
+            File file = new File("resources/decks/" + name);
             assertEquals(true, file.exists());
         } catch (IOException e) {
             e.printStackTrace();
@@ -104,11 +104,11 @@ public class FileWriterTest {
         jsonFormatter.setPretty(true);
         String json = jsonFormatter.toJson();
 
-        String name = "test_write_5";
+        String name = "test/test_write_5.json";
         FileWriter writer = new FileWriter();
         try {
             writer.writeJson(json, name);
-            File file = new File("resources/decks/" + name + ".json");
+            File file = new File("resources/decks/" + name);
             assertEquals(true, file.exists());
         } catch (IOException e) {
             e.printStackTrace();

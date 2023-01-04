@@ -4,7 +4,12 @@ import java.io.IOException;
 
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.io.FileLoader;
+import eu.telecomnancy.io.FileReader;
+import eu.telecomnancy.io.json.JsonFormatter;
+import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckListModel;
+import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.model.StatDeckList;
 import eu.telecomnancy.view.GlobalView;
@@ -34,26 +39,28 @@ public class App extends Application {
         // GlobalView
         DeckListModel deckList = new DeckListModel();
         DeckListController deckListController = new DeckListController(deckList);
+        FileLoader fileLoader = new FileLoader(deckListController,
+                new FileReader<DeckModel>(new JsonFormatterDeck()));
+        fileLoader.loadDecks();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));
-        loader.setControllerFactory(ic -> new GlobalView(deckList,deckListController,stageController));
+        loader.setControllerFactory(ic -> new GlobalView(deckList, deckListController, stageController));
         try {
             Parent root = loader.load();
-            Scene scene = new Scene(root,1200,900);
+            Scene scene = new Scene(root, 1200, 900);
 
             // StatDeck
             StatDeckList statDeckList = deckList.getStatDeck();
             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("StatsView.fxml"));
-            loader2.setControllerFactory(ic -> new StatsView(deckList,stageController));
+            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController));
             Parent root2 = loader2.load();
-            Scene scene2 = new Scene(root2,1200,900);
-            StageView stageView = new StageView(primaryStage,stageModel,stageController,scene,scene2);
+            Scene scene2 = new Scene(root2, 1200, 900);
+            StageView stageView = new StageView(primaryStage, stageModel, stageController, scene, scene2);
             stageController.setGlobalView();
-            
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-
 
 }

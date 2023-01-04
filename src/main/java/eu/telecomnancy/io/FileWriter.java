@@ -28,7 +28,7 @@ public class FileWriter {
     public void writeJson(String json, String name) throws IOException {
         createDir();
 
-        File file = new File("resources/decks/" + name + ".json");
+        File file = new File("resources/decks/" + name);
         OutputStream stream = new FileOutputStream(file);
 
         stream.write(json.getBytes());

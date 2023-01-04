@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
     private StatDeckList statDeck;
-    
+
     public StatDeckList getStatDeck() {
         return statDeck;
     }
@@ -13,16 +13,21 @@ public class DeckListModel extends Observed {
     public DeckListModel() {
         decks = new ArrayList<>();
         statDeck = new StatDeckList();
-    
+
     }
 
     public DeckListModel(ArrayList<DeckModel> decks) {
         this.decks = decks;
-  
+
     }
 
-    public void addDeck(String name, String description) {
+    public void createDeck(String name, String description) {
         decks.add(new DeckModel(name, description));
+        notifyObservers();
+    }
+
+    public void addDeck(DeckModel deck) {
+        decks.add(deck);
         notifyObservers();
     }
 

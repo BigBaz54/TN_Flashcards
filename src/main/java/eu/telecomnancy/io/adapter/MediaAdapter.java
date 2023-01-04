@@ -36,9 +36,6 @@ public class MediaAdapter extends TypeAdapter<Media> {
             }
             if ("file".equals(fieldName)) {
                 File file = new File(in.nextString());
-                if (!file.exists()) {
-                    throw new IOException("File " + file.getName() + " does not exist");
-                }
                 media.setFile(file);
             }
             if ("type".equals(fieldName)) {

@@ -88,6 +88,10 @@ public class DeckModel extends Observed {
         notifyObservers();
     }
 
+    public DrawCardStrategy getDrawCardStrategy() {
+        return drawCardStrategy;
+    }
+
     public void setDrawCardStrategy(DrawCardStrategy strategy) {
         this.drawCardStrategy = strategy;
         notifyObservers();

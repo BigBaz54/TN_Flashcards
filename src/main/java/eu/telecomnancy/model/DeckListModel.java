@@ -25,7 +25,7 @@ public class DeckListModel extends Observed {
 
     public void addDeck(String name, String description) {
         decks.add(new DeckModel(name, description, mode));
-        statDeck.addDeck(new StatDeck());
+        statDeck.addDeck(new StatDeck(name));
         notifyObservers();
     }
 

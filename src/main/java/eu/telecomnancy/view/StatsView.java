@@ -9,7 +9,9 @@ import eu.telecomnancy.observer.DeckListObserver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
 import java.net.URL;
@@ -24,6 +26,9 @@ public class StatsView extends DeckListObserver implements Initializable {
     private ArrayList<StatDeck> statDecks;
     @FXML
     private LineChart<String,Number> nbDecksOverTime;
+    @FXML
+    private PieChart PieChartPourcentage;
+
 
 
     public StatsView(DeckListModel deckListModel, StageController stageController) {
@@ -55,11 +60,21 @@ public class StatsView extends DeckListObserver implements Initializable {
         }
         nbDecksOverTime.getData().add(series1);
     }
+    public void createPieChartPourcentage(){
+        ArrayList<Float> pourcentages = statDeckList.getPourcentageTimesSpent();
+        ArrayList<String> names = statDeckList.getDecksName();
+        for (int i = 0; i < pourcentages.size(); i++) {
+            PieChartPourcentage.getData().add(new PieChart.Data("Deck "+ names.get(i),pourcentages.get(i)));
+        }
+
+    }
+
 
     @Override
     public void react() {
         try {
             createLineChart1();
+            createPieChartPourcentage();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,10 +91,10 @@ public class StatsView extends DeckListObserver implements Initializable {
         react();
     }
 
-
     @FXML
     public void toGlobalView(){
         System.out.println("toGlobalView");
         stageController.setGlobalView();
     }
+
 }

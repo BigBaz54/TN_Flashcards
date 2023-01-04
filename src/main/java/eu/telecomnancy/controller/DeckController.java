@@ -1,8 +1,6 @@
 package eu.telecomnancy.controller;
 
 import eu.telecomnancy.model.DeckModel;
-import eu.telecomnancy.model.Mode;
-import eu.telecomnancy.view.DeckView;
 
 public class DeckController {
     private DeckModel deckModel;

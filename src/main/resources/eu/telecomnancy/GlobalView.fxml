@@ -15,7 +15,7 @@
    <center>
       <HBox alignment="TOP_CENTER" prefHeight="836.0" prefWidth="1194.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="785.0" prefWidth="854.0">
+            <VBox alignment="TOP_CENTER" prefHeight="785.0" prefWidth="630.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="472.0" styleClass="titre" text="TelecomNancy Flashcards" textAlignment="CENTER">
                      <padding>
@@ -28,9 +28,9 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox alignment="CENTER" prefHeight="633.0" prefWidth="848.0">
+                  <HBox alignment="CENTER" prefHeight="633.0" prefWidth="630.0">
                      <children>
-                        <ListView fx:id="deckListView" prefHeight="633.0" prefWidth="450.0" />
+                        <ListView fx:id="deckListView" prefHeight="633.0" prefWidth="630.0" styleClass="list-view" />
                      </children>
                   </HBox>
                </children>
@@ -57,7 +57,7 @@
             </Label>
             <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="500.0" styleClass="toolBar">
               <items>
-                  <Button mnemonicParsing="false" onAction="#removeDeck" text="Supprimer">
+                  <Button mnemonicParsing="false" onAction="#switchMode" text="Supprimer">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -96,7 +96,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" text="Statistiques" onAction="#toStatsView">
+                  <Button mnemonicParsing="false" onAction="#toStatsView" text="Statistiques">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

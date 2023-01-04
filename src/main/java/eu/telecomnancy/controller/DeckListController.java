@@ -1,7 +1,6 @@
 package eu.telecomnancy.controller;
 
 import eu.telecomnancy.model.DeckListModel;
-import eu.telecomnancy.model.Mode;
 
 public class DeckListController {
     

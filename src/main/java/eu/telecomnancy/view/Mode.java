@@ -1,4 +1,4 @@
-package eu.telecomnancy.model;
+package eu.telecomnancy.view;
 
 public enum Mode {
     VIEW, EDIT

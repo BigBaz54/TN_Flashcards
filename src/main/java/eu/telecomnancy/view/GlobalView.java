@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Labeled;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
@@ -39,17 +40,20 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @FXML
     private VBox vbox;
 
+    private Mode mode;
 
-    public GlobalView(DeckListModel deckListView, DeckListController deckListController, StageController stageController) {
-        super(deckListView);
+
+    public GlobalView(DeckListModel deckList, DeckListController deckListController, StageController stageController) {
+        super(deckList);
         this.deckListController = deckListController;
         this.stageController = stageController;
+        this.mode = Mode.VIEW;
     }
 
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell(deckListController,stageController));
+        deckListView.setCellFactory(param -> new DeckCell(this,deckListController,stageController));
         deckListView.getItems().addAll(deckListModel.getDecks());
         //vbox.setAlignment(Pos.CENTER);
         deckListView.setMinWidth(1200);
@@ -74,8 +78,17 @@ public class GlobalView extends DeckListObserver implements Initializable{
         }
     }
     @FXML
-    public void removeDeck(){
+    public void switchMode(){
+        if (mode == Mode.VIEW)
+            mode = Mode.EDIT;
+        else 
+            mode = Mode.VIEW;
+        deckListView.refresh();
         
+    }
+
+    public Mode getMode(){
+        return mode;
     }
 
     @FXML

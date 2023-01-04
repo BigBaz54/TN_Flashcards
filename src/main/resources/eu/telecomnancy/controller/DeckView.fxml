@@ -16,7 +16,7 @@
          <children>
             <ToolBar prefHeight="40.0" prefWidth="600.0" styleClass="toolBar">
                <items>
-                  <Button mnemonicParsing="false" text="Menu" onAction="#seeMenu">
+                  <Button mnemonicParsing="false" onAction="#seeMenu" text="Menu">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
@@ -50,14 +50,14 @@
          </children>
          <stylesheets>
             <URL value="@../styles/menu.css" />
-            <URL value="@../styles/global.css" />
+            <URL value="@../styles/deck.css" />
          </stylesheets>
       </HBox>
    </top>
    <left>
-      <VBox fx:id="sidebar" prefHeight="600.0" prefWidth="300.0" styleClass="sidebar" visible="false" BorderPane.alignment="CENTER">
+      <VBox fx:id="sidebar" prefHeight="600.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@../styles/menu.css" visible="false" BorderPane.alignment="CENTER">
          <children>
-            <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0">
+            <ToolBar fx:id="toolbar" orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0" styleClass="sidebar" stylesheets="@../styles/menu.css">
                <items>
                   <Button mnemonicParsing="false" onAction="#toGlobalView" text="Mes paquets">
                      <padding>
@@ -92,7 +92,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="cardListView" prefHeight="689.0" prefWidth="500.0" stylesheets="@../styles/global.css" />
+                  <ListView fx:id="cardListView" prefHeight="689.0" prefWidth="500.0" />
                </children>
             </VBox>
          </children>

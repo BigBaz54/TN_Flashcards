@@ -10,11 +10,12 @@ public class StatCard {
     private int nbTimesWrong;
     private ArrayList<Long> timesSpent;
 
-    /*  How to record time
-        Long startTime = System.currentTimeMillis();
-        Do something
-        long endTime = System.currentTimeMillis();
-        long duration = (endTime - startTime);
+    /*
+     * How to record time
+     * Long startTime = System.currentTimeMillis();
+     * Do something
+     * long endTime = System.currentTimeMillis();
+     * long duration = (endTime - startTime);
      */
 
     public StatCard() {
@@ -53,8 +54,9 @@ public class StatCard {
     }
 
     public Long getTimesSpentLast() {
-        return timesSpent.get(timesSpent.size()-1);
+        return timesSpent.get(timesSpent.size() - 1);
     }
+
     public Long getTimesSpentTotal() {
         Long total = 0L;
         for (Long time : timesSpent) {
@@ -68,10 +70,14 @@ public class StatCard {
         for (Long time : timesSpent) {
             total += time;
         }
-        return total/timesSpent.size();
+        return total / timesSpent.size();
     }
 
     public void setTimesSpent(ArrayList<Long> times) {
         this.timesSpent = times;
+    }
+
+    public void addTimeSpent(Long time) {
+        this.timesSpent.add(time);
     }
 }

@@ -3,6 +3,9 @@ module eu.telecomnancy {
     requires javafx.fxml;
     requires transitive com.google.gson;
     requires freetts;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.apache.httpcomponents.httpclient;
+    requires json;
 
     opens eu.telecomnancy to javafx.controls, javafx.fxml, com.google.gson;
     opens eu.telecomnancy.view to javafx.fxml;

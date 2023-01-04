@@ -10,7 +10,12 @@ public class StatDeckList {
     private int nbTimesWrong;
     private int nbCardsSeen;
     private ArrayList<Float> pourcentageTimesSpent;
+    private ArrayList<String> decksName;
     private ArrayList<StatDeck> decks;
+
+    public ArrayList<String> getDecksName() {
+        return decksName;
+    }
 
     public StatDeckList() {
         this.nbDecks = 0;
@@ -18,7 +23,7 @@ public class StatDeckList {
         this.nbTimesCorrect = 0;
         this.nbTimesWrong = 0;
         this.nbCardsSeen = 0;
-        this.pourcentageTimesSpent = new ArrayList<>();
+        this.pourcentageTimesSpent = new ArrayList<Float>();
         this.decks = new ArrayList<>();
     }
 
@@ -93,6 +98,7 @@ public class StatDeckList {
         for (StatDeck deck : decks) {
             timeEachDeck.add(deck.getTimesSpent());
         }
+        //get the name of the decks
         float totalTime = 0;
         for (Long time : timeEachDeck) {
             totalTime += time;

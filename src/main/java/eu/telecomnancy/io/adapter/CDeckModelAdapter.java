@@ -1,6 +1,5 @@
 package eu.telecomnancy.io.adapter;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -15,6 +14,7 @@ import eu.telecomnancy.model.compact.CDeckModel;
 
 public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
     private CardAdapter cardAdapter = new CardAdapter();
+    private StatDeckAdapter statDeckAdapter = new StatDeckAdapter();
 
     @Override
     public void write(JsonWriter out, CDeckModel value) throws IOException {
@@ -31,6 +31,8 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
             out.value(tag.getName());
         }
         out.endArray();
+        out.name("statDeck");
+        statDeckAdapter.write(out, value.getStatDeck());
         out.name("name");
         out.value(value.getName());
         out.name("description");
@@ -68,6 +70,9 @@ public class CDeckModelAdapter extends TypeAdapter<CDeckModel> {
                 }
                 in.endArray();
                 deck.setTags(tags);
+            }
+            if ("statDeck".equals(fieldName)) {
+                deck.setStatDeck(statDeckAdapter.read(in));
             }
             if ("name".equals(fieldName)) {
                 deck.setName(in.nextString());

@@ -116,4 +116,8 @@ public class DeckModel extends Observed {
             }
         }
     }
+
+    public StatDeck getStatDeck() {
+        return this.statDeck;
+    }
 }

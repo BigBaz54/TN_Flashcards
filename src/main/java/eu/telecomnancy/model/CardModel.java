@@ -66,4 +66,8 @@ public class CardModel extends Observed {
             }
         }
     }
+
+    public StatCard getStatCard() {
+        return this.statCard;
+    }
 }

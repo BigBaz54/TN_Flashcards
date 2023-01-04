@@ -1,7 +1,7 @@
 package eu.telecomnancy.buildCardStrategy;
 
-import eu.telecomnancy.view.DeckCell;
+import javafx.scene.layout.Pane;
 
 public interface BuildCardStrategy {
-    public DeckCell buildCard();
+    public Pane buildCard();
 }

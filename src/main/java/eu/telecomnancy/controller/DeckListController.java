@@ -27,12 +27,4 @@ public class DeckListController {
         // TODO:
     }
 
-    public void switchMode() {
-        System.out.println("switch");
-        Mode mode = deckListModel.getMode();
-        if(mode == Mode.VIEW)
-            deckListModel.setMode(Mode.EDIT);
-        else 
-            deckListModel.setMode(Mode.VIEW);
-    }
 }

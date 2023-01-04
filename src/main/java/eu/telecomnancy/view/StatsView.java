@@ -9,7 +9,9 @@ import eu.telecomnancy.observer.DeckListObserver;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
 import java.net.URL;
@@ -23,7 +25,10 @@ public class StatsView extends DeckListObserver implements Initializable {
     private StageController stageController;
     private ArrayList<StatDeck> statDecks;
     @FXML
-    private LineChart<Date,Number> nbDecksOverTime;
+    private LineChart<String,Number> nbDecksOverTime;
+    @FXML
+    private PieChart PieChartPourcentage;
+
 
 
     public StatsView(DeckListModel deckListModel, StageController stageController) {
@@ -34,10 +39,10 @@ public class StatsView extends DeckListObserver implements Initializable {
     }
 
     public void createLineChart1(){
-        XYChart.Series<Date, Number> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Series 1");
 
-        HashMap map = new HashMap<Date, Integer>();
+        HashMap map = new HashMap<String, Integer>();
         //loop on decksStts
         for(StatDeck deck : statDecks  ){
            if( map.containsKey(deck.getCreationDate())){
@@ -48,16 +53,31 @@ public class StatsView extends DeckListObserver implements Initializable {
                map.put(deck.getCreationDate(),1);
            }
         }
-        //loop on map
-        for (Object key : map.keySet()) {
-            series1.getData().add(new XYChart.Data<>((Date) key,(Integer) map.get(key)));
+        ArrayList<String> dates = new ArrayList<String>(map.keySet());
+        dates.sort(String::compareTo);
+        for(String date : dates){
+            series1.getData().add(new XYChart.Data<>(date,(Integer) map.get(date)));
         }
         nbDecksOverTime.getData().add(series1);
     }
+    public void createPieChartPourcentage(){
+        ArrayList<Float> pourcentages = statDeckList.getPourcentageTimesSpent();
+        ArrayList<String> names = statDeckList.getDecksName();
+        for (int i = 0; i < pourcentages.size(); i++) {
+            PieChartPourcentage.getData().add(new PieChart.Data("Deck "+ names.get(i),pourcentages.get(i)));
+        }
+
+    }
+
 
     @Override
     public void react() {
-        createLineChart1();
+        try {
+            createLineChart1();
+            createPieChartPourcentage();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void seeMenu(ActionEvent actionEvent) {
@@ -71,10 +91,10 @@ public class StatsView extends DeckListObserver implements Initializable {
         react();
     }
 
-
     @FXML
     public void toGlobalView(){
         System.out.println("toGlobalView");
         stageController.setGlobalView();
     }
+
 }

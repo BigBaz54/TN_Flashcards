@@ -27,7 +27,7 @@ public class DeckModel extends Observed {
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck();
+        this.statDeck = new StatDeck(name);
         this.mode = Mode.VIEW;
     }
 
@@ -39,8 +39,14 @@ public class DeckModel extends Observed {
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck();
+        this.statDeck = new StatDeck(name);
         this.mode = mode;
+    }
+
+    public void addCard(CardModel card) {
+        cards.add(card);
+        statDeck.addCard(card.getStatCard());
+        notifyObservers();
     }
 
     public void setActiveCard(int i) {

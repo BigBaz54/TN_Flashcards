@@ -14,6 +14,7 @@ public class DeckListModel extends Observed {
     public DeckListModel() {
         decks = new ArrayList<>();
         statDeck = new StatDeckList();
+        statDeck = new StatDeckList();
         mode = Mode.VIEW;
     }
 
@@ -24,6 +25,7 @@ public class DeckListModel extends Observed {
 
     public void addDeck(String name, String description) {
         decks.add(new DeckModel(name, description, mode));
+        statDeck.addDeck(new StatDeck(name));
         notifyObservers();
     }
 

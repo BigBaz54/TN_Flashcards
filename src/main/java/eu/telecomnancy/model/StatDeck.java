@@ -11,11 +11,12 @@ public class StatDeck {
     private int nbTimesWrong;
     private int nbCardsSeen;
     private Long timesSpent;
+    private String name;
     private ArrayList<StatCard> cards;
     private Date lastOpened;
     private Date creationDate;
 
-    public StatDeck() {
+    public StatDeck(String name) {
         this.nbCards = 0;
         this.nbTimesOpened = 0;
         this.nbTimesCorrect = 0;
@@ -24,6 +25,7 @@ public class StatDeck {
         this.timesSpent = 0L;
         this.cards = new ArrayList<>();
         this.creationDate = new Date();
+        this.name = name;
     }
 
     public void addCard(StatCard card) {

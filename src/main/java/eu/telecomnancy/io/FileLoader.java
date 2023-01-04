@@ -20,8 +20,7 @@ public class FileLoader {
         for (File file : dir.listFiles()) {
             if (file.isFile()) {
                 try {
-                    System.out.println(file.getName().split("\\.")[0]);
-                    deckListController.importDeck(fileReader.read(file.getName().split("\\.")[0]));
+                    deckListController.importDeck(fileReader.read(file.getName()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

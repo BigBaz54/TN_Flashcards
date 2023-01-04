@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.view.DeckView">
    <top>
-      <HBox alignment="BASELINE_CENTER" onAction="#" prefHeight="40.0" prefWidth="600.0" styleClass="menu" BorderPane.alignment="CENTER">
+      <HBox alignment="BASELINE_CENTER" prefHeight="40.0" prefWidth="600.0" styleClass="menu" BorderPane.alignment="CENTER">
          <children>
             <ToolBar prefHeight="40.0" prefWidth="600.0" styleClass="toolBar">
                <items>
@@ -69,7 +69,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="toSettingsView" text="Paramètres">
+                  <Button mnemonicParsing="false" onAction="#toSettingsView" text="Paramètres">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

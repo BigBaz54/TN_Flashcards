@@ -11,6 +11,14 @@ public class CardModel extends Observed {
     private StatCard statCard;
     private ArrayList<CardTag> tags;
 
+    public CardModel() {
+        this.question = "";
+        this.answer = "";
+        this.probability = 1F;
+        this.statCard = new StatCard();
+        this.tags = new ArrayList<>();
+    }
+
     public CardModel(String question, String answer) {
         this.question = question;
         this.answer = answer;

@@ -11,15 +11,24 @@ import eu.telecomnancy.observer.DeckObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class DeckView extends DeckObserver implements Initializable{
 
     @FXML
     private VBox sidebar;
+    @FXML
+    private VBox sidebar2;
     @FXML
     private Label pageName;
 
@@ -27,7 +36,9 @@ public class DeckView extends DeckObserver implements Initializable{
     private StageController stageController;
 
     @FXML
-    private ListView<CardModel> cardListView;
+    private GridPane gridpane;
+    @FXML 
+    private ScrollPane scrollpane;
 
 
     public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController) {
@@ -38,22 +49,57 @@ public class DeckView extends DeckObserver implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        pageName.setText(deckModel.getName());
-        cardListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        cardListView.setCellFactory(param -> new CardCell(deckController,stageController));
-        cardListView.getItems().addAll(deckModel.getCards());
+        gridpane.setMinHeight(700);
+        gridpane.setMinWidth(1200);
+        scrollpane.setMinHeight(700);
+        scrollpane.setMinWidth(1200);
+        scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
+        react();
         
     } 
 
 
     public void react() {
+        System.out.println("DeckView: react");
+        gridpane.getChildren().clear();
+        int n = deckModel.getCards().size();
+        int row = (int) Math.ceil (n/3)+1;
+        for (int i = 0; i < row; i++) {
+            gridpane.addRow(i);
+            gridpane.setVgap(5);
+            gridpane.setHgap(5);
+            gridpane.gridLinesVisibleProperty().setValue(false);
+            for (int j = 0; j < 3; j++) {
+                gridpane.addColumn(j);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            CardModel card = deckModel.getCards().get(i);
+            System.out.println(card.getQuestion());
+            CardView cardView = new CardView(card, deckController, stageController);
+            //BorderPane cardView = new BorderPane();
+            cardView.root.setPrefSize(400, 170);
+            //cardView.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1px;");
+            gridpane.add(cardView.root, i%3, i/3);
+        }
         
     }
 
     // Méthodes du Top Menu
 
     @FXML
-    public void addCard(){}
+    public void addCard(){
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpCard.fxml"));
+        loader.setControllerFactory(ic -> new PopUpCardView(deckModel,deckController));
+        try {
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     public void removeCard(){
@@ -70,6 +116,8 @@ public class DeckView extends DeckObserver implements Initializable{
     @FXML
     public void seeMenu() {
         sidebar.setVisible(!sidebar.isVisible());
+        sidebar.setManaged(sidebar.isVisible());
+        sidebar2.setManaged(sidebar2.isVisible());
     }
     
     @FXML

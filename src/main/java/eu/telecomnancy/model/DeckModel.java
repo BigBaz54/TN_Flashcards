@@ -18,6 +18,17 @@ public class DeckModel extends Observed {
     private BuildCardStrategy buildCardStrategy;
     private StatDeck statDeck;
 
+    public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description) {
+        this.cards = cards;
+        this.tags = tags;
+        drawCardStrategy = new DrawCardStrategyWeighted();
+        buildCardStrategy = new BuildCardStrategyClassic();
+        this.name = name;
+        this.description = description;
+        this.activeCard = 0;
+        this.statDeck = new StatDeck();
+    }
+
     public DeckModel(String name, String description) {
         cards = new ArrayList<>();
         tags = new ArrayList<>();

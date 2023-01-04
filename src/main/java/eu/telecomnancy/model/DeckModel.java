@@ -43,6 +43,12 @@ public class DeckModel extends Observed {
         this.mode = mode;
     }
 
+    public void addCard(CardModel card) {
+        cards.add(card);
+        statDeck.addCard(card.getStatCard());
+        notifyObservers();
+    }
+
     public void setActiveCard(int i) {
         this.activeCard = i;
         notifyObservers();

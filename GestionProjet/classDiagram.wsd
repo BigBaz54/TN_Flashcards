@@ -82,6 +82,10 @@ class DeckController {
     + setDescription(description: String): void
     + addCard(question: String, answer: String): void
     + removeCard(id: int): void
+    + answeredRight(): void
+    + answeredWrong(): void
+    + handleAnswer(goodAnswer: boolean): void
+    + nextCard(): void
 }
 
 class CardController {
@@ -130,6 +134,16 @@ class DrawCardStrategyWeighted implements DrawCardStrategy {
 class DrawCardStrategyTime implements DrawCardStrategy {
 }
 
+abstract class Learning {
+    + //isFinished(): boolean//
+    + nextCard(answer: boolean)
+}
+
+class LearningXTimes extends Learning {
+    - nbTimesMax: int
+    - nbTimesPlayed: int
+}
+
 CardObserver -- CardModel
 DeckObserver -- DeckModel
 DeckListObserver -- DeckListModel
@@ -151,11 +165,11 @@ DeckModel -- BuildCardStrategy
 DeckModel -- CardModel
 DeckListModel -- DeckModel
 
-
 StageView -- DeckView
 StageView -- GlobalView
 
 CardModel -- CardTag
 DeckModel -- DeckTag
 
+Learning -- DeckController
 @enduml

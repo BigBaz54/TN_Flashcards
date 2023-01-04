@@ -1,6 +1,9 @@
 # Ignore target folder
 target/
 
+# Ignore vscode files
+.DS_Store
+
 # Intellij gitignore
 # User-specific stuff
 .idea/**/workspace.xml

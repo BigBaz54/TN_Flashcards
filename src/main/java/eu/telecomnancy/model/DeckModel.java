@@ -38,7 +38,6 @@ public class DeckModel extends Observed {
         return activeCard;
     }
 
-
     public void addCard(String question, String answer) {
         cards.add(new CardModel(question, answer));
         notifyObservers();
@@ -88,5 +87,9 @@ public class DeckModel extends Observed {
     public void setBuildCardStrategy(BuildCardStrategy strategy) {
         this.buildCardStrategy = strategy;
         notifyObservers();
+    }
+
+    public ArrayList<DeckTag> getTags() {
+        return this.tags;
     }
 }

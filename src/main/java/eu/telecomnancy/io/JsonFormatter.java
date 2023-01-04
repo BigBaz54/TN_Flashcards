@@ -1,0 +1,40 @@
+package eu.telecomnancy.io;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import eu.telecomnancy.model.CDeckModel;
+import eu.telecomnancy.model.DeckModel;
+
+public class JsonFormatter {
+    private DeckModel deckModel;
+    private CDeckModel compactDeckModel;
+
+    public JsonFormatter(DeckModel deckModel) {
+        this.deckModel = deckModel;
+        compactDeckModel = null;
+    }
+
+    public void setDeckModel(DeckModel deckModel) {
+        this.deckModel = deckModel;
+        compactDeckModel = null;
+    }
+
+    private void compactDeckModel() {
+        this.compactDeckModel = new CDeckModel(deckModel.getCards(), deckModel.getTags(), deckModel.getName(),
+                deckModel.getDescription());
+    }
+
+    public String toJson() {
+        if (compactDeckModel == null) {
+            compactDeckModel();
+        }
+
+        GsonBuilder builder = new GsonBuilder();
+        builder = builder.setPrettyPrinting();
+        builder = builder.registerTypeAdapter(CDeckModel.class, new CDeckModelAdapter());
+        Gson gson = builder.create();
+
+        return gson.toJson(compactDeckModel);
+    }
+}

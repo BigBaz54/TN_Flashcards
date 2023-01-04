@@ -3,9 +3,11 @@
     {
       "question": "Hello",
       "answer": "Bonjour",
-      "probability": 1.0
+      "probability": 1.0,
+      "tags": []
     }
   ],
-  "name": "test write 3",
+  "tags": [],
+  "name": "test write 2",
   "description": "This is a test"
 }

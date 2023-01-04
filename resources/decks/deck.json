@@ -1,0 +1,19 @@
+{
+    "cards": [
+      {
+        "question": "Pourquoi LV est moche ?",
+        "answer": "Feur",
+        "probability": 1.0,
+        "tags": []
+      },
+      {
+        "question": "Pourquoi ?",
+        "answer": "Feur",
+        "probability": 1.0,
+        "tags": []
+      }
+    ],
+    "tags": [],
+    "name": "deck",
+    "description": "Le deck tah les fou"
+  }

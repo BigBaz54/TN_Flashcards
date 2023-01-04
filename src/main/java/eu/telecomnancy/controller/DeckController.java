@@ -1,5 +1,8 @@
 package eu.telecomnancy.controller;
 
+import java.util.Date;
+
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 
@@ -36,11 +39,27 @@ public class DeckController {
         currentCard.getStatCard().setNbTimesWrong(currentCard.getStatCard().getNbTimesWrong() + 1);
     }
 
-    public void handleAnswer(boolean goodAnswer) {
-        deckModel.getDrawCardStrategy().handleAnswer(goodAnswer, deckModel);
+    public void handleAnswer(boolean goodAnswer, DrawCardStrategy drawCardStrategy) {
+        drawCardStrategy.handleAnswer(goodAnswer, deckModel);
     }
 
-    public void nextCard() {
-        deckModel.setActiveCard(deckModel.getDrawCardStrategy().nextCard(deckModel));
+    public void nextCard(DrawCardStrategy drawCardStrategy) {
+        deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel));
+    }
+
+    public void updateStatCard(boolean goodAnswer, long timeSpent) {
+        CardModel currentCard = deckModel.getCard(deckModel.getActiveCard());
+        currentCard.getStatCard().setNbTimesSeen(currentCard.getStatCard().getNbTimesSeen() + 1);
+        if (goodAnswer) {
+            answeredRight();
+        } else {
+            answeredWrong();
+        }
+        currentCard.getStatCard().getTimesSpent().add(timeSpent);
+    }
+
+    public void updateStatDeck() {
+        deckModel.getStatDeck().setNbTimesOpened(deckModel.getStatDeck().getNbTimesOpened() + 1);
+        deckModel.getStatDeck().setLastOpened(new Date());
     }
 }

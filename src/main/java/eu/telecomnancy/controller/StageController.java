@@ -3,11 +3,9 @@ package eu.telecomnancy.controller;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.view.DeckView;
-import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class StageController {
 
@@ -40,8 +38,6 @@ public class StageController {
     public void setStatsView(){
         stageModel.setActiveScene(2);
     }
-
-
 
     public void setStageView(StageView stageView) {
         this.stageView = stageView;

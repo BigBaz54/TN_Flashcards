@@ -1,0 +1,23 @@
+{
+  "cards": [
+    {
+      "question": "Hello",
+      "answer": "Bonjour",
+      "probability": 1.0,
+      "tags": [
+        "test",
+        "test2"
+      ],
+      "media": {
+        "file": "test",
+        "type": "IMG"
+      }
+    }
+  ],
+  "tags": [
+    "test",
+    "test2"
+  ],
+  "name": "test write 5",
+  "description": "This is a test"
+}

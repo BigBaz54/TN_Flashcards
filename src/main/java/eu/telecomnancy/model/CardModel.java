@@ -24,6 +24,7 @@ public class CardModel extends Observed {
         this.answer = answer;
         this.probability = 1F;
         this.statCard = new StatCard();
+        this.tags = new ArrayList<>();
     }
 
     public String getQuestion() {

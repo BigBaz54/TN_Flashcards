@@ -1,5 +1,6 @@
 package eu.telecomnancy.controller;
 
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 
@@ -36,11 +37,11 @@ public class DeckController {
         currentCard.getStatCard().setNbTimesWrong(currentCard.getStatCard().getNbTimesWrong() + 1);
     }
 
-    public void handleAnswer(boolean goodAnswer) {
-        deckModel.getDrawCardStrategy().handleAnswer(goodAnswer, deckModel);
+    public void handleAnswer(boolean goodAnswer, DrawCardStrategy drawCardStrategy) {
+        drawCardStrategy.handleAnswer(goodAnswer, deckModel);
     }
 
-    public void nextCard() {
-        deckModel.setActiveCard(deckModel.getDrawCardStrategy().nextCard(deckModel));
+    public void nextCard(DrawCardStrategy drawCardStrategy) {
+        deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel));
     }
 }

@@ -2,10 +2,10 @@
     "cards": [
         {
             "question": "Hello",
-            "answer": "Hola",
+            "answer": "Bonjour",
             "probability": 1.0
         }
     ],
-    "name": "test 2",
-    "description": "This is a test 2"
+    "name": "test read 1",
+    "description": "This is a test"
 }

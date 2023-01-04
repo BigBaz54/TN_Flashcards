@@ -3,10 +3,6 @@ package eu.telecomnancy.model;
 import java.util.ArrayList;
 
 import eu.telecomnancy.DeckTag;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
-import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
-import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 
 public class DeckModel extends Observed {
     private ArrayList<CardModel> cards;
@@ -14,33 +10,25 @@ public class DeckModel extends Observed {
     private String name;
     private String description;
     private int activeCard;
-    private DrawCardStrategy drawCardStrategy;
-    private BuildCardStrategy buildCardStrategy;
     private StatDeck statDeck;
-    private Mode mode;
 
-    public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description) {
+    public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description,
+            StatDeck statDeck) {
         this.cards = cards;
         this.tags = tags;
-        drawCardStrategy = new DrawCardStrategyWeighted();
-        buildCardStrategy = new BuildCardStrategyClassic();
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck(name);
-        this.mode = Mode.VIEW;
+        this.statDeck = statDeck;
     }
 
-    public DeckModel(String name, String description, Mode mode) {
+    public DeckModel(String name, String description) {
         cards = new ArrayList<>();
         tags = new ArrayList<>();
-        drawCardStrategy = new DrawCardStrategyWeighted();
-        buildCardStrategy = new BuildCardStrategyClassic();
         this.name = name;
         this.description = description;
         this.activeCard = 0;
-        this.statDeck = new StatDeck(name);
-        this.mode = mode;
+        this.statDeck = new StatDeck();
     }
 
     public void addCard(CardModel card) {
@@ -99,27 +87,10 @@ public class DeckModel extends Observed {
         notifyObservers();
     }
 
-    public void setDrawCardStrategy(DrawCardStrategy strategy) {
-        this.drawCardStrategy = strategy;
-        notifyObservers();
-    }
-
-    public void setBuildCardStrategy(BuildCardStrategy strategy) {
-        this.buildCardStrategy = strategy;
-        notifyObservers();
-    }
-
     public ArrayList<DeckTag> getTags() {
         return this.tags;
     }
 
-    public void setMode(Mode mode){
-        this.mode = mode;
-    }
-
-    public Mode getMode(){
-        return this.mode;
-    }
     public void addTag(String tag) {
         this.tags.add(new DeckTag(tag));
     }

@@ -8,6 +8,10 @@ import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.compact.CDeckModel;
 
 public class JsonFormatterDeck extends JsonFormatter<DeckModel> {
+    public JsonFormatterDeck() {
+        super(null);
+    }
+
     public JsonFormatterDeck(DeckModel deckModel) {
         super(deckModel);
     }
@@ -19,6 +23,10 @@ public class JsonFormatterDeck extends JsonFormatter<DeckModel> {
 
     @Override
     public String toJson() {
+        if (model == null) {
+            throw new IllegalStateException("No model to serialize");
+        }
+
         if (compact == null) {
             compactModel();
         }

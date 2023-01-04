@@ -1,0 +1,35 @@
+.root {
+    -fx-background-color: rgb(235, 235, 235);
+}
+
+#cardListView {
+    -fx-background-color: transparent;
+}
+
+#cardListView .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#cardListView .list-cell:selected {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.list-view .list-cell:selected .label {
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+
+.titre {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}

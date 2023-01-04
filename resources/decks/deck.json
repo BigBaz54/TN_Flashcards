@@ -1,0 +1,29 @@
+{
+    "cards": [
+      {
+        "question": "Pourquoi LV est moche ?",
+        "answer": "Feur",
+        "probability": 1.0,
+        "tags": []
+      },
+      {
+        "question": "Pourquoi ?",
+        "answer": "Feur",
+        "probability": 1.0,
+        "tags": []
+      }
+    ],
+    "statDeck": {
+        "nbTimesOpened": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "nbCardsSeen": 0,
+        "timesSpent": 0,
+        "statCards": [],
+        "lastOpened": 1672858275777,
+        "creationDate": 1672858275777
+      },
+    "tags": [],
+    "name": "deck",
+    "description": "Le deck tah les fou"
+  }

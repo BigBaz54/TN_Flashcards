@@ -15,4 +15,5 @@ module eu.telecomnancy {
     exports eu.telecomnancy.view;
     exports eu.telecomnancy.io;
     exports eu.telecomnancy.model;
+    exports eu.telecomnancy.controller;
 }

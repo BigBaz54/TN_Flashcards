@@ -2,11 +2,14 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
+
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
     private StatDeckList statDeck;
-    private Mode mode;
-
+    private DrawCardStrategy drawCardStrategy;
+    
     public StatDeckList getStatDeck() {
         return statDeck;
     }
@@ -14,18 +17,22 @@ public class DeckListModel extends Observed {
     public DeckListModel() {
         decks = new ArrayList<>();
         statDeck = new StatDeckList();
-        statDeck = new StatDeckList();
-        mode = Mode.VIEW;
+        drawCardStrategy = new DrawCardStrategyWeighted();
     }
 
     public DeckListModel(ArrayList<DeckModel> decks) {
         this.decks = decks;
-        mode = Mode.VIEW;
+        statDeck = new StatDeckList();
+        drawCardStrategy = new DrawCardStrategyWeighted();
     }
 
-    public void addDeck(String name, String description) {
-        decks.add(new DeckModel(name, description, mode));
-        statDeck.addDeck(new StatDeck(name));
+    public void createDeck(String name, String description) {
+        decks.add(new DeckModel(name, description));
+        notifyObservers();
+    }
+
+    public void addDeck(DeckModel deck) {
+        decks.add(deck);
         notifyObservers();
     }
 
@@ -38,15 +45,12 @@ public class DeckListModel extends Observed {
         return decks;
     }
 
-    public Mode getMode(){
-        return this.mode;
+    public DrawCardStrategy getDrawCardStrategy() {
+        return drawCardStrategy;
     }
 
-    public void setMode(Mode mode){
-        this.mode = mode;
-        for (DeckModel deck : decks) {
-            deck.setMode(mode);
-        }
+    public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy) {
+        this.drawCardStrategy = drawCardStrategy;
         notifyObservers();
     }
 }

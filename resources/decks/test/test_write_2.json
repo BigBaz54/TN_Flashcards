@@ -1,0 +1,23 @@
+{
+  "cards": [
+    {
+      "question": "Hello",
+      "answer": "Bonjour",
+      "probability": 1.0,
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "statDeck": {
+    "nbTimesOpened": 0,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "statCards": [],
+    "lastOpened": 1672858275777,
+    "creationDate": 1672858275777
+  },
+  "name": "test write 2",
+  "description": "This is a test"
+}

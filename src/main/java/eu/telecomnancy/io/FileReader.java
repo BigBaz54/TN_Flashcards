@@ -18,7 +18,7 @@ public class FileReader<T> {
     }
 
     private String getContent(String name) throws IOException {
-        File file = new File("resources/decks/" + name + ".json");
+        File file = new File("resources/decks/" + name);
         Scanner scanner = new Scanner(file);
 
         String content = "";

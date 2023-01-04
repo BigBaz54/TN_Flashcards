@@ -1,6 +1,7 @@
 package eu.telecomnancy.controller;
 
 import eu.telecomnancy.model.DeckListModel;
+import eu.telecomnancy.model.Mode;
 
 public class DeckListController {
     
@@ -24,5 +25,14 @@ public class DeckListController {
 
     public void importDeck() {
         // TODO:
+    }
+
+    public void switchMode() {
+        System.out.println("switch");
+        Mode mode = deckListModel.getMode();
+        if(mode == Mode.VIEW)
+            deckListModel.setMode(Mode.EDIT);
+        else 
+            deckListModel.setMode(Mode.VIEW);
     }
 }

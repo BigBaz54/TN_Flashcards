@@ -10,7 +10,7 @@ public class StatDeck {
     private int nbTimesCorrect;
     private int nbTimesWrong;
     private int nbCardsSeen;
-    private Long timesSpent;
+    private long timesSpent;
     private ArrayList<StatCard> cards;
     private Date lastOpened;
     private Date creationDate;

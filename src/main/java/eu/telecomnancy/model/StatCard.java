@@ -23,7 +23,6 @@ public class StatCard {
         this.nbTimesCorrect = 0;
         this.nbTimesWrong = 0;
         this.timesSpent = new ArrayList<>();
-        this.timesSpent.add(0L);
     }
 
     public int getNbTimesSeen() {

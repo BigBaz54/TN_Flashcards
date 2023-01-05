@@ -5,6 +5,7 @@ import java.util.Date;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.Media;
 
 public class DeckController {
     private DeckModel deckModel;
@@ -27,6 +28,9 @@ public class DeckController {
 
     public void addCard(String question, String answer) {
         deckModel.addCard(question, answer);
+    }
+    public void addCard(String question, String answer,Media media) {
+        deckModel.addCard(question,answer, media);
     }
 
     public void removeCard(int card) {

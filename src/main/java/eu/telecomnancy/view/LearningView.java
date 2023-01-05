@@ -69,7 +69,9 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @Override
     public void react() {
-        time = 0;
+        if (learning.isFinished()){
+            toDeckView();
+        }
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         if(mode == CardMode.RECTO){
@@ -117,15 +119,13 @@ public class LearningView extends DeckObserver implements Initializable {
     @FXML
     public void right() {
         mode = CardMode.RECTO;
-        deckController.updateStatCard(true, time);
-        deckController.nextCard(drawCardStrategy);
+        learning.nextCard(true);
     }
 
     @FXML
     public void wrong() {
         mode = CardMode.RECTO;
-        deckController.updateStatCard(false, time);
-        deckController.nextCard(drawCardStrategy);
+        learning.nextCard(false);
     }
 
     

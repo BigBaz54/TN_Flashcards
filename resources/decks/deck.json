@@ -3,10 +3,10 @@
     {
       "question": "Pourquoi LV est moche ?",
       "answer": "Feur",
-      "probability": 0.3280939,
+      "probability": 0.020505868,
       "statCard": {
-        "nbTimesSeen": 34,
-        "nbTimesCorrect": 13,
+        "nbTimesSeen": 38,
+        "nbTimesCorrect": 17,
         "nbTimesWrong": 21,
         "timesSpent": [
           2796,
@@ -42,7 +42,11 @@
           1476,
           1553,
           1429,
-          891
+          891,
+          7314,
+          3841,
+          1792,
+          55844
         ]
       },
       "tags": [],
@@ -76,10 +80,10 @@
     {
       "question": "Est ce que la sauvegarde fonctionne ?",
       "answer": "Oui",
-      "probability": 0.321167,
+      "probability": 0.08029175,
       "statCard": {
-        "nbTimesSeen": 15,
-        "nbTimesCorrect": 8,
+        "nbTimesSeen": 17,
+        "nbTimesCorrect": 10,
         "nbTimesWrong": 7,
         "timesSpent": [
           2238,
@@ -96,7 +100,9 @@
           809,
           861,
           2457,
-          943
+          943,
+          2291,
+          1424
         ]
       },
       "tags": []
@@ -137,12 +143,12 @@
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 0,
+    "nbTimesOpened": 1,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1672858275777,
+    "lastOpened": 1672946331334,
     "creationDate": 1672858275777
   },
   "name": "deck",

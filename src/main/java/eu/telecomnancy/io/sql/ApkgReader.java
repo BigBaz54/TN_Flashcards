@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import eu.telecomnancy.model.DeckModel;
+
 public class ApkgReader {
     Connection conn = null;
     File apkg;
@@ -26,8 +28,19 @@ public class ApkgReader {
         this.apkg = file;
     }
 
-    public ArrayList<String[]> getNotes() throws SQLException {
+    public void apkgToDeckModel(DeckModel model) throws SQLException, IOException {
+        ArrayList<String[]> notes = getNotes();
+        model.setName(apkg.getName().substring(0, apkg.getName().length() - 5));
+        for (String[] note : notes) {
+            model.addCard(note[0], note[1]);
+        }
+    }
+
+    public ArrayList<String[]> getNotes() throws SQLException, IOException {
         ArrayList<String[]> notes = new ArrayList<String[]>();
+
+        // Extract the anki2 file from the apkg file
+        extractAnki2();
 
         if (isAnki2()) {
             anki2ToDb();
@@ -95,7 +108,7 @@ public class ApkgReader {
         return apkg.getName().endsWith(".apkg");
     }
 
-    public void extractAnki2() throws IOException {
+    private void extractAnki2() throws IOException {
         if (isApkg()) {
             apkgToZip();
         }

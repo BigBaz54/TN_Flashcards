@@ -6,8 +6,7 @@ import javafx.scene.layout.Pane;
 
 public class BuildCardStrategyHint extends BuildCardStrategy{
     
-    public BuildCardStrategyHint(CardModel card) {
-        super(card);
+    public BuildCardStrategyHint() {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoHint.fxml"));
         loader.setController(this);
@@ -28,9 +27,17 @@ public class BuildCardStrategyHint extends BuildCardStrategy{
             e.printStackTrace();
         }  
 
+    }
+
+    public Pane buildRecto(CardModel card){
         rectoLabel.setText(card.getQuestion());
         versoLabel.setText(card.getAnswer());
-        //hintLabel.setText(card.getHint());
+        return recto;
+    }
+    public Pane buildVerso(CardModel card){
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        return verso;
     }
 
 

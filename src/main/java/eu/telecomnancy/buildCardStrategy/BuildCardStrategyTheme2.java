@@ -7,9 +7,7 @@ import javafx.scene.layout.StackPane;
 
 public class BuildCardStrategyTheme2 extends BuildCardStrategy{
 
-    public BuildCardStrategyTheme2(CardModel card) {
-
-        super(card);
+    public BuildCardStrategyTheme2() {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoTN.fxml"));
         loader.setController(this);
@@ -34,5 +32,19 @@ public class BuildCardStrategyTheme2 extends BuildCardStrategy{
         versoLabel.setText(card.getAnswer());
 
     }
+
+    public Pane buildRecto(CardModel card){
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        return recto;
+    }
+
+    public Pane buildVerso(CardModel card){
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        return verso;
+    }
+
+
 
 }

@@ -11,8 +11,7 @@ import javafx.scene.layout.StackPane;
 public class BuildCardStrategyClassic extends BuildCardStrategy{
 
 
-    public BuildCardStrategyClassic(CardModel card) {
-        super(card);
+    public BuildCardStrategyClassic() {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoClassic.fxml"));
         loader.setController(this);
@@ -32,11 +31,19 @@ public class BuildCardStrategyClassic extends BuildCardStrategy{
         } catch (Exception e) {
             e.printStackTrace();
         }  
+        
+  
+    }
 
+    public Pane buildRecto(CardModel card){
         rectoLabel.setText(card.getQuestion());
         versoLabel.setText(card.getAnswer());
-        
-        
+        return recto;
+    }
+    public Pane buildVerso(CardModel card){
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        return verso;
     }
 
 

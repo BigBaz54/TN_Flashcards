@@ -110,7 +110,7 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void toGlobalView() {
-
+        stageController.setGlobalView();
     }
 
     @FXML

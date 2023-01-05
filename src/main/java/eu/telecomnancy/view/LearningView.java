@@ -141,7 +141,7 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @FXML
     public void toSettingsView() {
-
+        stageController.setSettingsView();
     }
 
     // Retour//

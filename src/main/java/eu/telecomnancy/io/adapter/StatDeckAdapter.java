@@ -7,13 +7,9 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-
-import eu.telecomnancy.model.StatCard;
 import eu.telecomnancy.model.StatDeck;
 
 public class StatDeckAdapter extends TypeAdapter<StatDeck> {
-    private StatCardAdapter statCardAdapter = new StatCardAdapter();
-
     @Override
     public void write(JsonWriter out, StatDeck value) throws IOException {
         // TODO: Add StatCards

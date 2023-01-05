@@ -2,6 +2,7 @@ package eu.telecomnancy.io;
 
 import java.io.File;
 import eu.telecomnancy.controller.DeckListController;
+import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;
 
@@ -12,13 +13,12 @@ public class FileController {
     private FileImporter fileImporter;
     private FileExporter fileExporter;
 
-    public FileController(FileReader<DeckModel> fileReader,
-            FileWriter fileWriter) {
-        this.fileLoader = new FileLoader(fileReader);
-        this.fileSaver = new FileSaver(fileWriter);
-        this.fileWriter = fileWriter;
-        this.fileImporter = new FileImporter();
-        this.fileExporter = new FileExporter();
+    public FileController() {
+        fileWriter = new FileWriter();
+        fileLoader = new FileLoader(new FileReader<DeckModel>(new JsonFormatterDeck()));
+        fileSaver = new FileSaver(fileWriter);
+        fileImporter = new FileImporter();
+        fileExporter = new FileExporter();
     }
 
     public void setDeckListController(DeckListController deckListController) {

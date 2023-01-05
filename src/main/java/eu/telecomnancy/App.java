@@ -34,17 +34,18 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage)  {
+    public void start(Stage primaryStage) {
         StageModel stageModel = new StageModel();
         StageController stageController = new StageController(stageModel);
 
         // FileController
-        FileController fileController = new FileController(new FileReader<DeckModel>(new JsonFormatterDeck()),
-                new FileWriter());
+        FileController fileController = new FileController();
 
         // GlobalView
         DeckListModel deckList = new DeckListModel();
         DeckListController deckListController = new DeckListController(deckList, fileController);
+
+        // Load decks after the controller is set
         fileController.loadDecks();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));

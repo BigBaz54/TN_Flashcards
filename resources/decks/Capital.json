@@ -1,0 +1,127 @@
+{
+  "cards": [
+    {
+      "question": "Capital de la france",
+      "answer": "paris",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 3,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          0,
+          0,
+          0
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "capital de l\u0027angletere",
+      "answer": "londre",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          0
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "capital de la lituanie",
+      "answer": "La capitale de la Lituanie est Vilnius.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          0
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "capital pays-bas",
+      "answer": "La capitale des Pays-Bas est Amsterdam.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          0
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "Capital de l\u0027espagne? ",
+      "answer": "La capitale de l\u0027Espagne est Madrid.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          0
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": " Capital de l\u0027allemagne?",
+      "answer": "La capitale de l\u0027Allemagne est Berlin.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Capital de l\u0027italie? ",
+      "answer": "La capitale de l\u0027Italie est Rome.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": " Capital de la norvege?",
+      "answer": "La capitale de la Norvège est Oslo.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          0
+        ]
+      },
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "statDeck": {
+    "nbTimesOpened": 0,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "statCards": [],
+    "lastOpened": 1672930461970,
+    "creationDate": 1672930461970
+  },
+  "name": "Capital",
+  "description": ""
+}

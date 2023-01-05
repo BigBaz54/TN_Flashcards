@@ -3,11 +3,11 @@ package eu.telecomnancy.model;
 import java.io.File;
 
 public class Media {
-    private File file;
+    private String fileName;
     private MediaType type;
 
-    public Media(File file, MediaType type) {
-        this.file = file;
+    public Media(String fileName, MediaType type) {
+        this.fileName = fileName;
         this.type = type;
     }
 
@@ -15,15 +15,28 @@ public class Media {
     }
 
     public File getFile() {
-        return file;
+        String path = "resources/";
+        switch (type) {
+            case IMG:
+                path += "images/";
+                break;
+            case AUDIO:
+                path += "sounds/";
+                break;
+            case VIDEO:
+                path += "videos/";
+                break;
+        }
+
+        return new File(path + fileName);
     }
 
     public MediaType getType() {
         return type;
     }
 
-    public void setFile(File file) {
-        this.file = file;
+    public void setFile(String fileName) {
+        this.fileName = fileName;
     }
 
     public void setType(MediaType type) {

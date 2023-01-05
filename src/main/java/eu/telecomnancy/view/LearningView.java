@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategyTheme2;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
@@ -16,6 +17,8 @@ import eu.telecomnancy.observer.DeckObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -28,6 +31,11 @@ public class LearningView extends DeckObserver implements Initializable {
     private StageController stageController;
     private BuildCardStrategy buildCardStrategy;
     private DrawCardStrategy drawCardStrategy;
+    private ToggleGroup style = new ToggleGroup();
+    @FXML
+    private RadioMenuItem classic;
+    @FXML
+    private RadioMenuItem theme2;
 
 
     @FXML
@@ -70,11 +78,16 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //LearningCardView activeCard = new LearningCardView(deckModel.getActiveCard(),deckModel, deckController);
+        // cardView
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         cardContainer.setCenter(buildCardStrategy.buildRecto());
+        // Settings
+        classic.setToggleGroup(style);
+        theme2.setToggleGroup(style);
         
     }
+
+    // Card //
 
     @FXML
     public void returnCard(){
@@ -102,6 +115,35 @@ public class LearningView extends DeckObserver implements Initializable {
         deckController.nextCard(drawCardStrategy);
     }
 
+    // Menu //
+
+
+
+    @FXML
+    public void setBuildClassic(){
+        buildCardStrategy = new BuildCardStrategyClassic(deckModel.getCard(deckModel.getActiveCard()));
+        react();
+    }
+    @FXML
+    public void setBuildTN(){
+        System.out.println("Theme 2");
+        buildCardStrategy = new BuildCardStrategyTheme2(deckModel.getCard(deckModel.getActiveCard()));
+        react();
+    }
+    @FXML
+    public void setDrawRandom(){
+        drawCardStrategy = new DrawCardStrategyRandom();
+    }
+    @FXML
+    public void setDrawTime(){
+        drawCardStrategy = new DrawCardStrategyTime();
+    }
+
+
+
+
+
+    // Sidebar //
 
     @FXML
     public void seeMenu() {
@@ -119,6 +161,10 @@ public class LearningView extends DeckObserver implements Initializable {
     public void toSettingsView(){
         
     }
+
+
+    //Retour//
+
     @FXML
     public void toDeckView(){
         stageController.setDeckView(deckModel);

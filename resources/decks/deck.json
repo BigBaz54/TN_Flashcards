@@ -4,6 +4,10 @@
         "question": "Pourquoi LV est moche ?",
         "answer": "Feur",
         "probability": 1.0,
+        "media": {
+            "file": "logo_UL.jpg",
+            "type": "IMG"
+        },
         "tags": []
       },
       {

@@ -10,15 +10,6 @@ import javafx.scene.layout.StackPane;
 
 public class BuildCardStrategyClassic extends BuildCardStrategy{
 
-    @FXML
-    public Pane recto;
-    @FXML
-    public Pane verso;
-    @FXML
-    public Label rectoLabel;
-    @FXML
-    public Label versoLabel;
-
 
     public BuildCardStrategyClassic(CardModel card) {
         super(card);
@@ -48,14 +39,5 @@ public class BuildCardStrategyClassic extends BuildCardStrategy{
         
     }
 
-    @Override
-    public Pane buildRecto() {
-        return recto;
-    }
-
-    @Override
-    public Pane buildVerso() {
-        return verso;
-    }
 
 }

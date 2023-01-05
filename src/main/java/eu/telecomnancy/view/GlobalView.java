@@ -44,7 +44,7 @@ public class GlobalView extends DeckListObserver implements Initializable {
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell(this, deckListController, stageController));
+        deckListView.setCellFactory(param -> new DeckCell(this, deckListController, stageController, deckListModel.getBuildCardStrategy(), deckListModel.getDrawCardStrategy()));
         deckListView.getItems().addAll(deckListModel.getDecks());
         // vbox.setAlignment(Pos.CENTER);
         deckListView.setMinWidth(1200);

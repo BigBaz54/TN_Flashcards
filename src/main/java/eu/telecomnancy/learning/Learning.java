@@ -29,4 +29,8 @@ public abstract class Learning {
         }
         statLearning.incrementTimePlayed(timeSpent);
     }
+
+    public StatLearning getStatLearning() {
+        return statLearning;
+    }
 }

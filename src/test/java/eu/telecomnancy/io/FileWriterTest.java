@@ -3,14 +3,12 @@ package eu.telecomnancy.io;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
-import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;
 import eu.telecomnancy.model.MediaType;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class FileWriterTest {
     @Test

@@ -3,6 +3,7 @@ target/
 
 # Ignore vscode files
 .DS_Store
+**/.DS_Store
 
 # Intellij gitignore
 # User-specific stuff

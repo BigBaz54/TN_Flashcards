@@ -25,6 +25,10 @@ public class FileLoader {
         File dir = new File("resources/decks");
 
         for (File file : dir.listFiles()) {
+            if (file.isDirectory() || (file.getName().split("\\.").length > 1
+                    && !file.getName().split("\\.")[1].equals("json"))) {
+                continue;
+            }
             DeckModel deck = deckListController.createEmptyDeck();
             loadDeck(file, deck);
         }

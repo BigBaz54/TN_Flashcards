@@ -63,7 +63,7 @@ public class LearningView extends DeckObserver implements Initializable {
         time = 0;
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        buildCardStrategy = new BuildCardStrategyClassic();
+        buildCardStrategy = deckModel.getBuildCardStrategy();
         if(mode == CardMode.RECTO){
             setNodeVisibility(false, right, wrong);
             cardContainer.setCenter(buildCardStrategy.buildRecto(card));
@@ -77,6 +77,7 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        style.selectToggle(classic);
         // cardView
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         cardContainer.setCenter(buildCardStrategy.buildRecto(card));
@@ -120,25 +121,22 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @FXML
     public void setBuildClassic(){
-        buildCardStrategy = new BuildCardStrategyClassic();
-        react();
+        deckController.setBuildCardStrategy(new BuildCardStrategyClassic());
     }
 
     @FXML
     public void setBuildTN() {
-        System.out.println("Theme 2");
-        buildCardStrategy = new BuildCardStrategyTheme2();
-        react();
+        deckController.setBuildCardStrategy(new BuildCardStrategyTheme2());
     }
 
     @FXML
     public void setDrawRandom() {
-        drawCardStrategy = new DrawCardStrategyRandom();
+        deckController.setDrawCardStrategy(new DrawCardStrategyRandom());
     }
 
     @FXML
     public void setDrawTime() {
-        drawCardStrategy = new DrawCardStrategyTime();
+        deckController.setDrawCardStrategy(new DrawCardStrategyTime());
     }
 
     // Sidebar //

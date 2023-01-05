@@ -37,10 +37,10 @@
 }
 
 .tn {
-    -fx-background-color: rgb(233, 149, 110);
-    -fx-text-fill: #370848;
+    -fx-background-color: rgb(239, 179, 152);
+    -fx-text-fill: #280039;
 }
 
 .tn-label {
-    -fx-text-fill: #370848;
+    -fx-text-fill: #280039
 }

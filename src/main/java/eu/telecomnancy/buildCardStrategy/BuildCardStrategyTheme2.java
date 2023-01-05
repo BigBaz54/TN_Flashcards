@@ -2,6 +2,7 @@ package eu.telecomnancy.buildCardStrategy;
 
 import eu.telecomnancy.model.CardModel;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 public class BuildCardStrategyTheme2 extends BuildCardStrategy {
 
@@ -24,9 +25,6 @@ public class BuildCardStrategyTheme2 extends BuildCardStrategy {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        rectoLabel.setText(card.getQuestion());
-        versoLabel.setText(card.getAnswer());
 
     }
 

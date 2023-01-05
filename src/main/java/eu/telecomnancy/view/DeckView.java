@@ -8,6 +8,7 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
+import eu.telecomnancy.learning.LearningTimeLimit;
 import eu.telecomnancy.learning.LearningXCards;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
@@ -133,7 +134,7 @@ public class DeckView extends DeckObserver implements Initializable {
         float min = Float.valueOf(timeField.getText());
         if(min != 0){
             int milis = (int) Math.round(min * 60000);
-            Learning learning = new LearningXTimes(deckController, drawCardStrategy, milis);
+            Learning learning = new LearningTimeLimit(deckController, drawCardStrategy, milis);
             stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
         }
     }

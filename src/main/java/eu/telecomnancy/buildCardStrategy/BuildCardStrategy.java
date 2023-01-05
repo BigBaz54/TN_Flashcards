@@ -23,8 +23,12 @@ public abstract class BuildCardStrategy {
         this.card = card;
     }
 
-    public abstract Pane buildRecto();
-    public abstract Pane buildVerso();
+    public Pane buildRecto(){
+        return recto;
+    }
+    public Pane buildVerso(){
+        return verso;
+    }
 
 
 

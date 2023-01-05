@@ -6,6 +6,7 @@ import eu.telecomnancy.controller.CardController;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.Media;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +14,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+//import javafx.scene.media.MediaPlayer;
+//import javafx.scene.media.MediaView;
 
 public class CardView {
 
@@ -32,6 +35,8 @@ public class CardView {
     private TextField answerEdit;
     @FXML
     private Button delete;
+    @FXML
+    private Button mediaIcon;
 
     private Mode mode;
     private DeckController deckController;
@@ -75,6 +80,13 @@ public class CardView {
             cardController.setAnswer(newValue);
         });
 
+        // Vue d'un média
+        if (card.getMedia() != null) {
+            mediaIcon.setVisible(true);
+        }else{
+            mediaIcon.setVisible(false);
+        }
+
     }
 
     @FXML
@@ -87,6 +99,14 @@ public class CardView {
             n.setVisible(visible);
             n.setManaged(visible);
         }
+    }
+
+    @FXML
+    public void seeMedia() {
+        Media media = card.getMedia();
+        if (media != null) {
+        }
+        
     }
 
 }

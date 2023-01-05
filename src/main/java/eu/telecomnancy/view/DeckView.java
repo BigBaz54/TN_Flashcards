@@ -100,7 +100,6 @@ public class DeckView extends DeckObserver implements Initializable {
         }
         for (int i = 0; i < n; i++) {
             CardModel card = deckModel.getCards().get(i);
-            System.out.println(card.getQuestion());
             CardView cardView = new CardView(card, deckModel, deckController, mode);
             cardView.root.setPrefSize(400, 170);
             gridpane.add(cardView.root, i % 3, i / 3);

@@ -91,7 +91,7 @@
          <children>
             <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0" styleClass="toolBar">
               <items>
-                  <Button mnemonicParsing="false" text="Mes paquets">
+                  <Button mnemonicParsing="false" text="Mes paquets" onAction="#toGlobalView">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -101,7 +101,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" text="Paramètres">
+                  <Button mnemonicParsing="false" text="Paramètres" onAction="#toSettingsView">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

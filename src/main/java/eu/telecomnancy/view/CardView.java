@@ -1,21 +1,28 @@
 package eu.telecomnancy.view;
 
 import java.io.IOException;
+import java.net.URL;
 
 import eu.telecomnancy.controller.CardController;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;
+import eu.telecomnancy.model.MediaType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-//import javafx.scene.media.MediaPlayer;
-//import javafx.scene.media.MediaView;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 public class CardView {
 
@@ -105,6 +112,28 @@ public class CardView {
     public void seeMedia() {
         Media media = card.getMedia();
         if (media != null) {
+            if(media.getType()!=MediaType.IMG){
+                javafx.scene.media.Media m = new javafx.scene.media.Media(media.getFile().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(m);
+                MediaView mediaView = new MediaView(mediaPlayer);
+                mediaPlayer.play();
+                Stage stage = new Stage();
+                stage.setTitle("Media");
+                BorderPane root = new BorderPane();
+                root.setCenter(mediaView);
+                stage.setScene(new javafx.scene.Scene(root, 640, 480));
+                stage.show();
+            }else {
+                Image img = new Image("resources/images/"+media.getName());
+                ImageView view = new ImageView(img);
+                Stage stage = new Stage();
+                stage.setTitle("Image");
+                BorderPane root = new BorderPane();
+                root.setCenter(view);
+                stage.setScene(new Scene(root));
+                stage.show();
+                
+            }
         }
         
     }

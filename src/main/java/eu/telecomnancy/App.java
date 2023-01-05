@@ -43,9 +43,8 @@ public class App extends Application {
             Scene scene = new Scene(root, 1200, 900);
 
             // StatDeck
-            StatDeckList statDeckList = deckList.getStatDeck();
             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("StatsView.fxml"));
-            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController, deckList.getStatDeck()));
+            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
             StageView stageView = new StageView(primaryStage, stageModel, stageController, scene, scene2);

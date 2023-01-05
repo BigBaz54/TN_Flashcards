@@ -77,7 +77,7 @@
                                         <NumberAxis side="LEFT" />
                                       </yAxis>
                                     </LineChart>
-                                    <BarChart fx:id="barCharPourcentage" GridPane.rowIndex="2">
+                                    <BarChart fx:id="barChartPourcentage" GridPane.rowIndex="2">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>

@@ -77,6 +77,7 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        style.selectToggle(classic);
         // cardView
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         cardContainer.setCenter(buildCardStrategy.buildRecto(card));

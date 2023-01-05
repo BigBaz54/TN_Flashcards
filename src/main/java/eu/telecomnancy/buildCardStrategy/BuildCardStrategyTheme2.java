@@ -26,9 +26,6 @@ public class BuildCardStrategyTheme2 extends BuildCardStrategy {
             e.printStackTrace();
         }
 
-        rectoLabel.setText(card.getQuestion());
-        versoLabel.setText(card.getAnswer());
-
     }
 
     public Pane buildRecto(CardModel card){

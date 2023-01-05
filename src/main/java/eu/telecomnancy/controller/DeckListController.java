@@ -49,8 +49,18 @@ public class DeckListController {
         }
     }
 
-    public void importDeck(DeckModel deck) {
+    public void addDeck(DeckModel deck) {
         deckListModel.addDeck(deck);
     }
 
+    public void importDeck() {
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            fileController.importFromFile(file);
+        }
+    }
 }

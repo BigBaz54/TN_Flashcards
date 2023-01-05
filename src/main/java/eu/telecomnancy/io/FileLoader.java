@@ -38,7 +38,7 @@ public class FileLoader {
         if (file.isFile()) {
             try {
                 fileReader.read(file.getName(), deck);
-                deckListController.importDeck(deck);
+                deckListController.addDeck(deck);
             } catch (Exception e) {
                 e.printStackTrace();
             }

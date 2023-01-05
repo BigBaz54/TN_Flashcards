@@ -77,7 +77,7 @@ public class StatLearning {
         }
     }
 
-    public HashMap getTimePlayedByTag() {
+    public HashMap<String, Long> getTimePlayedByTag() {
         return timePlayedByTag;
     }
 

@@ -1,5 +1,8 @@
 package eu.telecomnancy.learning;
 
+import java.util.ArrayList;
+
+import eu.telecomnancy.CardTag;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.StatLearning;
@@ -23,11 +26,19 @@ public abstract class Learning {
     }
 
     protected void updateStatLearning(boolean goodAnswer, Long timeSpent) {
+        ArrayList<CardTag> tags = deckController.getDeckModel().getCard(deckController.getDeckModel().getActiveCard()).getTags();
+        for (CardTag tag : tags) {
+            statLearning.incrementNbPlayedByTag(tag.getName());
+            if (goodAnswer) {
+                statLearning.incrementNbCorrectByTag(tag.getName());
+            }
+        }
         statLearning.incrementNbPlayed();
         if (goodAnswer) {
             statLearning.incrementNbCorrect();
         }
         statLearning.incrementTimePlayed(timeSpent);
+        statLearning.addTimeCard(timeSpent);
     }
 
     public StatLearning getStatLearning() {

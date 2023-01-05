@@ -4,6 +4,12 @@
       "question": "Hello",
       "answer": "Bonjour",
       "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
       "tags": []
     }
   ],
@@ -15,8 +21,8 @@
     "nbCardsSeen": 0,
     "timesSpent": 0,
     "statCards": [],
-    "lastOpened": 1672914038586,
-    "creationDate": 1672914038586
+    "lastOpened": 1672928478924,
+    "creationDate": 1672928478924
   },
   "name": "test write 2",
   "description": "This is a test"

@@ -13,6 +13,7 @@ import eu.telecomnancy.model.Media;
 
 public class CardAdapter extends TypeAdapter<CardModel> {
     private MediaAdapter mediaAdapter = new MediaAdapter();
+    private StatCardAdapter statCardAdapter = new StatCardAdapter();
 
     @Override
     public void write(JsonWriter out, CardModel value) throws IOException {
@@ -23,6 +24,8 @@ public class CardAdapter extends TypeAdapter<CardModel> {
         out.value(value.getAnswer());
         out.name("probability");
         out.value(value.getProbability());
+        out.name("statCard");
+        statCardAdapter.write(out, value.getStatCard());
         out.name("tags");
         out.beginArray();
         for (CardTag tag : value.getTags()) {
@@ -57,6 +60,9 @@ public class CardAdapter extends TypeAdapter<CardModel> {
             }
             if ("probability".equals(fieldName)) {
                 card.setProbability(Float.parseFloat(in.nextString()));
+            }
+            if ("statCard".equals(fieldName)) {
+                card.setStatCard(statCardAdapter.read(in));
             }
             if ("tags".equals(fieldName)) {
                 in.beginArray();

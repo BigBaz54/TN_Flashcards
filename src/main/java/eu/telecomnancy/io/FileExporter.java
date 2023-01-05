@@ -17,7 +17,7 @@ public class FileExporter {
      * or videos
      * Assess that the deck as already been saved
      */
-    public void export(DeckModel deckModel) throws IOException {
+    public void export(DeckModel deckModel, File export) throws IOException {
         ArrayList<File> files = new ArrayList<File>();
         files.add(new File("resources/decks/" + deckModel.getName() + ".json"));
 
@@ -31,8 +31,7 @@ public class FileExporter {
             }
         }
 
-        File zipFile = new File("resources/exports/" + deckModel.getName() + ".zip");
-        FileOutputStream stream = new FileOutputStream(zipFile);
+        FileOutputStream stream = new FileOutputStream(export);
         ZipOutputStream zipOutputStream = new ZipOutputStream(stream);
 
         for (File file : files) {

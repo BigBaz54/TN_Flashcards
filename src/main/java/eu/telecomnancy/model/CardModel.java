@@ -80,4 +80,8 @@ public class CardModel extends Observed {
     public void setMedia(Media media) {
         this.media = media;
     }
+
+    public void setStatCard(StatCard statCard) {
+        this.statCard = statCard;
+    }
 }

@@ -3,12 +3,14 @@ package eu.telecomnancy.io;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
+import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;
 import eu.telecomnancy.model.MediaType;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FileWriterTest {
     @Test
@@ -32,7 +34,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite2() {
-        DeckModel deckModel = new DeckModel("test write 2", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 2");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
         jsonFormatter.setPretty(true);
@@ -51,7 +55,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite3() {
-        DeckModel deckModel = new DeckModel("test write 3", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 3");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
@@ -71,7 +77,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite4() {
-        DeckModel deckModel = new DeckModel("test write 4", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 4");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         deckModel.addTag("test");
@@ -93,7 +101,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite5() {
-        DeckModel deckModel = new DeckModel("test write 5", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 5");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         deckModel.addTag("test");

@@ -10,8 +10,9 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class FileImporter {
-    public void imports(File file) throws IOException {
+    public File imports(File file) throws IOException {
         File destDir = new File("resources");
+        File deck = null;
 
         byte[] buffer = new byte[1024];
         ZipInputStream zis = new ZipInputStream(new FileInputStream(file));
@@ -20,10 +21,11 @@ public class FileImporter {
         while (zipEntry != null) {
             File newFile = newFile(destDir, zipEntry);
 
-            if (!checkFileSubDir(zipEntry)) {
-                zis.closeEntry();
-                zis.close();
-                throw new RuntimeException("Invalid entry");
+            // Remove the files added in zip by MAC OS
+            if (".DS_Store".equals(newFile.getName()) || "__MACOSX".equals(newFile.getName())
+                    || "._.DS_Store".equals(newFile.getName())) {
+                zipEntry = zis.getNextEntry();
+                continue;
             }
 
             if (zipEntry.isDirectory()) {
@@ -34,6 +36,16 @@ public class FileImporter {
                 }
                 zipEntry = zis.getNextEntry();
                 continue;
+            }
+
+            if (!checkFileSubDir(zipEntry)) {
+                zis.closeEntry();
+                zis.close();
+                throw new RuntimeException("Invalid entry");
+            }
+
+            if (zipEntry.getName().endsWith(".json")) {
+                deck = newFile;
             }
 
             FileOutputStream fos = new FileOutputStream(newFile);
@@ -49,6 +61,12 @@ public class FileImporter {
 
         zis.closeEntry();
         zis.close();
+
+        if (deck == null) {
+            throw new RuntimeException("No deck found");
+        }
+
+        return deck;
     }
 
     private File newFile(File destDir, ZipEntry entry) {
@@ -66,9 +84,11 @@ public class FileImporter {
 
     private boolean checkFileSubDir(ZipEntry entry) {
         File file = new File(entry.getName());
+        File parent = file.getParentFile();
+        System.out.println(entry.getName());
 
-        List<String> validSubDir = Arrays.asList("decks", "exports", "images", "sounds", "videos");
+        List<String> validSubDir = Arrays.asList("decks", "exports", "images", "sounds", "videos", "test");
 
-        return validSubDir.contains(file.getParentFile().getName());
+        return parent != null ? validSubDir.contains(parent.getName()) : false;
     }
 }

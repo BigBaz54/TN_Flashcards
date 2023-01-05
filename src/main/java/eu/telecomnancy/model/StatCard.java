@@ -12,8 +12,8 @@ public class StatCard {
      * How to record time
      * Long startTime = System.currentTimeMillis();
      * Do something
-     * long endTime = System.currentTimeMillis();
-     * long duration = (endTime - startTime);
+     * Long endTime = System.currentTimeMillis();
+     * Long duration = (endTime - startTime);
      */
 
     public StatCard() {

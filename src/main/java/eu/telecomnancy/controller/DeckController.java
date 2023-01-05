@@ -55,7 +55,7 @@ public class DeckController {
         deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel));
     }
 
-    public void updateStatCard(boolean goodAnswer, long timeSpent) {
+    public void updateStatCard(boolean goodAnswer, Long timeSpent) {
         CardModel currentCard = deckModel.getCard(deckModel.getActiveCard());
         currentCard.getStatCard().setNbTimesSeen(currentCard.getStatCard().getNbTimesSeen() + 1);
         if (goodAnswer) {

@@ -54,9 +54,9 @@ public class FileController {
     }
 
     public void importDeck(File file) {
-        FileWriter.createDir();
         try {
-            fileImporter.imports(file);
+            File deck = fileImporter.imports(file);
+            fileLoader.loadDeck(deck);
         } catch (Exception e) {
             e.printStackTrace();
         }

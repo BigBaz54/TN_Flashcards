@@ -25,12 +25,16 @@ public class FileLoader {
         File dir = new File("resources/decks");
 
         for (File file : dir.listFiles()) {
-            if (file.isFile()) {
-                try {
-                    deckListController.importDeck(fileReader.read(file.getName()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            loadDeck(file);
+        }
+    }
+
+    public void loadDeck(File file) {
+        if (file.isFile()) {
+            try {
+                deckListController.importDeck(fileReader.read(file.getName()));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

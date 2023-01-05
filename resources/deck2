@@ -1,0 +1,93 @@
+{
+  "cards": [
+    {
+      "question": "Pourquoi LV est moche ?",
+      "answer": "Feur",
+      "probability": 1.0,
+      "tags": ["moche", "beaute", "lv"],
+      "media": {},
+      "statCard": {
+        "nbTimesCorrect": 5,
+        "nbTimesWrong": 3,
+        "nbTimesSeen": 8,
+        "timesSpent": []
+      }
+    },
+    {
+      "question": "Pourquoi Thigro est moche ?",
+      "answer": "Cringe",
+      "probability": 1.0,
+      "tags": ["moche", "beaute", "thigro"],
+      "media":{},
+      "statCard": {
+        "nbTimesCorrect": 10,
+        "nbTimesWrong": 4,
+        "nbTimesSeen": 14,
+        "timesSpent": []
+      }
+    },
+    {
+      "question": "Pourquoi Cora est magnifique ?",
+      "answer": "Parceque",
+      "probability": 1.0,
+      "tags": ["magnifique", "beaute", "cora"],
+      "media": {},
+      "statCard": {
+        "nbTimesCorrect": 5,
+        "nbTimesWrong": 0,
+        "nbTimesSeen": 5,
+        "timesSpent": []
+      }
+    },
+    {
+      "question": "Pourquoi Louis est cringe ?",
+      "answer": "Ligma",
+      "probability": 1.0,
+      "tags": ["cringe", "charactere", "louis"],
+      "media": {},
+      "statCard" :{
+      "nbTimesCorrect": 0,
+      "nbTimesWrong":9 ,
+      "nbTimesSeen": 9,
+      "timesSpent": []
+    }
+    }
+  ],
+  "statDeck": {
+    "nbTimesOpened": 9,
+    "nbTimesCorrect": 20,
+    "nbTimesWrong": 16,
+    "nbCardsSeen": 36,
+    "timesSpent": 0,
+    "statCards": [
+      {
+        "nbTimesCorrect": 5,
+        "nbTimesWrong": 3,
+        "nbTimesSeen": 8,
+        "timesSpent": []
+      },
+      {
+        "nbTimesCorrect": 10,
+        "nbTimesWrong": 4,
+        "nbTimesSeen": 14,
+        "timesSpent": []
+      },
+      {
+        "nbTimesCorrect": 5,
+        "nbTimesWrong": 0,
+        "nbTimesSeen": 5,
+        "timesSpent": []
+      },
+      {
+        "nbTimesCorrect": 0,
+        "nbTimesWrong":9 ,
+        "nbTimesSeen": 9,
+        "timesSpent": []
+      }
+    ],
+    "lastOpened": 1672858275777,
+    "creationDate": 1672858275777
+  },
+  "name": "deck2",
+  "description": "wow style le deck"
+}

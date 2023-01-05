@@ -1,4 +1,4 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.file;
 
 import java.io.File;
 import java.net.URL;

@@ -2,6 +2,8 @@ package eu.telecomnancy.io;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+
+import eu.telecomnancy.io.file.FileWriter;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;

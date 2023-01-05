@@ -137,13 +137,12 @@
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 8,
+    "nbTimesOpened": 0,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "statCards": [],
-    "lastOpened": 1672939061834,
+    "lastOpened": 1672858275777,
     "creationDate": 1672858275777
   },
   "name": "deck",

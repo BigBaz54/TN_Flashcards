@@ -9,24 +9,17 @@ import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 
 public class DeckListModel extends Observed {
     private final ArrayList<DeckModel> decks;
-    private StatDeckList statDeck;
     private DrawCardStrategy drawCardStrategy;
     private BuildCardStrategy buildCardStrategy;
 
-    public StatDeckList getStatDeck() {
-        return statDeck;
-    }
-
     public DeckListModel() {
         decks = new ArrayList<>();
-        statDeck = new StatDeckList();
         buildCardStrategy = new BuildCardStrategyClassic();
         drawCardStrategy = new DrawCardStrategyWeighted();
     }
 
     public DeckListModel(ArrayList<DeckModel> decks) {
         this.decks = decks;
-        statDeck = new StatDeckList();
         drawCardStrategy = new DrawCardStrategyWeighted();
         buildCardStrategy = new BuildCardStrategyClassic();
     }
@@ -34,13 +27,11 @@ public class DeckListModel extends Observed {
     public void createDeck(String name, String description) {
         DeckModel deck = new DeckModel(name, description);
         decks.add(deck);
-        statDeck.addDeck(deck.getStatDeck());
         notifyObservers();
     }
 
     public void addDeck(DeckModel deck) {
         decks.add(deck);
-        statDeck.addDeck(deck.getStatDeck());
         notifyObservers();
     }
 

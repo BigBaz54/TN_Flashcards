@@ -1,4 +1,4 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.file;
 
 import java.io.File;
 
@@ -38,7 +38,7 @@ public class FileLoader {
         if (file.isFile()) {
             try {
                 fileReader.read(file.getName(), deck);
-                deckListController.importDeck(deck);
+                deckListController.addDeck(deck);
             } catch (Exception e) {
                 e.printStackTrace();
             }

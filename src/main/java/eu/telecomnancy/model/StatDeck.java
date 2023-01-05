@@ -97,6 +97,7 @@ public class StatDeck {
     public void setTimesSpent(Long timesSpent) {
         this.timesSpent = timesSpent;
     }
+
     public void setLastOpened(Date lastOpened) {
         this.lastOpened = lastOpened;
     }

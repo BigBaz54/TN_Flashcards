@@ -58,6 +58,7 @@
       <VBox alignment="CENTER_RIGHT" prefHeight="250.0" prefWidth="90.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="deleteButton" mnemonicParsing="false" styleClass="croix" stylesheets="@../styles/card.css" text="x"  onAction="#removeDeck" />
+            <Button fx:id="exportBtn" mnemonicParsing="false" styleClass="croix" stylesheets="@../styles/card.css" text="export"  onAction="#exportDeck" />
          </children>
       </VBox>
    </left>

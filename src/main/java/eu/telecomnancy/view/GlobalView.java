@@ -69,10 +69,10 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void switchMode() {
-        if (mode == Mode.VIEW)
-            mode = Mode.EDIT;
-        else
+        if (mode == Mode.EDIT)
             mode = Mode.VIEW;
+        else
+            mode = Mode.EDIT;
         deckListView.refresh();
     }
 
@@ -82,6 +82,11 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void exportDeck() {
+        if (mode == Mode.EXPORT)
+            mode = Mode.VIEW;
+        else
+            mode = Mode.EXPORT;
+        deckListView.refresh();
     }
 
     @FXML

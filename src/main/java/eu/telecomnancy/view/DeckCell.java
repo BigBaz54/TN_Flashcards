@@ -33,6 +33,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     private Text deckDescription;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button exportBtn;
 
     private DeckListController controller;
     private StageController stageController;
@@ -57,10 +59,16 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
             // Visibilité du bouton delete
-            if (this.view.getMode() == Mode.VIEW) {
-                deleteButton.setVisible(false);
-            } else {
+            if (this.view.getMode() == Mode.EDIT) {
                 deleteButton.setVisible(true);
+            } else {
+                deleteButton.setVisible(false);
+            }
+
+            if (this.view.getMode() == Mode.EXPORT) {
+                exportBtn.setVisible(true);
+            } else {
+                exportBtn.setVisible(false);
             }
 
             // Updates des infos
@@ -112,4 +120,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         controller.removeDeck(getIndex());
     }
 
+    @FXML
+    public void exportDeck() {
+        controller.exportDeck(getIndex());
+    }
 }

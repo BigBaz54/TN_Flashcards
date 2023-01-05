@@ -1,8 +1,11 @@
 package eu.telecomnancy.controller;
 
+import java.io.File;
+
 import eu.telecomnancy.io.FileController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
+import javafx.stage.FileChooser;
 
 public class DeckListController {
     private FileController fileController;
@@ -32,7 +35,18 @@ public class DeckListController {
     }
 
     public void exportDeck(int i) {
-        fileController.saveDeck(deckListModel.getDecks().get(i));
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
+        fileChooser.getExtensionFilters().add(extFilter);
+        fileChooser.setInitialFileName(deckListModel.getDecks().get(i).getName() + ".zip");
+        File file = fileChooser.showSaveDialog(null);
+
+        if (file != null) {
+            fileController.exportDeck(deckListModel.getDecks().get(i), file);
+        } else {
+            fileController.exportDeck(deckListModel.getDecks().get(i),
+                    new File("resources/exports/" + deckListModel.getDecks().get(i).getName() + ".zip"));
+        }
     }
 
     public void importDeck(DeckModel deck) {

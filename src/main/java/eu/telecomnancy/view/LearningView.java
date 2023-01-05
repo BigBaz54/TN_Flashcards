@@ -11,6 +11,7 @@ import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyRandom;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyTime;
+import eu.telecomnancy.learning.Learning;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.observer.DeckObserver;
@@ -18,9 +19,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class LearningView extends DeckObserver implements Initializable {
@@ -29,11 +32,7 @@ public class LearningView extends DeckObserver implements Initializable {
     private StageController stageController;
     private BuildCardStrategy buildCardStrategy;
     private DrawCardStrategy drawCardStrategy;
-    private ToggleGroup style = new ToggleGroup();
-    @FXML
-    private RadioMenuItem classic;
-    @FXML
-    private RadioMenuItem theme2;
+    private Learning learning;
 
     @FXML
     private VBox sidebar;
@@ -44,17 +43,28 @@ public class LearningView extends DeckObserver implements Initializable {
     @FXML
     private Button wrong;
 
-    private CardMode mode;
+    @FXML
+    private Pane recto;
+    @FXML
+    private Pane verso;
+    @FXML
+    public Label rectoLabel;
+    @FXML
+    public Label versoLabel;
 
+
+    private CardMode mode;
     private long time;
 
-    public LearningView(DeckModel deckModel, DeckController deckController, StageController stageController) {
+    public LearningView(Learning learning, DeckModel deckModel, DeckController deckController, StageController stageController, BuildCardStrategy buildCardStrategy, DrawCardStrategy drawCardStrategy) {
         super(deckModel);
         this.deckController = deckController;
         this.mode = CardMode.RECTO;
         this.stageController = stageController;
-        this.buildCardStrategy = deckModel.getBuildCardStrategy();
-        this.drawCardStrategy = new DrawCardStrategyRandom();
+        this.buildCardStrategy = buildCardStrategy;
+        this.drawCardStrategy = drawCardStrategy;
+        this.learning=learning;
+
     }
 
     @Override
@@ -62,28 +72,32 @@ public class LearningView extends DeckObserver implements Initializable {
         time = 0;
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        buildCardStrategy = deckModel.getBuildCardStrategy();
-        if (mode == CardMode.RECTO) {
+        if(mode == CardMode.RECTO){
             setNodeVisibility(false, right, wrong);
-            cardContainer.setCenter(buildCardStrategy.buildRecto(card));
-        } else {
+            cardContainer.setCenter(recto);
+            rectoLabel.setText(card.getQuestion());
+        }
+        else{
             setNodeVisibility(true, right, wrong);
-            cardContainer.setCenter(buildCardStrategy.buildVerso(card));
+            cardContainer.setCenter(verso);
+            versoLabel.setText(card.getAnswer());
         }
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        style.selectToggle(classic);
-        // cardView
+        // Build de la CardView
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        cardContainer.setCenter(buildCardStrategy.buildRecto(card));
+        Pane pane = buildCardStrategy.build();
+        recto = (Pane) pane.lookup("#recto");
+        rectoLabel = (Label) pane.lookup("#rectoLabel");
+        rectoLabel.setText(card.getQuestion());
+        verso = (Pane) pane.lookup("#verso");
+        versoLabel = (Label) pane.lookup("#versoLabel");
+        cardContainer.setCenter(recto);
         // Buttons
         setNodeVisibility(false, right, wrong);
-        // Settings
-        classic.setToggleGroup(style);
-        theme2.setToggleGroup(style);
 
     }
 
@@ -114,27 +128,7 @@ public class LearningView extends DeckObserver implements Initializable {
         deckController.nextCard(drawCardStrategy);
     }
 
-    // Menu //
-
-    @FXML
-    public void setBuildClassic() {
-        deckController.setBuildCardStrategy(new BuildCardStrategyClassic());
-    }
-
-    @FXML
-    public void setBuildTN() {
-        deckController.setBuildCardStrategy(new BuildCardStrategyTheme2());
-    }
-
-    @FXML
-    public void setDrawRandom() {
-        deckController.setDrawCardStrategy(new DrawCardStrategyRandom());
-    }
-
-    @FXML
-    public void setDrawTime() {
-        deckController.setDrawCardStrategy(new DrawCardStrategyTime());
-    }
+    
 
     // Sidebar //
 
@@ -162,7 +156,7 @@ public class LearningView extends DeckObserver implements Initializable {
 
     @FXML
     public void toDeckView() {
-        stageController.setDeckView(deckModel);
+        stageController.setDeckView(deckModel,buildCardStrategy,drawCardStrategy);
     }
 
     private void setNodeVisibility(boolean visible, Node... nodes) {
@@ -171,4 +165,9 @@ public class LearningView extends DeckObserver implements Initializable {
         }
     }
 
+
+
+
+
+    
 }

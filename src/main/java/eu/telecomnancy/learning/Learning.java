@@ -8,9 +8,11 @@ public abstract class Learning {
     protected DrawCardStrategy drawCardStrategy;
     protected long beginLastCard;
     public abstract boolean isFinished();
+    public abstract void updateConcreteLearning();
 
     public void nextCard(boolean goodAnswer) {
         long timeSpent = System.currentTimeMillis() - beginLastCard;
+        updateConcreteLearning();
         deckController.updateStatCard(goodAnswer, timeSpent);
         deckController.handleAnswer(goodAnswer, drawCardStrategy);
         deckController.nextCard(drawCardStrategy);

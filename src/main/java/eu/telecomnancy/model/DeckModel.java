@@ -3,10 +3,6 @@ package eu.telecomnancy.model;
 import java.util.ArrayList;
 
 import eu.telecomnancy.DeckTag;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
-import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
-import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
-import eu.telecomnancy.drawCardStrategy.DrawCardStrategyRandom;
 
 public class DeckModel extends Observed {
     private ArrayList<CardModel> cards;
@@ -15,8 +11,6 @@ public class DeckModel extends Observed {
     private String description;
     private int activeCard;
     private StatDeck statDeck;
-    private BuildCardStrategy buildCardStrategy;
-    private DrawCardStrategy drawCardStrategy;
 
     public DeckModel() {
         cards = new ArrayList<>();
@@ -35,8 +29,6 @@ public class DeckModel extends Observed {
         this.description = description;
         this.activeCard = 0;
         this.statDeck = statDeck;
-        this.buildCardStrategy = new BuildCardStrategyClassic();
-        this.drawCardStrategy = new DrawCardStrategyRandom();
     }
 
     public DeckModel(String name, String description) {
@@ -46,8 +38,6 @@ public class DeckModel extends Observed {
         this.description = description;
         this.activeCard = 0;
         this.statDeck = new StatDeck(name);
-        this.buildCardStrategy = new BuildCardStrategyClassic();
-        this.drawCardStrategy = new DrawCardStrategyRandom();
     }
 
     public void addCard(CardModel card) {
@@ -137,21 +127,4 @@ public class DeckModel extends Observed {
         notifyObservers();
     }
 
-    public void setBuildCardStrategy(BuildCardStrategy buildCardStrategy) {
-        this.buildCardStrategy = buildCardStrategy;
-        notifyObservers();
-    }
-
-    public BuildCardStrategy getBuildCardStrategy() {
-        return buildCardStrategy;
-    }
-
-    public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy) {
-        this.drawCardStrategy = drawCardStrategy;
-        notifyObservers();
-    }
-
-    public DrawCardStrategy getDrawCardStrategy() {
-        return drawCardStrategy;
-    }
 }

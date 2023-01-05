@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -41,15 +42,105 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="836.0" prefWidth="1200.0">
                <children>
-                  <Label text="TelecomNancy Flashcards">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <ScrollPane fx:id="scrollpane" prefHeight="703.0" prefWidth="1025.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="82.0" prefWidth="707.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="36.0" prefWidth="68.0" text="Nom :" wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="nameEdit" prefHeight="24.0" prefWidth="609.0" visible="false" />
+                                    <Label fx:id="name" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="41.0" prefWidth="118.0" text="Description : " wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="descriptionEdit" prefHeight="24.0" prefWidth="541.0" visible="false" />
+                                    <Label fx:id="description" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="102.0" prefWidth="357.0">
+                           <children>
+                              <VBox fx:id="learningBox" prefHeight="29.0" prefWidth="501.0">
+                                 <children>
+                                    <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="320.0" style="-fx-border-color: grey; -fx-border-width: 1 0 0 0;" styleClass="menu" stylesheets="@../styles/menu.css">
+                                             <children>
+                                                <Label text="Apprendre pendant">
+                                                   <padding>
+                                                      <Insets right="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="timeField" prefHeight="30.0" prefWidth="46.0" />
+                                                <Label text="min">
+                                                   <padding>
+                                                      <Insets left="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#toLearningTimeView" styleClass="go" text="✅">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="10.0" left="20.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="49.0" prefWidth="320.0" style="-fx-border-width: 1 0 0 0; -fx-border-color: grey;" styleClass="menu" stylesheets="@../styles/menu.css">
+                                             <children>
+                                                <Label text="Apprendre">
+                                                   <padding>
+                                                      <Insets right="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <TextField fx:id="cardField" prefHeight="30.0" prefWidth="54.0" />
+                                                <Label text="cartes">
+                                                   <padding>
+                                                      <Insets left="5.0" />
+                                                   </padding>
+                                                </Label>
+                                                <Button mnemonicParsing="false" onAction="#toLearningCardView" prefHeight="30.0" prefWidth="12.0" styleClass="go" text="✅">
+                                                   <HBox.margin>
+                                                      <Insets left="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="20.0" top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <ScrollPane fx:id="scrollpane" prefHeight="765.0" prefWidth="1000.0">
                       <GridPane fx:id="gridpane" hgap="10" vgap="10">
                       </GridPane>
                   </ScrollPane>
@@ -70,7 +161,7 @@
                   </Button>
                </items>
             </ToolBar>
-            <Label alignment="CENTER" prefWidth="400.0" styleClass="text" text="TelecomNancy Flashcards">
+            <Label alignment="CENTER" prefHeight="38.0" prefWidth="502.0" styleClass="text" text="TelecomNancy Flashcards">
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
@@ -78,13 +169,8 @@
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="400.0" styleClass="toolBar">
+            <ToolBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="52.0" prefWidth="351.0" styleClass="toolBar">
                <items>
-                  <Button mnemonicParsing="false" text="Apprentissage" onAction="#toLearningView">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </Button>
                   <Button mnemonicParsing="false" onAction="#addCard" text="Ajouter ">
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -95,6 +181,10 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </padding>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#toLearningView" text="Apprentissage">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Button>
                </items>
             </ToolBar>
          </children>

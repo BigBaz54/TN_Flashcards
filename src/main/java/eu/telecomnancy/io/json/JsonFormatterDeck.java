@@ -48,7 +48,6 @@ public class JsonFormatterDeck extends JsonFormatter<DeckModel> {
         Gson gson = builder.create();
 
         CDeckModel cDeckModel = gson.fromJson(json, CDeckModel.class);
-
         cDeckModel.to(model);
     }
 }

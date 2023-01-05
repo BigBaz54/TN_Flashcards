@@ -1,5 +1,8 @@
 package eu.telecomnancy.controller;
 
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.learning.Learning;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StageModel;
 import eu.telecomnancy.view.DeckView;
@@ -23,9 +26,9 @@ public class StageController {
         stageModel.setActiveScene(0);
 
     }
-    public void setDeckView(DeckModel deckModel) {
+    public void setDeckView(DeckModel deckModel, BuildCardStrategy buildCardStrategy, DrawCardStrategy drawCardStrategy) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckView.fxml"));
-        loader.setControllerFactory(ic -> new DeckView(deckModel, new DeckController(deckModel),this));
+        loader.setControllerFactory(ic -> new DeckView(deckModel, new DeckController(deckModel),this,buildCardStrategy,drawCardStrategy));
         try {
             Scene scene = new Scene(loader.load());
             stageView.setDeckView(scene);
@@ -44,9 +47,9 @@ public class StageController {
         this.stageView = stageView;
     }
 
-    public void setLearningView(DeckModel deckModel) {
+    public void setLearningView(Learning learning,DeckModel deckModel,BuildCardStrategy buildCardStrategy,DrawCardStrategy drawCardStrategy) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LearningView.fxml"));
-        loader.setControllerFactory(ic -> new LearningView(deckModel, new DeckController(deckModel),this));
+        loader.setControllerFactory(ic -> new LearningView(learning,deckModel, new DeckController(deckModel),this,buildCardStrategy,drawCardStrategy));
         try {
             Scene scene = new Scene(loader.load());
             stageView.setLearningView(scene);

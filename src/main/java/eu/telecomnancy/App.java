@@ -3,7 +3,7 @@ package eu.telecomnancy;
 import java.io.IOException;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
-import eu.telecomnancy.io.FileController;
+import eu.telecomnancy.io.file.FileController;
 import eu.telecomnancy.model.*;
 import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;
@@ -47,7 +47,7 @@ public class App extends Application {
             loader2.setControllerFactory(ic -> new StatsView(deckList, stageController));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
-            StageView stageView = new StageView(primaryStage, stageModel, stageController, scene, scene2);
+            new StageView(primaryStage, stageModel, stageController, scene, scene2);
             stageController.setGlobalView();
 
         } catch (IOException e) {

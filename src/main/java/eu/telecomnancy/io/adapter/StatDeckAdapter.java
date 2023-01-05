@@ -28,12 +28,6 @@ public class StatDeckAdapter extends TypeAdapter<StatDeck> {
         out.value(value.getNbCardsSeen());
         out.name("timesSpent");
         out.value(value.getTimesSpent());
-        out.name("statCards");
-        out.beginArray();
-        for (StatCard statDeck : value.getCards()) {
-            statCardAdapter.write(out, statDeck);
-        }
-        out.endArray();
         out.name("lastOpened");
         out.value(value.getLastOpened().getTime());
         out.name("creationDate");
@@ -67,13 +61,6 @@ public class StatDeckAdapter extends TypeAdapter<StatDeck> {
             }
             if ("timesSpent".equals(fieldName)) {
                 statDeck.setTimesSpent(in.nextLong());
-            }
-            if ("statCards".equals(fieldName)) {
-                in.beginArray();
-                while (in.hasNext()) {
-                    statDeck.addCard(statCardAdapter.read(in));
-                }
-                in.endArray();
             }
             if ("lastOpened".equals(fieldName)) {
                 statDeck.setLastOpened(new Date(in.nextLong()));

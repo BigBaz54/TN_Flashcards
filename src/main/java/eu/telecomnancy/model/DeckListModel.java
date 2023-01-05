@@ -14,6 +14,7 @@ public class DeckListModel extends Observed {
 
     public DeckListModel() {
         decks = new ArrayList<>();
+        buildCardStrategy = new BuildCardStrategyClassic();
         drawCardStrategy = new DrawCardStrategyWeighted();
     }
 
@@ -49,9 +50,6 @@ public class DeckListModel extends Observed {
 
     public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy) {
         this.drawCardStrategy = drawCardStrategy;
-        for (DeckModel deck : decks) {
-            deck.setDrawCardStrategy(drawCardStrategy);
-        }
         notifyObservers();
     }
 
@@ -61,9 +59,6 @@ public class DeckListModel extends Observed {
 
     public void setBuildCardStrategy(BuildCardStrategy buildCardStrategy) {
         this.buildCardStrategy = buildCardStrategy;
-        for (DeckModel deck : decks) {
-            deck.setBuildCardStrategy(buildCardStrategy);
-        }
         notifyObservers();
     }
 }

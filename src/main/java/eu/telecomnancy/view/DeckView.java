@@ -3,8 +3,12 @@ package eu.telecomnancy.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.learning.Learning;
+import eu.telecomnancy.learning.LearningXCards;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.observer.DeckObserver;
@@ -33,17 +37,21 @@ public class DeckView extends DeckObserver implements Initializable {
     private DeckController deckController;
     private StageController stageController;
     private Mode mode;
+    private BuildCardStrategy buildCardStrategy;
+    private DrawCardStrategy drawCardStrategy;
 
     @FXML
     private GridPane gridpane;
     @FXML
     private ScrollPane scrollpane;
 
-    public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController) {
+    public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController, BuildCardStrategy buildCardStrategy,DrawCardStrategy drawCardStrategy) {
         super(deckModel);
         this.deckController = deckController;
         this.stageController = stageController;
         this.mode = Mode.VIEW;
+        this.buildCardStrategy = buildCardStrategy;
+        this.drawCardStrategy = drawCardStrategy;
     }
 
     @Override
@@ -102,7 +110,8 @@ public class DeckView extends DeckObserver implements Initializable {
 
     @FXML
     public void toLearningView() {
-        stageController.setLearningView(deckModel);
+        Learning learning = new LearningXCards(deckController, drawCardStrategy, 20);
+        stageController.setLearningView(learning,deckModel,buildCardStrategy,drawCardStrategy);
     }
 
     // Méthodes du sidebar Menu

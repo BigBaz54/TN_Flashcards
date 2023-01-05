@@ -5,8 +5,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,14 +35,20 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     private Text deckDescription;
     @FXML
     private Button deleteButton;
+    @FXML
+    private Button exportBtn;
 
     private DeckListController controller;
     private StageController stageController;
     private GlobalView view;
+    private BuildCardStrategy buildCardStrategy;
+    private DrawCardStrategy drawCardStrategy;
 
-    public DeckCell(GlobalView view, DeckListController controller, StageController stageController) {
+    public DeckCell(GlobalView view, DeckListController controller, StageController stageController, BuildCardStrategy buildCardStrategy,DrawCardStrategy drawCardStrategy) {
         this.stageController = stageController;
         this.controller = controller;
+        this.buildCardStrategy = buildCardStrategy;
+        this.drawCardStrategy = drawCardStrategy;
         this.view = view;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckCell.fxml"));
         loader.setController(this);
@@ -57,10 +65,16 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
             // Visibilité du bouton delete
-            if (this.view.getMode() == Mode.VIEW) {
-                deleteButton.setVisible(false);
-            } else {
+            if (this.view.getMode() == Mode.EDIT) {
                 deleteButton.setVisible(true);
+            } else {
+                deleteButton.setVisible(false);
+            }
+
+            if (this.view.getMode() == Mode.EXPORT) {
+                exportBtn.setVisible(true);
+            } else {
+                exportBtn.setVisible(false);
             }
 
             // Updates des infos
@@ -101,7 +115,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         deckCell.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 DeckModel deck = getItem();
-                stageController.setDeckView(deck);
+                stageController.setDeckView(deck,buildCardStrategy,drawCardStrategy);
             }
         });
 
@@ -112,4 +126,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         controller.removeDeck(getIndex());
     }
 
+    @FXML
+    public void exportDeck() {
+        controller.exportDeck(getIndex());
+    }
 }

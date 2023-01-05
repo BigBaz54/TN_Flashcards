@@ -1,6 +1,8 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.file;
 
 import java.io.File;
+import java.net.URL;
+
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
@@ -53,9 +55,24 @@ public class FileController {
         }
     }
 
-    public void importDeck(File file) {
+    public void importFromFile(File file) {
         try {
-            File deck = fileImporter.imports(file);
+            File deck = fileImporter.importFromFile(file);
+            DeckModel deckModel = deckListController.createEmptyDeck();
+            fileLoader.loadDeck(deck, deckModel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void importFromUrl(URL url) {
+        try {
+            File deck = fileImporter.importFromUrl(url);
+
+            if (deck == null) {
+                return;
+            }
+
             DeckModel deckModel = deckListController.createEmptyDeck();
             fileLoader.loadDeck(deck, deckModel);
         } catch (Exception e) {

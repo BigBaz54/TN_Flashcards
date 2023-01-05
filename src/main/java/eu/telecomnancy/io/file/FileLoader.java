@@ -1,4 +1,4 @@
-package eu.telecomnancy.io;
+package eu.telecomnancy.io.file;
 
 import java.io.File;
 
@@ -25,6 +25,10 @@ public class FileLoader {
         File dir = new File("resources/decks");
 
         for (File file : dir.listFiles()) {
+            if (file.isDirectory() || (file.getName().split("\\.").length > 1
+                    && !file.getName().split("\\.")[1].equals("json"))) {
+                continue;
+            }
             DeckModel deck = deckListController.createEmptyDeck();
             loadDeck(file, deck);
         }
@@ -34,7 +38,7 @@ public class FileLoader {
         if (file.isFile()) {
             try {
                 fileReader.read(file.getName(), deck);
-                deckListController.importDeck(deck);
+                deckListController.addDeck(deck);
             } catch (Exception e) {
                 e.printStackTrace();
             }

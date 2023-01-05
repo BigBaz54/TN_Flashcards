@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import eu.telecomnancy.io.file.FileImporter;
+import eu.telecomnancy.io.file.FileReader;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 
@@ -19,7 +21,7 @@ public class FileImporterTest {
     public void testImport1() throws IOException {
         String name = "test/test_import_1";
         FileImporter importer = new FileImporter();
-        importer.imports(new File("resources/exports/" + name + ".zip"));
+        importer.importFromFile(new File("resources/exports/" + name + ".zip"));
         DeckModel deckModel = new DeckModel();
         new FileReader<DeckModel>(new JsonFormatterDeck()).read(name + ".json", deckModel);
         assertEquals(deckModel.getName(), "test import 1");

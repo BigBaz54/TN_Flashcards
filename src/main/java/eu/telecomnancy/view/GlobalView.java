@@ -44,7 +44,8 @@ public class GlobalView extends DeckListObserver implements Initializable {
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell(this, deckListController, stageController));
+        deckListView.setCellFactory(param -> new DeckCell(this, deckListController, stageController,
+                deckListModel.getBuildCardStrategy(), deckListModel.getDrawCardStrategy()));
         deckListView.getItems().addAll(deckListModel.getDecks());
         // vbox.setAlignment(Pos.CENTER);
         deckListView.setMinWidth(1200);
@@ -69,12 +70,11 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void switchMode() {
-        if (mode == Mode.VIEW)
-            mode = Mode.EDIT;
-        else
+        if (mode == Mode.EDIT)
             mode = Mode.VIEW;
+        else
+            mode = Mode.EDIT;
         deckListView.refresh();
-
     }
 
     public Mode getMode() {
@@ -83,10 +83,16 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void exportDeck() {
+        if (mode == Mode.EXPORT)
+            mode = Mode.VIEW;
+        else
+            mode = Mode.EXPORT;
+        deckListView.refresh();
     }
 
     @FXML
     public void importDeck() {
+        deckListController.importDeck();
     }
 
     @Override

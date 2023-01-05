@@ -41,7 +41,8 @@ public class JsonFormatterTest {
     @Test
     public void testRead1() {
         String json = "{\"cards\":[],\"name\":\"test 2\",\"description\":\"This is a test\"}";
-        DeckModel deckModel = new JsonFormatterDeck(null).fromJson(json);
+        DeckModel deckModel = new DeckModel();
+        new JsonFormatterDeck(null).fromJson(json, deckModel);
 
         assertEquals("test 2", deckModel.getName());
         assertEquals("This is a test", deckModel.getDescription());
@@ -51,7 +52,8 @@ public class JsonFormatterTest {
     @Test
     public void testRead2() {
         String json = "{\"cards\":[{\"question\":\"Hello\",\"answer\":\"Bonjour\",\"probability\":1.0}],\"name\":\"test 2\",\"description\":\"This is a test\"}";
-        DeckModel deckModel = new JsonFormatterDeck(null).fromJson(json);
+        DeckModel deckModel = new DeckModel();
+        new JsonFormatterDeck(null).fromJson(json, deckModel);
 
         assertEquals("test 2", deckModel.getName());
         assertEquals("This is a test", deckModel.getDescription());

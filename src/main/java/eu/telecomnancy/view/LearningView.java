@@ -18,7 +18,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -64,11 +63,10 @@ public class LearningView extends DeckObserver implements Initializable {
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         buildCardStrategy = deckModel.getBuildCardStrategy();
-        if(mode == CardMode.RECTO){
+        if (mode == CardMode.RECTO) {
             setNodeVisibility(false, right, wrong);
             cardContainer.setCenter(buildCardStrategy.buildRecto(card));
-        }
-        else{
+        } else {
             setNodeVisibility(true, right, wrong);
             cardContainer.setCenter(buildCardStrategy.buildVerso(card));
         }
@@ -96,8 +94,7 @@ public class LearningView extends DeckObserver implements Initializable {
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         if (mode == CardMode.RECTO) {
             mode = CardMode.VERSO;
-        }
-        else{
+        } else {
             mode = CardMode.RECTO;
         }
         react();
@@ -120,7 +117,7 @@ public class LearningView extends DeckObserver implements Initializable {
     // Menu //
 
     @FXML
-    public void setBuildClassic(){
+    public void setBuildClassic() {
         deckController.setBuildCardStrategy(new BuildCardStrategyClassic());
     }
 
@@ -168,15 +165,10 @@ public class LearningView extends DeckObserver implements Initializable {
         stageController.setDeckView(deckModel);
     }
 
-
-    private void setNodeVisibility(boolean visible, Node... nodes){
-        for(Node node : nodes){
+    private void setNodeVisibility(boolean visible, Node... nodes) {
+        for (Node node : nodes) {
             node.setVisible(visible);
         }
     }
 
-
-
-
-    
 }

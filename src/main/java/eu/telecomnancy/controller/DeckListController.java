@@ -22,6 +22,11 @@ public class DeckListController {
         deckListModel.createDeck(name, description);
     }
 
+    public DeckModel createEmptyDeck() {
+        DeckModel deck = new DeckModel();
+        return deck;
+    }
+
     public void removeDeck(int i) {
         deckListModel.removeDeck(i);
     }

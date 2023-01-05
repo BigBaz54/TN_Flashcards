@@ -25,5 +25,5 @@ public abstract class JsonFormatter<T> {
 
     public abstract String toJson();
 
-    public abstract T fromJson(String json);
+    public abstract void fromJson(String json, T model);
 }

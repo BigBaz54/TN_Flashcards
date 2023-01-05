@@ -20,7 +20,8 @@ public class FileImporterTest {
         String name = "test/test_import_1";
         FileImporter importer = new FileImporter();
         importer.imports(new File("resources/exports/" + name + ".zip"));
-        DeckModel deckModel = new FileReader<DeckModel>(new JsonFormatterDeck()).read(name + ".json");
+        DeckModel deckModel = new DeckModel();
+        new FileReader<DeckModel>(new JsonFormatterDeck()).read(name + ".json", deckModel);
         assertEquals(deckModel.getName(), "test import 1");
     }
 }

@@ -42,13 +42,13 @@ public class JsonFormatterDeck extends JsonFormatter<DeckModel> {
     }
 
     @Override
-    public DeckModel fromJson(String json) {
+    public void fromJson(String json, DeckModel model) {
         GsonBuilder builder = new GsonBuilder();
         builder = builder.registerTypeAdapter(CDeckModel.class, new CDeckModelAdapter());
         Gson gson = builder.create();
 
         CDeckModel cDeckModel = gson.fromJson(json, CDeckModel.class);
 
-        return cDeckModel.to();
+        cDeckModel.to(model);
     }
 }

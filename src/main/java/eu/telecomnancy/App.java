@@ -13,10 +13,7 @@ import eu.telecomnancy.io.FileReader;
 import eu.telecomnancy.io.FileWriter;
 import eu.telecomnancy.io.json.JsonFormatter;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
-import eu.telecomnancy.model.DeckListModel;
-import eu.telecomnancy.model.DeckModel;
-import eu.telecomnancy.model.StageModel;
-import eu.telecomnancy.model.StatDeckList;
+import eu.telecomnancy.model.*;
 import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;
 import eu.telecomnancy.view.StatsView;
@@ -37,7 +34,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)  {
         StageModel stageModel = new StageModel();
         StageController stageController = new StageController(stageModel);
 

@@ -10,18 +10,20 @@ import eu.telecomnancy.model.Media;
 
 public class FileWriter {
     public static void createDir() {
-        File dir = new File("resources");
+        File dir_1 = new File("resources");
         File dir_2 = new File("resources/decks");
-        File dir_3 = new File("resources/images");
-        File dir_4 = new File("resources/sounds");
-        File dir_5 = new File("resources/videos");
+        File dir_3 = new File("resources/exports");
+        File dir_4 = new File("resources/images");
+        File dir_5 = new File("resources/sounds");
+        File dir_6 = new File("resources/videos");
 
-        if (!dir.exists()) {
-            dir.mkdir();
+        if (!dir_1.exists()) {
+            dir_1.mkdir();
             dir_2.mkdir();
             dir_3.mkdir();
             dir_4.mkdir();
             dir_5.mkdir();
+            dir_6.mkdir();
         }
     }
 
@@ -65,6 +67,9 @@ public class FileWriter {
             while ((length = is.read(buffer)) > 0) {
                 os.write(buffer, 0, length);
             }
+
+            is.close();
+            os.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -35,8 +35,7 @@ public class MediaAdapter extends TypeAdapter<Media> {
                 fieldName = in.nextName();
             }
             if ("file".equals(fieldName)) {
-                File file = new File(in.nextString());
-                media.setFile(file);
+                media.setFile(in.nextString());
             }
             if ("type".equals(fieldName)) {
                 media.setType(MediaType.fromString(in.nextString()));

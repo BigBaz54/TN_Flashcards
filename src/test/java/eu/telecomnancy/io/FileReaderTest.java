@@ -6,7 +6,6 @@ import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class FileReaderTest {
     @Test

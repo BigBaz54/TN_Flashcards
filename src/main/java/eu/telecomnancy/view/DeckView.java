@@ -8,6 +8,7 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
+import eu.telecomnancy.learning.LearningTimeLimit;
 import eu.telecomnancy.learning.LearningXCards;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
@@ -20,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -30,9 +32,13 @@ public class DeckView extends DeckObserver implements Initializable {
     @FXML
     private VBox sidebar;
     @FXML
-    private VBox sidebar2;
+    private Label name;
     @FXML
-    private Label pageName;
+    private Label description;
+    @FXML
+    private TextField nameEdit;
+    @FXML
+    private TextField descriptionEdit;
 
     private DeckController deckController;
     private StageController stageController;
@@ -44,6 +50,13 @@ public class DeckView extends DeckObserver implements Initializable {
     private GridPane gridpane;
     @FXML
     private ScrollPane scrollpane;
+    @FXML
+    private TextField timeField;
+    @FXML
+    private TextField cardField;
+    @FXML
+    private VBox learningBox;
+
 
     public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController, BuildCardStrategy buildCardStrategy,DrawCardStrategy drawCardStrategy) {
         super(deckModel);
@@ -56,7 +69,7 @@ public class DeckView extends DeckObserver implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setNodeVisibility(false, sidebar);
+        setNodeVisibility(false, sidebar, learningBox);
         gridpane.toBack();
 
         gridpane.setMinHeight(700);
@@ -66,6 +79,9 @@ public class DeckView extends DeckObserver implements Initializable {
         scrollpane.setFitToHeight(true);
         scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
         react();
+        // Text
+        name.setText(deckModel.getName());
+        description.setText(deckModel.getDescription());
 
     }
 
@@ -89,6 +105,17 @@ public class DeckView extends DeckObserver implements Initializable {
             cardView.root.setPrefSize(400, 170);
             gridpane.add(cardView.root, i % 3, i / 3);
         }
+        if (mode==Mode.VIEW){
+            name.setText(deckModel.getName());
+            description.setText(deckModel.getDescription());
+            setNodeVisibility(false,nameEdit,descriptionEdit);
+            setNodeVisibility(true,name,description);
+        }else{
+            nameEdit.setText(deckModel.getName());
+            descriptionEdit.setText(deckModel.getDescription());
+            setNodeVisibility(true,nameEdit,descriptionEdit);
+            setNodeVisibility(false,name,description);
+        }
 
     }
 
@@ -110,8 +137,29 @@ public class DeckView extends DeckObserver implements Initializable {
 
     @FXML
     public void toLearningView() {
-        Learning learning = new LearningXCards(deckController, drawCardStrategy, 20);
-        stageController.setLearningView(learning,deckModel,buildCardStrategy,drawCardStrategy);
+        setNodeVisibility(!learningBox.isVisible(), learningBox);
+        learningBox.toFront();
+        //Learning learning = new LearningXTimes(deckController, drawCardStrategy, 20);
+        //stageController.setLearningView(learning,deckModel,buildCardStrategy,drawCardStrategy);
+    }
+    @FXML
+    public void toLearningTimeView(){
+        if(timeField.getText().equals(null)||(timeField.getText().equals("")))
+            return;
+        float min = Float.valueOf(timeField.getText());
+        if(min != 0){
+            int milis = (int) Math.round(min * 60000);
+            Learning learning = new LearningTimeLimit(deckController, drawCardStrategy, milis);
+            stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
+        }
+    }
+    @FXML
+    public void toLearningCardView(){
+        int n = Integer.valueOf(cardField.getText());
+        if(n!=0){
+            Learning learning = new LearningXCards(deckController, drawCardStrategy, n);
+            stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
+        }
     }
 
     // Méthodes du sidebar Menu
@@ -139,6 +187,8 @@ public class DeckView extends DeckObserver implements Initializable {
             mode = Mode.EDIT;
         } else {
             mode = Mode.VIEW;
+            deckController.setDescription(descriptionEdit.getText());
+            deckController.setName(nameEdit.getText());
         }
         react();
     }

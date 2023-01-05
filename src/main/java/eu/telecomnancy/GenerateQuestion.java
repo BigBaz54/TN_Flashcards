@@ -2,6 +2,8 @@ package eu.telecomnancy;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import org.apache.http.HttpEntity;
@@ -16,9 +18,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GenerateQuestion {
-    public ArrayList<CardModel> generateQuestion(DeckModel deck, int nbQuestion) throws IOException {
+    private DeckController deckController;
+
+    public GenerateQuestion(DeckController deckController) {
+        this.deckController = deckController;
+    }
+
+    public ArrayList<CardModel> generateQuestion(int nbQuestion) throws IOException {
         // extrat all the question from the deck
-        ArrayList<CardModel> cards = deck.getCards();
+        ArrayList<CardModel> cards = deckController.getDeckModel().getCards();
         ArrayList<String> questions = new ArrayList<>();
         for (CardModel card : cards) {
             if (card.getQuestion() != null) {
@@ -39,7 +47,7 @@ public class GenerateQuestion {
         request.addHeader("Authorization", "Bearer " + apiKey);
         request.addHeader("Content-Type", "application/json");
         request.setEntity(new StringEntity("{\"model\": \"text-davinci-003\",\"prompt\": \"" + prompt
-                + "\", \"max_tokens\":1024, \"temperature\": 0.5}"));
+                + "\", \"max_tokens\":2048, \"temperature\": 0.5}"));
         HttpResponse response = httpClient.execute(request);
         HttpEntity entity = response.getEntity();
         String responseString = EntityUtils.toString(entity);

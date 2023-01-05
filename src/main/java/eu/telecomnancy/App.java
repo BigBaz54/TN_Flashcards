@@ -23,19 +23,23 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        System.out.println("-----------------------------------");
+        System.out.println("Starting application");
         StageModel stageModel = new StageModel();
+        System.out.println("Creating stage model");
         StageController stageController = new StageController(stageModel);
-
+        System.out.println("Creating stage controller");
         // FileController
         fileController = new FileController();
-
+        System.out.println("Creating file controller");
         // GlobalView
         DeckListModel deckList = new DeckListModel();
+        System.out.println("Creating deck list model");
         DeckListController deckListController = new DeckListController(deckList, fileController);
-
+        System.out.println("Creating deck list controller");
         // Load decks after the controller is set
         fileController.loadDecks();
-
+        System.out.println("Loading decks");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));
         loader.setControllerFactory(ic -> new GlobalView(deckList, deckListController, stageController));
         try {
@@ -43,9 +47,8 @@ public class App extends Application {
             Scene scene = new Scene(root, 1200, 900);
 
             // StatDeck
-            StatDeckList statDeckList = deckList.getStatDeck();
             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("StatsView.fxml"));
-            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController, deckList.getStatDeck()));
+            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
             new StageView(primaryStage, stageModel, stageController, scene, scene2);

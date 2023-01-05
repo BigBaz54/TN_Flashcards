@@ -10,7 +10,6 @@ public class StatDeck {
     private int nbTimesWrong;
     private int nbCardsSeen;
     private Long timesSpent;
-    private String name;
     private Date lastOpened;
     private Date creationDate;
 
@@ -23,7 +22,6 @@ public class StatDeck {
         this.timesSpent = 0L;
         this.lastOpened = new Date();
         this.creationDate = new Date();
-        this.name = name;
     }
 
     public StatDeck() {
@@ -51,10 +49,6 @@ public class StatDeck {
         this.nbTimesWrong -= card.getNbTimesWrong();
         this.nbCardsSeen -= card.getNbTimesSeen();
         this.timesSpent -= card.getTimesSpentTotal();
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getNbCards() {
@@ -104,7 +98,6 @@ public class StatDeck {
     public void setTimesSpent(Long timesSpent) {
         this.timesSpent = timesSpent;
     }
-
     public void setLastOpened(Date lastOpened) {
         this.lastOpened = lastOpened;
     }

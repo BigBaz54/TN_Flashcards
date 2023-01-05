@@ -77,7 +77,7 @@
                                         <NumberAxis side="LEFT" />
                                       </yAxis>
                                     </LineChart>
-                                    <BarChart GridPane.rowIndex="2">
+                                    <BarChart fx:id="barChartPourcentage" GridPane.rowIndex="2">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
@@ -149,7 +149,7 @@
       <URL value="@styles/global.css" />
    </stylesheets>
    <left>
-      <VBox fx:id="sidebar" prefHeight="836.0" prefWidth="176.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+      <VBox fx:id="sidebar" prefHeight="836.0" prefWidth="176.0" styleClass="sidebar" visible="false" BorderPane.alignment="CENTER">
          <children>
             <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0" styleClass="toolBar">
                <items>

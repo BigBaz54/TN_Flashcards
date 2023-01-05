@@ -42,8 +42,8 @@ public class PopUpCardView extends DeckObserver {
     public void generateCard(ActionEvent actionEvent) throws IOException {
         String nbCard = nbCardEdit.getText();
         int nbCardInt = Integer.parseInt(nbCard);
-        GenerateQuestion generateQuestion = new GenerateQuestion();
-        ArrayList<CardModel> newCards = generateQuestion.generateQuestion(deckModel, nbCardInt);
+        GenerateQuestion generateQuestion = new GenerateQuestion(deckController);
+        ArrayList<CardModel> newCards = generateQuestion.generateQuestion(nbCardInt);
         for (CardModel card : newCards) {
             deckController.addCard(card.getQuestion(), card.getAnswer());
         }

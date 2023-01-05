@@ -18,7 +18,6 @@ public class PopUpCardView extends DeckObserver {
     @FXML
     private TextField answerEdit;
 
-    private DeckModel deckModel;
     private DeckController deckController;
 
 

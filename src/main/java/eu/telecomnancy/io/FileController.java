@@ -63,11 +63,11 @@ public class FileController {
         }
     }
 
-    public void exportDeck(DeckModel deckModel) {
+    public void exportDeck(DeckModel deckModel, File expFile) {
         // Save the deck before exporting it
         saveDeck(deckModel);
         try {
-            fileExporter.export(deckModel);
+            fileExporter.export(deckModel, expFile);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -15,16 +15,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.ScrollPane.ScrollBarPolicy;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class DeckView extends DeckObserver implements Initializable{
+public class DeckView extends DeckObserver implements Initializable {
 
     @FXML
     private VBox sidebar;
@@ -39,11 +36,8 @@ public class DeckView extends DeckObserver implements Initializable{
 
     @FXML
     private GridPane gridpane;
-    @FXML 
+    @FXML
     private ScrollPane scrollpane;
-
-
-
 
     public DeckView(DeckModel deckModel, DeckController deckController, StageController stageController) {
         super(deckModel);
@@ -54,9 +48,9 @@ public class DeckView extends DeckObserver implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setNodeVisibility(false,sidebar);
+        setNodeVisibility(false, sidebar);
         gridpane.toBack();
-        
+
         gridpane.setMinHeight(700);
         gridpane.setMinWidth(1300);
         // fit to width
@@ -64,14 +58,13 @@ public class DeckView extends DeckObserver implements Initializable{
         scrollpane.setFitToHeight(true);
         scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
         react();
-        
-    } 
 
+    }
 
     public void react() {
         gridpane.getChildren().clear();
         int n = deckModel.getCards().size();
-        int row = (int) Math.ceil (n/3)+1;
+        int row = (int) Math.ceil(n / 3) + 1;
         for (int i = 0; i < row; i++) {
             gridpane.addRow(i);
             gridpane.setVgap(5);
@@ -84,20 +77,20 @@ public class DeckView extends DeckObserver implements Initializable{
         for (int i = 0; i < n; i++) {
             CardModel card = deckModel.getCards().get(i);
             System.out.println(card.getQuestion());
-            CardView cardView = new CardView(card,deckModel, deckController,mode);
+            CardView cardView = new CardView(card, deckModel, deckController, mode);
             cardView.root.setPrefSize(400, 170);
-            gridpane.add(cardView.root, i%3, i/3);
+            gridpane.add(cardView.root, i % 3, i / 3);
         }
-        
+
     }
 
     // Méthodes du Top Menu
 
     @FXML
-    public void addCard(){
+    public void addCard() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpCard.fxml"));
-        loader.setControllerFactory(ic -> new PopUpCardView(deckModel,deckController));
+        loader.setControllerFactory(ic -> new PopUpCardView(deckModel, deckController));
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
@@ -108,31 +101,32 @@ public class DeckView extends DeckObserver implements Initializable{
     }
 
     @FXML
-    public void toLearningView(){
+    public void toLearningView() {
         stageController.setLearningView(deckModel);
     }
-
 
     // Méthodes du sidebar Menu
     @FXML
     public void seeMenu() {
         setNodeVisibility(!sidebar.isVisible(), sidebar);
     }
-    
+
     @FXML
-    public void toGlobalView(){
+    public void toGlobalView() {
         stageController.setGlobalView();
     }
 
     @FXML
-    public void toStatsView(){}
+    public void toStatsView() {
+    }
 
     @FXML
-    public void toSettingsView(){}
+    public void toSettingsView() {
+    }
 
     @FXML
-    public void switchMode(){
-        if (mode == Mode.VIEW){
+    public void switchMode() {
+        if (mode == Mode.VIEW) {
             mode = Mode.EDIT;
         } else {
             mode = Mode.VIEW;
@@ -140,13 +134,11 @@ public class DeckView extends DeckObserver implements Initializable{
         react();
     }
 
-    public void setNodeVisibility(boolean visible, Node... nodes){
-        for (Node node : nodes){
+    public void setNodeVisibility(boolean visible, Node... nodes) {
+        for (Node node : nodes) {
             node.setVisible(visible);
             node.setManaged(visible);
         }
     }
 
-
-     
 }

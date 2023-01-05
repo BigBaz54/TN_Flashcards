@@ -1,6 +1,5 @@
 package eu.telecomnancy.view;
 
-import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
@@ -10,7 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class PopUpView extends DeckListObserver{
+public class PopUpView extends DeckListObserver {
 
     @FXML
     private TextField deckName;
@@ -20,15 +19,13 @@ public class PopUpView extends DeckListObserver{
     private DeckListModel deckListModel;
     private DeckListController deckListController;
 
-
-    public PopUpView(DeckListModel deckListModel,DeckListController deckListController) {
+    public PopUpView(DeckListModel deckListModel, DeckListController deckListController) {
         super(deckListModel);
         this.deckListController = deckListController;
     }
 
-
     @FXML
-    public void createDeck(ActionEvent event){
+    public void createDeck(ActionEvent event) {
         String name = deckName.getText();
         String description = deckDescription.getText();
         deckListController.createDeck(name, description);
@@ -38,8 +35,7 @@ public class PopUpView extends DeckListObserver{
 
     @Override
     public void react() {
-        
+
     }
 
-    
 }

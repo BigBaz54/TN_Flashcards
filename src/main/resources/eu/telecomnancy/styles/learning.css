@@ -1,0 +1,46 @@
+.card {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #494949;
+    -fx-border-width: 2px;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(57, 57, 57, 0.8), 10, 0, 0, 0);
+    
+}
+
+.button {
+    -fx-background-color: #494949;
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff;   
+}
+
+#right:hover {
+    -fx-background-color: rgb(56, 189, 29);
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff;   
+}
+
+#wrong:hover {
+    -fx-background-color: rgb(189, 29, 29);
+    -fx-background-radius: 10;
+    -fx-text-fill: #ffffff;   
+}
+
+.title-card {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.text-card {
+    -fx-font-size: 20px;
+    -fx-font-weight: normal;
+}
+
+.tn {
+    -fx-background-color: rgb(239, 179, 152);
+    -fx-text-fill: #280039;
+}
+
+.tn-label {
+    -fx-text-fill: #280039
+}

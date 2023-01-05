@@ -2,12 +2,11 @@ package eu.telecomnancy.buildCardStrategy;
 
 import eu.telecomnancy.model.CardModel;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 public class BuildCardStrategyTheme2 extends BuildCardStrategy {
 
-    public BuildCardStrategyTheme2(CardModel card) {
-
-        super(card);
+    public BuildCardStrategyTheme2() {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoTN.fxml"));
         loader.setController(this);
@@ -27,9 +26,20 @@ public class BuildCardStrategyTheme2 extends BuildCardStrategy {
             e.printStackTrace();
         }
 
+    }
+
+    public Pane buildRecto(CardModel card){
         rectoLabel.setText(card.getQuestion());
         versoLabel.setText(card.getAnswer());
-
+        return recto;
     }
+
+    public Pane buildVerso(CardModel card){
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        return verso;
+    }
+
+
 
 }

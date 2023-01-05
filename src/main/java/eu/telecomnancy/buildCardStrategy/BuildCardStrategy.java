@@ -18,16 +18,9 @@ public abstract class BuildCardStrategy {
     @FXML
     public Label versoLabel;
 
-    public BuildCardStrategy(CardModel card) {
-        this.card = card;
-    }
+    public abstract Pane buildRecto(CardModel card);
 
-    public Pane buildRecto() {
-        return recto;
-    }
+    public abstract Pane buildVerso(CardModel card);
 
-    public Pane buildVerso() {
-        return verso;
-    }
 
 }

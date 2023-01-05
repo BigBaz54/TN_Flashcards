@@ -2,6 +2,7 @@ package eu.telecomnancy.controller;
 
 import java.util.Date;
 
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
@@ -61,5 +62,12 @@ public class DeckController {
     public void updateStatDeck() {
         deckModel.getStatDeck().setNbTimesOpened(deckModel.getStatDeck().getNbTimesOpened() + 1);
         deckModel.getStatDeck().setLastOpened(new Date());
+    }
+
+    public void setBuildCardStrategy(BuildCardStrategy buildCardStrategy){
+        deckModel.setBuildCardStrategy(buildCardStrategy);
+    }
+    public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy){
+        deckModel.setDrawCardStrategy(drawCardStrategy);
     }
 }

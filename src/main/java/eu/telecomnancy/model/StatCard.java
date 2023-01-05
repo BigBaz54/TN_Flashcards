@@ -1,8 +1,6 @@
 package eu.telecomnancy.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Timer;
 
 public class StatCard {
     private int nbTimesSeen;

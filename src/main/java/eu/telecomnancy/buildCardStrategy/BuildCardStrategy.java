@@ -4,7 +4,6 @@ import eu.telecomnancy.model.CardModel;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 public abstract class BuildCardStrategy {
 
@@ -19,17 +18,9 @@ public abstract class BuildCardStrategy {
     @FXML
     public Label versoLabel;
 
-    public BuildCardStrategy(CardModel card) {
-        this.card = card;
-    }
+    public abstract Pane buildRecto(CardModel card);
 
-    public Pane buildRecto(){
-        return recto;
-    }
-    public Pane buildVerso(){
-        return verso;
-    }
-
+    public abstract Pane buildVerso(CardModel card);
 
 
 }

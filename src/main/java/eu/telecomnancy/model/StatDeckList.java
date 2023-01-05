@@ -1,7 +1,6 @@
 package eu.telecomnancy.model;
 
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class StatDeckList {
     private int nbDecks;
@@ -46,8 +45,6 @@ public class StatDeckList {
         this.nbCardsSeen -= deck.getNbCardsSeen();
         setPourcentageTimesSpent(decks);
     }
-
-
 
     public int getNbDecks() {
         return nbDecks;
@@ -98,13 +95,13 @@ public class StatDeckList {
         for (StatDeck deck : decks) {
             timeEachDeck.add(deck.getTimesSpent());
         }
-        //get the name of the decks
+        // get the name of the decks
         float totalTime = 0;
         for (Long time : timeEachDeck) {
             totalTime += time;
         }
         for (Long time : timeEachDeck) {
-            this.pourcentageTimesSpent.add(time/totalTime);
+            this.pourcentageTimesSpent.add(time / totalTime);
         }
     }
 
@@ -115,6 +112,5 @@ public class StatDeckList {
     public void setDecks(ArrayList<StatDeck> decks) {
         this.decks = decks;
     }
-
 
 }

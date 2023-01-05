@@ -1,31 +1,23 @@
 package eu.telecomnancy.view;
 
-import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.observer.DeckListObserver;
-import eu.telecomnancy.view.DeckCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-public class GlobalView extends DeckListObserver implements Initializable{
+public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     private ListView<DeckModel> deckListView;
@@ -42,7 +34,6 @@ public class GlobalView extends DeckListObserver implements Initializable{
 
     private Mode mode;
 
-
     public GlobalView(DeckListModel deckList, DeckListController deckListController, StageController stageController) {
         super(deckList);
         this.deckListController = deckListController;
@@ -53,12 +44,11 @@ public class GlobalView extends DeckListObserver implements Initializable{
     @Override
     public void initialize(java.net.URL location, java.util.ResourceBundle resources) {
         deckListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        deckListView.setCellFactory(param -> new DeckCell(this,deckListController,stageController));
+        deckListView.setCellFactory(param -> new DeckCell(this, deckListController, stageController));
         deckListView.getItems().addAll(deckListModel.getDecks());
-        //vbox.setAlignment(Pos.CENTER);
+        // vbox.setAlignment(Pos.CENTER);
         deckListView.setMinWidth(1200);
-        
-        
+
     }
 
     // Top Menu
@@ -67,7 +57,7 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void createDeck() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
-        loader.setControllerFactory(ic -> new PopUpView(deckListModel,deckListController));
+        loader.setControllerFactory(ic -> new PopUpView(deckListModel, deckListController));
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
@@ -76,31 +66,34 @@ public class GlobalView extends DeckListObserver implements Initializable{
             e.printStackTrace();
         }
     }
+
     @FXML
-    public void switchMode(){
+    public void switchMode() {
         if (mode == Mode.VIEW)
             mode = Mode.EDIT;
-        else 
+        else
             mode = Mode.VIEW;
         deckListView.refresh();
-        
+
     }
 
-    public Mode getMode(){
+    public Mode getMode() {
         return mode;
     }
 
     @FXML
-    public void exportDeck(){}
+    public void exportDeck() {
+    }
 
     @FXML
-    public void importDeck(){}
-    
+    public void importDeck() {
+    }
+
     @Override
     public void react() {
         deckListView.getItems().clear();
         deckListView.getItems().addAll(deckListModel.getDecks());
-        
+
     }
 
     // Sidebar Menu
@@ -108,25 +101,27 @@ public class GlobalView extends DeckListObserver implements Initializable{
     public void seeMenu() {
         sidebar.setVisible(!sidebar.isVisible());
     }
+
     @FXML
-    public void toGlobalView(){
-        
-    }
-    @FXML
-    public void toStatsView(){
-        stageController.setStatsView();
-    }
-    @FXML
-    public void toSettingsView(){
-        
+    public void toGlobalView() {
+
     }
 
-    public void setNodeVisibility(boolean visible, Node... node){
+    @FXML
+    public void toStatsView() {
+        stageController.setStatsView();
+    }
+
+    @FXML
+    public void toSettingsView() {
+
+    }
+
+    public void setNodeVisibility(boolean visible, Node... node) {
         for (Node n : node) {
             n.setVisible(visible);
             n.setManaged(visible);
         }
     }
 
-    
 }

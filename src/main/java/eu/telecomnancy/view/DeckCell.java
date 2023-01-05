@@ -15,11 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 public class DeckCell extends ListCell<DeckModel> implements Initializable {
 
@@ -59,9 +57,9 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         if (item != null) {
             setContentDisplay(ContentDisplay.TOP);
             // Visibilité du bouton delete
-            if (this.view.getMode() == Mode.VIEW){
-                deleteButton.setVisible(false);}
-            else{
+            if (this.view.getMode() == Mode.VIEW) {
+                deleteButton.setVisible(false);
+            } else {
                 deleteButton.setVisible(true);
             }
 
@@ -110,9 +108,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     }
 
     @FXML
-    public void removeDeck(){
+    public void removeDeck() {
         controller.removeDeck(getIndex());
     }
-
 
 }

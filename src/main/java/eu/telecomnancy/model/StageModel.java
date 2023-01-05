@@ -1,7 +1,5 @@
 package eu.telecomnancy.model;
 
-import javafx.stage.Stage;
-
 public class StageModel extends Observed {
     private int activeScene;
 
@@ -14,6 +12,7 @@ public class StageModel extends Observed {
         this.activeScene = activeScene;
         notifyObservers();
     }
+
     public int getActiveScene() {
         return activeScene;
     }

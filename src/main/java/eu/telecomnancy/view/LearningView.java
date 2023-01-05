@@ -22,6 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class LearningView extends DeckObserver implements Initializable {
@@ -45,8 +46,17 @@ public class LearningView extends DeckObserver implements Initializable {
     @FXML
     private Button wrong;
 
-    private CardMode mode;
+    @FXML
+    private Pane recto;
+    @FXML
+    private Pane verso;
+    @FXML
+    public Label rectoLabel;
+    @FXML
+    public Label versoLabel;
 
+
+    private CardMode mode;
     private long time;
 
     public LearningView(DeckModel deckModel, DeckController deckController, StageController stageController) {
@@ -55,7 +65,7 @@ public class LearningView extends DeckObserver implements Initializable {
         this.mode = CardMode.RECTO;
         this.stageController = stageController;
         this.buildCardStrategy = deckModel.getBuildCardStrategy();
-        this.drawCardStrategy = new DrawCardStrategyRandom();
+        this.drawCardStrategy = deckModel.getDrawCardStrategy();
     }
 
     @Override
@@ -63,14 +73,15 @@ public class LearningView extends DeckObserver implements Initializable {
         time = 0;
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        buildCardStrategy = deckModel.getBuildCardStrategy();
         if(mode == CardMode.RECTO){
             setNodeVisibility(false, right, wrong);
-            cardContainer.setCenter(buildCardStrategy.buildRecto(card));
+            cardContainer.setCenter(recto);
+            rectoLabel.setText(card.getQuestion());
         }
         else{
             setNodeVisibility(true, right, wrong);
-            cardContainer.setCenter(buildCardStrategy.buildVerso(card));
+            cardContainer.setCenter(verso);
+            versoLabel.setText(card.getAnswer());
         }
 
     }
@@ -80,7 +91,13 @@ public class LearningView extends DeckObserver implements Initializable {
         style.selectToggle(classic);
         // cardView
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        cardContainer.setCenter(buildCardStrategy.buildRecto(card));
+        Pane pane = buildCardStrategy.build();
+        recto = (Pane) pane.lookup("#recto");
+        rectoLabel = (Label) pane.lookup("#rectoLabel");
+        rectoLabel.setText(card.getQuestion());
+        verso = (Pane) pane.lookup("#verso");
+        versoLabel = (Label) pane.lookup("#versoLabel");
+        cardContainer.setCenter(recto);
         // Buttons
         setNodeVisibility(false, right, wrong);
         // Settings
@@ -174,6 +191,7 @@ public class LearningView extends DeckObserver implements Initializable {
             node.setVisible(visible);
         }
     }
+
 
 
 

@@ -1,26 +1,11 @@
 package eu.telecomnancy.buildCardStrategy;
 
 import eu.telecomnancy.model.CardModel;
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public abstract class BuildCardStrategy {
+public interface BuildCardStrategy {
 
-    protected CardModel card;
-
-    @FXML
-    public Pane recto;
-    @FXML
-    public Pane verso;
-    @FXML
-    public Label rectoLabel;
-    @FXML
-    public Label versoLabel;
-
-    public abstract Pane buildRecto(CardModel card);
-
-    public abstract Pane buildVerso(CardModel card);
+    public Pane build();
 
 
 }

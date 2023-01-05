@@ -53,6 +53,16 @@ public class FileController {
         }
     }
 
+    public void importDeck(File file) {
+        try {
+            File deck = fileImporter.imports(file);
+            DeckModel deckModel = deckListController.createEmptyDeck();
+            fileLoader.loadDeck(deck, deckModel);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void exportDeck(DeckModel deckModel) {
         // Save the deck before exporting it
         saveDeck(deckModel);

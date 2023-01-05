@@ -7,13 +7,13 @@ import eu.telecomnancy.model.StatLearning;
 public abstract class Learning {
     protected DeckController deckController;
     protected DrawCardStrategy drawCardStrategy;
-    protected long beginLastCard;
+    protected Long beginLastCard;
     protected StatLearning statLearning = new StatLearning();
     public abstract boolean isFinished();
     public abstract void updateConcreteLearning();
 
     public void nextCard(boolean goodAnswer) {
-        long timeSpent = System.currentTimeMillis() - beginLastCard;
+        Long timeSpent = System.currentTimeMillis() - beginLastCard;
         updateConcreteLearning();
         updateStatLearning(goodAnswer, timeSpent);
         deckController.updateStatCard(goodAnswer, timeSpent);
@@ -22,7 +22,7 @@ public abstract class Learning {
         beginLastCard = System.currentTimeMillis();
     }
 
-    protected void updateStatLearning(boolean goodAnswer, long timeSpent) {
+    protected void updateStatLearning(boolean goodAnswer, Long timeSpent) {
         statLearning.incrementNbPlayed();
         if (goodAnswer) {
             statLearning.incrementNbCorrect();

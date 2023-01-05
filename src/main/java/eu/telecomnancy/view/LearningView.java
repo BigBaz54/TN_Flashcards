@@ -54,7 +54,7 @@ public class LearningView extends DeckObserver implements Initializable {
 
 
     private CardMode mode;
-    private long time;
+    private Long time;
 
     public LearningView(Learning learning, DeckModel deckModel, DeckController deckController, StageController stageController, BuildCardStrategy buildCardStrategy, DrawCardStrategy drawCardStrategy) {
         super(deckModel);

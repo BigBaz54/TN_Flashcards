@@ -17,6 +17,9 @@ public class StatLearning {
         this.nbCorrect = 0;
         this.timePlayed = 0L;
         this.timeCards = new ArrayList<Long>();
+        this.nbPlayedByTag = new HashMap<String, Integer>();
+        this.nbCorrectByTag = new HashMap<String, Integer>();
+        this.timePlayedByTag = new HashMap<String, Long>();
     }
 
     public int getNbPlayed() {

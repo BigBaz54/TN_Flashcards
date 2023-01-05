@@ -42,4 +42,7 @@ public class Media {
     public void setType(MediaType type) {
         this.type = type;
     }
+    public String getName(){
+        return this.fileName;
+    }
 }

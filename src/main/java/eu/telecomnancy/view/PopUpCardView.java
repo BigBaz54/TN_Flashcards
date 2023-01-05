@@ -62,7 +62,8 @@ public class PopUpCardView extends DeckObserver {
     public void createCard(ActionEvent event) {
         String question = questionEdit.getText();
         String answer = answerEdit.getText();
-        deckController.addCard(question, answer);
+        System.out.println(media);
+        deckController.addCard(question, answer,media);
         Stage stage = (Stage) questionEdit.getScene().getWindow();
         stage.close();
     }
@@ -107,7 +108,7 @@ public class PopUpCardView extends DeckObserver {
                 type = null;
                 break;
         }
-        Media media = new Media(name,type);
+        media = new Media(name,type);
         
 
 

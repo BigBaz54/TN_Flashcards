@@ -8,7 +8,7 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
-import eu.telecomnancy.learning.LearningXTimes;
+import eu.telecomnancy.learning.LearningXCards;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.observer.DeckObserver;
@@ -110,7 +110,7 @@ public class DeckView extends DeckObserver implements Initializable {
 
     @FXML
     public void toLearningView() {
-        Learning learning = new LearningXTimes(deckController, drawCardStrategy, 20);
+        Learning learning = new LearningXCards(deckController, drawCardStrategy, 20);
         stageController.setLearningView(learning,deckModel,buildCardStrategy,drawCardStrategy);
     }
 

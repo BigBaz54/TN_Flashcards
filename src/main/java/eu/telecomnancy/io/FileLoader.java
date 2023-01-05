@@ -9,12 +9,19 @@ public class FileLoader {
     private DeckListController deckListController;
     private FileReader<DeckModel> fileReader;
 
-    public FileLoader(DeckListController deckListController, FileReader<DeckModel> fileReader) {
-        this.deckListController = deckListController;
+    public FileLoader(FileReader<DeckModel> fileReader) {
         this.fileReader = fileReader;
     }
 
+    public void setDeckListController(DeckListController deckListController) {
+        this.deckListController = deckListController;
+    }
+
     public void loadDecks() {
+        if (deckListController == null) {
+            throw new RuntimeException("DeckListController is not set");
+        }
+
         File dir = new File("resources/decks");
 
         for (File file : dir.listFiles()) {

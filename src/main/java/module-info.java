@@ -18,4 +18,5 @@ module eu.telecomnancy {
     exports eu.telecomnancy.model;
     exports eu.telecomnancy.controller;
     exports eu.telecomnancy.buildCardStrategy;
+    exports eu.telecomnancy.io.json;
 }

@@ -13,6 +13,10 @@ public class DeckController {
         this.deckModel = deckModel;
     }
 
+    public DeckModel getDeckModel() {
+        return deckModel;
+    }
+    
     public void setName(String name) {
         deckModel.setName(name);
     }

@@ -2,6 +2,7 @@ package eu.telecomnancy.buildCardStrategy;
 
 import eu.telecomnancy.model.CardModel;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 public class BuildCardStrategyHint extends BuildCardStrategy{
     

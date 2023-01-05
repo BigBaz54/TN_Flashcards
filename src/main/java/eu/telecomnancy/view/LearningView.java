@@ -71,6 +71,7 @@ public class LearningView extends DeckObserver implements Initializable {
     public void react() {
         if (learning.isFinished()){
             toDeckView();
+            return;
         }
         cardContainer.setCenter(null);
         CardModel card = deckModel.getCard(deckModel.getActiveCard());

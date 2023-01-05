@@ -140,7 +140,11 @@ public class DeckView extends DeckObserver implements Initializable {
     }
     @FXML
     public void toLearningCardView(){
-
+        int n = Integer.valueOf(cardField.getText());
+        if(n!=0){
+            Learning learning = new LearningXCards(deckController, drawCardStrategy, n);
+            stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
+        }
     }
 
     // Méthodes du sidebar Menu

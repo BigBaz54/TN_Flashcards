@@ -74,7 +74,7 @@
                                                       <Insets right="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <TextField fx:id="timeField" prefHeight="40.0" prefWidth="34.0" />
+                                                <TextField fx:id="timeField" prefHeight="30.0" prefWidth="46.0" />
                                                 <Label text="min">
                                                    <padding>
                                                       <Insets left="5.0" />
@@ -104,7 +104,7 @@
                                                       <Insets right="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <TextField fx:id="cardField" prefHeight="40.0" prefWidth="34.0" />
+                                                <TextField fx:id="cardField" prefHeight="30.0" prefWidth="54.0" />
                                                 <Label text="cartes">
                                                    <padding>
                                                       <Insets left="5.0" />

@@ -3,7 +3,7 @@ package eu.telecomnancy;
 import java.io.IOException;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
-import eu.telecomnancy.io.FileController;
+import eu.telecomnancy.io.file.FileController;
 import eu.telecomnancy.model.*;
 import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;

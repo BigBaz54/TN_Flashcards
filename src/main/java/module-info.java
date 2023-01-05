@@ -15,10 +15,11 @@ module eu.telecomnancy {
     exports eu.telecomnancy;
     exports eu.telecomnancy.view;
     exports eu.telecomnancy.io;
+    exports eu.telecomnancy.io.json;
+    exports eu.telecomnancy.io.file;
     exports eu.telecomnancy.model;
     exports eu.telecomnancy.controller;
     exports eu.telecomnancy.buildCardStrategy;
-    exports eu.telecomnancy.io.json;
     exports eu.telecomnancy.observer;
     exports eu.telecomnancy.drawCardStrategy;
 }

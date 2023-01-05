@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import eu.telecomnancy.io.file.FileImporter;
+import eu.telecomnancy.io.file.FileReader;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
 import eu.telecomnancy.model.DeckModel;
 

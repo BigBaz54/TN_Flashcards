@@ -2,7 +2,7 @@ package eu.telecomnancy.controller;
 
 import java.io.File;
 
-import eu.telecomnancy.io.FileController;
+import eu.telecomnancy.io.file.FileController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
 import javafx.stage.FileChooser;

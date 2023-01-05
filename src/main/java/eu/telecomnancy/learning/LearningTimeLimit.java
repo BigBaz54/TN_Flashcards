@@ -3,25 +3,25 @@ package eu.telecomnancy.learning;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 
-public class LearningXCards extends Learning {
-    private int nbTimesMax;
-    private int nbTimesPlayed;
+public class LearningTimeLimit extends Learning {
+    private int timeMax;
+    private int timePlayed;
 
-    public LearningXCards(DeckController deckController, DrawCardStrategy drawCardStrategy, int nbTimesMax) {
+    public LearningTimeLimit(DeckController deckController, DrawCardStrategy drawCardStrategy, int timeMax) {
         this.deckController = deckController;
         this.drawCardStrategy = drawCardStrategy;
-        this.nbTimesMax = nbTimesMax;
-        this.nbTimesPlayed = 0;
+        this.timeMax = timeMax;
+        this.timePlayed = 0;
         this.beginLastCard = System.currentTimeMillis();
 
         this.deckController.updateStatDeck();
     }
 
     public boolean isFinished() {
-        return nbTimesPlayed >= nbTimesMax;
+        return timePlayed >= timeMax;
     }
 
     public void updateConcreteLearning() {
-        nbTimesPlayed++;
+        timePlayed += System.currentTimeMillis() - beginLastCard;
     }
 }

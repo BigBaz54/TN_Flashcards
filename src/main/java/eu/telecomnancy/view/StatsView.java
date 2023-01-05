@@ -75,6 +75,7 @@ public class StatsView extends DeckListObserver implements Initializable {
             PieChartPourcentage.getData().add(new PieChart.Data("Deck " + "names.get(i)", pourcentage));
         }
         PieChartPourcentage.setLabelsVisible(true);
+        
     }
 
     @Override

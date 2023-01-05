@@ -35,6 +35,10 @@ public class DeckView extends DeckObserver implements Initializable {
     private Label name;
     @FXML
     private Label description;
+    @FXML
+    private TextField nameEdit;
+    @FXML
+    private TextField descriptionEdit;
 
     private DeckController deckController;
     private StageController stageController;
@@ -76,8 +80,8 @@ public class DeckView extends DeckObserver implements Initializable {
         scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
         react();
         // Text
-        name.setText("Nom : "+deckModel.getName());
-        description.setText("Description : "+deckModel.getDescription());
+        name.setText(deckModel.getName());
+        description.setText(deckModel.getDescription());
 
     }
 
@@ -100,6 +104,17 @@ public class DeckView extends DeckObserver implements Initializable {
             CardView cardView = new CardView(card, deckModel, deckController, mode);
             cardView.root.setPrefSize(400, 170);
             gridpane.add(cardView.root, i % 3, i / 3);
+        }
+        if (mode==Mode.VIEW){
+            name.setText(deckModel.getName());
+            description.setText(deckModel.getDescription());
+            setNodeVisibility(false,nameEdit,descriptionEdit);
+            setNodeVisibility(true,name,description);
+        }else{
+            nameEdit.setText(deckModel.getName());
+            descriptionEdit.setText(deckModel.getDescription());
+            setNodeVisibility(true,nameEdit,descriptionEdit);
+            setNodeVisibility(false,name,description);
         }
 
     }
@@ -172,6 +187,8 @@ public class DeckView extends DeckObserver implements Initializable {
             mode = Mode.EDIT;
         } else {
             mode = Mode.VIEW;
+            deckController.setDescription(descriptionEdit.getText());
+            deckController.setName(nameEdit.getText());
         }
         react();
     }

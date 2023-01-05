@@ -44,24 +44,36 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="98.0" prefWidth="1353.0">
+                        <VBox prefHeight="82.0" prefWidth="707.0">
                            <children>
-                              <Label fx:id="name" prefHeight="36.0" prefWidth="676.0" text="Nom :" wrapText="true">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </Label>
-                              <Label fx:id="description" prefHeight="71.0" prefWidth="711.0" text="Description : " wrapText="true">
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                              </Label>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="36.0" prefWidth="68.0" text="Nom :" wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="nameEdit" prefHeight="24.0" prefWidth="609.0" visible="false" />
+                                    <Label fx:id="name" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefHeight="41.0" prefWidth="118.0" text="Description : " wrapText="true">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <TextField fx:id="descriptionEdit" prefHeight="24.0" prefWidth="541.0" visible="false" />
+                                    <Label fx:id="description" />
+                                 </children>
+                              </HBox>
                            </children>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </VBox>
-                        <VBox prefHeight="63.0" prefWidth="1000.0">
+                        <VBox prefHeight="102.0" prefWidth="357.0">
                            <children>
                               <VBox fx:id="learningBox" prefHeight="29.0" prefWidth="501.0">
                                  <children>

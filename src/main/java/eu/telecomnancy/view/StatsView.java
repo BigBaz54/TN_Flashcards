@@ -71,10 +71,13 @@ public class StatsView extends DeckListObserver implements Initializable {
         }
 
         Long finalTotalTime = totalTime;
-        deckListModel.getDecks().forEach(deck -> {
-            float pourcentage = (float) (deck.getStatDeck().getTimesSpent() * 100 / finalTotalTime);
-            PieChartPourcentage.getData().add(new PieChart.Data(deck.getName(), pourcentage));
-        });
+        if (totalTime != 0) {
+            deckListModel.getDecks().forEach(deck -> {
+                float pourcentage = (float) (deck.getStatDeck().getTimesSpent() * 100 / finalTotalTime);
+                PieChartPourcentage.getData().add(new PieChart.Data(deck.getName(), pourcentage));
+            });
+        }
+
         PieChartPourcentage.setLabelsVisible(true);
     }
 

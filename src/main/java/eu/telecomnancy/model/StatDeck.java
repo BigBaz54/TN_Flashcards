@@ -1,10 +1,7 @@
 package eu.telecomnancy.model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Timer;
-import java.time.LocalDate;
 
 public class StatDeck {
     private int nbCards;
@@ -30,6 +27,7 @@ public class StatDeck {
         this.creationDate = new Date();
         this.name = name;
     }
+
     public StatDeck() {
         this.nbCards = 0;
         this.nbTimesOpened = 0;
@@ -58,6 +56,10 @@ public class StatDeck {
         this.nbTimesWrong -= card.getNbTimesWrong();
         this.nbCardsSeen -= card.getNbTimesSeen();
         this.timesSpent -= card.getTimesSpentTotal();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getNbCards() {

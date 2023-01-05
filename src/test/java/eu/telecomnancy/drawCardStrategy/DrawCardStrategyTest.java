@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import eu.telecomnancy.model.DeckModel;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class DrawCardStrategyTest {
@@ -46,7 +45,6 @@ public class DrawCardStrategyTest {
         random.handleAnswer(true, deck);
         assertTrue(savedProba == deck.getCard(0).getProbability());
         assertTrue(savedProba >= 0 && savedProba <= 1);
-
 
         savedProba = deck.getCard(0).getProbability();
         DrawCardStrategyWeighted weighted = new DrawCardStrategyWeighted();

@@ -12,6 +12,7 @@ public class FileController {
     private FileWriter fileWriter;
     private FileImporter fileImporter;
     private FileExporter fileExporter;
+    private DeckListController deckListController;
 
     public FileController() {
         fileWriter = new FileWriter();
@@ -22,6 +23,7 @@ public class FileController {
     }
 
     public void setDeckListController(DeckListController deckListController) {
+        this.deckListController = deckListController;
         fileLoader.setDeckListController(deckListController);
     }
 
@@ -34,6 +36,12 @@ public class FileController {
             fileSaver.saveDeck(deckModel);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void saveDecks() {
+        for (DeckModel deckModel : deckListController.getDeckListModel().getDecks()) {
+            saveDeck(deckModel);
         }
     }
 
@@ -55,6 +63,8 @@ public class FileController {
     }
 
     public void exportDeck(DeckModel deckModel) {
+        // Save the deck before exporting it
+        saveDeck(deckModel);
         try {
             fileExporter.export(deckModel);
         } catch (Exception e) {

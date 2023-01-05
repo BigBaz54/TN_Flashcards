@@ -1,8 +1,6 @@
 package eu.telecomnancy.io.adapter;
 
-import java.io.File;
 import java.io.IOException;
-
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;

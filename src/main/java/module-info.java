@@ -1,8 +1,8 @@
 module eu.telecomnancy {
-    requires javafx.controls;
+    requires transitive javafx.controls;
+    requires transitive javafx.graphics;
     requires javafx.fxml;
     requires transitive com.google.gson;
-    requires freetts;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;
     requires json;
@@ -19,4 +19,6 @@ module eu.telecomnancy {
     exports eu.telecomnancy.controller;
     exports eu.telecomnancy.buildCardStrategy;
     exports eu.telecomnancy.io.json;
+    exports eu.telecomnancy.observer;
+    exports eu.telecomnancy.drawCardStrategy;
 }

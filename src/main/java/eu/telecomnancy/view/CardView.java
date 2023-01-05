@@ -4,10 +4,8 @@ import java.io.IOException;
 
 import eu.telecomnancy.controller.CardController;
 import eu.telecomnancy.controller.DeckController;
-import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
-import eu.telecomnancy.observer.Observer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -38,7 +36,7 @@ public class CardView {
     private Mode mode;
     private DeckController deckController;
     private CardController cardController;
- 
+
     public CardView(CardModel card, DeckModel deck, DeckController deckController, Mode mode) {
         this.card = card;
         this.deck = deck;
@@ -49,7 +47,7 @@ public class CardView {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CardCell.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(root);
- 
+
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -61,12 +59,12 @@ public class CardView {
         answerEdit.setText(card.getAnswer());
 
         // Changement de vue en fonction du mode
-        if (mode == Mode.VIEW){
-            setNodeVisibility(false,delete,answerEdit,questionEdit);
-            setNodeVisibility(true,answer,question);
-        }else{
-            setNodeVisibility(false,answer,question);
-            setNodeVisibility(true,delete,answerEdit,questionEdit);
+        if (mode == Mode.VIEW) {
+            setNodeVisibility(false, delete, answerEdit, questionEdit);
+            setNodeVisibility(true, answer, question);
+        } else {
+            setNodeVisibility(false, answer, question);
+            setNodeVisibility(true, delete, answerEdit, questionEdit);
         }
 
         // Listeners
@@ -77,26 +75,18 @@ public class CardView {
             cardController.setAnswer(newValue);
         });
 
-
     }
 
     @FXML
-    public void removeCard(){
+    public void removeCard() {
         deckController.removeCard(deck.getCards().indexOf(card));
     }
 
-
-
-
-    public void setNodeVisibility(boolean visible, Node... node){
+    public void setNodeVisibility(boolean visible, Node... node) {
         for (Node n : node) {
             n.setVisible(visible);
             n.setManaged(visible);
         }
     }
-    
- 
+
 }
- 
-
-

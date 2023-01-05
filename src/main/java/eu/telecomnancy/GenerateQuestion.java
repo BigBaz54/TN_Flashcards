@@ -1,5 +1,7 @@
 package eu.telecomnancy;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import org.apache.http.HttpEntity;
@@ -40,13 +42,19 @@ public class GenerateQuestion {
         HttpResponse response = httpClient.execute(request);
         HttpEntity entity = response.getEntity();
         String responseString = EntityUtils.toString(entity);
-        //parse the answer
-        String answer = responseString.substring(responseString.indexOf("text") + 7, responseString.indexOf("finish_reason") - 3);
+        //parse the answer in gson
+        Gson gson = new Gson();
+        JsonObject jsonObject = gson.fromJson(responseString, JsonObject.class);
+        String answer = jsonObject.get("choices").getAsJsonArray().get(0).getAsJsonObject().get("text").getAsString();
+        //get rid of all /n
+        answer = answer.replaceAll("\n", "");
         String[] answers = answer.split("//");
         ArrayList<CardModel> newCards = new ArrayList<>();
         for (String newAnswer : answers) {
-            newCards.add(new CardModel(newAnswer, null));
+            GenerateResponse generateResponse = new GenerateResponse();
+            String responseToQuestion = generateResponse.getResponse(newAnswer);
+            responseToQuestion = responseToQuestion.replaceAll("\n", "");
+            newCards.add(new CardModel(newAnswer, responseToQuestion));
         }
-        return newCards;
-    }
+        return newCards;    }
 }

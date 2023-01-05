@@ -57,6 +57,13 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Label text="Number of Card to be generated" />
+                  <TextField fx:id="nbCardEdit" promptText="Entrez un Entier">
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#generateCard" text="Generate" />
                </children>
             </VBox>
          </children>

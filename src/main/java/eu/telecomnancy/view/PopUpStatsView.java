@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class PopUpStatsView implements Initializable {
@@ -16,9 +17,9 @@ public class PopUpStatsView implements Initializable {
     @FXML
     private PieChart pieChartPourcentage;
     @FXML
-    private BubbleChart<CategoryAxis, NumberAxis> bubbleChartTest;
+    private BubbleChart<String, Number> bubbleChartTest;
     @FXML
-    private LineChart<NumberAxis,NumberAxis> lineChartEvolutionTemps;
+    private LineChart<Number,Number> lineChartEvolutionTemps;
     @FXML
     private Label nbCardSeen;
     @FXML
@@ -47,18 +48,34 @@ public class PopUpStatsView implements Initializable {
 
     public void createLineChart() {
         lineChartEvolutionTemps.getData().clear();
-        XYChart.Series<NumberAxis, NumberAxis> series1 = new XYChart.Series<>();
+        XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("Series 1");
         ArrayList<Long> temps = learning.getStatLearning().getTimeCards();
         for (int i = 0; i < temps.size(); i++) {
-            XYChart.Data<NumberAxis, NumberAxis> data = new XYChart.Data<>(i, temps.get(i));
+            XYChart.Data<Number, Number> data = new XYChart.Data<>(i, temps.get(i));
             series1.getData().add(new XYChart.Data<>(i, temps.get(i)));
         }
         lineChartEvolutionTemps.getData().add(series1);
+    }
+    public void createBubbleChart() {
+        bubbleChartTest.getData().clear();
+        bubbleChartTest.getXAxis().setLabel("Label");
+        bubbleChartTest.getYAxis().setLabel("Pourcentage");
+        XYChart.Series<String, Number>  series1 = new XYChart.Series<>();
+        series1.setName("Temps moyen");
+
+        for (String tag : learning.getStatLearning().getNbCorrectByTag().keySet()){
+            float poucentage = ((float) learning.getStatLearning().getNbCorrectByTag().get(tag))/ ((float) learning.getStatLearning().getNbCorrect());
+            float tempsmoyen =  ((float) learning.getStatLearning().getTimePlayedByTag().get(tag))/((float)learning.getStatLearning().getNbPlayedByTag().get(tag));
+            series1.getData().add(new XYChart.Data<>(tag,poucentage,tempsmoyen));
+        }
+        bubbleChartTest.getData().add(series1);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createPieChart();
+        createLineChart();
+        createBubbleChart();
     }
 }

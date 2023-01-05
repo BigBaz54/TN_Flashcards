@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
+import javafx.scene.layout.VBox;
 
 import java.text.SimpleDateFormat;
 import java.net.URL;
@@ -18,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class StatsView extends DeckListObserver implements Initializable {
     private StageController stageController;
+    @FXML
+    private VBox sidebar;
     @FXML
     private LineChart<String, Number> nbDecksOverTime;
     @FXML
@@ -125,6 +128,10 @@ public class StatsView extends DeckListObserver implements Initializable {
     public void toGlobalView() {
         System.out.println("toGlobalView");
         stageController.setGlobalView();
+    }
+    @FXML
+    public void seeMenu() {
+        sidebar.setVisible(!sidebar.isVisible());
     }
 
 }

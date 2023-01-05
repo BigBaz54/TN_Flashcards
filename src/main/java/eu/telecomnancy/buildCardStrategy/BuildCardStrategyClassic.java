@@ -8,18 +8,18 @@ import javafx.scene.layout.StackPane;
 
 public class BuildCardStrategyClassic {
 
-    public StackPane root = new StackPane();
+    private StackPane root = new StackPane();
 
     @FXML
-    public Pane recto;
+    private Pane recto;
     @FXML
-    public Pane verso;
+    private Pane verso;
     @FXML
-    public Label rectoLabel;
+    private Label rectoLabel;
     @FXML
-    public Label versoLabel;
+    private Label versoLabel;
 
-    public BuildCardStrategyClassic() {
+    public StackPane buildCard() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoClassic.fxml"));
         loader.setController(this);
         //loader.setRoot(recto);
@@ -28,7 +28,7 @@ public class BuildCardStrategyClassic {
         } catch (Exception e) {
             e.printStackTrace();
         }
-         
+        
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("cardVersoClassic.fxml"));
         loader2.setController(this);
         //loader2.setRoot(verso);
@@ -39,6 +39,6 @@ public class BuildCardStrategyClassic {
         }
         root.getChildren().add(recto);
         root.getChildren().add(verso);
-        
+        return root;
     }
-}
+} 

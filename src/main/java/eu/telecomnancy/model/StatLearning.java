@@ -10,6 +10,7 @@ public class StatLearning {
     private ArrayList<Long> timeCards;
     private HashMap<String, Integer> nbPlayedByTag;
     private HashMap<String, Integer> nbCorrectByTag;
+    private HashMap<String, Long> timePlayedByTag;
 
     public StatLearning() {
         this.nbPlayed = 0;
@@ -60,6 +61,7 @@ public class StatLearning {
         } else {
             nbPlayedByTag.put(tag, 1);
             nbCorrectByTag.put(tag, 0);
+            timePlayedByTag.put(tag, 0L);
         }
     }
 
@@ -72,7 +74,18 @@ public class StatLearning {
             nbCorrectByTag.put(tag, (int) nbCorrectByTag.get(tag) + 1);
         } else {
             nbCorrectByTag.put(tag, 1);
-            nbPlayedByTag.put(tag, 1);
+        }
+    }
+
+    public HashMap getTimePlayedByTag() {
+        return timePlayedByTag;
+    }
+
+    public void incrementTimePlayedByTag(String tag, Long timePlayed) {
+        if (timePlayedByTag.containsKey(tag)) {
+            timePlayedByTag.put(tag, (Long) timePlayedByTag.get(tag) + timePlayed);
+        } else {
+            timePlayedByTag.put(tag, timePlayed);
         }
     }
 }

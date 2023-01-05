@@ -8,6 +8,10 @@ import java.io.OutputStream;
 import eu.telecomnancy.model.Media;
 
 public class FileWriter {
+    public FileWriter() {
+        FileWriter.createDir();
+    }
+
     public static void createDir() {
         File dir_1 = new File("resources");
         File dir_2 = new File("resources/decks");
@@ -27,8 +31,6 @@ public class FileWriter {
     }
 
     public void writeJson(String json, String name) throws IOException {
-        createDir();
-
         File file = new File("resources/decks/" + name);
         OutputStream stream = new FileOutputStream(file);
 
@@ -37,8 +39,6 @@ public class FileWriter {
     }
 
     public void writeMedia(Media media) throws IOException {
-        createDir();
-
         String path = "resources/";
         String folder = "";
         switch (media.getType()) {

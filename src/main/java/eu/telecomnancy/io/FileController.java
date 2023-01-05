@@ -46,6 +46,7 @@ public class FileController {
     }
 
     public void importDeck(File file) {
+        FileWriter.createDir();
         try {
             fileImporter.imports(file);
         } catch (Exception e) {

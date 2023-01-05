@@ -11,7 +11,6 @@ public class StatDeck {
     private int nbCardsSeen;
     private Long timesSpent;
     private String name;
-    private ArrayList<StatCard> cards;
     private Date lastOpened;
     private Date creationDate;
 
@@ -22,7 +21,6 @@ public class StatDeck {
         this.nbTimesWrong = 0;
         this.nbCardsSeen = 0;
         this.timesSpent = 0L;
-        this.cards = new ArrayList<>();
         this.lastOpened = new Date();
         this.creationDate = new Date();
         this.name = name;
@@ -35,13 +33,11 @@ public class StatDeck {
         this.nbTimesWrong = 0;
         this.nbCardsSeen = 0;
         this.timesSpent = 0L;
-        this.cards = new ArrayList<>();
         this.lastOpened = new Date();
         this.creationDate = new Date();
     }
 
     public void addCard(StatCard card) {
-        this.cards.add(card);
         this.nbCards++;
         this.nbTimesCorrect += card.getNbTimesCorrect();
         this.nbTimesWrong += card.getNbTimesWrong();
@@ -50,7 +46,6 @@ public class StatDeck {
     }
 
     public void removeCard(StatCard card) {
-        this.cards.remove(card);
         this.nbCards--;
         this.nbTimesCorrect -= card.getNbTimesCorrect();
         this.nbTimesWrong -= card.getNbTimesWrong();
@@ -108,14 +103,6 @@ public class StatDeck {
 
     public void setTimesSpent(Long timesSpent) {
         this.timesSpent = timesSpent;
-    }
-
-    public ArrayList<StatCard> getCards() {
-        return cards;
-    }
-
-    public void setCards(ArrayList<StatCard> cards) {
-        this.cards = cards;
     }
 
     public void setLastOpened(Date lastOpened) {

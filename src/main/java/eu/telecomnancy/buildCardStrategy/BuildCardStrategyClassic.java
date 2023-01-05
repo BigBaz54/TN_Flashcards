@@ -1,25 +1,19 @@
 package eu.telecomnancy.buildCardStrategy;
 
+import eu.telecomnancy.model.CardModel;
+import eu.telecomnancy.view.LearningView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
-public class BuildCardStrategyClassic {
+public class BuildCardStrategyClassic extends BuildCardStrategy{
 
-    private StackPane root = new StackPane();
 
-    @FXML
-    private Pane recto;
-    @FXML
-    private Pane verso;
-    @FXML
-    private Label rectoLabel;
-    @FXML
-    private Label versoLabel;
+    public BuildCardStrategyClassic(CardModel card) {
+        super(card);
 
-    public StackPane buildCard() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("cardRectoClassic.fxml"));
         loader.setController(this);
         //loader.setRoot(recto);
@@ -29,6 +23,7 @@ public class BuildCardStrategyClassic {
             e.printStackTrace();
         }
         
+        
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("cardVersoClassic.fxml"));
         loader2.setController(this);
         //loader2.setRoot(verso);
@@ -36,9 +31,13 @@ public class BuildCardStrategyClassic {
             loader2.load();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        root.getChildren().add(recto);
-        root.getChildren().add(verso);
-        return root;
+        }  
+
+        rectoLabel.setText(card.getQuestion());
+        versoLabel.setText(card.getAnswer());
+        
+        
     }
-} 
+
+
+}

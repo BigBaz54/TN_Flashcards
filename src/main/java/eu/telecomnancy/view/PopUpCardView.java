@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.GenerateResponse;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.model.DeckListModel;
@@ -11,6 +12,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class PopUpCardView extends DeckObserver {
 
     @FXML
@@ -18,7 +21,6 @@ public class PopUpCardView extends DeckObserver {
     @FXML
     private TextField answerEdit;
 
-    private DeckModel deckModel;
     private DeckController deckController;
 
 
@@ -26,8 +28,13 @@ public class PopUpCardView extends DeckObserver {
         super(deckModel);
         this.deckController = deckController;
     }
-
-
+    @FXML
+    public void generateAnswer(ActionEvent actionEvent) throws IOException {
+        String question = questionEdit.getText();
+        GenerateResponse generateResponse = new GenerateResponse();
+        String response = generateResponse.getResponse(question);
+        answerEdit.setText(response);
+    }
     @FXML
     public void createCard(ActionEvent event){
         String question = questionEdit.getText();

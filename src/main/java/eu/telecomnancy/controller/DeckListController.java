@@ -1,14 +1,17 @@
 package eu.telecomnancy.controller;
 
+import eu.telecomnancy.io.FileController;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
 
 public class DeckListController {
-
+    private FileController fileController;
     private DeckListModel deckListModel;
 
-    public DeckListController(DeckListModel deckListModel) {
+    public DeckListController(DeckListModel deckListModel, FileController fileController) {
         this.deckListModel = deckListModel;
+        this.fileController = fileController;
+        fileController.setDeckListController(this);
     }
 
     public void createDeck(String name, String description) {
@@ -20,7 +23,7 @@ public class DeckListController {
     }
 
     public void exportDeck(int i) {
-        // TODO:
+        fileController.saveDeck(deckListModel.getDecks().get(i));
     }
 
     public void importDeck(DeckModel deck) {

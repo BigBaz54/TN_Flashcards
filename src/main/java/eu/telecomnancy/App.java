@@ -1,17 +1,19 @@
 package eu.telecomnancy;
 
+import java.io.File;
 import java.io.IOException;
 
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.io.FileController;
+import eu.telecomnancy.io.FileExporter;
+import eu.telecomnancy.io.FileImporter;
 import eu.telecomnancy.io.FileLoader;
 import eu.telecomnancy.io.FileReader;
+import eu.telecomnancy.io.FileWriter;
 import eu.telecomnancy.io.json.JsonFormatter;
 import eu.telecomnancy.io.json.JsonFormatterDeck;
-import eu.telecomnancy.model.DeckListModel;
-import eu.telecomnancy.model.DeckModel;
-import eu.telecomnancy.model.StageModel;
-import eu.telecomnancy.model.StatDeckList;
+import eu.telecomnancy.model.*;
 import eu.telecomnancy.view.GlobalView;
 import eu.telecomnancy.view.StageView;
 import eu.telecomnancy.view.StatsView;
@@ -36,12 +38,16 @@ public class App extends Application {
         StageModel stageModel = new StageModel();
         StageController stageController = new StageController(stageModel);
 
+        // FileController
+        FileController fileController = new FileController();
+
         // GlobalView
         DeckListModel deckList = new DeckListModel();
-        DeckListController deckListController = new DeckListController(deckList);
-        FileLoader fileLoader = new FileLoader(deckListController,
-                new FileReader<DeckModel>(new JsonFormatterDeck()));
-        fileLoader.loadDecks();
+        DeckListController deckListController = new DeckListController(deckList, fileController);
+
+        // Load decks after the controller is set
+        fileController.loadDecks();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GlobalView.fxml"));
         loader.setControllerFactory(ic -> new GlobalView(deckList, deckListController, stageController));
         try {
@@ -51,7 +57,7 @@ public class App extends Application {
             // StatDeck
             StatDeckList statDeckList = deckList.getStatDeck();
             FXMLLoader loader2 = new FXMLLoader(getClass().getResource("StatsView.fxml"));
-            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController,deckList.getStatDeck()));
+            loader2.setControllerFactory(ic -> new StatsView(deckList, stageController, deckList.getStatDeck()));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
             StageView stageView = new StageView(primaryStage, stageModel, stageController, scene, scene2);

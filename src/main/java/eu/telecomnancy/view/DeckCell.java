@@ -130,4 +130,5 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     public void exportDeck() {
         controller.exportDeck(getIndex());
     }
+    
 }

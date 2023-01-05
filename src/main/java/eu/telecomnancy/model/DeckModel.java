@@ -59,6 +59,10 @@ public class DeckModel extends Observed {
         cards.add(new CardModel(question, answer));
         notifyObservers();
     }
+    public void addCard(String question, String answer, Media media){
+        cards.add(new CardModel(question,answer,media));
+        notifyObservers();
+    }
 
     public CardModel getCard(int i) {
         return cards.get(i);

@@ -27,6 +27,10 @@ public class CardModel extends Observed {
         this.statCard = new StatCard();
         this.tags = new ArrayList<>();
     }
+    public CardModel(String question, String answer,Media media) {
+        this(question,answer);
+        this.media=media;
+    }
 
     public String getQuestion() {
         return question;

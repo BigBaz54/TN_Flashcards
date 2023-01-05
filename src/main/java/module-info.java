@@ -1,5 +1,6 @@
 module eu.telecomnancy {
     requires javafx.controls;
+    requires transitive javafx.graphics;
     requires javafx.fxml;
     requires transitive com.google.gson;
     requires freetts;

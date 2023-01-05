@@ -14,6 +14,10 @@ public class DeckListController {
         fileController.setDeckListController(this);
     }
 
+    public DeckListModel getDeckListModel() {
+        return deckListModel;
+    }
+
     public void createDeck(String name, String description) {
         deckListModel.createDeck(name, description);
     }

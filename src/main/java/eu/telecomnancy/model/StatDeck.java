@@ -1,6 +1,5 @@
 package eu.telecomnancy.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class StatDeck {
@@ -98,6 +97,7 @@ public class StatDeck {
     public void setTimesSpent(Long timesSpent) {
         this.timesSpent = timesSpent;
     }
+
     public void setLastOpened(Date lastOpened) {
         this.lastOpened = lastOpened;
     }

@@ -8,8 +8,8 @@ public class StatLearning {
     private int nbCorrect;
     private Long timePlayed;
     private ArrayList<Long> timeCards;
-    private HashMap nbPlayedByTag;
-    private HashMap nbCorrectByTag;
+    private HashMap<String, Integer> nbPlayedByTag;
+    private HashMap<String, Integer> nbCorrectByTag;
 
     public StatLearning() {
         this.nbPlayed = 0;
@@ -50,7 +50,7 @@ public class StatLearning {
         this.timeCards.add(timeCard);
     }
 
-    public HashMap getNbPlayedByTag() {
+    public HashMap<String, Integer> getNbPlayedByTag() {
         return nbPlayedByTag;
     }
 
@@ -63,7 +63,7 @@ public class StatLearning {
         }
     }
 
-    public HashMap getNbCorrectByTag() {
+    public HashMap<String, Integer> getNbCorrectByTag() {
         return nbCorrectByTag;
     }
 

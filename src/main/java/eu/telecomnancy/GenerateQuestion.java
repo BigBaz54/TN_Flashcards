@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.model.CardModel;
-import eu.telecomnancy.model.DeckModel;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;

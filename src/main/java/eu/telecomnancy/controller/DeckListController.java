@@ -3,6 +3,7 @@ package eu.telecomnancy.controller;
 import java.io.File;
 
 import eu.telecomnancy.io.file.FileController;
+import eu.telecomnancy.io.sql.ApkgReader;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
 import javafx.stage.FileChooser;
@@ -61,6 +62,17 @@ public class DeckListController {
 
         if (file != null) {
             fileController.importFromFile(file);
+        }
+    }
+
+    public void importApkgDeck(File apkg) {
+        DeckModel model = new DeckModel();
+        ApkgReader apkgReader = new ApkgReader(apkg);
+        try {
+            apkgReader.apkgToDeckModel(model);
+            deckListModel.addDeck(model);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

@@ -59,5 +59,8 @@ public class StageController {
             e.printStackTrace();
         }
     }
+    public void setSettingsView(){
+        stageModel.setActiveScene(4);
+    }
 
 }

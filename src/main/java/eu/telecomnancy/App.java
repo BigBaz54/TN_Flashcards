@@ -6,6 +6,7 @@ import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.io.file.FileController;
 import eu.telecomnancy.model.*;
 import eu.telecomnancy.view.GlobalView;
+import eu.telecomnancy.view.SettingsView;
 import eu.telecomnancy.view.StageView;
 import eu.telecomnancy.view.StatsView;
 import javafx.application.Application;
@@ -51,7 +52,14 @@ public class App extends Application {
             loader2.setControllerFactory(ic -> new StatsView(deckList, stageController));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
-            new StageView(primaryStage, stageModel, stageController, scene, scene2);
+
+            // Settings 
+            FXMLLoader loader3 = new FXMLLoader(getClass().getResource("SettingsView.fxml"));
+            loader3.setControllerFactory(ic -> new SettingsView(deckListController,stageController));
+            Parent root3 = loader3.load();
+            Scene scene3 = new Scene(root3, 1200, 900);
+
+            new StageView(primaryStage, stageModel, stageController, scene, scene2,scene3);
             stageController.setGlobalView();
 
         } catch (IOException e) {

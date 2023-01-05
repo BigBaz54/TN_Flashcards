@@ -175,10 +175,12 @@ public class DeckView extends DeckObserver implements Initializable {
 
     @FXML
     public void toStatsView() {
+        stageController.setStatsView();
     }
 
     @FXML
     public void toSettingsView() {
+        stageController.setSettingsView();
     }
 
     @FXML

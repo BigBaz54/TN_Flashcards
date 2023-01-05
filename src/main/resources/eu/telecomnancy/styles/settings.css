@@ -1,0 +1,27 @@
+.root {
+    -fx-font-size : 30px;
+}
+
+.title {
+    -fx-background-color: transparent;
+    -fx-font-size : 20px;
+}
+
+.sub-title {
+    -fx-border-width : 0 0 1 0;
+    -fx-border-color: rgb(116,116,116);
+    -fx-padding : 0 10 10 10;
+    -fx-font-size : 14px;
+}
+
+.container {
+    -fx-background-color : white;
+    -fx-border-color : rgb(116, 116, 116);
+    -fx-background-radius : 10px;
+    -fx-border-radius : 10px;
+}
+
+.last {
+    -fx-padding : 0 10 10 10;
+    -fx-font-size : 14px;
+}

@@ -120,7 +120,7 @@ public class GlobalView extends DeckListObserver implements Initializable {
 
     @FXML
     public void toSettingsView() {
-
+        stageController.setSettingsView();
     }
 
     public void setNodeVisibility(boolean visible, Node... node) {

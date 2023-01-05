@@ -108,8 +108,7 @@ public class LearningView extends DeckObserver implements Initializable {
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         if (mode == CardMode.RECTO) {
             mode = CardMode.VERSO;
-        }
-        else{
+        } else {
             mode = CardMode.RECTO;
         }
         react();
@@ -160,9 +159,8 @@ public class LearningView extends DeckObserver implements Initializable {
         stageController.setDeckView(deckModel,buildCardStrategy,drawCardStrategy);
     }
 
-
-    private void setNodeVisibility(boolean visible, Node... nodes){
-        for(Node node : nodes){
+    private void setNodeVisibility(boolean visible, Node... nodes) {
+        for (Node node : nodes) {
             node.setVisible(visible);
         }
     }

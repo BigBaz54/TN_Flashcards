@@ -12,6 +12,15 @@ public class DeckModel extends Observed {
     private int activeCard;
     private StatDeck statDeck;
 
+    public DeckModel() {
+        cards = new ArrayList<>();
+        tags = new ArrayList<>();
+        this.name = "";
+        this.description = "";
+        this.activeCard = 0;
+        this.statDeck = new StatDeck(name);
+    }
+
     public DeckModel(ArrayList<CardModel> cards, ArrayList<DeckTag> tags, String name, String description,
             StatDeck statDeck) {
         this.cards = cards;
@@ -91,6 +100,11 @@ public class DeckModel extends Observed {
         return this.tags;
     }
 
+    public void setTags(ArrayList<DeckTag> tags) {
+        this.tags = tags;
+        notifyObservers();
+    }
+
     public void addTag(String tag) {
         this.tags.add(new DeckTag(tag));
     }
@@ -108,5 +122,9 @@ public class DeckModel extends Observed {
         return this.statDeck;
     }
 
+    public void setStatDeck(StatDeck statDeck) {
+        this.statDeck = statDeck;
+        notifyObservers();
+    }
 
 }

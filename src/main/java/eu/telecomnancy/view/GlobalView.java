@@ -74,7 +74,6 @@ public class GlobalView extends DeckListObserver implements Initializable {
         else
             mode = Mode.VIEW;
         deckListView.refresh();
-
     }
 
     public Mode getMode() {

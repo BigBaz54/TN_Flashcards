@@ -30,7 +30,7 @@ public class FileReader<T> {
         return content;
     }
 
-    public T read(String name) throws IOException {
-        return jsonFormatter.fromJson(getContent(name));
+    public void read(String name, T model) throws IOException {
+        jsonFormatter.fromJson(getContent(name), model);
     }
 }

@@ -32,7 +32,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite2() {
-        DeckModel deckModel = new DeckModel("test write 2", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 2");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
         jsonFormatter.setPretty(true);
@@ -51,7 +53,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite3() {
-        DeckModel deckModel = new DeckModel("test write 3", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 3");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         JsonFormatterDeck jsonFormatter = new JsonFormatterDeck(deckModel);
@@ -71,7 +75,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite4() {
-        DeckModel deckModel = new DeckModel("test write 4", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 4");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         deckModel.addTag("test");
@@ -93,7 +99,9 @@ public class FileWriterTest {
 
     @Test
     public void testWrite5() {
-        DeckModel deckModel = new DeckModel("test write 5", "This is a test");
+        DeckModel deckModel = new DeckModel();
+        deckModel.setName("test write 5");
+        deckModel.setDescription("This is a test");
         deckModel.addCard("Hello", "Bonjour");
         deckModel.getCard(0).setMedia(new Media("test", MediaType.IMG));
         deckModel.addTag("test");

@@ -18,7 +18,8 @@ public class FileReaderTest {
         String name = "test/test_read_1.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
-            DeckModel deckModel = fileReader.read(name);
+            DeckModel deckModel = new DeckModel();
+            fileReader.read(name, deckModel);
             assertEquals("test read 1", deckModel.getName());
             assertEquals("This is a test", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());
@@ -32,7 +33,8 @@ public class FileReaderTest {
         String name = "test/test_read_2.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
-            DeckModel deckModel = fileReader.read(name);
+            DeckModel deckModel = new DeckModel();
+            fileReader.read(name, deckModel);
             assertEquals("test read 2", deckModel.getName());
             assertEquals("This is a test 2", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());
@@ -47,7 +49,8 @@ public class FileReaderTest {
         String name = "test/test_read_3.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
-            DeckModel deckModel = fileReader.read(name);
+            DeckModel deckModel = new DeckModel();
+            fileReader.read(name, deckModel);
             assertEquals("test read 3", deckModel.getName());
             assertEquals("This is a test 3", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());
@@ -64,7 +67,8 @@ public class FileReaderTest {
         String name = "test/test_read_4.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
-            DeckModel deckModel = fileReader.read(name);
+            DeckModel deckModel = new DeckModel();
+            fileReader.read(name, deckModel);
             assertEquals("test read 4", deckModel.getName());
             assertEquals("This is a test 4", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());
@@ -84,7 +88,8 @@ public class FileReaderTest {
         String name = "test/test_read_5.json";
         FileReader<DeckModel> fileReader = new FileReader<DeckModel>(new JsonFormatterDeck(null));
         try {
-            DeckModel deckModel = fileReader.read(name);
+            DeckModel deckModel = new DeckModel();
+            fileReader.read(name, deckModel);
             assertEquals("test read 5", deckModel.getName());
             assertEquals("This is a test 5", deckModel.getDescription());
             assertEquals(1, deckModel.getCards().size());

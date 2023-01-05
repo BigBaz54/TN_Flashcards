@@ -37,8 +37,12 @@ public class CDeckModel implements Compact<DeckModel> {
     }
 
     @Override
-    public DeckModel to() {
-        return new DeckModel(cards, tags, name, description, statDeck);
+    public void to(DeckModel model) {
+        model.setCards(cards);
+        model.setTags(tags);
+        model.setName(name);
+        model.setDescription(description);
+        model.setStatDeck(statDeck);
     }
 
     public ArrayList<CardModel> getCards() {

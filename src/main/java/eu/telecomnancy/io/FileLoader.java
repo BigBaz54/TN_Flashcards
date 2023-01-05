@@ -25,12 +25,22 @@ public class FileLoader {
         File dir = new File("resources/decks");
 
         for (File file : dir.listFiles()) {
-            if (file.isFile()) {
-                try {
-                    deckListController.importDeck(fileReader.read(file.getName()));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            if (file.isDirectory() || (file.getName().split("\\.").length > 1
+                    && !file.getName().split("\\.")[1].equals("json"))) {
+                continue;
+            }
+            DeckModel deck = deckListController.createEmptyDeck();
+            loadDeck(file, deck);
+        }
+    }
+
+    public void loadDeck(File file, DeckModel deck) {
+        if (file.isFile()) {
+            try {
+                fileReader.read(file.getName(), deck);
+                deckListController.importDeck(deck);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

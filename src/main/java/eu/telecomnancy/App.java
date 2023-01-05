@@ -48,7 +48,7 @@ public class App extends Application {
             loader2.setControllerFactory(ic -> new StatsView(deckList, stageController, deckList.getStatDeck()));
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
-            StageView stageView = new StageView(primaryStage, stageModel, stageController, scene, scene2);
+            new StageView(primaryStage, stageModel, stageController, scene, scene2);
             stageController.setGlobalView();
 
         } catch (IOException e) {

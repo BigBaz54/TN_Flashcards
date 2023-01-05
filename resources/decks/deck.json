@@ -4,6 +4,12 @@
       "question": "Pourquoi LV est moche ?",
       "answer": "Feur",
       "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
       "tags": [],
       "media": {
         "file": "logo_UL.jpg",
@@ -14,12 +20,36 @@
       "question": "Pourquoi ?",
       "answer": "Feur",
       "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
       "tags": []
     },
     {
       "question": "Est ce que la sauvegarde fonctionne ?",
       "answer": "Oui",
       "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Est ce que la sauvegarde fonctionne toujours ?",
+      "answer": "Oui",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
       "tags": []
     }
   ],

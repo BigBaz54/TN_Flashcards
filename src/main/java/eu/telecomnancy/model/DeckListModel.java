@@ -12,7 +12,7 @@ public class DeckListModel extends Observed {
     private StatDeckList statDeck;
     private DrawCardStrategy drawCardStrategy;
     private BuildCardStrategy buildCardStrategy;
-    
+
     public StatDeckList getStatDeck() {
         return statDeck;
     }

@@ -4,13 +4,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 public class FileImporter {
-    public File imports(File file) throws IOException {
+    public File importFromUrl(URL url) throws URISyntaxException, IOException {
+        return checkURL(url) ? importFromFile(Paths.get(url.toURI()).toFile()) : null;
+    }
+
+    public File importFromFile(File file) throws IOException {
         File destDir = new File("resources");
         File deck = null;
 
@@ -90,5 +97,23 @@ public class FileImporter {
         List<String> validSubDir = Arrays.asList("decks", "exports", "images", "sounds", "videos", "test");
 
         return parent != null ? validSubDir.contains(parent.getName()) : false;
+    }
+
+    private boolean checkURL(URL url) {
+        // Check if the url is a zip file and if it is a valid url
+        // Valid url comes from following sites: google drive, dropbox, github
+        List<String> validUrl = Arrays.asList("drive.google.com", "dropbox.com", "github.com");
+
+        if (url == null) {
+            return false;
+        }
+
+        String host = url.getHost();
+
+        if (host == null) {
+            return false;
+        }
+
+        return validUrl.contains(host);
     }
 }

@@ -27,7 +27,6 @@ public class Media {
                 path += "videos/";
                 break;
         }
-        System.out.println("Path: " + path + fileName);
         return new File(path + fileName);
     }
 

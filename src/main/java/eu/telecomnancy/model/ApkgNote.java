@@ -15,7 +15,7 @@ public class ApkgNote {
         this.question = question;
         this.answer = answer;
         this.media = media;
-        System.out.println("Media: " + media.getName());
+        System.out.println("answer: " + answer);
     }
 
     public String getQuestion() {

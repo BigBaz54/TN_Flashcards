@@ -36,6 +36,9 @@ public class ApkgReader {
             throw new RuntimeException("File is not an apkg or zip file");
         }
 
+        // Create the temp directory
+        FileWriter.createDir();
+
         this.apkg = file;
         this.files = new ArrayList<File>();
         this.jsonApkgMediaFormatter = new JsonApkgMediaFormatter(new ApkgMedia());
@@ -201,7 +204,7 @@ public class ApkgReader {
 
         while (entry != null) {
             if (entry.getName().contains(".anki2")) {
-                anki2 = new File("resources/apkg/anki2/" + entry.getName());
+                anki2 = new File("resources/temp/" + entry.getName());
 
                 FileOutputStream fos = new FileOutputStream(anki2);
 

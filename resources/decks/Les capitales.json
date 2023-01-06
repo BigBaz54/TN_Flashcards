@@ -3,15 +3,22 @@
     {
       "question": "Quelle est la capitale de la France ?",
       "answer": "Paris",
-      "probability": 0.25,
+      "probability": 0.0078125,
       "statCard": {
-        "nbTimesSeen": 3,
-        "nbTimesCorrect": 2,
+        "nbTimesSeen": 10,
+        "nbTimesCorrect": 9,
         "nbTimesWrong": 1,
         "timesSpent": [
           78114,
           2465,
-          1982
+          1982,
+          4979,
+          1447,
+          985,
+          1665,
+          1096,
+          1531,
+          2755
         ]
       },
       "tags": [
@@ -25,14 +32,20 @@
     {
       "question": "Quelle est la capitale de l\u0027Allemagne ?",
       "answer": "Berlin",
-      "probability": 0.5,
+      "probability": 0.03125,
       "statCard": {
-        "nbTimesSeen": 2,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 8,
+        "nbTimesCorrect": 7,
         "nbTimesWrong": 1,
         "timesSpent": [
           7250,
-          937
+          937,
+          3298,
+          1043,
+          1781,
+          3422,
+          1302,
+          9882
         ]
       },
       "tags": [
@@ -46,15 +59,21 @@
     {
       "question": "Quelle est la capitale de l\u0027Espagne ?",
       "answer": "Madrid.",
-      "probability": 1.0,
+      "probability": 0.0625,
       "statCard": {
-        "nbTimesSeen": 3,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 9,
+        "nbTimesCorrect": 6,
         "nbTimesWrong": 3,
         "timesSpent": [
           86033,
           2216,
-          16516
+          16516,
+          1451,
+          1525,
+          1573,
+          1153,
+          1445,
+          5525
         ]
       },
       "tags": [
@@ -64,15 +83,21 @@
     {
       "question": "Quelle est la capitale de la Suisse ?",
       "answer": "Berne.",
-      "probability": 0.5,
+      "probability": 0.03125,
       "statCard": {
-        "nbTimesSeen": 3,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 9,
+        "nbTimesCorrect": 7,
         "nbTimesWrong": 2,
         "timesSpent": [
           87822,
           3789,
-          1131
+          1131,
+          45280,
+          1056,
+          2021,
+          1330,
+          1186,
+          1479
         ]
       },
       "tags": [
@@ -82,13 +107,17 @@
     {
       "question": "Quelle est la capitale du Portugal ?",
       "answer": "La capitale du Portugal est Lisbonne.",
-      "probability": 1.0,
+      "probability": 0.25,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 5,
+        "nbTimesCorrect": 4,
         "nbTimesWrong": 1,
         "timesSpent": [
-          13730
+          13730,
+          1287,
+          1137,
+          1556,
+          1140
         ]
       },
       "tags": [
@@ -98,14 +127,18 @@
     {
       "question": "Quelle est la capitale de la Belgique ?",
       "answer": "La capitale de la Belgique est Bruxelles.",
-      "probability": 0.5,
+      "probability": 0.125,
       "statCard": {
-        "nbTimesSeen": 2,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 6,
+        "nbTimesCorrect": 5,
         "nbTimesWrong": 1,
         "timesSpent": [
           10847,
-          2940
+          2940,
+          3479,
+          1490,
+          1532,
+          618
         ]
       },
       "tags": [
@@ -115,13 +148,16 @@
     {
       "question": "Quelle est la capitale de l\u0027Italie ?",
       "answer": "La capitale de l\u0027Italie est Rome.",
-      "probability": 0.5,
+      "probability": 0.25,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 4,
+        "nbTimesCorrect": 4,
         "nbTimesWrong": 0,
         "timesSpent": [
-          1711
+          1711,
+          1503,
+          774,
+          1038
         ]
       },
       "tags": [
@@ -137,10 +173,13 @@
       "answer": "La capitale de l\u0027Autriche est Vienne.",
       "probability": 0.5,
       "statCard": {
-        "nbTimesSeen": 0,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 2,
         "nbTimesWrong": 0,
-        "timesSpent": []
+        "timesSpent": [
+          1262,
+          1463
+        ]
       },
       "tags": [
         "s7"
@@ -151,10 +190,13 @@
       "answer": "La capitale du Danemark est Copenhague.",
       "probability": 1.0,
       "statCard": {
-        "nbTimesSeen": 0,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 2,
         "nbTimesWrong": 0,
-        "timesSpent": []
+        "timesSpent": [
+          3438,
+          1462
+        ]
       },
       "tags": [
         "s8"
@@ -163,14 +205,17 @@
     {
       "question": "Quelle est la capitale de la Suisse ?",
       "answer": "La capitale de la Suisse est Berne.",
-      "probability": 0.25,
+      "probability": 0.125,
       "statCard": {
-        "nbTimesSeen": 2,
-        "nbTimesCorrect": 2,
+        "nbTimesSeen": 5,
+        "nbTimesCorrect": 5,
         "nbTimesWrong": 0,
         "timesSpent": [
           3732,
-          1921
+          1921,
+          1561,
+          1866,
+          971
         ]
       },
       "tags": [
@@ -182,11 +227,13 @@
       "answer": "La capitale du Kenya est Nairobi.",
       "probability": 1.0,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 2,
         "nbTimesWrong": 1,
         "timesSpent": [
-          2583
+          2583,
+          1981,
+          994
         ]
       },
       "tags": [
@@ -196,13 +243,14 @@
     {
       "question": "Quelle est la capitale du Canada ?",
       "answer": "La capitale du Canada est Ottawa.",
-      "probability": 0.5,
+      "probability": 1.0,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 2,
         "nbTimesWrong": 0,
         "timesSpent": [
-          1141
+          1141,
+          16744
         ]
       },
       "tags": [
@@ -214,11 +262,13 @@
       "answer": "La capitale de la Russie est Moscou.",
       "probability": 0.5,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 3,
         "nbTimesWrong": 0,
         "timesSpent": [
-          2006
+          2006,
+          4172,
+          1430
         ]
       },
       "tags": [
@@ -228,12 +278,12 @@
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 2,
+    "nbTimesOpened": 5,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1673026184390,
+    "lastOpened": 1673027898334,
     "creationDate": 1672999894492
   },
   "name": "Les capitales",

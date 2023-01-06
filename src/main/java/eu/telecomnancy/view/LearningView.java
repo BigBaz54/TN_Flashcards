@@ -10,6 +10,7 @@ import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.MediaType;
 import eu.telecomnancy.observer.DeckObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -49,6 +52,8 @@ public class LearningView extends DeckObserver implements Initializable {
     public Label rectoLabel;
     @FXML
     public Label versoLabel;
+    @FXML
+    public VBox mediaContainer;
 
     private CardMode mode;
     private Long time;
@@ -83,11 +88,22 @@ public class LearningView extends DeckObserver implements Initializable {
             return;
         }
         cardContainer.setCenter(null);
+        mediaContainer.getChildren().clear();
         CardModel card = deckModel.getCard(deckModel.getActiveCard());
         if (mode == CardMode.RECTO) {
             setNodeVisibility(false, right, wrong);
             cardContainer.setCenter(recto);
             rectoLabel.setText(card.getQuestion());
+            if(card.getMedia() != null) {
+                if(card.getMedia().getType()==MediaType.IMG){
+                    Image img = new Image(card.getMedia().getFile().toURI().toString());
+                    ImageView imgView = new ImageView(img);
+                    imgView.setPreserveRatio(true);
+                    imgView.setFitWidth(180);
+                    imgView.setFitHeight(250);
+                    mediaContainer.getChildren().add(imgView);
+                }
+            }
         } else {
             setNodeVisibility(true, right, wrong);
             cardContainer.setCenter(verso);
@@ -99,16 +115,13 @@ public class LearningView extends DeckObserver implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Build de la CardView
-        CardModel card = deckModel.getCard(deckModel.getActiveCard());
         Pane pane = buildCardStrategy.build();
         recto = (Pane) pane.lookup("#recto");
         rectoLabel = (Label) pane.lookup("#rectoLabel");
-        rectoLabel.setText(card.getQuestion());
         verso = (Pane) pane.lookup("#verso");
         versoLabel = (Label) pane.lookup("#versoLabel");
-        cardContainer.setCenter(recto);
-        // Buttons
-        setNodeVisibility(false, right, wrong);
+        mediaContainer = (VBox) pane.lookup("#mediaContainer");
+        react();
     }
 
     // Card //

@@ -102,7 +102,6 @@ public class ApkgReader {
                 imgName = imgName.substring(0, imgName.length() - 1);
             }
 
-            System.out.println("Image name: " + imgName);
             String next = img[1].substring(index);
             notesArray[0] = img[0] + " ... " + next;
             note = new ApkgNote(removeHTMLTags(notesArray[0]), removeHTMLTags(notesArray[1]),

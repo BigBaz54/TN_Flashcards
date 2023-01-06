@@ -90,7 +90,7 @@ public class CardView {
         // Vue d'un média
         if (card.getMedia() != null) {
             mediaIcon.setVisible(true);
-        }else{
+        } else {
             mediaIcon.setVisible(false);
         }
 
@@ -112,7 +112,7 @@ public class CardView {
     public void seeMedia() {
         Media media = card.getMedia();
         if (media != null) {
-            if(media.getType()!=MediaType.IMG){
+            if (media.getType() != MediaType.IMG) {
                 javafx.scene.media.Media m = new javafx.scene.media.Media(media.getFile().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(m);
                 MediaView mediaView = new MediaView(mediaPlayer);
@@ -123,8 +123,8 @@ public class CardView {
                 root.setCenter(mediaView);
                 stage.setScene(new javafx.scene.Scene(root, 640, 480));
                 stage.show();
-            }else {
-                Image img = new Image("resources/images/"+media.getName());
+            } else {
+                Image img = new Image("resources/images/" + media.getName());
                 ImageView view = new ImageView(img);
                 Stage stage = new Stage();
                 stage.setTitle("Image");
@@ -132,10 +132,10 @@ public class CardView {
                 root.setCenter(view);
                 stage.setScene(new Scene(root));
                 stage.show();
-                
+
             }
         }
-        
+
     }
 
 }

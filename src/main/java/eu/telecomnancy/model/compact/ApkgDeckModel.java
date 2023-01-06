@@ -1,19 +1,21 @@
 package eu.telecomnancy.model.compact;
 
 import java.util.ArrayList;
+
+import eu.telecomnancy.model.ApkgNote;
 import eu.telecomnancy.model.DeckModel;
 
 public class ApkgDeckModel implements Compact<DeckModel> {
     private Long id;
     private String name;
     private String description;
-    private ArrayList<String[]> notes;
+    private ArrayList<ApkgNote> notes;
 
     public ApkgDeckModel() {
         this.id = null;
         this.name = null;
         this.description = null;
-        this.notes = new ArrayList<String[]>();
+        this.notes = null;
     }
 
     public Long getId() {
@@ -40,13 +42,12 @@ public class ApkgDeckModel implements Compact<DeckModel> {
         this.description = description;
     }
 
-    public void setNotes(ArrayList<String[]> notes) {
+    public void setNotes(ArrayList<ApkgNote> notes) {
         this.notes = notes;
     }
 
     @Override
     public Compact<DeckModel> from(DeckModel t) {
-        // TODO Auto-generated method stub
         return null;
     }
 
@@ -54,8 +55,8 @@ public class ApkgDeckModel implements Compact<DeckModel> {
     public void to(DeckModel t) {
         t.setName(this.name);
         t.setDescription(this.description);
-        for (String[] note : this.notes) {
-            t.addCard(note[0], note[1]);
+        for (ApkgNote note : this.notes) {
+            t.addCard(note.getQuestion(), note.getAnswer(), note.getMedia());
         }
     }
 }

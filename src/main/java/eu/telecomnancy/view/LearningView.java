@@ -79,7 +79,7 @@ public class LearningView extends DeckObserver implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            
+
             return;
         }
         cardContainer.setCenter(null);

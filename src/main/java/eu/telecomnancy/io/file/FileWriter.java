@@ -55,12 +55,16 @@ public class FileWriter {
 
         path += folder + "/" + media.getFile().getName();
 
-        File file = new File(path);
-        if (file.exists()) {
+        FileWriter.writeFile(media.getFile(), path);
+    }
+
+    public static void writeFile(File file, String path) {
+        File newFile = new File(path);
+        if (newFile.exists()) {
             return;
         }
-        try (FileInputStream is = new FileInputStream(media.getFile());
-                FileOutputStream os = new FileOutputStream(file)) {
+        try (FileInputStream is = new FileInputStream(file);
+                FileOutputStream os = new FileOutputStream(newFile)) {
             byte[] buffer = new byte[1024];
             int length;
             while ((length = is.read(buffer)) > 0) {
@@ -72,6 +76,5 @@ public class FileWriter {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

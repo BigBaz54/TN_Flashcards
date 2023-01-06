@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import eu.telecomnancy.io.apkg.ApkgFormatter;
-import eu.telecomnancy.io.apkg.ApkgReader;
 import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
@@ -32,6 +31,7 @@ public class DeckListController {
     public void createDeck(String name, String description) {
         deckListModel.createDeck(name, description);
     }
+
     public void createDeck(String name, String description, ArrayList<DeckTag> tags) {
         deckListModel.createDeck(name, description, tags);
     }
@@ -95,12 +95,12 @@ public class DeckListController {
         }
     }
 
-    public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
+    public void setBuildCardStrategy(BuildCardStrategy buildCardStrategy) {
         System.out.println("setBuildCardStrategy");
         deckListModel.setBuildCardStrategy(buildCardStrategy);
     }
 
-    public void setDrawCardStrategy (DrawCardStrategy drawCardStrategy) {
+    public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy) {
         deckListModel.setDrawCardStrategy(drawCardStrategy);
     }
 

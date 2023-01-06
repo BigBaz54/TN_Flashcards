@@ -74,6 +74,10 @@ jlinkZip {
 task fatJar(type: Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+
     manifest {
         attributes "Main-Class": "eu.telecomnancy.AppLauncher"
     }
@@ -81,5 +85,6 @@ task fatJar(type: Jar) {
     from {
             configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+    with jar
 }
 

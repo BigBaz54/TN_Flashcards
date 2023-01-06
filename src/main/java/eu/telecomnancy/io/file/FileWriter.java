@@ -18,7 +18,8 @@ public class FileWriter {
         File dir_3 = new File("resources/exports");
         File dir_4 = new File("resources/images");
         File dir_5 = new File("resources/sounds");
-        File dir_6 = new File("resources/videos");
+        File dir_6 = new File("resources/temp");
+        File dir_7 = new File("resources/videos");
 
         if (!dir_1.exists()) {
             dir_1.mkdir();
@@ -27,6 +28,7 @@ public class FileWriter {
             dir_4.mkdir();
             dir_5.mkdir();
             dir_6.mkdir();
+            dir_7.mkdir();
         }
     }
 

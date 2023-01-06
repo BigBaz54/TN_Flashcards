@@ -8,6 +8,7 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
+import eu.telecomnancy.learning.LearningSession;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.MediaType;
@@ -56,7 +57,6 @@ public class LearningView extends DeckObserver implements Initializable {
     public VBox mediaContainer;
 
     private CardMode mode;
-    private Long time;
 
     public LearningView(Learning learning, DeckModel deckModel, DeckController deckController,
             StageController stageController, BuildCardStrategy buildCardStrategy, DrawCardStrategy drawCardStrategy) {

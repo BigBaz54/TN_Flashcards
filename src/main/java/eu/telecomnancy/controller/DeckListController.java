@@ -2,6 +2,8 @@ package eu.telecomnancy.controller;
 
 import java.io.File;
 
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.io.file.FileController;
 import eu.telecomnancy.io.sql.ApkgReader;
 import eu.telecomnancy.model.DeckListModel;
@@ -74,5 +76,13 @@ public class DeckListController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
+        deckListModel.setBuildCardStrategy(buildCardStrategy);
+    }
+
+    public void setDrawCardStrategy (DrawCardStrategy drawCardStrategy) {
+        deckListModel.setDrawCardStrategy(drawCardStrategy);
     }
 }

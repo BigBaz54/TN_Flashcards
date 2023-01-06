@@ -3,8 +3,9 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -100,7 +101,7 @@
                      <children>
                         <VBox prefHeight="66.0" prefWidth="674.0" styleClass="container">
                            <children>
-                              <HBox prefHeight="100.0" prefWidth="200.0">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                                  <children>
                                     <Label prefHeight="25.0" prefWidth="571.0" styleClass="title" text="Classique">
                                        <padding>
@@ -110,11 +111,14 @@
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox fx:id="classicTheme" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0">
+                                    <ToggleButton fx:id="classicTheme" mnemonicParsing="false" onAction="#setBuildClassic" prefHeight="35.0" prefWidth="42.0" selected="true">
                                        <HBox.margin>
                                           <Insets top="20.0" />
                                        </HBox.margin>
-                                    </CheckBox>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="theme" />
+                                       </toggleGroup>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Label prefHeight="29.0" prefWidth="690.0" styleClass="sub-title" text="Des simples cartes blanches ">
@@ -135,11 +139,11 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox fx:id="them2" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0">
+                                    <ToggleButton fx:id="theme2" mnemonicParsing="false" prefHeight="34.0" prefWidth="39.0" toggleGroup="$theme">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
-                                    </CheckBox>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Label prefHeight="29.0" prefWidth="690.0" styleClass="last" text="Un thème inspiré des couleurs de l'école">
@@ -180,11 +184,14 @@
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox fx:id="normalDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0">
+                                    <ToggleButton fx:id="normalDraw" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0">
                                        <HBox.margin>
                                           <Insets top="20.0" />
                                        </HBox.margin>
-                                    </CheckBox>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="draw" />
+                                       </toggleGroup>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Label prefHeight="29.0" prefWidth="690.0" styleClass="sub-title" text="Les cartes s'affichent dans l'odre de création">
@@ -205,11 +212,11 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox fx:id="randomDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0">
+                                    <ToggleButton fx:id="randomDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" toggleGroup="$draw">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
-                                    </CheckBox>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Label prefHeight="29.0" prefWidth="690.0" styleClass="sub-title" text="Les cartes s'affichent dans le désordre">
@@ -230,11 +237,11 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <CheckBox fx:id="weightDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0">
+                                    <ToggleButton fx:id="weightDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" selected="true" toggleGroup="$draw">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
-                                    </CheckBox>
+                                    </ToggleButton>
                                  </children>
                               </HBox>
                               <Label prefHeight="70.0" prefWidth="654.0" styleClass="last" text="Les probabilités d'apparition des cartes qui vous donnent le plus de mal augmentent alors que les cartes auxquelles vous répondez juste ont moins de chance d'apparaitre." textOverrun="WORD_ELLIPSIS" wrapText="true">

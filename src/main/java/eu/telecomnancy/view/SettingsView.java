@@ -1,13 +1,23 @@
 package eu.telecomnancy.view;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
+import eu.telecomnancy.buildCardStrategy.BuildCardStrategyTheme2;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyRandom;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyTime;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 import eu.telecomnancy.observer.DeckListObserver;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
-public class SettingsView extends DeckListObserver{
+public class SettingsView extends DeckListObserver implements Initializable{
 
     private DeckListController deckListController;
     private StageController stageController;
@@ -16,17 +26,20 @@ public class SettingsView extends DeckListObserver{
     private VBox sidebar;
 
     @FXML
-    private CheckBox classicTheme;
+    private ToggleButton classicTheme;
     @FXML
-    private CheckBox theme2;
+    private ToggleButton theme2;
     @FXML
-    private CheckBox randomDraw;
+    private ToggleButton randomDraw;
     @FXML
-    private CheckBox weightDraw;
+    private ToggleButton weightDraw;
     @FXML
-    private CheckBox timeDraw;
+    private ToggleButton normalDraw;
+
     @FXML
-    private CheckBox normalDraw;
+    private ToggleGroup theme;
+    @FXML
+    private ToggleGroup draw;
 
     public SettingsView(DeckListController deckListController, StageController stageController) {
         super(deckListController.getDeckListModel());
@@ -36,7 +49,6 @@ public class SettingsView extends DeckListObserver{
 
     @Override
     public void react() {
-        // TODO Auto-generated method stub
         
     }
 
@@ -49,7 +61,7 @@ public class SettingsView extends DeckListObserver{
 
     @FXML
     public void toGlobalView() {
-
+        stageController.setGlobalView();
     }
 
     @FXML
@@ -62,29 +74,42 @@ public class SettingsView extends DeckListObserver{
 
     }
 
-    // Menu /
-    /*
-     * 
-     * @FXML
-     * public void setBuildClassic(){
-     * deckListController.setBuildCardStrategy(new BuildCardStrategyClassic());
-     * }
-     * 
-     * @FXML
-     * public void setBuildTN() {
-     * deckListController.setBuildCardStrategy(new BuildCardStrategyTheme2());
-     * }
-     * 
-     * @FXML
-     * public void setDrawRandom() {
-     * deckListController.setDrawCardStrategy(new DrawCardStrategyRandom());
-     * }
-     * 
-     * @FXML
-     * public void setDrawTime() {
-     * deckListController.setDrawCardStrategy(new DrawCardStrategyTime());
-     * }
-     * 
-     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        classicTheme.setSelected(true);
+        weightDraw.setSelected(true);
+        theme.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
+            if (new_toggle==null) {
+                old_toggle.setSelected(true);
+            }
+        });
+        draw.selectedToggleProperty().addListener((ov, old_toggle, new_toggle) -> {
+            if (new_toggle==null) {
+                old_toggle.setSelected(true);
+            }
+        });
 
+        
+    }
+
+    // Menu /
+    
+    
+    @FXML
+    public void setBuildClassic(){
+        deckListController.setBuildCardStrategy(new BuildCardStrategyClassic());
+    }
+    @FXML
+    public void setBuildTN(){
+        deckListController.setBuildCardStrategy(new BuildCardStrategyTheme2());
+    }
+    @FXML
+    public void setDrawRandom(){
+        deckListController.setDrawCardStrategy(new DrawCardStrategyRandom());
+    }
+    @FXML
+    public void setDrawWeight(){
+        deckListController.setDrawCardStrategy(new DrawCardStrategyWeighted());
+    }
+     
 }

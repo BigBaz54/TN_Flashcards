@@ -39,7 +39,7 @@
             <PieChart fx:id="pieChartPourcentage" GridPane.rowIndex="1" />
             <BubbleChart fx:id="bubbleChartTest">
               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
+                <NumberAxis side="BOTTOM" />
               </xAxis>
               <yAxis>
                 <NumberAxis side="LEFT" />
@@ -68,7 +68,7 @@
                         <Font size="26.0" />
                      </font>
                   </Label>
-                  <Label fx:id="totalTime" text="Label">
+                  <Label fx:id="totalTimes" text="Label">
                      <font>
                         <Font size="26.0" />
                      </font>

@@ -17,7 +17,7 @@ public class PopUpStatsView implements Initializable {
     @FXML
     private PieChart pieChartPourcentage;
     @FXML
-    private BubbleChart<String, Number> bubbleChartTest;
+    private BubbleChart<Number, Number> bubbleChartTest;
     @FXML
     private LineChart<Number,Number> lineChartEvolutionTemps;
     @FXML
@@ -29,12 +29,7 @@ public class PopUpStatsView implements Initializable {
 
     public PopUpStatsView(Learning learning) {
         this.learning = learning;
-        String carteVue = "Nombre de Carte Vues : "+learning.getStatLearning().getNbPlayed();
-        this.nbCardSeen.setText(carteVue);
-        String carteTrue = "Nombre de bonne réponse : "+learning.getStatLearning().getNbCorrect();
-        this.nbardTrue.setText(carteTrue);
-        String temps = "Temps total passé : "+learning.getStatLearning().getTimePlayed() + " ms";
-        this.totalTimes.setText(temps);
+
     }
 
     public void createPieChart() {
@@ -58,9 +53,9 @@ public class PopUpStatsView implements Initializable {
         lineChartEvolutionTemps.getData().add(series1);
     }
     public void createBubbleChart() {
-        bubbleChartTest.getData().clear();
-        bubbleChartTest.getXAxis().setLabel("Label");
-        bubbleChartTest.getYAxis().setLabel("Pourcentage");
+       // bubbleChartTest.getData().clear();
+        //bubbleChartTest.getXAxis().setLabel("Label");
+        //bubbleChartTest.getYAxis().setLabel("Pourcentage");
         XYChart.Series<String, Number>  series1 = new XYChart.Series<>();
         series1.setName("Temps moyen");
 
@@ -69,13 +64,19 @@ public class PopUpStatsView implements Initializable {
             float tempsmoyen =  ((float) learning.getStatLearning().getTimePlayedByTag().get(tag))/((float)learning.getStatLearning().getNbPlayedByTag().get(tag));
             series1.getData().add(new XYChart.Data<>(tag,poucentage,tempsmoyen));
         }
-        bubbleChartTest.getData().add(series1);
+       // bubbleChartTest.getData().add(series1);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createPieChart();
         createLineChart();
-        createBubbleChart();
+        //createBubbleChart();
+        String carteVue = "Nombre de Carte Vues : "+learning.getStatLearning().getNbPlayed();
+        nbCardSeen.setText(carteVue);
+        String carteTrue = "Nombre de bonne réponse : "+learning.getStatLearning().getNbCorrect();
+        nbardTrue.setText(carteTrue);
+        String temps = "Temps total passé : "+learning.getStatLearning().getTimePlayed() + " ms";
+        totalTimes.setText(temps);
     }
 }

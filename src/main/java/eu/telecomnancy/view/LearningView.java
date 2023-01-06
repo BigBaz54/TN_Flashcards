@@ -12,13 +12,17 @@ import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.observer.DeckObserver;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 public class LearningView extends DeckObserver implements Initializable {
 
@@ -64,6 +68,18 @@ public class LearningView extends DeckObserver implements Initializable {
     @Override
     public void react() {
         if (learning.isFinished()) {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
+            loader.setControllerFactory(ic -> new PopUpStatsView(learning));
+            try {
+                Parent root = loader.load();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            System.out.println("----------------------------------------------------");
+            System.out.println("Temps total : " + learning.getStatLearning().getTimePlayed() + " ms");
             toDeckView();
             return;
         }

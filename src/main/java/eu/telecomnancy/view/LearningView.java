@@ -74,16 +74,7 @@ public class LearningView extends DeckObserver implements Initializable {
     public void react() {
         if (learning.isFinished()) {
             toDeckView();
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
-            loader.setControllerFactory(ic -> new PopUpStatsView(learning));
-            try {
-                Parent root = loader.load();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            openStats();
         } else {  
             cardContainer.setCenter(null);
             mediaContainer.getChildren().clear();
@@ -182,4 +173,16 @@ public class LearningView extends DeckObserver implements Initializable {
         }
     }
 
+    private void openStats() {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
+        loader.setControllerFactory(ic -> new PopUpStatsView(learning));
+        try {
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

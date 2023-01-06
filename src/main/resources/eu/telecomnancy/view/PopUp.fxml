@@ -71,7 +71,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="570.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#createDeck" text="Validate">
+                        <Button mnemonicParsing="false" onAction="#createDeck" stylesheets="@../styles/learning.css" text="Validate">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>

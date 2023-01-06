@@ -102,7 +102,6 @@ public class SettingsView extends DeckListObserver implements Initializable{
     @FXML
     public void setBuildTN(){
         deckListController.setBuildCardStrategy(new BuildCardStrategyTheme2());
-        System.out.println(deckListModel.getBuildCardStrategy());
     }
     @FXML
     public void setDrawRandom(){

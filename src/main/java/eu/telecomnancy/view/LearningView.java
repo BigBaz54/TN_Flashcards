@@ -68,6 +68,7 @@ public class LearningView extends DeckObserver implements Initializable {
     @Override
     public void react() {
         if (learning.isFinished()) {
+            toDeckView();
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
             loader.setControllerFactory(ic -> new PopUpStatsView(learning));
@@ -78,9 +79,7 @@ public class LearningView extends DeckObserver implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("----------------------------------------------------");
-            System.out.println("Temps total : " + learning.getStatLearning().getTimePlayed() + " ms");
-            toDeckView();
+            
             return;
         }
         cardContainer.setCenter(null);

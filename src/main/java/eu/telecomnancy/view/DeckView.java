@@ -74,8 +74,8 @@ public class DeckView extends DeckObserver implements Initializable {
         setNodeVisibility(false, sidebar, learningBox);
         gridpane.toBack();
 
-        gridpane.setMinHeight(700);
-        gridpane.setMinWidth(1300);
+        //gridpane.setMinHeight(700);
+        //gridpane.setMinWidth(1300);
         // fit to width
         scrollpane.setFitToWidth(true);
         scrollpane.setFitToHeight(true);

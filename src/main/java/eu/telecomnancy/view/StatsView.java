@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
+import javafx.scene.layout.VBox;
 
 import java.text.SimpleDateFormat;
 import java.net.URL;
@@ -19,11 +20,17 @@ import java.util.ResourceBundle;
 public class StatsView extends DeckListObserver implements Initializable {
     private StageController stageController;
     @FXML
+    private VBox sidebar;
+    @FXML
     private LineChart<String, Number> nbDecksOverTime;
     @FXML
     private PieChart PieChartPourcentage;
     @FXML
     private BarChart<String, Number> barChartPourcentage;
+    @FXML
+    private BubbleChart<Number, Number> bubbleChart;
+
+
 
     public StatsView(DeckListModel deckListModel, StageController stageController) {
         super(deckListModel);
@@ -49,7 +56,6 @@ public class StatsView extends DeckListObserver implements Initializable {
                 int temp = map.get(date);
                 map.put(date, temp + 1);
             } else {
-                System.out.println(date);
                 map.put(date, 1);
             }
         }
@@ -99,22 +105,35 @@ public class StatsView extends DeckListObserver implements Initializable {
         });
         barChartPourcentage.getData().add(dataSeries1);
     }
+    public void createBubbleChart(){
+        bubbleChart.getData().clear();
+        bubbleChart.getXAxis().setLabel("Temps passé");
+        bubbleChart.getYAxis().setLabel("Pourcentage bonne réponse");
+        XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
+        dataSeries1.setName("Nombre de carte");
+        deckListModel.getDecks().forEach(deck -> {
+            if (deck.getStatDeck().getNbCardsSeen() == 0) {
+                dataSeries1.getData().add(new XYChart.Data<>(deck.getStatDeck().getTimesSpent(), 0, deck.getStatDeck().getNbCardsSeen()));
+            }else {
+                float pourcentage = (float) (deck.getStatDeck().getNbTimesCorrect() * 100 / deck.getStatDeck().getNbTimesOpened());
+                dataSeries1.getData().add(new XYChart.Data<>(deck.getStatDeck().getTimesSpent(), pourcentage, deck.getStatDeck().getNbCardsSeen()));
+            }
+        });
+
+        bubbleChart.getData().add(dataSeries1);
+    }
     @Override
     public void react() {
         try {
             createLineChart1();
             createPieChartPourcentage();
             createBarChart();
+            createBubbleChart();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void seeMenu(ActionEvent actionEvent) {
-    }
-
-    public void importDeck(ActionEvent actionEvent) {
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -123,8 +142,11 @@ public class StatsView extends DeckListObserver implements Initializable {
 
     @FXML
     public void toGlobalView() {
-        System.out.println("toGlobalView");
         stageController.setGlobalView();
+    }
+    @FXML
+    public void seeMenu() {
+        sidebar.setVisible(!sidebar.isVisible());
     }
 
 }

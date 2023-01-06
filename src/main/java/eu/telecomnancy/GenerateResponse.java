@@ -20,7 +20,7 @@ public class GenerateResponse {
         HttpPost request = new HttpPost(endpoint);
         request.addHeader("Authorization", "Bearer " + apiKey);
         request.addHeader("Content-Type", "application/json");
-        request.setEntity(new StringEntity("{\"model\": \"text-davinci-003\",\"prompt\": \"" + prompt2 + "\", \"max_tokens\":2048, \"temperature\": 0.5}"));
+        request.setEntity(new StringEntity("{\"model\": \"text-davinci-003\",\"prompt\": \"" + prompt2 + "\", \"max_tokens\":500, \"temperature\": 0.5}"));
         HttpResponse response = httpClient.execute(request);
         HttpEntity entity = response.getEntity();
         String responseString = EntityUtils.toString(entity);

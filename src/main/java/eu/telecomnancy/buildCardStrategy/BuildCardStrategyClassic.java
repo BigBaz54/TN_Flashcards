@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class BuildCardStrategyClassic implements BuildCardStrategy {
 
@@ -16,6 +17,8 @@ public class BuildCardStrategyClassic implements BuildCardStrategy {
     public Label rectoLabel;
     @FXML
     public Label versoLabel;
+    @FXML
+    public VBox mediaContainer;
 
     @Override
     public Pane build() {

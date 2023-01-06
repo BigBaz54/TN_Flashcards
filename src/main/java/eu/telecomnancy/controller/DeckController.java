@@ -22,8 +22,24 @@ public class DeckController {
         deckModel.setName(name);
     }
 
+    public String getName() {
+        return deckModel.getName();
+    }
+
     public void setDescription(String description) {
         deckModel.setDescription(description);
+    }
+
+    public String getDescription() {
+        return deckModel.getDescription();
+    }
+
+    public CardModel getCard(int i) {
+        return deckModel.getCard(i);
+    }
+
+    public CardModel getActiveCard() {
+        return deckModel.getCard(deckModel.getActiveCard());
     }
 
     public void addCard(String question, String answer) {

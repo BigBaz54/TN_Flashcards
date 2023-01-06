@@ -86,12 +86,11 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
             }
             tags.setText(tagString);
             // Bug de visiblité 
-            boolean last = getIndex() == controller.getDecks().size() - 1;
-            System.out.println(getIndex());
-            if (last) {
-                descriptionBox.setManaged(true);
-                deckCell.setPrefHeight(300);
-            }
+            //boolean last = getIndex() == controller.getDecks().size() - 1;
+            //if (last) {
+            //    descriptionBox.setManaged(true);
+            //    deckCell.setPrefHeight(300);
+            //}
 
             setText(null);
             setGraphic(deckCell);

@@ -13,7 +13,7 @@ module eu.telecomnancy {
     opens eu.telecomnancy.view to javafx.fxml;
     opens eu.telecomnancy.io.json to com.google.gson;
     opens eu.telecomnancy.io.file to com.google.gson;
-    opens eu.telecomnancy.io.sql to java.sql;
+    opens eu.telecomnancy.io.apkg to java.sql;
     opens eu.telecomnancy.io.adapter to com.google.gson;
     opens eu.telecomnancy.buildCardStrategy to javafx.fxml;
 
@@ -22,6 +22,7 @@ module eu.telecomnancy {
     exports eu.telecomnancy.io.json;
     exports eu.telecomnancy.io.file;
     exports eu.telecomnancy.model;
+    exports eu.telecomnancy.model.compact;
     exports eu.telecomnancy.controller;
     exports eu.telecomnancy.buildCardStrategy;
     exports eu.telecomnancy.observer;

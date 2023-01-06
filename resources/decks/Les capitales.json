@@ -68,22 +68,27 @@
       "answer": "La capitale du Portugal est Lisbonne.",
       "probability": 1.0,
       "statCard": {
-        "nbTimesSeen": 0,
+        "nbTimesSeen": 1,
         "nbTimesCorrect": 0,
-        "nbTimesWrong": 0,
-        "timesSpent": []
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          13730
+        ]
       },
       "tags": []
     },
     {
       "question": " Quelle est la capitale de la Belgique?",
       "answer": "La capitale de la Belgique est Bruxelles.",
-      "probability": 1.0,
+      "probability": 0.5,
       "statCard": {
-        "nbTimesSeen": 0,
-        "nbTimesCorrect": 0,
-        "nbTimesWrong": 0,
-        "timesSpent": []
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          10847,
+          2940
+        ]
       },
       "tags": []
     },
@@ -106,12 +111,10 @@
       "answer": "La capitale de l\u0027Autriche est Vienne.",
       "probability": 0.5,
       "statCard": {
-        "nbTimesSeen": 1,
-        "nbTimesCorrect": 1,
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
         "nbTimesWrong": 0,
-        "timesSpent": [
-          1187
-        ]
+        "timesSpent": []
       },
       "tags": []
     },
@@ -130,12 +133,15 @@
     {
       "question": "Capitale de la Suisse",
       "answer": "La capitale de la Suisse est Berne.",
-      "probability": 1.0,
+      "probability": 0.25,
       "statCard": {
-        "nbTimesSeen": 0,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 2,
         "nbTimesWrong": 0,
-        "timesSpent": []
+        "timesSpent": [
+          3732,
+          1921
+        ]
       },
       "tags": []
     },
@@ -170,24 +176,26 @@
     {
       "question": "Capitale de la Russie",
       "answer": "La capitale de la Russie est Moscou.",
-      "probability": 1.0,
+      "probability": 0.5,
       "statCard": {
-        "nbTimesSeen": 0,
-        "nbTimesCorrect": 0,
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
         "nbTimesWrong": 0,
-        "timesSpent": []
+        "timesSpent": [
+          2006
+        ]
       },
       "tags": []
     }
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 5,
+    "nbTimesOpened": 1,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1673010561352,
+    "lastOpened": 1672999956696,
     "creationDate": 1672999894492
   },
   "name": "Les capitales",

@@ -1,14 +1,16 @@
 package eu.telecomnancy.view;
 
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.StatDeck;
 import eu.telecomnancy.observer.DeckListObserver;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 import java.text.SimpleDateFormat;
@@ -16,6 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class StatsView extends DeckListObserver implements Initializable {
     private StageController stageController;
@@ -29,7 +32,10 @@ public class StatsView extends DeckListObserver implements Initializable {
     private BarChart<String, Number> barChartPourcentage;
     @FXML
     private BubbleChart<Number, Number> bubbleChart;
-
+    @FXML
+    private GridPane deckStats;
+    @FXML
+    private VBox vBox;
 
 
     public StatsView(DeckListModel deckListModel, StageController stageController) {
@@ -40,7 +46,7 @@ public class StatsView extends DeckListObserver implements Initializable {
     public void createLineChart1() {
         nbDecksOverTime.getData().clear();
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("Series 1");
+        series1.setName("Evolution du nb de deck");
 
         ArrayList<StatDeck> statDecks = new ArrayList<>();
         for (DeckModel deck : deckListModel.getDecks()) {
@@ -73,17 +79,22 @@ public class StatsView extends DeckListObserver implements Initializable {
         PieChartPourcentage.getData().clear();
         Long totalTime = 0L;
         for (DeckModel deck : deckListModel.getDecks()) {
-            totalTime += deck.getStatDeck().getTimesSpent();
+            for (CardModel card : deck.getCards()) {
+                totalTime += card.getStatCard().getTimesSpentTotal();
+            }
         }
-
         Long finalTotalTime = totalTime;
+        float total = finalTotalTime.floatValue();
         if (totalTime != 0) {
             deckListModel.getDecks().forEach(deck -> {
-                float pourcentage = (float) (deck.getStatDeck().getTimesSpent() * 100 / finalTotalTime);
+                AtomicReference<Long> time = new AtomicReference<>(0L);
+                deck.getCards().forEach(card -> {
+                    time.set(card.getStatCard().getTimesSpentTotal());
+                });
+                float pourcentage = (time.get().floatValue() * 100 / total);
                 PieChartPourcentage.getData().add(new PieChart.Data(deck.getName(), pourcentage));
             });
         }
-
         PieChartPourcentage.setLabelsVisible(true);
     }
 
@@ -92,13 +103,17 @@ public class StatsView extends DeckListObserver implements Initializable {
         barChartPourcentage.getXAxis().setLabel("Deck");
         barChartPourcentage.getYAxis().setLabel("Pourcentage");
         XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<>();
-        dataSeries1.setName("all decks");
+        dataSeries1.setName("");
         ArrayList<StatDeck> statDecks = new ArrayList<>();
         deckListModel.getDecks().forEach(deck -> {
+            AtomicReference<Long> nbjuste = new AtomicReference<>(0L);
+            deck.getCards().forEach(card -> {
+                nbjuste.set(nbjuste.get() + card.getStatCard().getNbTimesCorrect());
+            });
             if (deck.getStatDeck().getNbTimesOpened() == 0) {
                 dataSeries1.getData().add(new XYChart.Data<>(deck.getName(), 0));
             }else {
-                float pourcentage = (float) (deck.getStatDeck().getNbTimesCorrect() * 100 / deck.getStatDeck().getNbTimesOpened());
+                float pourcentage = (float) (nbjuste.get()  / deck.getStatDeck().getNbTimesOpened());
                 dataSeries1.getData().add(new XYChart.Data<>(deck.getName(), pourcentage));
             }
 
@@ -108,27 +123,102 @@ public class StatsView extends DeckListObserver implements Initializable {
     public void createBubbleChart(){
         bubbleChart.getData().clear();
         bubbleChart.getXAxis().setLabel("Temps passé");
-        bubbleChart.getYAxis().setLabel("Pourcentage bonne réponse");
+        bubbleChart.getYAxis().setLabel("True Answer %");
         XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
         dataSeries1.setName("Nombre de carte");
         deckListModel.getDecks().forEach(deck -> {
-            if (deck.getStatDeck().getNbCardsSeen() == 0) {
-                dataSeries1.getData().add(new XYChart.Data<>(deck.getStatDeck().getTimesSpent(), 0, deck.getStatDeck().getNbCardsSeen()));
+            AtomicReference<Long> time = new AtomicReference<>(0L);
+            AtomicReference<Integer> nbseen = new AtomicReference<>(0);
+            AtomicReference<Integer> nbjuste = new AtomicReference<>(0);
+            deck.getCards().forEach(card -> {
+                nbseen.set(nbseen.get() + card.getStatCard().getNbTimesSeen());
+                time.set(time.get() + card.getStatCard().getTimesSpentTotal());
+                nbjuste.set(nbjuste.get() + card.getStatCard().getNbTimesCorrect());
+            });
+            if (nbseen.get() == 0) {
+                dataSeries1.getData().add(new XYChart.Data<>(time.get()/1000, 0, nbseen.get()));
             }else {
-                float pourcentage = (float) (deck.getStatDeck().getNbTimesCorrect() * 100 / deck.getStatDeck().getNbTimesOpened());
-                dataSeries1.getData().add(new XYChart.Data<>(deck.getStatDeck().getTimesSpent(), pourcentage, deck.getStatDeck().getNbCardsSeen()));
+                float pourcentage = (float) (nbjuste.get() / deck.getStatDeck().getNbTimesOpened());
+                dataSeries1.getData().add(new XYChart.Data<>(time.get()/(1000*60), pourcentage, nbseen.get()));
             }
         });
 
         bubbleChart.getData().add(dataSeries1);
     }
+    public void initDeckPane(){
+        deckStats.getChildren().clear();
+        double heightvbox = 840;
+        double widthvbox = 1004;
+        //deckStats.setMinSize(width, height);
+        deckStats.addColumn(2);
+        for (int i =2; i<deckListModel.getDecks().size()*2+2; i+=2){
+            deckStats.addRow(i, new Label(deckListModel.getDecks().get((i-2)/2).getName()));
+            PieChart pieChart = new PieChart();
+            BarChart<String, Number> barChart = new BarChart<>(new CategoryAxis(), new NumberAxis());
+            barChart.getXAxis().setLabel("Tags");
+            barChart.getYAxis().setLabel("True Answer %");
+            HashMap<String, Integer> barvrai = new HashMap<>();
+            HashMap<String, Integer> barvue = new HashMap<>();
+            deckListModel.getDecks().get((i-2)/2).getCards().forEach(card -> {
+                int nbcardcorrect=card.getStatCard().getNbTimesCorrect();
+                int nbcardseen=card.getStatCard().getNbTimesSeen();
+                card.getTags().forEach(tag -> {
+                    if (barvue.containsKey(tag.getName())) {
+                        int temp = barvue.get(tag.getName());
+                        barvue.put(tag.getName(), temp + nbcardseen);
+                    } else {
+                        barvue.put(tag.getName(), nbcardseen);
+                    }
+                    if (barvrai.containsKey(tag.getName())) {
+                        int temp = barvrai.get(tag.getName());
+                        barvrai.put(tag.getName(), temp + nbcardcorrect);
+                    } else {
+                        barvrai.put(tag.getName(), nbcardcorrect);
+                    }
+                });
+            });
+            XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<>();
+            dataSeries1.setName("Pourcentage de bonne reponse");
+            barvue.forEach((key, value) -> {
+                if (barvrai.containsKey(key)) {
+                    float pourcentage = (float) (barvrai.get(key) * 100 / value);
+                    dataSeries1.getData().add(new XYChart.Data<>(key, pourcentage));
+                }
+                else {
+                    dataSeries1.getData().add(new XYChart.Data<>(key, 0));
+                }
+            });
+            barChart.getData().add(dataSeries1);
+
+            AtomicReference<Long> nbjuste = new AtomicReference<>(0L);
+            AtomicReference<Long> nbvue = new AtomicReference<>(0L);
+            deckListModel.getDecks().get((i-2)/2).getCards().forEach(card -> {
+                nbjuste.updateAndGet(v -> v + card.getStatCard().getNbTimesCorrect());
+                nbvue.updateAndGet(v -> v + card.getStatCard().getNbTimesSeen());
+
+            });
+            if(nbvue.get() == 0){
+                pieChart.getData().add(new PieChart.Data("no Data", 100));
+                pieChart.getData().add(new PieChart.Data("Data", 0));
+            }else {
+                pieChart.getData().add(new PieChart.Data("Correct", nbjuste.get().floatValue()/nbvue.get().floatValue()));
+                pieChart.getData().add(new PieChart.Data("Incorrect", 1-nbjuste.get().floatValue()/nbvue.get().floatValue()));
+            }
+            deckStats.addRow(i+1, pieChart, barChart);
+
+        }
+        vBox.setMinSize(widthvbox, heightvbox+deckListModel.getDecks().size()*2*200);
+
+    }
     @Override
     public void react() {
         try {
+
             createLineChart1();
             createPieChartPourcentage();
             createBarChart();
             createBubbleChart();
+            initDeckPane();
         } catch (Exception e) {
             e.printStackTrace();
         }

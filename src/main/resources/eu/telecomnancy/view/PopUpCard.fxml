@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.view.PopUpCardView">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.view.PopUpCardView">
    <center>
       <HBox alignment="CENTER" prefHeight="436.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
@@ -50,6 +50,30 @@
                      </VBox.margin>
                   </Label>
                   <TextField fx:id="answerEdit" promptText="Ajouter une réponse" />
+                  <Label text="Tags">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="55.0" prefWidth="590.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="tag1" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="tag2" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="tag3" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="570.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createCard" text="Validate">

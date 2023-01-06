@@ -3,11 +3,11 @@
     {
       "question": "Pourquoi LV est moche ?",
       "answer": "Feur",
-      "probability": 0.5000801,
+      "probability": 4.8828125E-4,
       "statCard": {
-        "nbTimesSeen": 46,
-        "nbTimesCorrect": 24,
-        "nbTimesWrong": 22,
+        "nbTimesSeen": 85,
+        "nbTimesCorrect": 62,
+        "nbTimesWrong": 23,
         "timesSpent": [
           2796,
           835,
@@ -54,7 +54,46 @@
           4547,
           2776,
           5849,
-          4452
+          4452,
+          1260,
+          845,
+          1035,
+          2442,
+          398,
+          155,
+          156,
+          124,
+          111,
+          138,
+          116,
+          115,
+          125,
+          135,
+          120,
+          129,
+          128,
+          112,
+          111,
+          145,
+          252,
+          167,
+          224,
+          212,
+          40,
+          322,
+          259,
+          203,
+          522,
+          1149,
+          1463,
+          489,
+          446,
+          351,
+          323,
+          338,
+          322,
+          1550,
+          1315
         ]
       },
       "tags": [],
@@ -66,10 +105,10 @@
     {
       "question": "Pourquoi ?",
       "answer": "Feur",
-      "probability": 0.001159668,
+      "probability": 5.79834E-4,
       "statCard": {
-        "nbTimesSeen": 14,
-        "nbTimesCorrect": 12,
+        "nbTimesSeen": 15,
+        "nbTimesCorrect": 13,
         "nbTimesWrong": 2,
         "timesSpent": [
           1419,
@@ -85,7 +124,8 @@
           2679,
           3851,
           1817,
-          1579
+          1579,
+          743
         ]
       },
       "tags": []
@@ -93,10 +133,10 @@
     {
       "question": "Est ce que la sauvegarde fonctionne ?",
       "answer": "Oui",
-      "probability": 0.0050182343,
+      "probability": 0.0012545586,
       "statCard": {
-        "nbTimesSeen": 21,
-        "nbTimesCorrect": 14,
+        "nbTimesSeen": 23,
+        "nbTimesCorrect": 16,
         "nbTimesWrong": 7,
         "timesSpent": [
           2238,
@@ -119,7 +159,9 @@
           4759,
           2224,
           1729,
-          1731
+          1731,
+          827,
+          330
         ]
       },
       "tags": []
@@ -127,10 +169,10 @@
     {
       "question": "Est ce que la sauvegarde fonctionne toujours ?",
       "answer": "Oui",
-      "probability": 0.0110246455,
+      "probability": 0.0055123228,
       "statCard": {
-        "nbTimesSeen": 37,
-        "nbTimesCorrect": 21,
+        "nbTimesSeen": 38,
+        "nbTimesCorrect": 22,
         "nbTimesWrong": 16,
         "timesSpent": [
           1039,
@@ -169,7 +211,8 @@
           2676,
           2618,
           3927,
-          2429
+          2429,
+          346
         ]
       },
       "tags": []
@@ -177,12 +220,12 @@
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 11,
+    "nbTimesOpened": 15,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1673000618569,
+    "lastOpened": 1673011888654,
     "creationDate": 1672858275777
   },
   "name": "deck",

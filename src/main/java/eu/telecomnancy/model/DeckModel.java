@@ -2,7 +2,9 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
+import eu.telecomnancy.CardTag;
 import eu.telecomnancy.DeckTag;
+import eu.telecomnancy.Tag;
 
 public class DeckModel extends Observed {
     private ArrayList<CardModel> cards;
@@ -72,6 +74,11 @@ public class DeckModel extends Observed {
 
     public void addCard(String question, String answer, Media media) {
         CardModel card = new CardModel(question, answer, media);
+        addCard(card);
+        notifyObservers();
+    }
+    public void addCard(String question, String answer, Media media, ArrayList<CardTag> tags){
+        CardModel card = new CardModel(question,answer,media,tags);
         addCard(card);
         notifyObservers();
     }

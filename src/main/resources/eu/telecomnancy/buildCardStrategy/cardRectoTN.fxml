@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <Pane fx:id="recto" prefHeight="300.0" prefWidth="500.0" stylesheets="@../styles/learning.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -40,6 +41,7 @@
             <String fx:value="tn-label" />
          </styleClass>
       </Label>
+      <VBox fx:id="mediaContainer" alignment="CENTER" layoutX="310.0" layoutY="59.0" prefHeight="227.0" prefWidth="179.0" />
    </children>
    <styleClass>
       <String fx:value="card" />

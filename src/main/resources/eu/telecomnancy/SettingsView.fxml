@@ -139,7 +139,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ToggleButton fx:id="theme2" mnemonicParsing="false" prefHeight="34.0" prefWidth="39.0" toggleGroup="$theme">
+                                    <ToggleButton fx:id="theme2" mnemonicParsing="false" onAction="#setBuildTN" prefHeight="34.0" prefWidth="39.0" toggleGroup="$theme">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
@@ -184,7 +184,7 @@
                                           <Insets left="10.0" top="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ToggleButton fx:id="normalDraw" mnemonicParsing="false" prefHeight="35.0" prefWidth="40.0">
+                                    <ToggleButton fx:id="normalDraw" mnemonicParsing="false" onAction="#setDrawNormal" prefHeight="35.0" prefWidth="40.0">
                                        <HBox.margin>
                                           <Insets top="20.0" />
                                        </HBox.margin>
@@ -212,7 +212,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ToggleButton fx:id="randomDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" toggleGroup="$draw">
+                                    <ToggleButton fx:id="randomDraw" mnemonicParsing="false" onAction="#setDrawRandom" prefHeight="34.0" prefWidth="38.0" toggleGroup="$draw">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>
@@ -237,7 +237,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <ToggleButton fx:id="weightDraw" mnemonicParsing="false" prefHeight="34.0" prefWidth="38.0" selected="true" toggleGroup="$draw">
+                                    <ToggleButton fx:id="weightDraw" mnemonicParsing="false" onAction="#setDrawWeight" prefHeight="34.0" prefWidth="38.0" selected="true" toggleGroup="$draw">
                                        <HBox.margin>
                                           <Insets top="10.0" />
                                        </HBox.margin>

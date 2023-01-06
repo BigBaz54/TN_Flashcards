@@ -79,10 +79,19 @@ public class DeckListController {
     }
 
     public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
+        System.out.println("setBuildCardStrategy");
         deckListModel.setBuildCardStrategy(buildCardStrategy);
     }
 
     public void setDrawCardStrategy (DrawCardStrategy drawCardStrategy) {
         deckListModel.setDrawCardStrategy(drawCardStrategy);
+    }
+
+    public BuildCardStrategy getBuildCardStrategy() {
+        return deckListModel.getBuildCardStrategy();
+    }
+
+    public DrawCardStrategy getDrawCardStrategy() {
+        return deckListModel.getDrawCardStrategy();
     }
 }

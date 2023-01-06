@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="verso" prefHeight="200.0" prefWidth="300.0" stylesheets="@../styles/learning.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="verso" prefHeight="300.0" prefWidth="500.0" stylesheets="@../styles/learning.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -31,7 +31,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
-      <Label fx:id="versoLabel" alignment="CENTER" layoutX="25.0" layoutY="25.0" prefHeight="150.0" prefWidth="250.0" text="Label" textFill="#6c2466">
+      <Label fx:id="versoLabel" alignment="TOP_LEFT" layoutX="50.0" layoutY="84.0" prefHeight="199.0" prefWidth="418.0" text="Label" textFill="#6c2466" textOverrun="WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

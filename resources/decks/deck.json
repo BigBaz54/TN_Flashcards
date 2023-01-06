@@ -3,10 +3,10 @@
     {
       "question": "Pourquoi LV est moche ?",
       "answer": "Feur",
-      "probability": 0.020505868,
+      "probability": 0.0025632335,
       "statCard": {
-        "nbTimesSeen": 38,
-        "nbTimesCorrect": 17,
+        "nbTimesSeen": 41,
+        "nbTimesCorrect": 20,
         "nbTimesWrong": 21,
         "timesSpent": [
           2796,
@@ -46,7 +46,10 @@
           7314,
           3841,
           1792,
-          55844
+          55844,
+          2300,
+          3533,
+          3059
         ]
       },
       "tags": [],
@@ -58,10 +61,10 @@
     {
       "question": "Pourquoi ?",
       "answer": "Feur",
-      "probability": 0.037109375,
+      "probability": 0.018554688,
       "statCard": {
-        "nbTimesSeen": 9,
-        "nbTimesCorrect": 7,
+        "nbTimesSeen": 10,
+        "nbTimesCorrect": 8,
         "nbTimesWrong": 2,
         "timesSpent": [
           1419,
@@ -72,7 +75,8 @@
           759,
           753,
           758,
-          733
+          733,
+          1255
         ]
       },
       "tags": []
@@ -110,11 +114,11 @@
     {
       "question": "Est ce que la sauvegarde fonctionne toujours ?",
       "answer": "Oui",
-      "probability": 0.022354126,
+      "probability": 0.6446186,
       "statCard": {
-        "nbTimesSeen": 20,
-        "nbTimesCorrect": 10,
-        "nbTimesWrong": 10,
+        "nbTimesSeen": 28,
+        "nbTimesCorrect": 14,
+        "nbTimesWrong": 14,
         "timesSpent": [
           1039,
           688,
@@ -135,7 +139,15 @@
           789,
           776,
           908,
-          1226
+          1226,
+          2244,
+          3090,
+          2971,
+          3721,
+          2581,
+          1483,
+          1444,
+          1518
         ]
       },
       "tags": []
@@ -143,12 +155,12 @@
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 1,
+    "nbTimesOpened": 4,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1672946331334,
+    "lastOpened": 1672993700704,
     "creationDate": 1672858275777
   },
   "name": "deck",

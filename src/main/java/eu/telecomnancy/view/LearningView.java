@@ -110,7 +110,6 @@ public class LearningView extends DeckObserver implements Initializable {
         cardContainer.setCenter(recto);
         // Buttons
         setNodeVisibility(false, right, wrong);
-
     }
 
     // Card //

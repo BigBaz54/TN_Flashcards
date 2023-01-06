@@ -13,16 +13,17 @@ public abstract class Learning {
     protected Long beginLastCard;
     protected StatLearning statLearning = new StatLearning();
     public abstract boolean isFinished();
-    public abstract void updateConcreteLearning();
+    public abstract void updateConcreteLearning(boolean goodAnswer);
 
     public void nextCard(boolean goodAnswer) {
         Long timeSpent = System.currentTimeMillis() - beginLastCard;
-        updateConcreteLearning();
+        updateConcreteLearning(goodAnswer);
         updateStatLearning(goodAnswer, timeSpent);
         deckController.updateStatCard(goodAnswer, timeSpent);
         deckController.handleAnswer(goodAnswer, drawCardStrategy);
         deckController.nextCard(drawCardStrategy);
         beginLastCard = System.currentTimeMillis();
+
     }
 
     protected void updateStatLearning(boolean goodAnswer, Long timeSpent) {
@@ -44,4 +45,5 @@ public abstract class Learning {
     public StatLearning getStatLearning() {
         return statLearning;
     }
+
 }

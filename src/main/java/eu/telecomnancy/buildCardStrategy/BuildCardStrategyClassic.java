@@ -1,6 +1,5 @@
 package eu.telecomnancy.buildCardStrategy;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -37,9 +36,9 @@ public class BuildCardStrategyClassic implements BuildCardStrategy {
             loader2.load();
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         StackPane root = new StackPane();
-        root.getChildren().addAll(recto,verso);
+        root.getChildren().addAll(recto, verso);
         return root;
     }
 

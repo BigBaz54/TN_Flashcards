@@ -1,8 +1,10 @@
 package eu.telecomnancy.io.apkg;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,13 +15,20 @@ import java.util.HashSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import eu.telecomnancy.model.ApkgDeckListModel;
-import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.io.file.FileWriter;
+import eu.telecomnancy.io.json.JsonApkgMediaFormatter;
+import eu.telecomnancy.model.ApkgMedia;
+import eu.telecomnancy.model.ApkgNote;
+import eu.telecomnancy.model.Media;
+import eu.telecomnancy.model.MediaType;
 
 public class ApkgReader {
-    Connection conn = null;
-    File apkg;
-    File anki2;
+    private Connection conn = null;
+    private File apkg;
+    private File anki2;
+    private File media;
+    private ArrayList<File> files;
+    private JsonApkgMediaFormatter jsonApkgMediaFormatter;
 
     public ApkgReader(File file) {
         // Check if the file is an apkg file or a zip file
@@ -28,23 +37,16 @@ public class ApkgReader {
         }
 
         this.apkg = file;
+        this.files = new ArrayList<File>();
+        this.jsonApkgMediaFormatter = new JsonApkgMediaFormatter(new ApkgMedia());
     }
 
     public void setApkgFile(File apkgFile) {
         this.apkg = apkgFile;
     }
 
-    public void apkgToDeckModel(DeckModel model) throws SQLException, IOException {
-        // TODO: Add the deck to the model
-        ArrayList<String[]> notes = new ArrayList<String[]>();
-        model.setName(apkg.getName().substring(0, apkg.getName().length() - 5));
-        for (String[] note : notes) {
-            model.addCard(note[0], note[1]);
-        }
-    }
-
-    public ArrayList<String[]> getNotes(Long deckId) throws SQLException, IOException {
-        ArrayList<String[]> notes = new ArrayList<String[]>();
+    public ArrayList<ApkgNote> getNotes(Long deckId) throws SQLException, IOException {
+        ArrayList<ApkgNote> notes = new ArrayList<ApkgNote>();
         HashSet<Long> notesId = new HashSet<Long>();
 
         // Extract the anki2 file from the apkg file
@@ -86,9 +88,33 @@ public class ApkgReader {
         return null;
     }
 
-    private String[] parseNotes(String notes) {
+    private ApkgNote parseNotes(String notes) {
         String[] notesArray = notes.split("\u001f");
-        return notesArray;
+        ApkgNote note;
+        // Check if question contains an image tag
+        if (notesArray[0].contains("<img src=")) {
+            String[] img = notesArray[0].split("<img src=");
+            int index = img[1].indexOf(">");
+            String imgName = img[1].substring(1, index - 3);
+
+            // Remove trailing \
+            if (imgName.contains("\\")) {
+                imgName = imgName.substring(0, imgName.length() - 1);
+            }
+
+            System.out.println("Image name: " + imgName);
+            String next = img[1].substring(index);
+            notesArray[0] = img[0] + " ... " + next;
+            note = new ApkgNote(removeHTMLTags(notesArray[0]), removeHTMLTags(notesArray[1]),
+                    new Media(imgName, MediaType.IMG));
+        } else
+            note = new ApkgNote(removeHTMLTags(notesArray[0]), removeHTMLTags(notesArray[1]));
+
+        return note;
+    }
+
+    private String removeHTMLTags(String text) {
+        return text.replaceAll("\\<.*?\\>", "");
     }
 
     public String getDecks() throws SQLException, IOException {
@@ -114,7 +140,7 @@ public class ApkgReader {
         close();
         dbToAnki2();
 
-        return decks;
+        return removeHTMLTags(decks);
     }
 
     private void connect(String fileName) throws SQLException {
@@ -186,7 +212,25 @@ public class ApkgReader {
                 }
 
                 fos.close();
-                break;
+            } else {
+                String path = "resources/temp/" + entry.getName();
+                if (entry.getName().equals("media"))
+                    path += ".json";
+
+                File file = new File(path);
+
+                if (file.getName().equals("media.json"))
+                    media = file;
+                else
+                    files.add(file);
+
+                FileOutputStream fos = new FileOutputStream(file);
+
+                int len;
+                while ((len = zis.read(buffer)) > 0)
+                    fos.write(buffer, 0, len);
+
+                fos.close();
             }
 
             entry = zis.getNextEntry();
@@ -195,6 +239,47 @@ public class ApkgReader {
         zis.closeEntry();
         zis.close();
 
+        extractImages();
+
         zipToApkg();
+    }
+
+    private String getMediaContent() {
+        String content = "";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(media));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                content += line;
+            }
+
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return content;
+    }
+
+    private void extractImages() {
+        ApkgMedia media = new ApkgMedia();
+        jsonApkgMediaFormatter.fromJson(getMediaContent(), media);
+
+        for (File file : files) {
+            String fileName = file.getName();
+            Integer key = Integer.parseInt(fileName);
+
+            String newName = media.getPath(key);
+            String newPath = "resources/images/" + newName;
+
+            FileWriter.writeFile(file, newPath);
+            file.delete();
+        }
+
+        this.media.delete();
+        media = null;
+        files = new ArrayList<>();
     }
 }

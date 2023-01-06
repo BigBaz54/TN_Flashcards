@@ -9,4 +9,8 @@ public abstract class CardObserver implements Observer {
         this.cardModel = cardModel;
         cardModel.addObserver(this);
     }
+
+    public CardModel getCardModel() {
+        return cardModel;
+    }
 }

@@ -102,7 +102,7 @@ public class CardView {
         // Vue d'un média
         if (card.getMedia() != null) {
             mediaIcon.setVisible(true);
-        }else{
+        } else {
             mediaIcon.setVisible(false);
         }
 
@@ -145,10 +145,10 @@ public class CardView {
                 root.setCenter(view);
                 stage.setScene(new Scene(root));
                 stage.show();
-                
+
             }
         }
-        
+
     }
 
 

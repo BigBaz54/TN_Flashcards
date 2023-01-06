@@ -74,42 +74,31 @@ public class LearningView extends DeckObserver implements Initializable {
     public void react() {
         if (learning.isFinished()) {
             toDeckView();
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
-            loader.setControllerFactory(ic -> new PopUpStatsView(learning));
-            try {
-                Parent root = loader.load();
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
-            return;
-        }
-        cardContainer.setCenter(null);
-        mediaContainer.getChildren().clear();
-        CardModel card = deckModel.getCard(deckModel.getActiveCard());
-        if (mode == CardMode.RECTO) {
-            setNodeVisibility(false, right, wrong);
-            cardContainer.setCenter(recto);
-            rectoLabel.setText(card.getQuestion());
-            if(card.getMedia() != null) {
-                if(card.getMedia().getType()==MediaType.IMG){
-                    Image img = new Image(card.getMedia().getFile().toURI().toString());
-                    ImageView imgView = new ImageView(img);
-                    imgView.setPreserveRatio(true);
-                    imgView.setFitWidth(180);
-                    imgView.setFitHeight(250);
-                    mediaContainer.getChildren().add(imgView);
+            openStats();
+        } else {  
+            cardContainer.setCenter(null);
+            mediaContainer.getChildren().clear();
+            CardModel card = deckModel.getCard(deckModel.getActiveCard());
+            if (mode == CardMode.RECTO) {
+                setNodeVisibility(false, right, wrong);
+                cardContainer.setCenter(recto);
+                rectoLabel.setText(card.getQuestion());
+                if(card.getMedia() != null) {
+                    if(card.getMedia().getType()==MediaType.IMG){
+                        Image img = new Image(card.getMedia().getFile().toURI().toString());
+                        ImageView imgView = new ImageView(img);
+                        imgView.setPreserveRatio(true);
+                        imgView.setFitWidth(180);
+                        imgView.setFitHeight(250);
+                        mediaContainer.getChildren().add(imgView);
+                    }
                 }
+            } else {
+                setNodeVisibility(true, right, wrong);
+                cardContainer.setCenter(verso);
+                versoLabel.setText(card.getAnswer());
             }
-        } else {
-            setNodeVisibility(true, right, wrong);
-            cardContainer.setCenter(verso);
-            versoLabel.setText(card.getAnswer());
         }
-
     }
 
     @Override
@@ -184,4 +173,16 @@ public class LearningView extends DeckObserver implements Initializable {
         }
     }
 
+    private void openStats() {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("PopUpStats.fxml"));
+        loader.setControllerFactory(ic -> new PopUpStatsView(learning));
+        try {
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

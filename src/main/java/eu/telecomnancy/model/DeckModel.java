@@ -39,9 +39,10 @@ public class DeckModel extends Observed {
         this.activeCard = 0;
         this.statDeck = new StatDeck(name);
     }
+
     public DeckModel(String name, String description, ArrayList<DeckTag> tags) {
         this.cards = new ArrayList<>();
-        tags = tags;
+        this.tags = tags;
         this.name = name;
         this.description = description;
         this.activeCard = 0;
@@ -68,8 +69,9 @@ public class DeckModel extends Observed {
         addCard(card);
         notifyObservers();
     }
-    public void addCard(String question, String answer, Media media){
-        CardModel card = new CardModel(question,answer,media);
+
+    public void addCard(String question, String answer, Media media) {
+        CardModel card = new CardModel(question, answer, media);
         addCard(card);
         notifyObservers();
     }

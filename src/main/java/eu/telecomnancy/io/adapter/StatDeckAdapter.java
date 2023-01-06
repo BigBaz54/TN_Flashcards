@@ -12,7 +12,6 @@ import eu.telecomnancy.model.StatDeck;
 public class StatDeckAdapter extends TypeAdapter<StatDeck> {
     @Override
     public void write(JsonWriter out, StatDeck value) throws IOException {
-        // TODO: Add StatCards
         out.beginObject();
         out.name("nbTimesOpened");
         out.value(value.getNbTimesOpened());

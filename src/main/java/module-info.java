@@ -3,6 +3,7 @@ module eu.telecomnancy {
     requires transitive javafx.graphics;
     requires javafx.fxml;
     requires javafx.media;
+    requires transitive javafx.web;
     requires transitive com.google.gson;
     requires org.apache.httpcomponents.httpcore;
     requires org.apache.httpcomponents.httpclient;

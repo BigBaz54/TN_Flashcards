@@ -1,4 +1,4 @@
-package eu.telecomnancy.io.sql;
+package eu.telecomnancy.io.apkg;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -9,9 +9,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import eu.telecomnancy.model.ApkgDeckListModel;
 import eu.telecomnancy.model.DeckModel;
 
 public class ApkgReader {
@@ -28,16 +30,22 @@ public class ApkgReader {
         this.apkg = file;
     }
 
+    public void setApkgFile(File apkgFile) {
+        this.apkg = apkgFile;
+    }
+
     public void apkgToDeckModel(DeckModel model) throws SQLException, IOException {
-        ArrayList<String[]> notes = getNotes();
+        // TODO: Add the deck to the model
+        ArrayList<String[]> notes = new ArrayList<String[]>();
         model.setName(apkg.getName().substring(0, apkg.getName().length() - 5));
         for (String[] note : notes) {
             model.addCard(note[0], note[1]);
         }
     }
 
-    public ArrayList<String[]> getNotes() throws SQLException, IOException {
+    public ArrayList<String[]> getNotes(Long deckId) throws SQLException, IOException {
         ArrayList<String[]> notes = new ArrayList<String[]>();
+        HashSet<Long> notesId = new HashSet<Long>();
 
         // Extract the anki2 file from the apkg file
         extractAnki2();
@@ -47,29 +55,78 @@ public class ApkgReader {
         }
 
         connect(anki2.getPath());
-        if (conn != null) {
-            String query = "SELECT * FROM notes";
-            ResultSet rs = conn.createStatement().executeQuery(query);
-            while (rs.next()) {
-                String flds = rs.getString("flds");
-                String[] note = new String[2];
-                note[0] = flds.split("\u001f")[0];
-                note[1] = flds.split("\u001f")[1];
-                notes.add(note);
-            }
 
-            conn.close();
+        String query = "SELECT notes.id, flds FROM notes JOIN cards ON notes.id = cards.nid WHERE did = " + deckId;
+        ResultSet rs = executeQuery(query);
+
+        if (rs != null) {
+            while (rs.next()) {
+                Long id = rs.getLong("id");
+                if (!notesId.contains(id)) {
+                    notesId.add(id);
+                    String flds = rs.getString("flds");
+                    notes.add(parseNotes(flds));
+                }
+            }
         }
 
+        close();
         dbToAnki2();
 
         return notes;
+    }
+
+    private ResultSet executeQuery(String query) throws SQLException {
+        if (conn != null) {
+            ResultSet rs = conn.createStatement().executeQuery(query);
+
+            return rs;
+        }
+
+        return null;
+    }
+
+    private String[] parseNotes(String notes) {
+        String[] notesArray = notes.split("\u001f");
+        return notesArray;
+    }
+
+    public String getDecks() throws SQLException, IOException {
+        String decks = "";
+
+        // Extract the anki2 file from the apkg file
+        extractAnki2();
+
+        if (isAnki2()) {
+            anki2ToDb();
+        }
+
+        connect(anki2.getPath());
+
+        String query = "SELECT * FROM col";
+        ResultSet rs = executeQuery(query);
+
+        if (rs != null) {
+            while (rs.next())
+                decks = rs.getString("decks");
+        }
+
+        close();
+        dbToAnki2();
+
+        return decks;
     }
 
     private void connect(String fileName) throws SQLException {
         String url = "jdbc:sqlite:" + fileName;
 
         conn = DriverManager.getConnection(url);
+    }
+
+    private void close() throws SQLException {
+        if (conn != null) {
+            conn.close();
+        }
     }
 
     private void apkgToZip() {

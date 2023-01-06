@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BubbleChart?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -37,14 +35,6 @@
         </rowConstraints>
          <children>
             <PieChart fx:id="pieChartPourcentage" GridPane.rowIndex="1" />
-            <BubbleChart fx:id="bubbleChartTest">
-              <xAxis>
-                <NumberAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </BubbleChart>
             <LineChart fx:id="lineChartEvolutionTemps" GridPane.columnIndex="1">
               <xAxis>
                 <NumberAxis side="BOTTOM" />
@@ -53,24 +43,24 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0">
                <children>
                   <Label fx:id="nbCardSeen" alignment="CENTER" text="Label">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
                      <font>
-                        <Font size="26.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <Label fx:id="nbardTrue" text="Label">
                      <font>
-                        <Font size="26.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                   <Label fx:id="totalTimes" text="Label">
                      <font>
-                        <Font size="26.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>

@@ -45,10 +45,12 @@ public class PopUpStatsView implements Initializable {
         lineChartEvolutionTemps.getData().clear();
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("Series 1");
+        lineChartEvolutionTemps.getXAxis().setLabel("Cartes vues");
+        lineChartEvolutionTemps.getYAxis().setLabel("Temps en minutes");
         ArrayList<Long> temps = learning.getStatLearning().getTimeCards();
         for (int i = 0; i < temps.size(); i++) {
-            XYChart.Data<Number, Number> data = new XYChart.Data<>(i, temps.get(i));
-            series1.getData().add(new XYChart.Data<>(i, temps.get(i)));
+            XYChart.Data<Number, Number> data = new XYChart.Data<>(i, temps.get(i)/(1000*60));
+            series1.getData().add(new XYChart.Data<>(i, temps.get(i)/(1000*60)));
         }
         lineChartEvolutionTemps.getData().add(series1);
     }
@@ -72,11 +74,11 @@ public class PopUpStatsView implements Initializable {
         createPieChart();
         createLineChart();
         //createBubbleChart();
-        String carteVue = "Nombre de Carte Vues : "+learning.getStatLearning().getNbPlayed();
+        String carteVue = "Nombre de cartes vues : "+learning.getStatLearning().getNbPlayed();
         nbCardSeen.setText(carteVue);
-        String carteTrue = "Nombre de bonne réponse : "+learning.getStatLearning().getNbCorrect();
+        String carteTrue = "Nombre de bonnes réponses : "+learning.getStatLearning().getNbCorrect();
         nbardTrue.setText(carteTrue);
-        String temps = "Temps total passé : "+learning.getStatLearning().getTimePlayed() + " ms";
+        String temps = "Temps total de la session : "+learning.getStatLearning().getTimePlayed()/(1000*60) + " minutes";
         totalTimes.setText(temps);
     }
 }

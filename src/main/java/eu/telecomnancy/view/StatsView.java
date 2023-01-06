@@ -46,7 +46,7 @@ public class StatsView extends DeckListObserver implements Initializable {
     public void createLineChart1() {
         nbDecksOverTime.getData().clear();
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("Series 1");
+        series1.setName("Evolution du nb de deck");
 
         ArrayList<StatDeck> statDecks = new ArrayList<>();
         for (DeckModel deck : deckListModel.getDecks()) {
@@ -103,7 +103,7 @@ public class StatsView extends DeckListObserver implements Initializable {
         barChartPourcentage.getXAxis().setLabel("Deck");
         barChartPourcentage.getYAxis().setLabel("Pourcentage");
         XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<>();
-        dataSeries1.setName("all decks");
+        dataSeries1.setName("");
         ArrayList<StatDeck> statDecks = new ArrayList<>();
         deckListModel.getDecks().forEach(deck -> {
             AtomicReference<Long> nbjuste = new AtomicReference<>(0L);
@@ -113,7 +113,7 @@ public class StatsView extends DeckListObserver implements Initializable {
             if (deck.getStatDeck().getNbTimesOpened() == 0) {
                 dataSeries1.getData().add(new XYChart.Data<>(deck.getName(), 0));
             }else {
-                float pourcentage = (float) (nbjuste.get() * 100 / deck.getStatDeck().getNbTimesOpened());
+                float pourcentage = (float) (nbjuste.get()  / deck.getStatDeck().getNbTimesOpened());
                 dataSeries1.getData().add(new XYChart.Data<>(deck.getName(), pourcentage));
             }
 
@@ -123,7 +123,7 @@ public class StatsView extends DeckListObserver implements Initializable {
     public void createBubbleChart(){
         bubbleChart.getData().clear();
         bubbleChart.getXAxis().setLabel("Temps passé");
-        bubbleChart.getYAxis().setLabel("Pourcentage bonne réponse");
+        bubbleChart.getYAxis().setLabel("True Answer %");
         XYChart.Series<Number, Number> dataSeries1 = new XYChart.Series<>();
         dataSeries1.setName("Nombre de carte");
         deckListModel.getDecks().forEach(deck -> {
@@ -155,6 +155,8 @@ public class StatsView extends DeckListObserver implements Initializable {
             deckStats.addRow(i, new Label(deckListModel.getDecks().get((i-2)/2).getName()));
             PieChart pieChart = new PieChart();
             BarChart<String, Number> barChart = new BarChart<>(new CategoryAxis(), new NumberAxis());
+            barChart.getXAxis().setLabel("Tags");
+            barChart.getYAxis().setLabel("True Answer %");
             HashMap<String, Integer> barvrai = new HashMap<>();
             HashMap<String, Integer> barvue = new HashMap<>();
             deckListModel.getDecks().get((i-2)/2).getCards().forEach(card -> {

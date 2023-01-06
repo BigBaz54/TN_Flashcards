@@ -138,7 +138,6 @@ public class StatsView extends DeckListObserver implements Initializable {
             if (nbseen.get() == 0) {
                 dataSeries1.getData().add(new XYChart.Data<>(time.get()/1000, 0, nbseen.get()));
             }else {
-                System.out.println("feur");
                 float pourcentage = (float) (nbjuste.get() / deck.getStatDeck().getNbTimesOpened());
                 dataSeries1.getData().add(new XYChart.Data<>(time.get()/(1000*60), pourcentage, nbseen.get()));
             }
@@ -203,7 +202,6 @@ public class StatsView extends DeckListObserver implements Initializable {
                 pieChart.getData().add(new PieChart.Data("Correct", nbjuste.get().floatValue()/nbvue.get().floatValue()));
                 pieChart.getData().add(new PieChart.Data("Incorrect", 1-nbjuste.get().floatValue()/nbvue.get().floatValue()));
             }
-            System.out.println(barvrai);
             deckStats.addRow(i+1, pieChart, barChart);
 
         }

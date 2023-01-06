@@ -1,9 +1,7 @@
 package eu.telecomnancy.model;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 import eu.telecomnancy.learning.Learning;
@@ -29,10 +27,10 @@ public class LearningTest {
         assertEquals(1, card1.getProbability(), 0.001);
         assertEquals(1, card2.getProbability(), 0.001);
         assertEquals(1, card3.getProbability(), 0.001);
-        
+
         learning.nextCard(false);
         assertEquals(1, card1.getProbability(), 0.001);
-        
+
         card1.setProbability(1);
         deckModel.setActiveCard(0);
         learning.nextCard(true);
@@ -55,7 +53,7 @@ public class LearningTest {
         DeckController deckController = new DeckController(deckModel);
         Learning learning = new LearningXCards(deckController, new DrawCardStrategyWeighted(), 10);
         StatLearning statLearning = learning.getStatLearning();
-        
+
         assertEquals(0, statLearning.getNbPlayed());
         assertEquals(0, statLearning.getNbCorrect());
         assertEquals(0, statLearning.getTimePlayed(), 0);

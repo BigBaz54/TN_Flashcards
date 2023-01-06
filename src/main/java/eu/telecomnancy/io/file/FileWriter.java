@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
 import eu.telecomnancy.model.Media;
 
 public class FileWriter {
@@ -13,22 +15,18 @@ public class FileWriter {
     }
 
     public static void createDir() {
-        File dir_1 = new File("resources");
-        File dir_2 = new File("resources/decks");
-        File dir_3 = new File("resources/exports");
-        File dir_4 = new File("resources/images");
-        File dir_5 = new File("resources/sounds");
-        File dir_6 = new File("resources/temp");
-        File dir_7 = new File("resources/videos");
+        ArrayList<File> dirs = new ArrayList<File>();
+        dirs.add(new File("resources"));
+        dirs.add(new File("resources/decks"));
+        dirs.add(new File("resources/exports"));
+        dirs.add(new File("resources/images"));
+        dirs.add(new File("resources/sounds"));
+        dirs.add(new File("resources/temp"));
+        dirs.add(new File("resources/videos"));
 
-        if (!dir_1.exists()) {
-            dir_1.mkdir();
-            dir_2.mkdir();
-            dir_3.mkdir();
-            dir_4.mkdir();
-            dir_5.mkdir();
-            dir_6.mkdir();
-            dir_7.mkdir();
+        for (File file : dirs) {
+            if (!file.exists())
+                file.mkdir();
         }
     }
 

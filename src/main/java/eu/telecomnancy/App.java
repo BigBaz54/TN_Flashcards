@@ -45,17 +45,16 @@ public class App extends Application {
             Parent root2 = loader2.load();
             Scene scene2 = new Scene(root2, 1200, 900);
 
-            // Settings 
+            // Settings
             FXMLLoader loader3 = new FXMLLoader(getClass().getResource("SettingsView.fxml"));
-            loader3.setControllerFactory(ic -> new SettingsView(deckListController,stageController));
+            loader3.setControllerFactory(ic -> new SettingsView(deckListController, stageController));
             Parent root3 = loader3.load();
             Scene scene3 = new Scene(root3, 1200, 900);
 
-            new StageView(primaryStage, stageModel, stageController, scene, scene2,scene3);
+            new StageView(primaryStage, stageModel, stageController, scene, scene2, scene3);
             stageController.setGlobalView();
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

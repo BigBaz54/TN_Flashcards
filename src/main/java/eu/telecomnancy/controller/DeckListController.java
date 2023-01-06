@@ -3,13 +3,15 @@ package eu.telecomnancy.controller;
 import java.io.File;
 import java.util.ArrayList;
 
+import eu.telecomnancy.io.apkg.ApkgFormatter;
 import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.io.file.FileController;
-import eu.telecomnancy.io.sql.ApkgReader;
+import eu.telecomnancy.model.ApkgDeckListModel;
 import eu.telecomnancy.model.DeckListModel;
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.model.compact.ApkgDeckModel;
 import javafx.stage.FileChooser;
 
 public class DeckListController {
@@ -29,6 +31,7 @@ public class DeckListController {
     public void createDeck(String name, String description) {
         deckListModel.createDeck(name, description);
     }
+
     public void createDeck(String name, String description, ArrayList<DeckTag> tags) {
         deckListModel.createDeck(name, description, tags);
     }
@@ -63,32 +66,40 @@ public class DeckListController {
 
     public void importDeck() {
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "ZIP files (*.zip) or APKG files (*.apkg)", "*.zip", "*.apkg");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
-            fileController.importFromFile(file);
+            if (file.getName().endsWith(".apkg")) {
+                importApkgDeck(file);
+            } else {
+                fileController.importFromFile(file);
+            }
         }
     }
 
     public void importApkgDeck(File apkg) {
-        DeckModel model = new DeckModel();
-        ApkgReader apkgReader = new ApkgReader(apkg);
+        ApkgFormatter apkgFormatter = new ApkgFormatter(apkg);
         try {
-            apkgReader.apkgToDeckModel(model);
-            deckListModel.addDeck(model);
+            ApkgDeckListModel apkgDeckListModel = apkgFormatter.getAllDecks();
+
+            for (ApkgDeckModel apkgDeckModel : apkgDeckListModel.getDecks()) {
+                DeckModel deck = createEmptyDeck();
+                apkgDeckModel.to(deck);
+                addDeck(deck);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
-        System.out.println("setBuildCardStrategy");
         deckListModel.setBuildCardStrategy(buildCardStrategy);
     }
 
-    public void setDrawCardStrategy (DrawCardStrategy drawCardStrategy) {
+    public void setDrawCardStrategy(DrawCardStrategy drawCardStrategy) {
         deckListModel.setDrawCardStrategy(drawCardStrategy);
     }
 

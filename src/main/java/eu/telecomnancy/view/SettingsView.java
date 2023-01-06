@@ -7,8 +7,8 @@ import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategyTheme2;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
+import eu.telecomnancy.drawCardStrategy.DrawCardStrategyNormal;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyRandom;
-import eu.telecomnancy.drawCardStrategy.DrawCardStrategyTime;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategyWeighted;
 import eu.telecomnancy.observer.DeckListObserver;
 import javafx.fxml.FXML;
@@ -113,7 +113,7 @@ public class SettingsView extends DeckListObserver implements Initializable{
     }
     @FXML
     public void setDrawNormal(){
-        deckListController.setDrawCardStrategy(new DrawCardStrategyTime());
+        deckListController.setDrawCardStrategy(new DrawCardStrategyNormal());
     }
      
 }

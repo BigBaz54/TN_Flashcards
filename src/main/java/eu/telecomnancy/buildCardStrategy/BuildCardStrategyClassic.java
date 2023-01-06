@@ -1,11 +1,11 @@
 package eu.telecomnancy.buildCardStrategy;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class BuildCardStrategyClassic implements BuildCardStrategy {
 
@@ -17,6 +17,8 @@ public class BuildCardStrategyClassic implements BuildCardStrategy {
     public Label rectoLabel;
     @FXML
     public Label versoLabel;
+    @FXML
+    public VBox mediaContainer;
 
     @Override
     public Pane build() {
@@ -34,9 +36,9 @@ public class BuildCardStrategyClassic implements BuildCardStrategy {
             loader2.load();
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
         StackPane root = new StackPane();
-        root.getChildren().addAll(recto,verso);
+        root.getChildren().addAll(recto, verso);
         return root;
     }
 

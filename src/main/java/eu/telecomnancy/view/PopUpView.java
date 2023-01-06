@@ -25,7 +25,6 @@ public class PopUpView extends DeckListObserver {
     @FXML
     private TextField tag3;
 
-    private DeckListModel deckListModel;
     private DeckListController deckListController;
 
     public PopUpView(DeckListModel deckListModel, DeckListController deckListController) {

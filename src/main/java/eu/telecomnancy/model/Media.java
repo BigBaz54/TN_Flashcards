@@ -27,7 +27,6 @@ public class Media {
                 path += "videos/";
                 break;
         }
-
         return new File(path + fileName);
     }
 
@@ -42,7 +41,8 @@ public class Media {
     public void setType(MediaType type) {
         this.type = type;
     }
-    public String getName(){
+
+    public String getName() {
         return this.fileName;
     }
 }

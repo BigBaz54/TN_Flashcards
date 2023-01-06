@@ -4,10 +4,9 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LearningSession extends Learning {
-    private HashMap<Integer, Integer> cardsToLearn = new HashMap<>();
+    public HashMap<Integer, Integer> cardsToLearn = new HashMap<>();
 
 
     public LearningSession(DeckController deckController, DrawCardStrategy drawCardStrategy) {
@@ -38,13 +37,13 @@ public class LearningSession extends Learning {
 
     @Override
     public boolean isFinished() {
-        AtomicBoolean isFinished = new AtomicBoolean(true);
-        cardsToLearn.values().forEach(value->{
-            if(value!=2){
-                isFinished.set(false);
+        boolean isFinished = true;
+        for (Integer i : this.cardsToLearn.values()) {
+            if (i < 2) {
+                isFinished = false;
             }
-            });
-        return isFinished.get();
+        }
+        return isFinished;
     }
 
     @Override

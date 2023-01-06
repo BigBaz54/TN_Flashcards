@@ -1,10 +1,8 @@
 package eu.telecomnancy.model;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import eu.telecomnancy.CardTag;
-
-import static org.junit.Assert.assertEquals;
 
 public class CardModelTest {
     @Test

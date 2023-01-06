@@ -1,10 +1,8 @@
 package eu.telecomnancy.io.json;
 
-import static org.junit.Assert.assertEquals;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Date;
-
-import org.junit.Test;
 import eu.telecomnancy.model.DeckModel;
 
 public class JsonFormatterTest {

@@ -1,10 +1,8 @@
 package eu.telecomnancy.drawCardStrategy;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import eu.telecomnancy.model.DeckModel;
-
-import static org.junit.Assert.assertTrue;
 
 public class DrawCardStrategyTest {
     @Test

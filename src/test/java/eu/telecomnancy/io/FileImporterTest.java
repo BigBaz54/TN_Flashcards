@@ -1,11 +1,9 @@
 package eu.telecomnancy.io;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.File;
 import java.io.IOException;
-
-import org.junit.Test;
-
 import eu.telecomnancy.io.file.FileImporter;
 import eu.telecomnancy.io.file.FileReader;
 import eu.telecomnancy.io.json.JsonFormatterDeck;

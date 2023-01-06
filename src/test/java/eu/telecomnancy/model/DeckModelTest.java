@@ -1,11 +1,9 @@
 package eu.telecomnancy.model;
 
-import org.junit.Test;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import eu.telecomnancy.DeckTag;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class DeckModelTest {
     @Test
@@ -33,12 +31,13 @@ public class DeckModelTest {
     }
 
     @Test
-    // adding and removing tags + checking that the list of used tags is updated and independent from the card's one
+    // adding and removing tags + checking that the list of used tags is updated and
+    // independent from the card's one
     public void test3() {
         DeckModel deck = new DeckModel("name", "description");
         deck.addCard("question1", "answer1");
         deck.getCard(0).addTag("cardTag1");
-        
+
         deck.addTag("deckTag1");
         deck.addTag("deckTag2");
         deck.addTag("deckTag3");

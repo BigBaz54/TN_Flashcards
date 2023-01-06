@@ -2,8 +2,8 @@
 
 ## Execute the project
 
-This project uses maven. You can compile and run the project with :
+This project uses gradle. You can run it with the following command :
 
 ``` bash
-mvn clean compile javafx:run
+./gradlew run
 ```

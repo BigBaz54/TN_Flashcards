@@ -4,8 +4,21 @@
 
 This project uses gradle. You can run it with the following command :
 
-``` bash
+```bash
 ./gradlew run
+```
+
+You can also run it with the `.jar` file with :
+
+```bash
+./gradlew fatJar
+java -jar build/libs/codingweek-16-1.0-SNAPSHOT.jar
+```
+
+Their is unit test in the project you can run them with :
+
+```bash
+./gradlew test
 ```
 
 ## Tutorial

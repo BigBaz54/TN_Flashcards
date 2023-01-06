@@ -1,0 +1,181 @@
+{
+  "cards": [
+    {
+      "question": "Qu\u0027est ce qu\u0027une fleur ?",
+      "answer": "Une fleur est une partie de la plante qui sert à la reproduction. Elle est composée de pétales, de sépales et de organes reproducteurs mâles et femelles.",
+      "probability": 0.25,
+      "statCard": {
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 2,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          78114,
+          2465,
+          1982
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    },
+    {
+      "question": "Quelle est la fleur la plus populaire au monde ?",
+      "answer": "La rose est la fleur la plus populaire au monde. Elle est symbole d\u0027amour et est souvent utilisée pour exprimer des sentiments ou comme décoration.",
+      "probability": 0.5,
+      "statCard": {
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          7250,
+          937
+        ]
+      },
+      "tags": [
+        "s8"
+      ]
+    },
+    {
+      "question": "Quelle est la fleur nationale de la France ?",
+      "answer": "La fleur nationale de la France est le coquelicot. Elle est souvent associée à la Première Guerre mondiale et au souvenir des soldats tombés au combat..",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 3,
+        "timesSpent": [
+          86033,
+          2216,
+          16516
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    },
+    {
+      "question": "Qu\u0027est-ce qu\u0027une fleur annuelle ?",
+      "answer": "Une fleur annuelle est une plante qui vit et fleurit pendant une seule saison. Elle meurt généralement à la fin de l\u0027automne ou en hiver, mais peut être replantée chaque année.",
+      "probability": 0.5,
+      "statCard": {
+        "nbTimesSeen": 3,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 2,
+        "timesSpent": [
+          87822,
+          3789,
+          1131
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    },
+    {
+      "question": "Qu\u0027est-ce qu\u0027une fleur vivace ?",
+      "answer": "Une fleur vivace est une plante qui vit et fleurit pendant plusieurs années. Elles sont souvent plus robustes et nécessitent moins d\u0027entretien que les fleurs annuelles.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          13730
+        ]
+      },
+      "tags": [
+        "s8"
+      ]
+    },
+    {
+      "question": "Quelle est la fleur la plus célèbre en Italie ?",
+      "answer": "Le lys est la fleur la plus célèbre en Italie. Elle est souvent utilisée pour symboliser la pureté et l\u0027innocence.",
+      "probability": 0.5,
+      "statCard": {
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          10847,
+          2940
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    },
+    {
+      "question": "Quelle est la fleur la plus célèbre au Japon ?",
+      "answer": "Le cerisier en fleur, ou sakura, est la fleur la plus célèbre au Japon. Elle symbolise la beauté éphémère de la vie et est l\u0027objet de célébrations nationales chaque année au moment de sa floraison.",
+      "probability": 0.5,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 1,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          1711
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    },
+    {
+      "question": "Qu\u0027est-ce qu\u0027une fleur monocotylédone ?",
+      "answer": "Une fleur monocotylédone est une plante à fleur qui possède un seul cotylédon, ou grain germé, dans sa graine. Cela signifie que sa première feuille est plus longue et plus étroite que celles des plantes à fleurs dicotylédones.",
+      "probability": 0.5,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": [
+        "s8"
+      ]
+    },
+    {
+      "question": "Qu\u0027est-ce qu\u0027une fleur dicotylédone?",
+      "answer": "Une fleur dicotylédone est une plante à fleur qui possède deux cotylédons, ou grains germés, dans sa graine. Cela signifie que sa première feuille est plus large et plus arrondie que celles des plantes à fleurs monocotylédones.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": [
+        "s8"
+      ]
+    },
+    {
+      "question": "Qu\u0027est-ce qu\u0027une fleur bisannuelle?",
+      "answer": "Une fleur bisannuelle est une plante",
+      "probability": 0.25,
+      "statCard": {
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 2,
+        "nbTimesWrong": 0,
+        "timesSpent": [
+          3732,
+          1921
+        ]
+      },
+      "tags": [
+        "s7"
+      ]
+    }
+  ],
+  "tags": [],
+  "statDeck": {
+    "nbTimesOpened": 2,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "lastOpened": 1673025831160,
+    "creationDate": 1672999894492
+  },
+  "name": "Les fleurs",
+  "description": "Des cartes pour apprendre les fleurs"
+}

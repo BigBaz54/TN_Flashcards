@@ -80,14 +80,14 @@ public class CardView {
             setNodeVisibility(false, delete, answerEdit, questionEdit, mediaEdit, addMedia);
             setNodeVisibility(true, answer, question);
         } else {
-            if(card.getMedia()!=null){
+            if (card.getMedia() != null) {
                 setNodeVisibility(true, mediaEdit);
                 setNodeVisibility(false, addMedia);
-            }else {
+            } else {
                 setNodeVisibility(false, mediaEdit);
                 setNodeVisibility(true, addMedia);
             }
-            setNodeVisibility(false, answer, question,mediaIcon);
+            setNodeVisibility(false, answer, question, mediaIcon);
             setNodeVisibility(true, delete, answerEdit, questionEdit);
         }
 
@@ -107,6 +107,7 @@ public class CardView {
         }
 
     }
+
     // Enleve une carte du paquet
     @FXML
     public void removeCard() {
@@ -125,7 +126,7 @@ public class CardView {
     public void seeMedia() {
         Media media = card.getMedia();
         if (media != null) { // Test si le média existe
-            if(media.getType()!=MediaType.IMG){ // Si c'est un audio ou vidéo
+            if (media.getType() != MediaType.IMG) { // Si c'est un audio ou vidéo
                 javafx.scene.media.Media m = new javafx.scene.media.Media(media.getFile().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(m);
                 MediaView mediaView = new MediaView(mediaPlayer);
@@ -136,7 +137,7 @@ public class CardView {
                 root.setCenter(mediaView);
                 stage.setScene(new javafx.scene.Scene(root, 640, 480));
                 stage.show();
-            }else { // Si c'est une image
+            } else { // Si c'est une image
                 Image img = new Image(media.getFile().toURI().toString());
                 ImageView view = new ImageView(img);
                 Stage stage = new Stage(); // On ouvre une nouvelle fenêtre
@@ -151,32 +152,42 @@ public class CardView {
 
     }
 
-
     @FXML
-    public void deleteMedia(){
+    public void deleteMedia() {
         card.setMedia(null);
         setNodeVisibility(false, mediaEdit);
         setNodeVisibility(true, addMedia);
 
     }
+
     @FXML
-    public void updateMedia(){
+    public void updateMedia() {
         deleteMedia();
         FileChooser fileChooser = new FileChooser();
 
-        // Extension filters 
-        FileChooser.ExtensionFilter extFilter1 = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png","*.gif");
-        FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("Audio files", "*.mp3", "*.wav","*.aac");
-        FileChooser.ExtensionFilter extFilter3 = new FileChooser.ExtensionFilter("Video files", "*.mp4", "*.avi","*.mov");
+        // Extension filters
+        FileChooser.ExtensionFilter extFilter1 = new FileChooser.ExtensionFilter("Image files", "*.jpeg", "*.jpg",
+                "*.png",
+                "*.gif");
+        FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("Audio files", "*.mp3", "*.wav",
+                "*.aac");
+        FileChooser.ExtensionFilter extFilter3 = new FileChooser.ExtensionFilter("Video files", "*.mp4", "*.avi",
+                "*.mov");
         fileChooser.getExtensionFilters().addAll(extFilter1, extFilter2, extFilter3);
 
         File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile == null) {
+            return;
+        }
+
         String name = selectedFile.getPath();
         String fileName = selectedFile.getName();
         String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
 
         MediaType type;
         switch (extension) {
+            case "jpeg":
             case "png":
             case "jpg":
             case "gif":
@@ -196,7 +207,7 @@ public class CardView {
                 type = null;
                 break;
         }
-        Media media = new Media(name,type);
+        Media media = new Media(name, type);
         card.setMedia(media);
         setNodeVisibility(false, addMedia);
         setNodeVisibility(true, mediaEdit);

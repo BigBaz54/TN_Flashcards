@@ -1,8 +1,10 @@
 package eu.telecomnancy.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import eu.telecomnancy.CardTag;
+import eu.telecomnancy.io.file.FileWriter;
 
 public class CardModel extends Observed {
     private String question;
@@ -33,14 +35,16 @@ public class CardModel extends Observed {
         this.idCard = id;
         id++;
     }
-    public CardModel(String question, String answer,Media media) {
-        this(question,answer);
-        this.media=media;
+
+    public CardModel(String question, String answer, Media media) {
+        this(question, answer);
+        this.media = media;
     }
-    public CardModel(String question, String answer,Media media,ArrayList<CardTag> tags) {
-        this(question,answer);
-        this.media=media;
-        this.tags=tags;
+
+    public CardModel(String question, String answer, Media media, ArrayList<CardTag> tags) {
+        this(question, answer);
+        this.media = media;
+        this.tags = tags;
     }
 
     public String getQuestion() {
@@ -94,6 +98,14 @@ public class CardModel extends Observed {
 
     public void setMedia(Media media) {
         this.media = media;
+        if (this.media != null) {
+            try {
+                FileWriter.writeMedia(media);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
     }
 
     public void setStatCard(StatCard statCard) {

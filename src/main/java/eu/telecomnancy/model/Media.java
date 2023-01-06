@@ -30,6 +30,10 @@ public class Media {
         return new File(path + fileName);
     }
 
+    public File getRawFile() {
+        return new File(fileName);
+    }
+
     public MediaType getType() {
         return type;
     }

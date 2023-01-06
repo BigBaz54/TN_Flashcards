@@ -1,7 +1,7 @@
 {
   "cards": [
     {
-      "question": "Capitale france",
+      "question": "Quelle est la capitale de la France ?",
       "answer": "Paris",
       "probability": 0.25,
       "statCard": {
@@ -14,10 +14,16 @@
           1982
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ],
+      "media": {
+        "file": "eiffel.jpeg",
+        "type": "IMG"
+      }
     },
     {
-      "question": "Capitale Allemagne",
+      "question": "Quelle est la capitale de l\u0027Allemagne ?",
       "answer": "Berlin",
       "probability": 0.5,
       "statCard": {
@@ -29,10 +35,16 @@
           937
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ],
+      "media": {
+        "file": "saucisse.jpeg",
+        "type": "IMG"
+      }
     },
     {
-      "question": "Quelle est la capitale de l\u0027Espagne? ",
+      "question": "Quelle est la capitale de l\u0027Espagne ?",
       "answer": "Madrid.",
       "probability": 1.0,
       "statCard": {
@@ -45,10 +57,12 @@
           16516
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ]
     },
     {
-      "question": " Quelle est la capitale de la Suisse?",
+      "question": "Quelle est la capitale de la Suisse ?",
       "answer": "Berne.",
       "probability": 0.5,
       "statCard": {
@@ -61,10 +75,12 @@
           1131
         ]
       },
-      "tags": []
+      "tags": [
+        "s8"
+      ]
     },
     {
-      "question": "Quelle est la capitale du Portugal? ",
+      "question": "Quelle est la capitale du Portugal ?",
       "answer": "La capitale du Portugal est Lisbonne.",
       "probability": 1.0,
       "statCard": {
@@ -75,10 +91,12 @@
           13730
         ]
       },
-      "tags": []
+      "tags": [
+        "s8"
+      ]
     },
     {
-      "question": " Quelle est la capitale de la Belgique?",
+      "question": "Quelle est la capitale de la Belgique ?",
       "answer": "La capitale de la Belgique est Bruxelles.",
       "probability": 0.5,
       "statCard": {
@@ -90,10 +108,12 @@
           2940
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ]
     },
     {
-      "question": "Quelle est la capitale de l\u0027Italie? ",
+      "question": "Quelle est la capitale de l\u0027Italie ?",
       "answer": "La capitale de l\u0027Italie est Rome.",
       "probability": 0.5,
       "statCard": {
@@ -104,10 +124,16 @@
           1711
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ],
+      "media": {
+        "file": "pizza.jpeg",
+        "type": "IMG"
+      }
     },
     {
-      "question": " Quelle est la capitale de l\u0027Autriche? ",
+      "question": "Quelle est la capitale de l\u0027Autriche ?",
       "answer": "La capitale de l\u0027Autriche est Vienne.",
       "probability": 0.5,
       "statCard": {
@@ -116,10 +142,12 @@
         "nbTimesWrong": 0,
         "timesSpent": []
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ]
     },
     {
-      "question": " Quelle est la capitale du Danemark?",
+      "question": "Quelle est la capitale du Danemark ?",
       "answer": "La capitale du Danemark est Copenhague.",
       "probability": 1.0,
       "statCard": {
@@ -128,10 +156,12 @@
         "nbTimesWrong": 0,
         "timesSpent": []
       },
-      "tags": []
+      "tags": [
+        "s8"
+      ]
     },
     {
-      "question": "Capitale de la Suisse",
+      "question": "Quelle est la capitale de la Suisse ?",
       "answer": "La capitale de la Suisse est Berne.",
       "probability": 0.25,
       "statCard": {
@@ -143,10 +173,12 @@
           1921
         ]
       },
-      "tags": []
+      "tags": [
+        "s8"
+      ]
     },
     {
-      "question": "Capitale du Kenya",
+      "question": "Quelle est la capitale du Kenya ?",
       "answer": "La capitale du Kenya est Nairobi.",
       "probability": 1.0,
       "statCard": {
@@ -157,10 +189,12 @@
           2583
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ]
     },
     {
-      "question": "Capitale du Canada",
+      "question": "Quelle est la capitale du Canada ?",
       "answer": "La capitale du Canada est Ottawa.",
       "probability": 0.5,
       "statCard": {
@@ -171,10 +205,12 @@
           1141
         ]
       },
-      "tags": []
+      "tags": [
+        "s7"
+      ]
     },
     {
-      "question": "Capitale de la Russie",
+      "question": "Quelle est la capitale de la Russie ?",
       "answer": "La capitale de la Russie est Moscou.",
       "probability": 0.5,
       "statCard": {
@@ -185,17 +221,19 @@
           2006
         ]
       },
-      "tags": []
+      "tags": [
+        "s8"
+      ]
     }
   ],
   "tags": [],
   "statDeck": {
-    "nbTimesOpened": 1,
+    "nbTimesOpened": 2,
     "nbTimesCorrect": 0,
     "nbTimesWrong": 0,
     "nbCardsSeen": 0,
     "timesSpent": 0,
-    "lastOpened": 1672999956696,
+    "lastOpened": 1673026184390,
     "creationDate": 1672999894492
   },
   "name": "Les capitales",

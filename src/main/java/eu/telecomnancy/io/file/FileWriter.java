@@ -38,7 +38,7 @@ public class FileWriter {
         stream.close();
     }
 
-    public void writeMedia(Media media) throws IOException {
+    public static void writeMedia(Media media) throws IOException {
         String path = "resources/";
         String folder = "";
         switch (media.getType()) {
@@ -55,7 +55,7 @@ public class FileWriter {
 
         path += folder + "/" + media.getFile().getName();
 
-        FileWriter.writeFile(media.getFile(), path);
+        FileWriter.writeFile(media.getRawFile(), path);
     }
 
     public static void writeFile(File file, String path) {

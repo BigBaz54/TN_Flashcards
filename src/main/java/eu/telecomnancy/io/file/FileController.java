@@ -49,7 +49,7 @@ public class FileController {
 
     public void saveMedia(Media media) {
         try {
-            fileWriter.writeMedia(media);
+            FileWriter.writeMedia(media);
         } catch (Exception e) {
             e.printStackTrace();
         }

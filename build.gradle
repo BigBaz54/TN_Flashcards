@@ -71,7 +71,7 @@ jlinkZip {
     group = 'distribution'
 }
 
-jar {
+task fatJar(type: Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     manifest {

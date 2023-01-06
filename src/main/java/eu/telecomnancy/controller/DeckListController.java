@@ -96,7 +96,6 @@ public class DeckListController {
     }
 
     public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
-        System.out.println("setBuildCardStrategy");
         deckListModel.setBuildCardStrategy(buildCardStrategy);
     }
 

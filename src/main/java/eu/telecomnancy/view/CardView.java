@@ -1,7 +1,6 @@
 package eu.telecomnancy.view;
 
 import java.io.IOException;
-import java.net.URL;
 
 import eu.telecomnancy.controller.CardController;
 import eu.telecomnancy.controller.DeckController;
@@ -18,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -45,7 +43,6 @@ public class CardView {
     @FXML
     private Button mediaIcon;
 
-    private Mode mode;
     private DeckController deckController;
     private CardController cardController;
 
@@ -54,8 +51,8 @@ public class CardView {
         this.deck = deck;
         this.deckController = deckController;
         this.cardController = new CardController(card);
-        this.mode = mode;
 
+        // Chargement du FXML
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CardCell.fxml"));
         fxmlLoader.setController(this);
         fxmlLoader.setRoot(root);
@@ -65,10 +62,11 @@ public class CardView {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        question.setText(card.getQuestion());
-        answer.setText(card.getAnswer());
-        questionEdit.setText(card.getQuestion());
-        answerEdit.setText(card.getAnswer());
+        // Affichage des données
+        question.setText(cardController.getQuestion());
+        answer.setText(cardController.getAnswer());
+        questionEdit.setText(cardController.getQuestion());
+        answerEdit.setText(cardController.getAnswer());
 
         // Changement de vue en fonction du mode
         if (mode == Mode.VIEW) {
@@ -79,7 +77,7 @@ public class CardView {
             setNodeVisibility(true, delete, answerEdit, questionEdit);
         }
 
-        // Listeners
+        // Listeners pour modifier la carte
         questionEdit.textProperty().addListener((observable, oldValue, newValue) -> {
             cardController.setQuestion(newValue);
         });
@@ -95,7 +93,7 @@ public class CardView {
         }
 
     }
-
+    // Enleve une carte du paquet
     @FXML
     public void removeCard() {
         deckController.removeCard(deck.getCards().indexOf(card));
@@ -108,25 +106,26 @@ public class CardView {
         }
     }
 
+    // Permet de voir un média lorsqu'on clic sur l'icône
     @FXML
     public void seeMedia() {
         Media media = card.getMedia();
-        if (media != null) {
-            if(media.getType()!=MediaType.IMG){
+        if (media != null) { // Test si le média existe
+            if(media.getType()!=MediaType.IMG){ // Si c'est un audio ou vidéo
                 javafx.scene.media.Media m = new javafx.scene.media.Media(media.getFile().toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(m);
                 MediaView mediaView = new MediaView(mediaPlayer);
                 mediaPlayer.play();
-                Stage stage = new Stage();
+                Stage stage = new Stage(); // On ouvre une nouvelle fenêtre
                 stage.setTitle("Media");
                 BorderPane root = new BorderPane();
                 root.setCenter(mediaView);
                 stage.setScene(new javafx.scene.Scene(root, 640, 480));
                 stage.show();
-            }else {
+            }else { // Si c'est une image
                 Image img = new Image(media.getFile().toURI().toString());
                 ImageView view = new ImageView(img);
-                Stage stage = new Stage();
+                Stage stage = new Stage(); // On ouvre une nouvelle fenêtre
                 stage.setTitle("Image");
                 BorderPane root = new BorderPane();
                 root.setCenter(view);

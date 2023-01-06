@@ -93,7 +93,7 @@
                                                 </Label>
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="27.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" onAction="#toLearningSession" prefHeight="30.0" prefWidth="43.0">
+                                                      <Button mnemonicParsing="false" onAction="#toLearningAllView" prefHeight="30.0" prefWidth="43.0">
                                                          <graphic>
                                                             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
@@ -128,7 +128,7 @@
                                                 </Label>
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="70.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0">
+                                                      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" onAction="#toLearningTimeView">
                                                          <graphic>
                                                             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
@@ -166,7 +166,7 @@
                                                 </Label>
                                                 <HBox alignment="CENTER_RIGHT" prefHeight="36.0" prefWidth="112.0">
                                                    <children>
-                                                      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0">
+                                                      <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="43.0" onAction="#toLearningCardView">
                                                          <graphic>
                                                             <ImageView fitHeight="28.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>

@@ -39,6 +39,14 @@ public class DeckModel extends Observed {
         this.activeCard = 0;
         this.statDeck = new StatDeck(name);
     }
+    public DeckModel(String name, String description, ArrayList<DeckTag> tags) {
+        this.cards = new ArrayList<>();
+        tags = tags;
+        this.name = name;
+        this.description = description;
+        this.activeCard = 0;
+        this.statDeck = new StatDeck(name);
+    }
 
     public void addCard(CardModel card) {
         cards.add(card);
@@ -56,11 +64,13 @@ public class DeckModel extends Observed {
     }
 
     public void addCard(String question, String answer) {
-        cards.add(new CardModel(question, answer));
+        CardModel card = new CardModel(question, answer);
+        addCard(card);
         notifyObservers();
     }
     public void addCard(String question, String answer, Media media){
-        cards.add(new CardModel(question,answer,media));
+        CardModel card = new CardModel(question,answer,media);
+        addCard(card);
         notifyObservers();
     }
 

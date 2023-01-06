@@ -1,7 +1,9 @@
 package eu.telecomnancy.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 
+import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.io.file.FileController;
@@ -26,6 +28,9 @@ public class DeckListController {
 
     public void createDeck(String name, String description) {
         deckListModel.createDeck(name, description);
+    }
+    public void createDeck(String name, String description, ArrayList<DeckTag> tags) {
+        deckListModel.createDeck(name, description, tags);
     }
 
     public DeckModel createEmptyDeck() {

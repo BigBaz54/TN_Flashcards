@@ -2,6 +2,7 @@ package eu.telecomnancy.model;
 
 import java.util.ArrayList;
 
+import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategyClassic;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
@@ -26,6 +27,11 @@ public class DeckListModel extends Observed {
 
     public void createDeck(String name, String description) {
         DeckModel deck = new DeckModel(name, description);
+        decks.add(deck);
+        notifyObservers();
+    }
+    public void createDeck(String name, String description, ArrayList<DeckTag> tags) {
+        DeckModel deck = new DeckModel(name, description, tags);
         decks.add(deck);
         notifyObservers();
     }

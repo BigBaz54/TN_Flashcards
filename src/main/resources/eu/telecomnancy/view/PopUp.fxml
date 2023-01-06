@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.view.PopUpView">
    <center>
       <HBox alignment="CENTER" prefHeight="436.0" prefWidth="750.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER_LEFT" prefHeight="404.0" prefWidth="590.0">
+            <VBox alignment="CENTER_LEFT" prefHeight="383.0" prefWidth="590.0">
                <HBox.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="60.0" />
+                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                </HBox.margin>
                <children>
                   <Label text="Nom">
@@ -38,11 +37,38 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea fx:id="deckDescription" prefHeight="200.0" prefWidth="200.0" promptText="Ajouter une description">
+                  <TextArea fx:id="deckDescription" prefHeight="121.0" prefWidth="590.0" promptText="Ajouter une description">
                      <VBox.margin>
                         <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </TextArea>
+                  <Label text="Tags">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="55.0" prefWidth="590.0" spacing="10.0">
+                     <children>
+                        <TextField fx:id="tag1" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="tag2" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <TextField fx:id="tag3" prefHeight="24.0" prefWidth="200.0" promptText="Ajouter un tag">
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
                   <HBox alignment="CENTER" prefHeight="59.0" prefWidth="570.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#createDeck" text="Validate">

@@ -85,12 +85,6 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
                 tagString += tag.getName() + " ";
             }
             tags.setText(tagString);
-            // Bug de visiblité 
-            //boolean last = getIndex() == controller.getDecks().size() - 1;
-            //if (last) {
-            //    descriptionBox.setManaged(true);
-            //    deckCell.setPrefHeight(300);
-            //}
 
             setText(null);
             setGraphic(deckCell);
@@ -122,6 +116,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
             nameBox.getStyleClass().add(newValue ? "cell-top" : "cell");
             if (isLast()) {
                 descriptionBox.setManaged(true);
+                descriptionBox.setMaxHeight(Double.MAX_VALUE);
                 deckCell.setPrefHeight(270);
             }
 
@@ -149,7 +144,7 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     }
 
     private boolean isLast() {
-        return getIndex() == controller.getDecks().size() - 1;
+        return controller.getDecks().indexOf(getItem()) == controller.getDecks().size() - 1;
     }
     
 }

@@ -11,7 +11,7 @@ plugins {
 
 group 'eu.telecomnancy'
 version '1.0-SNAPSHOT'
-description = 'codingweek-16'
+description 'codingweek-16'
 
 repositories {
     mavenCentral()
@@ -37,6 +37,7 @@ javafx {
     version = '19'
     modules = ['javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.web']
 }
+
 
 dependencies {
     implementation('com.google:google:5')
@@ -68,5 +69,17 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes "Main-Class": "eu.telecomnancy.AppLauncher"
+    }
+
+    from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 

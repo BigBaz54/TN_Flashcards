@@ -47,16 +47,16 @@ public class DeckListController {
 
     public void exportDeck(int i) {
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("ZIP files (*.zip)", "*.zip");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TLF files (*.tlf)", "*.tlf");
         fileChooser.getExtensionFilters().add(extFilter);
-        fileChooser.setInitialFileName(deckListModel.getDecks().get(i).getName() + ".zip");
+        fileChooser.setInitialFileName(deckListModel.getDecks().get(i).getName() + ".tlf");
         File file = fileChooser.showSaveDialog(null);
 
         if (file != null) {
             fileController.exportDeck(deckListModel.getDecks().get(i), file);
         } else {
             fileController.exportDeck(deckListModel.getDecks().get(i),
-                    new File("resources/exports/" + deckListModel.getDecks().get(i).getName() + ".zip"));
+                    new File("resources/exports/" + deckListModel.getDecks().get(i).getName() + ".tlf"));
         }
     }
 
@@ -67,7 +67,7 @@ public class DeckListController {
     public void importDeck() {
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "ZIP files (*.zip) or APKG files (*.apkg)", "*.zip", "*.apkg");
+                "TLF files (*.tlf) or APKG files (*.apkg)", "*.tlf", "*.apkg");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showOpenDialog(null);
 
@@ -95,7 +95,7 @@ public class DeckListController {
         }
     }
 
-    public void setBuildCardStrategy (BuildCardStrategy buildCardStrategy) {
+    public void setBuildCardStrategy(BuildCardStrategy buildCardStrategy) {
         deckListModel.setBuildCardStrategy(buildCardStrategy);
     }
 
@@ -110,6 +110,7 @@ public class DeckListController {
     public DrawCardStrategy getDrawCardStrategy() {
         return deckListModel.getDrawCardStrategy();
     }
+
     public ArrayList<DeckModel> getDecks() {
         return deckListModel.getDecks();
     }

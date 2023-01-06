@@ -46,11 +46,11 @@ public class PopUpStatsView implements Initializable {
         XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
         series1.setName("Series 1");
         lineChartEvolutionTemps.getXAxis().setLabel("Cartes vues");
-        lineChartEvolutionTemps.getYAxis().setLabel("Temps en minutes");
+        lineChartEvolutionTemps.getYAxis().setLabel("Temps par carte (s)");
         ArrayList<Long> temps = learning.getStatLearning().getTimeCards();
         for (int i = 0; i < temps.size(); i++) {
-            XYChart.Data<Number, Number> data = new XYChart.Data<>(i, temps.get(i)/(1000*60));
-            series1.getData().add(new XYChart.Data<>(i, temps.get(i)/(1000*60)));
+            XYChart.Data<Number, Number> data = new XYChart.Data<>(i, temps.get(i)/(1000));
+            series1.getData().add(new XYChart.Data<>(i, temps.get(i)/(1000)));
         }
         lineChartEvolutionTemps.getData().add(series1);
     }
@@ -78,7 +78,7 @@ public class PopUpStatsView implements Initializable {
         nbCardSeen.setText(carteVue);
         String carteTrue = "Nombre de bonnes réponses : "+learning.getStatLearning().getNbCorrect();
         nbardTrue.setText(carteTrue);
-        String temps = "Temps total de la session : "+learning.getStatLearning().getTimePlayed()/(1000*60) + " minutes";
+        String temps = "Temps total de la session : "+learning.getStatLearning().getTimePlayed()/(1000) + "s";
         totalTimes.setText(temps);
     }
 }

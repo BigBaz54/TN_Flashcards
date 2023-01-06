@@ -124,7 +124,7 @@ public class CardView {
                 stage.setScene(new javafx.scene.Scene(root, 640, 480));
                 stage.show();
             }else {
-                Image img = new Image("resources/images/"+media.getName());
+                Image img = new Image(media.getFile().toURI().toString());
                 ImageView view = new ImageView(img);
                 Stage stage = new Stage();
                 stage.setTitle("Image");

@@ -8,6 +8,7 @@ import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.controller.StageController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.learning.Learning;
+import eu.telecomnancy.learning.LearningSession;
 import eu.telecomnancy.learning.LearningTimeLimit;
 import eu.telecomnancy.learning.LearningXCards;
 import eu.telecomnancy.model.CardModel;
@@ -63,6 +64,7 @@ public class DeckView extends DeckObserver implements Initializable {
         this.deckController = deckController;
         this.stageController = stageController;
         this.mode = Mode.VIEW;
+        // Sauvegarde des paramètres    
         this.buildCardStrategy = buildCardStrategy;
         this.drawCardStrategy = drawCardStrategy;
     }
@@ -79,7 +81,7 @@ public class DeckView extends DeckObserver implements Initializable {
         scrollpane.setFitToHeight(true);
         scrollpane.setHbarPolicy(ScrollBarPolicy.NEVER);
         react();
-        // Text
+        // Update des labels nom et description
         name.setText(deckModel.getName());
         description.setText(deckModel.getDescription());
 
@@ -134,13 +136,13 @@ public class DeckView extends DeckObserver implements Initializable {
         }
     }
 
+    // Montre le menu Apprentissage 
     @FXML
     public void toLearningView() {
         setNodeVisibility(!learningBox.isVisible(), learningBox);
         learningBox.toFront();
-        //Learning learning = new LearningXTimes(deckController, drawCardStrategy, 20);
-        //stageController.setLearningView(learning,deckModel,buildCardStrategy,drawCardStrategy);
     }
+    // Lance une session d'apprentissage avec un temps limite
     @FXML
     public void toLearningTimeView(){
         if(timeField.getText().equals(null)||(timeField.getText().equals("")))
@@ -152,6 +154,7 @@ public class DeckView extends DeckObserver implements Initializable {
             stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
         }
     }
+    // Lance une sesssion d'apprentissage avec un nombre de cartes limite
     @FXML
     public void toLearningCardView(){
         int n = Integer.valueOf(cardField.getText());
@@ -159,6 +162,11 @@ public class DeckView extends DeckObserver implements Initializable {
             Learning learning = new LearningXCards(deckController, drawCardStrategy, n);
             stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
         }
+    }
+    @FXML
+    public void toLearningAllView(){
+        Learning learning = new LearningSession(deckController, drawCardStrategy);
+        stageController.setLearningView(learning, deckModel, buildCardStrategy, drawCardStrategy);
     }
 
     // Méthodes du sidebar Menu

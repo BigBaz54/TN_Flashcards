@@ -2,14 +2,12 @@ package eu.telecomnancy.learning;
 
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
-import eu.telecomnancy.model.CardModel;
-import javafx.scene.layout.BorderPane;
 
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LearningSession extends Learning {
-    private HashMap<Integer, Integer> cardsToLearn;
+    private HashMap<Integer, Integer> cardsToLearn = new HashMap<>();
 
 
     public LearningSession(DeckController deckController, DrawCardStrategy drawCardStrategy) {
@@ -17,6 +15,7 @@ public class LearningSession extends Learning {
         this.drawCardStrategy = drawCardStrategy;
         this.deckController.updateStatDeck();
         deckController.getDeckModel().getCards().forEach(card->{cardsToLearn.put(card.getIdCard(), 0);});
+        this.beginLastCard = System.currentTimeMillis();
 
     }
     @Override

@@ -26,6 +26,6 @@ Here are the different possible configuration.
 
 When you double click on a deck you can see all the cards in it. You can edit them or go throught study with this deck. You can navigate throught all those functionalities with the top navbar.
 
-When you want to start studying you can select multiple option. You can select the number of cards you want to study. The session will stop at the end of the number of cards selected and will display stats of your session. You can also select a timed version where you only have a selected amount of time to answer questions.
+When you want to start studying you can select multiple option. You can select the number of cards you want to study. The session will stop at the end of the number of cards selected and will display stats of your session. You can also select a timed version where you only have a selected amount of time to answer questions as much questions as you can.
 
 ![preview](./assets/images/startSession.png)

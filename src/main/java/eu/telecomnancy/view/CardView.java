@@ -1,5 +1,6 @@
 package eu.telecomnancy.view;
 
+import java.io.File;
 import java.io.IOException;
 
 import eu.telecomnancy.controller.CardController;
@@ -14,12 +15,14 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class CardView {
@@ -42,6 +45,10 @@ public class CardView {
     private Button delete;
     @FXML
     private Button mediaIcon;
+    @FXML
+    private MenuBar mediaEdit;
+    @FXML
+    private Button addMedia;
 
     private DeckController deckController;
     private CardController cardController;
@@ -70,10 +77,17 @@ public class CardView {
 
         // Changement de vue en fonction du mode
         if (mode == Mode.VIEW) {
-            setNodeVisibility(false, delete, answerEdit, questionEdit);
+            setNodeVisibility(false, delete, answerEdit, questionEdit, mediaEdit, addMedia);
             setNodeVisibility(true, answer, question);
         } else {
-            setNodeVisibility(false, answer, question);
+            if(card.getMedia()!=null){
+                setNodeVisibility(true, mediaEdit);
+                setNodeVisibility(false, addMedia);
+            }else {
+                setNodeVisibility(false, mediaEdit);
+                setNodeVisibility(true, addMedia);
+            }
+            setNodeVisibility(false, answer, question,mediaIcon);
             setNodeVisibility(true, delete, answerEdit, questionEdit);
         }
 
@@ -137,4 +151,54 @@ public class CardView {
 
     }
 
+
+    @FXML
+    public void deleteMedia(){
+        card.setMedia(null);
+        setNodeVisibility(false, mediaEdit);
+        setNodeVisibility(true, addMedia);
+
+    }
+    @FXML
+    public void updateMedia(){
+        deleteMedia();
+        FileChooser fileChooser = new FileChooser();
+
+        // Extension filters 
+        FileChooser.ExtensionFilter extFilter1 = new FileChooser.ExtensionFilter("Image files", "*.jpg", "*.png","*.gif");
+        FileChooser.ExtensionFilter extFilter2 = new FileChooser.ExtensionFilter("Audio files", "*.mp3", "*.wav","*.aac");
+        FileChooser.ExtensionFilter extFilter3 = new FileChooser.ExtensionFilter("Video files", "*.mp4", "*.avi","*.mov");
+        fileChooser.getExtensionFilters().addAll(extFilter1, extFilter2, extFilter3);
+
+        File selectedFile = fileChooser.showOpenDialog(null);
+        String name = selectedFile.getPath();
+        String fileName = selectedFile.getName();
+        String extension = fileName.substring(fileName.lastIndexOf(".") + 1);
+
+        MediaType type;
+        switch (extension) {
+            case "png":
+            case "jpg":
+            case "gif":
+                type = MediaType.IMG;
+                break;
+            case "wav":
+            case "mp3":
+            case "aac":
+                type = MediaType.AUDIO;
+                break;
+            case "mp4":
+            case "avi":
+            case "mov":
+                type = MediaType.VIDEO;
+                break;
+            default:
+                type = null;
+                break;
+        }
+        Media media = new Media(name,type);
+        card.setMedia(media);
+        setNodeVisibility(false, addMedia);
+        setNodeVisibility(true, mediaEdit);
+    }
 }

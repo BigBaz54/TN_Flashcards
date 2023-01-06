@@ -149,4 +149,9 @@ public class StatsView extends DeckListObserver implements Initializable {
         sidebar.setVisible(!sidebar.isVisible());
     }
 
+    @FXML
+    public void toSettingsView() {
+        stageController.setSettingsView();
+    }
+
 }

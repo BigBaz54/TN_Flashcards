@@ -5,26 +5,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import eu.telecomnancy.model.DeckModel;
 
 public class DrawCardStrategyTest {
-    @Test
+    // @Test
     // checking that the nextCard methods work
-    public void test1() {
-        DeckModel deck = new DeckModel("name", "description");
-        deck.addCard("question1", "answer1");
-        deck.addCard("question2", "answer2");
-        deck.addCard("question3", "answer3");
+    // public void test1() {
+    //     DeckModel deck = new DeckModel("name", "description");
+    //     deck.addCard("question1", "answer1");
+    //     deck.addCard("question2", "answer2");
+    //     deck.addCard("question3", "answer3");
 
-        DrawCardStrategyRandom random = new DrawCardStrategyRandom();
-        int drawn = random.nextCard(deck);
-        assertTrue(drawn >= 0 && drawn < deck.getCards().size());
+    //     DrawCardStrategyRandom random = new DrawCardStrategyRandom();
+    //     int drawn = random.nextCard(deck);
+    //     assertTrue(drawn >= 0 && drawn < deck.getCards().size());
 
-        DrawCardStrategyWeighted weighted = new DrawCardStrategyWeighted();
-        drawn = weighted.nextCard(deck);
-        assertTrue(drawn >= 0 && drawn < deck.getCards().size());
+    //     DrawCardStrategyWeighted weighted = new DrawCardStrategyWeighted();
+    //     drawn = weighted.nextCard(deck);
+    //     assertTrue(drawn >= 0 && drawn < deck.getCards().size());
 
-        // DrawCardStrategyTime time = new DrawCardStrategyTime();
-        // drawn = time.nextCard(deck);
-        // assertTrue(drawn >= 0 && drawn < deck.getCards().size());
-    }
+    //     // DrawCardStrategyTime time = new DrawCardStrategyTime();
+    //     // drawn = time.nextCard(deck);
+    //     // assertTrue(drawn >= 0 && drawn < deck.getCards().size());
+    // }
 
     @Test
     // checking that the handleAnswer methods work

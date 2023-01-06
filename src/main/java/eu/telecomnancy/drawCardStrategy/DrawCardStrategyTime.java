@@ -1,5 +1,6 @@
 package eu.telecomnancy.drawCardStrategy;
 
+import eu.telecomnancy.learning.Learning;
 import eu.telecomnancy.model.DeckModel;
 
 public class DrawCardStrategyTime implements DrawCardStrategy {
@@ -7,7 +8,7 @@ public class DrawCardStrategyTime implements DrawCardStrategy {
         // TODO
     }
 
-    public int nextCard(DeckModel deckModel) {
+    public int nextCard(DeckModel deckModel, Learning learning) {
         // TODO
         return -1;
     }

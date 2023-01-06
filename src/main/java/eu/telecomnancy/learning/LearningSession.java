@@ -3,6 +3,7 @@ package eu.telecomnancy.learning;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LearningSession extends Learning {
@@ -15,23 +16,6 @@ public class LearningSession extends Learning {
         this.deckController.updateStatDeck();
         deckController.getDeckModel().getCards().forEach(card->{cardsToLearn.put(card.getIdCard(), 0);});
         this.beginLastCard = System.currentTimeMillis();
-
-    }
-    @Override
-    public void nextCard(boolean goodAnswer) {
-        Long timeSpent = System.currentTimeMillis() - beginLastCard;
-        updateConcreteLearning(goodAnswer);
-        updateStatLearning(goodAnswer, timeSpent);
-        deckController.updateStatCard(goodAnswer, timeSpent);
-        deckController.handleAnswer(goodAnswer, drawCardStrategy);
-        boolean badCard = true;
-        while (badCard) {
-            deckController.nextCard(drawCardStrategy);
-            if (cardsToLearn.get(deckController.getDeckModel().getActiveCard()) < 2) {
-                badCard = false;
-            }
-        }
-        beginLastCard = System.currentTimeMillis();
 
     }
 
@@ -55,5 +39,16 @@ public class LearningSession extends Learning {
         else{
             cardsToLearn.put(index, 0);
         }
+    }
+
+    public ArrayList<Integer> getToLearn() {
+        ArrayList<Integer> toLearn = new ArrayList<>();
+        for (Integer i : this.cardsToLearn.keySet()) {
+            if (this.cardsToLearn.get(i) < 2) {
+                toLearn.add(i);
+            }
+        }
+        System.out.println(toLearn);
+        return toLearn;
     }
 }

@@ -6,6 +6,7 @@ import java.util.Date;
 import eu.telecomnancy.CardTag;
 import eu.telecomnancy.Tag;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.learning.Learning;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
 import eu.telecomnancy.model.Media;
@@ -73,8 +74,8 @@ public class DeckController {
         drawCardStrategy.handleAnswer(goodAnswer, deckModel);
     }
 
-    public void nextCard(DrawCardStrategy drawCardStrategy) {
-        deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel));
+    public void nextCard(DrawCardStrategy drawCardStrategy, Learning learning) {
+        deckModel.setActiveCard(drawCardStrategy.nextCard(deckModel, learning));
     }
 
     public void updateStatCard(boolean goodAnswer, Long timeSpent) {

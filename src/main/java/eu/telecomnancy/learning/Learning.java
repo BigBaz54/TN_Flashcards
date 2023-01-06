@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import eu.telecomnancy.CardTag;
 import eu.telecomnancy.controller.DeckController;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
+import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.StatLearning;
 
 public abstract class Learning {
@@ -21,9 +22,8 @@ public abstract class Learning {
         updateStatLearning(goodAnswer, timeSpent);
         deckController.updateStatCard(goodAnswer, timeSpent);
         deckController.handleAnswer(goodAnswer, drawCardStrategy);
-        deckController.nextCard(drawCardStrategy);
+        deckController.nextCard(drawCardStrategy, this);
         beginLastCard = System.currentTimeMillis();
-
     }
 
     protected void updateStatLearning(boolean goodAnswer, Long timeSpent) {
@@ -45,5 +45,4 @@ public abstract class Learning {
     public StatLearning getStatLearning() {
         return statLearning;
     }
-
 }

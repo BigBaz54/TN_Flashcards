@@ -25,3 +25,17 @@
     -fx-padding : 0 10 10 10;
     -fx-font-size : 14px;
 }
+
+.toggle-button:unselected {
+    -fx-background-color : transparent;
+    -fx-border-color : rgb(50,50,50);
+}
+.toggle-button:selected {
+    -fx-background-color :rgb(116,116,116);
+    -fx-border-color : rgb(50,50,50);
+}
+
+.toggle-button:hover {
+    -fx-background-color :transparent;
+    -fx-border-color : transparent;
+}

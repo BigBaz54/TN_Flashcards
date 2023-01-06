@@ -27,12 +27,12 @@
 }
 
 .title-card {
-    -fx-font-size: 30px;
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
 }
 
 .text-card {
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-font-weight: normal;
 }
 

@@ -1,0 +1,182 @@
+{
+  "cards": [
+    {
+      "question": "Capitale france",
+      "answer": "Paris",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          78114
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "Capitale Allemagne",
+      "answer": "Berlin",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 1,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 1,
+        "timesSpent": [
+          7250
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "Quelle est la capitale de l\u0027Espagne? ",
+      "answer": "Madrid.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 2,
+        "timesSpent": [
+          86033,
+          2216
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": " Quelle est la capitale de la Suisse?",
+      "answer": "Berne.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 2,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 2,
+        "timesSpent": [
+          87822,
+          3789
+        ]
+      },
+      "tags": []
+    },
+    {
+      "question": "Quelle est la capitale du Portugal? ",
+      "answer": "La capitale du Portugal est Lisbonne.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": " Quelle est la capitale de la Belgique?",
+      "answer": "La capitale de la Belgique est Bruxelles.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Quelle est la capitale de l\u0027Italie? ",
+      "answer": "La capitale de l\u0027Italie est Rome.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": " Quelle est la capitale de l\u0027Autriche? ",
+      "answer": "La capitale de l\u0027Autriche est Vienne.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": " Quelle est la capitale du Danemark?",
+      "answer": "La capitale du Danemark est Copenhague.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Capitale de la Suisse",
+      "answer": "La capitale de la Suisse est Berne.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Capitale du Kenya",
+      "answer": "La capitale du Kenya est Nairobi.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Capitale du Canada",
+      "answer": "La capitale du Canada est Ottawa.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    },
+    {
+      "question": "Capitale de la Russie",
+      "answer": "La capitale de la Russie est Moscou.",
+      "probability": 1.0,
+      "statCard": {
+        "nbTimesSeen": 0,
+        "nbTimesCorrect": 0,
+        "nbTimesWrong": 0,
+        "timesSpent": []
+      },
+      "tags": []
+    }
+  ],
+  "tags": [],
+  "statDeck": {
+    "nbTimesOpened": 1,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "lastOpened": 1672999956696,
+    "creationDate": 1672999894492
+  },
+  "name": "Les capitales",
+  "description": "Des cartes pour réviser les capitales"
+}

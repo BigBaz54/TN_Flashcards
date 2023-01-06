@@ -11,6 +11,8 @@ public class CardModel extends Observed {
     private StatCard statCard;
     private ArrayList<CardTag> tags;
     private Media media = null;
+    private static int id = 0;
+    private int idCard;
 
     public CardModel() {
         this.question = "";
@@ -18,6 +20,8 @@ public class CardModel extends Observed {
         this.probability = 1F;
         this.statCard = new StatCard();
         this.tags = new ArrayList<>();
+        this.idCard = id;
+        id++;
     }
 
     public CardModel(String question, String answer) {
@@ -26,6 +30,8 @@ public class CardModel extends Observed {
         this.probability = 1F;
         this.statCard = new StatCard();
         this.tags = new ArrayList<>();
+        this.idCard = id;
+        id++;
     }
     public CardModel(String question, String answer,Media media) {
         this(question,answer);
@@ -87,5 +93,9 @@ public class CardModel extends Observed {
 
     public void setStatCard(StatCard statCard) {
         this.statCard = statCard;
+    }
+
+    public int getIdCard() {
+        return idCard;
     }
 }

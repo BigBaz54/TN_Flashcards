@@ -21,7 +21,7 @@ public class LearningTimeLimit extends Learning {
         return timePlayed >= timeMax;
     }
 
-    public void updateConcreteLearning() {
+    public void updateConcreteLearning(boolean goodAnswer) {
         timePlayed += System.currentTimeMillis() - beginLastCard;
     }
 }

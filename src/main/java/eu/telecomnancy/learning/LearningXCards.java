@@ -21,7 +21,7 @@ public class LearningXCards extends Learning {
         return nbTimesPlayed >= nbTimesMax;
     }
 
-    public void updateConcreteLearning() {
+    public void updateConcreteLearning(boolean goodAnswer) {
         nbTimesPlayed++;
     }
 }

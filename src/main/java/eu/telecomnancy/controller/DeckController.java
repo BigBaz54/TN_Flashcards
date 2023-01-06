@@ -1,7 +1,10 @@
 package eu.telecomnancy.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import eu.telecomnancy.CardTag;
+import eu.telecomnancy.Tag;
 import eu.telecomnancy.drawCardStrategy.DrawCardStrategy;
 import eu.telecomnancy.model.CardModel;
 import eu.telecomnancy.model.DeckModel;
@@ -31,6 +34,9 @@ public class DeckController {
     }
     public void addCard(String question, String answer,Media media) {
         deckModel.addCard(question,answer, media);
+    }
+    public void addCard(String question, String answer, Media media, ArrayList<CardTag> tags) {
+        deckModel.addCard(question,answer, media,tags);
     }
 
     public void removeCard(int card) {

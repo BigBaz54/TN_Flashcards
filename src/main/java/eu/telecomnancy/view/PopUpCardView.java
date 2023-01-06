@@ -1,5 +1,7 @@
 package eu.telecomnancy.view;
 
+import eu.telecomnancy.CardTag;
+import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.GenerateQuestion;
 import eu.telecomnancy.GenerateResponse;
 import eu.telecomnancy.model.CardModel;
@@ -27,6 +29,14 @@ public class PopUpCardView extends DeckObserver {
     private TextField answerEdit;
     @FXML
     private TextField nbCardEdit;
+    @FXML
+    private TextField tag1;
+    @FXML
+    private TextField tag2;
+    @FXML
+    private TextField tag3;
+
+
 
     private DeckController deckController;
 
@@ -63,9 +73,22 @@ public class PopUpCardView extends DeckObserver {
         String question = questionEdit.getText();
         String answer = answerEdit.getText();
         System.out.println(media);
-        deckController.addCard(question, answer,media);
         Stage stage = (Stage) questionEdit.getScene().getWindow();
         stage.close();
+        if(question.isEmpty() || answer.isEmpty())
+            return;
+        if(tag1.getText().isEmpty() && tag2.getText().isEmpty() && tag3.getText().isEmpty())
+            deckController.addCard(question, answer,media);
+        else {
+            ArrayList<CardTag> tags= new ArrayList<>();
+            if(!tag1.getText().isEmpty())
+                tags.add(new CardTag(tag1.getText()));
+            if(!tag2.getText().isEmpty())
+                tags.add(new CardTag(tag2.getText()));
+            if(!tag3.getText().isEmpty())
+                tags.add(new CardTag(tag3.getText()));
+            deckController.addCard(question, answer,media,tags);
+        }
     }
 
     public void react() {

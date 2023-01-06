@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class BuildCardStrategyTheme2 implements BuildCardStrategy {
 
@@ -17,6 +18,8 @@ public class BuildCardStrategyTheme2 implements BuildCardStrategy {
     public Label rectoLabel;
     @FXML
     public Label versoLabel;
+    @FXML
+    public VBox mediaContainer;
     
     public Pane buildRecto(CardModel card) {
         

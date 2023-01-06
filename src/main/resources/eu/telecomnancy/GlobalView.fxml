@@ -30,7 +30,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="633.0" prefWidth="630.0">
                      <children>
-                        <ListView fx:id="deckListView" prefHeight="633.0" prefWidth="630.0" styleClass="list-view" />
+                        <ListView fx:id="deckListView" editable="true" prefHeight="633.0" prefWidth="630.0" styleClass="list-view" />
                      </children>
                   </HBox>
                </children>
@@ -91,7 +91,7 @@
          <children>
             <ToolBar orientation="VERTICAL" prefHeight="600.0" prefWidth="200.0" styleClass="toolBar">
               <items>
-                  <Button mnemonicParsing="false" text="Mes paquets" onAction="#toGlobalView">
+                  <Button mnemonicParsing="false" onAction="#toGlobalView" text="Mes paquets">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -101,7 +101,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button mnemonicParsing="false" text="Paramètres" onAction="#toSettingsView">
+                  <Button mnemonicParsing="false" onAction="#toSettingsView" text="Paramètres">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>

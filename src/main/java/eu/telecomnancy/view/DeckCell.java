@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.model.DeckModel;
+import eu.telecomnancy.DeckTag;
 import eu.telecomnancy.buildCardStrategy.BuildCardStrategy;
 import eu.telecomnancy.controller.DeckListController;
 import eu.telecomnancy.controller.StageController;
@@ -37,6 +38,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     private Button deleteButton;
     @FXML
     private Button exportBtn;
+    @FXML
+    private Label tags;
 
     private DeckListController controller;
     private StageController stageController;
@@ -77,6 +80,19 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
             DeckModel deck = getItem();
             deckName.setText(deck.getName());
             deckDescription.setText(deck.getDescription());
+            String tagString = "";
+            for (DeckTag tag : deck.getTags()) {
+                tagString += tag.getName() + " ";
+            }
+            tags.setText(tagString);
+            // Bug de visiblité 
+            boolean last = getIndex() == controller.getDecks().size() - 1;
+            System.out.println(getIndex());
+            if (last) {
+                descriptionBox.setManaged(true);
+                deckCell.setPrefHeight(300);
+            }
+
             setText(null);
             setGraphic(deckCell);
         } else {
@@ -102,9 +118,13 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         nameBox.hoverProperty().addListener((observable, oldValue, newValue) -> {
             setNodeVisibility(newValue, descriptionBox);
             descriptionBox.setMaxHeight(newValue ? Double.MAX_VALUE : 0);
-            deckCell.setPrefHeight(newValue ? 200 : 100);
+            deckCell.setPrefHeight(newValue ? 250 : 100);
             nameBox.getStyleClass().remove(newValue ? "cell" : "cell-top");
             nameBox.getStyleClass().add(newValue ? "cell-top" : "cell");
+            if (isLast()) {
+                descriptionBox.setManaged(true);
+                deckCell.setPrefHeight(270);
+            }
 
         });
         // Changement de vue lorsqu'on double clique sur la cellule
@@ -127,6 +147,10 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     @FXML
     public void exportDeck() {
         controller.exportDeck(getIndex());
+    }
+
+    private boolean isLast() {
+        return getIndex() == controller.getDecks().size() - 1;
     }
     
 }

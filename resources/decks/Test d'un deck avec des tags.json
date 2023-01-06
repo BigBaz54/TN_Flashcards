@@ -1,0 +1,19 @@
+{
+  "cards": [],
+  "tags": [
+    "blanc",
+    "noir",
+    "orange"
+  ],
+  "statDeck": {
+    "nbTimesOpened": 0,
+    "nbTimesCorrect": 0,
+    "nbTimesWrong": 0,
+    "nbCardsSeen": 0,
+    "timesSpent": 0,
+    "lastOpened": 1673012522847,
+    "creationDate": 1673012522847
+  },
+  "name": "Test d\u0027un deck avec des tags",
+  "description": "Un petit deck"
+}

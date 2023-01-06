@@ -110,4 +110,7 @@ public class DeckListController {
     public DrawCardStrategy getDrawCardStrategy() {
         return deckListModel.getDrawCardStrategy();
     }
+    public ArrayList<DeckModel> getDecks() {
+        return deckListModel.getDecks();
+    }
 }

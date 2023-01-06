@@ -41,14 +41,10 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
     private DeckListController controller;
     private StageController stageController;
     private GlobalView view;
-    private BuildCardStrategy buildCardStrategy;
-    private DrawCardStrategy drawCardStrategy;
 
-    public DeckCell(GlobalView view, DeckListController controller, StageController stageController, BuildCardStrategy buildCardStrategy,DrawCardStrategy drawCardStrategy) {
+    public DeckCell(GlobalView view, DeckListController controller, StageController stageController) {
         this.stageController = stageController;
         this.controller = controller;
-        this.buildCardStrategy = buildCardStrategy;
-        this.drawCardStrategy = drawCardStrategy;
         this.view = view;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("DeckCell.fxml"));
         loader.setController(this);
@@ -115,6 +111,8 @@ public class DeckCell extends ListCell<DeckModel> implements Initializable {
         deckCell.setOnMouseClicked(event -> {
             if (event.getClickCount() == 2) {
                 DeckModel deck = getItem();
+                BuildCardStrategy buildCardStrategy = controller.getBuildCardStrategy();
+                DrawCardStrategy drawCardStrategy = controller.getDrawCardStrategy();
                 stageController.setDeckView(deck,buildCardStrategy,drawCardStrategy);
             }
         });

@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 
 public class BuildCardStrategyHint implements BuildCardStrategy{
     
@@ -37,7 +38,9 @@ public class BuildCardStrategyHint implements BuildCardStrategy{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        StackPane root = new StackPane();
+        root.getChildren().addAll(recto,verso);
+        return root;
     }
 
 

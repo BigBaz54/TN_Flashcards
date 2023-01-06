@@ -91,7 +91,7 @@ public class StatsView extends DeckListObserver implements Initializable {
                 deck.getCards().forEach(card -> {
                     time.set(card.getStatCard().getTimesSpentTotal());
                 });
-                float pourcentage = (time.get().floatValue() * 100 / total);
+                float pourcentage = (time.get()==0 ? 0 : time.get().floatValue() * 100 / total);
                 PieChartPourcentage.getData().add(new PieChart.Data(deck.getName(), pourcentage));
             });
         }
@@ -136,10 +136,10 @@ public class StatsView extends DeckListObserver implements Initializable {
                 nbjuste.set(nbjuste.get() + card.getStatCard().getNbTimesCorrect());
             });
             if (nbseen.get() == 0) {
-                dataSeries1.getData().add(new XYChart.Data<>(time.get()/1000, 0, nbseen.get()));
+                dataSeries1.getData().add(new XYChart.Data<>(time.get()==0 ? 0 : time.get()/1000, 0, nbseen.get()));
             }else {
-                float pourcentage = (float) (nbjuste.get() / deck.getStatDeck().getNbTimesOpened());
-                dataSeries1.getData().add(new XYChart.Data<>(time.get()/(1000*60), pourcentage, nbseen.get()));
+                float pourcentage = (float) (nbjuste.get()==0 ? 0 : nbjuste.get() / deck.getStatDeck().getNbTimesOpened());
+                dataSeries1.getData().add(new XYChart.Data<>(time.get()==0 ? 0 : time.get()/(1000*60), pourcentage, nbseen.get()));
             }
         });
 
@@ -181,7 +181,7 @@ public class StatsView extends DeckListObserver implements Initializable {
             dataSeries1.setName("Pourcentage de bonne reponse");
             barvue.forEach((key, value) -> {
                 if (barvrai.containsKey(key)) {
-                    float pourcentage = (float) (barvrai.get(key) * 100 / value);
+                    float pourcentage = (float) (barvrai.get(key)==0 ? 0 : barvrai.get(key) * 100 / value);
                     dataSeries1.getData().add(new XYChart.Data<>(key, pourcentage));
                 }
                 else {

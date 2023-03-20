@@ -1,4 +1,5 @@
 # Coding week : tisane pas d'cerne
+JavaFX flashcards app made with Thibault Chenevière, Coralie Serrand and Louis Clériot for TÉLÉCOM Nancy's 2022-2023 Coding Week
 
 ## Execute the project
 

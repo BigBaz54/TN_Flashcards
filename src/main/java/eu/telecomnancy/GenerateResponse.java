@@ -15,7 +15,7 @@ public class GenerateResponse {
     public String getResponse(String question) throws IOException {
         CloseableHttpClient httpClient= HttpClientBuilder.create().build();
         String endpoint = "https://api.openai.com/v1/completions";
-        String apiKey = "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";
+        String apiKey = "your_key";
         String prompt2 = "Generate response to this question : " + question;
         HttpPost request = new HttpPost(endpoint);
         request.addHeader("Authorization", "Bearer " + apiKey);

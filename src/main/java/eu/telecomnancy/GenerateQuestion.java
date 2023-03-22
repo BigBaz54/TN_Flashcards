@@ -41,7 +41,7 @@ public class GenerateQuestion {
         // generate the answer
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         String endpoint = "https://api.openai.com/v1/completions";
-        String apiKey = "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";
+        String apiKey = "your_key";
         HttpPost request = new HttpPost(endpoint);
         request.addHeader("Authorization", "Bearer " + apiKey);
         request.addHeader("Content-Type", "application/json");
